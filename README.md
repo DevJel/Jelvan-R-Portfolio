@@ -1,4 +1,4 @@
-# 🪟 Windows 11 Inspired Portfolio OS 🪟
+
 
 Welcome to my personal portfolio application, a fully interactive, minimalist Windows 11-inspired web operating system built from scratch. This project showcases my professional journey, corporate infrastructure expertise, and software development projects in a highly dynamic desktop environment.
 
