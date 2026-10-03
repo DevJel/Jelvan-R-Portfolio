@@ -1,0 +1,58 @@
+.sectionShell {
+  padding: 42px 12px 10px;
+}
+
+.headerBlock {
+  margin-bottom: 22px;
+}
+
+.kicker {
+  display: inline-block;
+  font-size: 0.78rem;
+  color: var(--color-orange-700);
+  background: rgba(244, 129, 32, 0.1);
+  border: 1px solid rgba(244, 129, 32, 0.18);
+  padding: 8px 12px;
+  border-radius: 999px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.headerBlock h2 {
+  margin: 16px 0 0;
+  font-size: clamp(2rem, 4vw, 3.1rem);
+  letter-spacing: -0.05em;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid var(--color-line);
+  border-radius: 24px;
+  padding: 28px 22px;
+  box-shadow: 0 18px 36px rgba(31, 34, 42, 0.04);
+}
+
+.card p {
+  margin: 0 0 18px;
+  color: var(--color-text-soft);
+  line-height: 1.9;
+  font-size: 1.04rem;
+}
+
+.contactList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contactList a {
+  display: inline-flex;
+  width: fit-content;
+  color: var(--color-orange-700);
+  font-weight: 600;
+}
+
+.contactList a:hover {
+  text-decoration: underline;
+}
