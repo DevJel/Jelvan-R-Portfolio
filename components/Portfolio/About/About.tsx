@@ -1,49 +1,66 @@
-import styles from './About.module.css';
+import React, { useEffect, useRef, useState } from 'react';
+import * as Styled from './About.styles';
+import WaveDivider from '../WaveDivider/WaveDivider';
+import Navbar from '../Navbar/Navbar';
+import { useIntersectionObserver } from '../../../hooks/useIntersectionObserver';
+import SecondSlide from './Slides/SecondSlide/SecondSlide';
+import ThirdSlide from './Slides/ThirdSlide/ThirdSlide';
+import FourthSlide from './Slides/FourthSlide/FourthSlide';
+import FifthSlide from './Slides/FifthSlide/FifthSlide';
+import SixthSlide from './Slides/SixthSlide/SixthSlide';
+import FirstSlide from './Slides/FirstSlide/FirstSlide';
 
-const highlights = [
-  'Over 6 years of hands-on work across product engineering, business process optimization, and automation.',
-  'Experienced in building internal tooling, workflow systems, and customer-facing web experiences with measurable impact.',
-  'A blend of technical execution and strategic thinking rooted in HR systems, operational analytics, and digital transformation.',
-];
+/**
+ *Renders About section in resume
+ *@function About
+ *@returns {JSX.Element} - Rendered CardContent component
+ */
+const About = (): JSX.Element => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [isLogoExpanded, setIsLogoExpanded] = useState(true);
+  const [isWaveVisible] = useIntersectionObserver(ref, { threshold: 0.5 });
 
-const focusAreas = ['Full-stack development', 'Automation', 'Cloud workflows', 'Team enablement'];
+  useEffect(() => {
+    if (isWaveVisible) setIsLogoExpanded((p) => !p);
+  }, [isWaveVisible]);
 
-export default function About() {
   return (
-    <section className={styles.sectionShell}>
-      <div className={styles.headerBlock}>
-        <span className={styles.kicker}>About</span>
-        <h2>Product-minded builder with a systems lens.</h2>
-      </div>
+    <Styled.Container>
+      {/*   NAVIGATION    */}
+      <Navbar isLogoExpanded={isLogoExpanded} />
+      {/*   FIRST SLIDE   */}
+      <FirstSlide />
+      <WaveDivider
+        waveImg={'/assets/portfolio/blob-1.svg'}
+        dividerHeight={'150px'}
+      />
+      {/*THIS EMPTY DIV IS USED TO TOGGLE COLLAPSE EFFECT OF LOGO*/}
+      <div ref={ref} />
+      {/*   SECOND SLIDE   */}
+      <SecondSlide />
+      <WaveDivider
+        waveImg={'/assets/portfolio/blob-2.svg'}
+        dividerHeight={'200px'}
+      />
 
-      <div className={styles.contentGrid}>
-        <div className={styles.storyCard}>
-          <p>
-            I work at the intersection of software engineering and operational transformation. My background spans
-            full-stack development, automation engineering, and HR-driven process design, which helps me create
-            tools that are not just polished, but genuinely useful in real business environments.
-          </p>
-          <p>
-            I enjoy building thoughtfully designed interfaces, streamlining complex workflows, and connecting cloud
-            infrastructure with user-centered experiences that scale gracefully.
-          </p>
-        </div>
-
-        <div className={styles.focusCard}>
-          <h3>Core focus</h3>
-          <ul>
-            {focusAreas.map((area) => (
-              <li key={area}>{area}</li>
-            ))}
-          </ul>
-        </div>
-      </div>
-
-      <div className={styles.highlightsWrap}>
-        {highlights.map((text) => (
-          <div key={text} className={styles.highlightItem}>{text}</div>
-        ))}
-      </div>
-    </section>
+      {/*   THIRD SLIDE   */}
+      <ThirdSlide />
+      <WaveDivider
+        waveImg={'/assets/portfolio/blob-1.svg'}
+        dividerHeight={'200px'}
+      />
+      {/*   FOURTH SLIDE   */}
+      <FourthSlide />
+      <WaveDivider
+        waveImg={'/assets/portfolio/blob-2.svg'}
+        dividerHeight={'200px'}
+      />
+      {/*   FIFTH SLIDE   */}
+      <FifthSlide />
+      {/*   SIXTH SLIDE   */}
+      <SixthSlide />
+    </Styled.Container>
   );
-}
+};
+
+export default About;

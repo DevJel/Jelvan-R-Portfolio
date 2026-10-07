@@ -1,54 +1,53 @@
-import styles from './PortfolioLanding.module.css';
+import React, { useState } from 'react';
+import * as Styled from './PortfolioLanding.styles';
+import AnimatedRouterLink from '../AnimatedRouterLink/AnimatedRouterLink';
+import TapHint from '../TapHint/TapHint';
 
-const skills = ['Next.js', 'TypeScript', 'System Design', 'Automation', 'Cloud', 'Product'];
+/**
+ *Renders portfolio landing page
+ *@function PortfolioLanding
+ *@returns {JSX.Element} - Rendered PortfolioLanding component
+ */
+const PortfolioLanding = (): JSX.Element => {
+  const [isMenuExpanded, setIsMenuExpanded] = useState<boolean>(false);
 
-export default function PortfolioLanding() {
+  const handleStopPropagation = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => e.stopPropagation();
+
   return (
-    <section className={styles.heroWrap}>
-      <div className={styles.heroText}>
-        <span className={styles.eyebrow}>Full-stack software developer</span>
-        <h1>Designing reliable digital systems with a sharp product lens.</h1>
-        <p>
-          I’m Jelvan Baloaloa Ricolcol — a full-stack engineer, HR practitioner, and automation specialist
-          helping businesses turn complex operations into elegant user experiences.
-        </p>
+    <Styled.Container onClick={() => setIsMenuExpanded((p) => !p)}>
+      <Styled.Navigation
+        key={`this-key-is-for-triggering-animation-${isMenuExpanded}`}
+      >
+        <Styled.LinkWrapper onClick={handleStopPropagation}>
+          <AnimatedRouterLink
+            variant={'standard'}
+            text={isMenuExpanded ? 'About' : 'Hello'}
+            href={'/portfolio/about'}
+            hoverText={'About'}
+            animationTimeout={300}
+          />
+          <AnimatedRouterLink
+            variant={'standard'}
+            text={isMenuExpanded ? 'Work' : 'I am'}
+            href={'/portfolio/projects'}
+            hoverText={'Work'}
+            animationTimeout={600}
+          />
+          <AnimatedRouterLink
+            variant={'highlight'}
+            text={isMenuExpanded ? 'Contact' : 'Jelvan®'}
+            href={'/portfolio/contact'}
+            hoverText={'Contact'}
+            animationTimeout={900}
+          />
+        </Styled.LinkWrapper>
+      </Styled.Navigation>
+      <Styled.Photo photo={'/assets/portfolio/processed-avatar.png'} />
 
-        <div className={styles.ctaRow}>
-          <a href="/projects" className={styles.primaryAction}>View Projects</a>
-          <a href="/contact" className={styles.secondaryAction}>Let’s Connect</a>
-        </div>
-
-        <div className={styles.skillRow}>
-          {skills.map((skill) => (
-            <span key={skill} className={styles.skillPill}>{skill}</span>
-          ))}
-        </div>
-      </div>
-
-      <div className={styles.heroCard}>
-        <div className={styles.cardHeader}>
-          <span className={styles.dot} />
-          <span className={styles.dot} />
-          <span className={styles.dot} />
-        </div>
-
-        <div className={styles.cardBody}>
-          <div className={styles.statBlock}>
-            <span className={styles.statLabel}>Experience</span>
-            <strong>6+ years</strong>
-          </div>
-
-          <div className={styles.statBlock}>
-            <span className={styles.statLabel}>Focus</span>
-            <strong>Product + Systems</strong>
-          </div>
-
-          <div className={styles.statBlock}>
-            <span className={styles.statLabel}>Core stack</span>
-            <strong>Next.js • TypeScript</strong>
-          </div>
-        </div>
-      </div>
-    </section>
+      <TapHint />
+    </Styled.Container>
   );
-}
+};
+export default PortfolioLanding;

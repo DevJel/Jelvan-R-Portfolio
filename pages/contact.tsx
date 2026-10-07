@@ -1,10 +1,15 @@
+import type { NextPage } from 'next';
+import React from 'react';
+
 import PortfolioLayout from '../components/Portfolio/PortfolioLayout/PortfolioLayout';
 import Contact from '../components/Portfolio/Contact/Contact';
 
-export default function ContactPage() {
+const PortfolioLandingPage: NextPage = () => {
   return (
-    <PortfolioLayout title={'Jelvan Baloaloa Ricolcol | Contact'}>
+    <PortfolioLayout title={'Jelvan® | Full-Stack Web Developer'}>
       <Contact />
     </PortfolioLayout>
   );
-}
+};
+
+export default PortfolioLandingPage;
