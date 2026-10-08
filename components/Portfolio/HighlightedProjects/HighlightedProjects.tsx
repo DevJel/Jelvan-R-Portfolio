@@ -80,7 +80,7 @@ const HighlightedProjects = ({ withNavbar = true }: Props): JSX.Element => {
                 quality={95}
                 height={450}
                 width={350}
-                alt={'Laptop with open IDE'}
+                alt={'Phone showing a project'}
                 layout={'fixed'}
                 objectFit={'contain'}
                 priority
@@ -100,7 +100,7 @@ const HighlightedProjects = ({ withNavbar = true }: Props): JSX.Element => {
                 height={200}
                 width={200}
                 objectFit={'contain'}
-                alt={'Laptop with open IDE'}
+                alt={'Smartwatch showing a project'}
                 priority
                 className={'watch'}
               />

@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Styled from './ContactForm.styles';
-import { Form, Formik } from 'formik';
+import { Field, Form, Formik } from 'formik';
 import * as yup from 'yup';
 import FormikTextField from '../FormikTextField/FormikTextField';
 import ActionButton from '../ActionButton/ActionButton';
@@ -20,18 +20,24 @@ const validationSchema = yup.object({
  *@returns {JSX.Element} - Rendered ContactForm component
  */
 const ContactForm = (): JSX.Element => {
-  const { sendEmailViaSendgrid } = useActions();
-  const { isEmailSending, isEmailSent } = useTypedSelector(
+  const { sendContactMessage } = useActions();
+  const { isEmailSending, isEmailSent, error } = useTypedSelector(
     (state) => state.contact
   );
+
+  const buttonText = isEmailSent
+    ? 'Sent 👍'
+    : error
+    ? 'Not sent, retry'
+    : 'Shoot';
 
   return (
     <Styled.Container>
       <Formik
-        initialValues={{ email: '', name: '', message: '' }}
+        initialValues={{ email: '', name: '', message: '', company: '' }}
         validationSchema={validationSchema}
         onSubmit={async (data) => {
-          sendEmailViaSendgrid(data);
+          await sendContactMessage(data);
         }}
       >
         <Form>
@@ -40,8 +46,18 @@ const ContactForm = (): JSX.Element => {
             <FormikTextField placeholder="email" name="email" type="text" />
           </Styled.Wrapper>
           <FormikTextField placeholder="message" name="message" type="text" />
+          {/* Honeypot: hidden from people, bots fill it in */}
+          <Field
+            name="company"
+            type="text"
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            style={{ position: 'absolute', left: '-10000px', opacity: 0 }}
+          />
           <ActionButton
-            buttonText={isEmailSent ? 'Sent 👍' : 'Shoot'}
+            buttonText={buttonText}
+            title={error ?? undefined}
             icon={<FiSend className={'action-icon'} />}
             isLoading={isEmailSending}
             disabled={isEmailSent}

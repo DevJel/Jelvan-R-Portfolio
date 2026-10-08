@@ -22,7 +22,7 @@ const ScrollHint = (): JSX.Element => {
         src={'/assets/icons/scroll-bar.svg'}
         height={50}
         width={50}
-        objectFit={'contain'}
+        style={{ objectFit: 'contain' }}
         alt={'Scroll down hint'}
         className={'scroll-hint'}
       />

@@ -45,34 +45,56 @@ This application translates complex cloud architectures into a responsive, deskt
 ## 🛠️ Local Development & Quick Start
 
 ### Prerequisites
-* Ensure you have [Node.js Node-Engine](https://nodejs.org "NodeJS runtime download") installed (v18.x or later recommended).
-* A running [MongoDB Community Instance](https://mongodb.com "MongoDB open source database download") or active cloud connection string.
+* [Node.js](https://nodejs.org) 18.18 or later (20 LTS recommended).
 
-### Installation Steps
+### Run locally
 
-1. Clone the repository securely:
-   ```bash
-   git clone https://github.com
-   cd portfolio-os
-   ```
+```bash
+git clone https://github.com/jelvan-operava/jelvan-r-portfolio.git
+cd jelvan-r-portfolio
+npm install
+npm run dev          # http://localhost:3000
+```
 
-2. Provision your structural environment values (`.env.local`):
-   ```env
-   MONGODB_URI=your_mongodb_connection_string
-   NEXT_PUBLIC_APP_URL=http://localhost:3000
-   ```
+`npm run dev` serves the site only. The contact form posts to `/api/contact`, which is handled by the Cloudflare Worker, so to test it locally run `npm run preview` (builds the site and starts `wrangler dev`).
 
-3. Install the precise package dependencies:
-   ```bash
-   npm install
-   ```
+### Scripts
 
-4. Launch the local development server pipeline:
-   ```bash
-   npm run dev
-   ```
+| Script | What it does |
+| --- | --- |
+| `npm run dev` | Next.js dev server |
+| `npm run build` | Static export to `out/` (type-checks too) |
+| `npm run typecheck` | TypeScript check only |
+| `npm run preview` | Build, then run the full site + Worker locally with Wrangler |
+| `npm run deploy` | Build, then deploy to Cloudflare |
 
-5. Open [Localhost Port 3000](http://localhost:3000 "Local dev server URL environment") in your target web browser to experience the environment.
+---
+
+## ☁️ Deployment (GitHub → Cloudflare)
+
+The site is a static export (`next build` → `out/`) served by a Cloudflare Worker with static assets. Only `/api/*` runs Worker code (`worker/index.ts`); every page and image is served straight from Cloudflare's edge. Config lives in `wrangler.jsonc`.
+
+Pick **one** of these:
+
+**Option A: Cloudflare Workers Builds (no secrets in GitHub)**
+1. Cloudflare dashboard → **Workers & Pages** → **Create** → **Import a repository** → choose `jelvan-operava/jelvan-r-portfolio`.
+2. Build command: `npm run build`. Deploy command: `npx wrangler deploy`.
+3. Every push to `main` deploys; other branches get preview URLs.
+
+**Option B: GitHub Actions (`.github/workflows/deploy.yml`)**
+1. Create a Cloudflare API token with the **Edit Cloudflare Workers** template.
+2. In GitHub → **Settings** → **Secrets and variables** → **Actions**, add `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`.
+3. Pushes to `main` build and deploy. Every branch and PR is built and validated even without the secrets.
+
+The site appears at `https://jelvan-r-portfolio.<your-subdomain>.workers.dev`. To use your own domain: Worker → **Settings** → **Domains & Routes** → **Add custom domain**.
+
+### Contact form
+
+Messages are delivered to your inbox through Cloudflare Email Service (free when sending to your own verified address). Until this is set up, the form shows "Not sent, retry".
+
+1. Cloudflare dashboard → **Email Service** → onboard your domain (it must use Cloudflare DNS) and verify your inbox as a destination address.
+2. In `wrangler.jsonc`: set `CONTACT_TO` (your inbox) and `CONTACT_FROM` (an address on your domain, e.g. `portfolio@yourdomain.com`), and uncomment the `send_email` block with your inbox in `allowed_destination_addresses`.
+3. Deploy again.
 
 ---
 

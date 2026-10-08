@@ -45,13 +45,16 @@ const DevToArticle = ({
             <Styled.TagWrapper>
               {tag_list.map((tag) => (
                 <Styled.Tag key={tag + id}>
-                  <Image
-                    src={tagIconsMap[tag]}
-                    height={35}
-                    width={35}
-                    objectFit={'contain'}
-                    alt={tag}
-                  />
+                  {/* next/image throws on an undefined src, so skip icons for unmapped tags */}
+                  {tagIconsMap[tag] && (
+                    <Image
+                      src={tagIconsMap[tag]}
+                      height={35}
+                      width={35}
+                      objectFit={'contain'}
+                      alt={tag}
+                    />
+                  )}
                   <p>{tag}</p>
                 </Styled.Tag>
               ))}

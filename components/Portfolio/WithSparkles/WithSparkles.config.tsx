@@ -14,9 +14,13 @@ export interface ISparkle {
   };
 }
 
+// Monotonic counter guarantees unique React keys (random ids could collide).
+let sparkleCounter = 0;
+
 export const generateSparkle = (color = DEFAULT_COLOR): ISparkle => {
+  sparkleCounter += 1;
   return {
-    id: String(random(10000, 99999)),
+    id: `sparkle-${sparkleCounter}`,
     createdAt: Date.now(),
     // Bright yellow color:
     color,
