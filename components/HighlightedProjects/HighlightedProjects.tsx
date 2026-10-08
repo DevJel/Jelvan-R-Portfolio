@@ -14,6 +14,20 @@ import {
   projectDetailsQuotes,
 } from '../ProjectDetailsSlide/ProjectDetailsSlide.config';
 
+const WHITE = '#ffffff';
+
+/** Picks the wave image that blends the background above into the one below */
+const waveBetween = (above: string, below: string): string => {
+  if (above === below) {
+    return above === WHITE
+      ? '/assets/portfolio/blob-band-white.svg'
+      : '/assets/portfolio/blob-band-cream.svg';
+  }
+  return above === WHITE
+    ? '/assets/portfolio/blob-1.svg'
+    : '/assets/portfolio/blob-2.svg';
+};
+
 export interface Props {
   withNavbar?: boolean;
 }
@@ -110,13 +124,34 @@ const HighlightedProjects = ({ withNavbar = true }: Props): JSX.Element => {
         <ScrollHint />
       </Styled.ProjectsHero>
 
-      {/* PROJECTS */}
-      {featuredProjects.map((project) => (
-        <ProjectDesktopSlide key={project.projectTitle} {...project} />
-      ))}
+      {/* PROJECTS - a wave between every slide, matched to the colours either side */}
+      {featuredProjects.map((project, index) => {
+        const previousBg =
+          index === 0 ? '#ffffff' : featuredProjects[index - 1].slideBgColor;
+        return (
+          <React.Fragment key={project.projectTitle}>
+            <WaveDivider
+              waveImg={waveBetween(previousBg, project.slideBgColor)}
+              dividerHeight={'200px'}
+            />
+            <ProjectDesktopSlide {...project} />
+          </React.Fragment>
+        );
+      })}
 
       {/* SNEAKER MANIACS */}
+      <WaveDivider
+        waveImg={waveBetween(
+          featuredProjects[featuredProjects.length - 1].slideBgColor,
+          projectThree.slideBgColor
+        )}
+        dividerHeight={'200px'}
+      />
       <ProjectDesktopSlide {...projectThree} />
+      <WaveDivider
+        waveImg={'/assets/portfolio/blob-band-white.svg'}
+        dividerHeight={'200px'}
+      />
 
       <ProjectDetailsSlide
         slideHeight={'100vh'}
@@ -131,6 +166,10 @@ const HighlightedProjects = ({ withNavbar = true }: Props): JSX.Element => {
       />
       {/* Project Three */}
       <ProjectDesktopSlide {...projectFour} />
+      <WaveDivider
+        waveImg={'/assets/portfolio/blob-band-cream.svg'}
+        dividerHeight={'200px'}
+      />
       <ProjectDetailsSlide
         slideHeight={'100vh'}
         slideBgColor={'#fff7f0'}
