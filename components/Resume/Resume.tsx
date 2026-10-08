@@ -21,6 +21,7 @@ import { SiLinkedin } from 'react-icons/si';
 import PortfolioParagraph from '../Typography/PortfolioParagraph/PortfolioParagraph';
 import ProfessionalExperience from '../ProfessionalExperience/ProfessionalExperience';
 import Navbar from '../Navbar/Navbar';
+import WithSparkles from '../WithSparkles/WithSparkles';
 
 const PHONE_DISPLAY = '+60 11-2561 1502';
 const EMAIL = 'hello@work.jelvan.pro';
@@ -78,7 +79,11 @@ const Resume = (): JSX.Element => {
           {/*HEADER WITH NAME*/}
           <Styled.SummaryHeader>
             <Styled.Name>
-              Jelvan<span>®</span> Ricolcol
+              <Styled.NameSparkles>
+                <WithSparkles color={'#f48120'}>
+                  Jelvan<span className="reg">®</span> Ricolcol
+                </WithSparkles>
+              </Styled.NameSparkles>
             </Styled.Name>
             <Styled.Title>
               Strategic HR Professional | Full Stack Software Developer |
@@ -91,15 +96,15 @@ const Resume = (): JSX.Element => {
                 <SiLinkedin className={'social-media-icon'} />
                 linkedin.com/in/jelvanricolcol
               </Styled.SocialMediaLink>
-              <Styled.SocialMediaLink as="span">
+              <Styled.SocialMediaLink as="span" $hideOnMobile>
                 <FiGlobe className={'social-media-icon'} />
                 portfolio.jelvan.pro
               </Styled.SocialMediaLink>
-              <Styled.SocialMediaLink as="span">
+              <Styled.SocialMediaLink as="span" $hideOnMobile>
                 <FiMail className={'social-media-icon'} />
                 {EMAIL}
               </Styled.SocialMediaLink>
-              <Styled.SocialMediaLink as="span">
+              <Styled.SocialMediaLink as="span" $hideOnMobile>
                 <FiPhoneOutgoing className={'social-media-icon'} />
                 {PHONE_DISPLAY}
               </Styled.SocialMediaLink>
