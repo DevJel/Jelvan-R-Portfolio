@@ -31,11 +31,7 @@ const AllDevToArticles = (): JSX.Element => {
         <SectionHeader variant={'medium'} margin={'0'} color={'#17181d'}>
           My recent posts from{' '}
           <WithSparkles color={'#f48120'}>
-            <InlineLink
-              href={'https://dev.to/'}
-              target="_blank"
-              rel="noopener"
-            >
+            <InlineLink as="span">
               dev.to
             </InlineLink>
           </WithSparkles>

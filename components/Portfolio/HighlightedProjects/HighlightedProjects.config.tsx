@@ -24,7 +24,6 @@ export const useHighlightedProjectsData = (): {
       slideHeight: '100vh',
       projectImg: '/assets/portfolio/orcl/orcl.png',
       projectMobileImg: '/assets/portfolio/orcl/oracle-cpq.webp',
-      liveLink: 'https://www.oracle.com/ca-en/cx/sales/cpq',
       projectTechnologies: [
         'Javascript',
         'Web Components',
@@ -49,7 +48,6 @@ export const useHighlightedProjectsData = (): {
       slideHeight: '100vh',
       projectImg: '/assets/portfolio/orcl/orclcloud.png',
       projectMobileImg: '/assets/portfolio/orcl/cxcloud.webp',
-      liveLink: 'https://www.oracle.com/ca-en/cx/sales/',
       projectTechnologies: [
         'Javascript',
         'JET',
@@ -75,8 +73,6 @@ export const useHighlightedProjectsData = (): {
       slideHeight: '100vh',
       projectImg: '/assets/portfolio/projectOne/SneakerManiacs.png',
       projectMobileImg: '/assets/portfolio/projectOne/sneakerManiacsPhone.png',
-      githubLink: 'https://github.com/jelvan',
-      liveLink: 'https://sneaker-maniacs.vercel.app/',
       projectTechnologies: [
         'Next.js',
         'React',
@@ -102,8 +98,6 @@ export const useHighlightedProjectsData = (): {
       slideHeight: '100vh',
       projectImg: '/assets/portfolio/projectTwo/vpsFullHd.png',
       projectMobileImg: '/assets/portfolio/projectTwo/vpsMobile.png',
-      githubLink: 'https://github.com/jelvan',
-      liveLink: 'https://optics-vps.vercel.app/',
       projectTechnologies: ['Next.js', 'React', 'Redux', 'Mongo DB', 'Express'],
 
       slideBgColor: '#fff7f0',

@@ -109,7 +109,7 @@ export const SocialLinksWrapper = styled.div`
 export const SocialMediaLink = styled.a`
   display: flex;
   align-items: center;
-  cursor: pointer;
+  cursor: default;
   color: #000;
 
   .social-media-icon {

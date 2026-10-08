@@ -4,8 +4,6 @@ import { IHighlightedProject } from '../../../types/portfolio';
 import Image from 'next/legacy/image';
 import SectionHeader from '../Typography/SectionHeader/SectionHeader';
 import PortfolioParagraph from '../Typography/PortfolioParagraph/PortfolioParagraph';
-import ActionButton from '../ActionButton/ActionButton';
-import { FiCast, FiGithub } from 'react-icons/fi';
 import { useIntersectionObserver } from '../../../hooks/useIntersectionObserver';
 
 /**
@@ -23,8 +21,6 @@ const ProjectDesktopSlide = ({
   slideBgColor,
   technologyIcons,
   slideHeight,
-  liveLink,
-  githubLink,
 }: IHighlightedProject): JSX.Element | null => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isElementVisible] = useIntersectionObserver(containerRef, {
@@ -95,22 +91,6 @@ const ProjectDesktopSlide = ({
               variant={'large'}
               withAnimatedPresence={true}
             />
-            <Styled.ButtonsWrapper>
-              <ActionButton
-                renderAsLink
-                href={liveLink}
-                buttonText={'Explore'}
-                icon={<FiCast className={'action-icon'} />}
-              />
-              {githubLink && (
-                <ActionButton
-                  renderAsLink
-                  href={githubLink}
-                  buttonText={'GitHub'}
-                  icon={<FiGithub className={'action-icon'} />}
-                />
-              )}
-            </Styled.ButtonsWrapper>
           </Styled.RightColumn>
         </>
       )}

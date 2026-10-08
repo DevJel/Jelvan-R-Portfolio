@@ -17,7 +17,7 @@ export const Container = styled.a`
 
   .hovicon {
     display: inline-block;
-    cursor: pointer;
+    cursor: default;
     border-radius: 50%;
     text-align: center;
     position: relative;

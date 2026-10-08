@@ -23,10 +23,7 @@ import ProfessionalExperience from '../ProfessionalExperience/ProfessionalExperi
 import Navbar from '../Navbar/Navbar';
 
 const PHONE_DISPLAY = '+60 11-2561 1502';
-const PHONE_HREF = 'tel:+601125611502';
 const EMAIL = 'hello@work.jelvan.pro';
-const PORTFOLIO_URL = 'https://portfolio.jelvan.pro';
-const LINKEDIN_URL = 'https://www.linkedin.com/in/jelvanricolcol/';
 const CV_PDF = '/assets/jelvan-ricolcol-resume.pdf';
 
 /**
@@ -41,21 +38,17 @@ const Resume = (): JSX.Element => {
       <Styled.ResumeWrapper>
         <Styled.LeftColumn>
           <Styled.ContactInfo>
-            <Styled.ContactLink
-              href={PORTFOLIO_URL}
-              target="_blank"
-              rel="noopener"
-            >
+            <Styled.ContactLink as="span">
               <FiGlobe />
               portfolio.jelvan.pro
             </Styled.ContactLink>
 
-            <Styled.ContactLink href={`mailto:${EMAIL}`}>
+            <Styled.ContactLink as="span">
               <FiMail />
               {EMAIL}
             </Styled.ContactLink>
 
-            <Styled.ContactLink href={PHONE_HREF}>
+            <Styled.ContactLink as="span">
               <FiPhoneOutgoing />
               {PHONE_DISPLAY}
             </Styled.ContactLink>
@@ -94,27 +87,19 @@ const Resume = (): JSX.Element => {
 
             {/*SOCIAL MEDIA LINKS*/}
             <Styled.SocialLinksWrapper>
-              <Styled.SocialMediaLink
-                href={LINKEDIN_URL}
-                target={'_blank'}
-                rel="noopener"
-              >
+              <Styled.SocialMediaLink as="span">
                 <SiLinkedin className={'social-media-icon'} />
-                Linkedin
+                linkedin.com/in/jelvanricolcol
               </Styled.SocialMediaLink>
-              <Styled.SocialMediaLink
-                href={PORTFOLIO_URL}
-                target={'_blank'}
-                rel="noopener"
-              >
+              <Styled.SocialMediaLink as="span">
                 <FiGlobe className={'social-media-icon'} />
-                Portfolio
+                portfolio.jelvan.pro
               </Styled.SocialMediaLink>
-              <Styled.SocialMediaLink href={`mailto:${EMAIL}`}>
+              <Styled.SocialMediaLink as="span">
                 <FiMail className={'social-media-icon'} />
-                Email
+                {EMAIL}
               </Styled.SocialMediaLink>
-              <Styled.SocialMediaLink href={PHONE_HREF}>
+              <Styled.SocialMediaLink as="span">
                 <FiPhoneOutgoing className={'social-media-icon'} />
                 {PHONE_DISPLAY}
               </Styled.SocialMediaLink>
@@ -206,9 +191,7 @@ const Resume = (): JSX.Element => {
             <p>
               For strategic client advisory cases, continuous workspace
               operations and professional portfolios, please visit:{' '}
-              <a href={PORTFOLIO_URL} target="_blank" rel="noopener">
-                portfolio.jelvan.pro
-              </a>
+              <strong>portfolio.jelvan.pro</strong>
             </p>
           </Styled.Projects>
         </Styled.RightColumn>

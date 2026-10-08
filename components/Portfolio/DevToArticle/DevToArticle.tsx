@@ -17,7 +17,6 @@ const DevToArticle = ({
   page_views_count,
   positive_reactions_count,
   public_reactions_count,
-  url,
   tag_list,
   id,
 }: IDevToArticle): JSX.Element => {
@@ -67,8 +66,6 @@ const DevToArticle = ({
       <Styled.TextColumn>
         <Styled.Description>{description}</Styled.Description>
       </Styled.TextColumn>
-
-      <Styled.ExternalLink href={url} target="_blank" rel="noopener" />
 
       <Styled.Footer>
         <Styled.Stat>

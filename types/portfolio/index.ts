@@ -10,8 +10,6 @@ export interface IHighlightedProject {
   technologyIcons: ReactNode[];
   slideBgColor: string;
   slideHeight: string;
-  githubLink?: string;
-  liveLink: string;
 }
 
 export interface ICarouselQuote {
