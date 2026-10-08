@@ -59,6 +59,8 @@ jobs:
           test -f out/humans.txt
           test -f out/_headers
           test -f out/.well-known/security.txt
+          test -f out/jr-bimi-tiny-ps.svg
+          grep -q 'baseProfile="tiny-ps"' out/jr-bimi-tiny-ps.svg
           grep -q 'application/ld+json' out/index.html
           grep -q 'rel="canonical" href="https://portfolio.jelvan.pro/"' out/index.html
           grep -q 'portfolio.jelvan.pro/portfolio/resume' out/portfolio/resume.html
