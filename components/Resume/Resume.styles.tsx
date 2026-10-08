@@ -105,8 +105,16 @@ export const RightColumn = styled.section`
   width: 75%;
 
   @media ${({ theme }) => theme.media.tablet} {
-    order: 1;
-    width: 100%;
+    /* Let its sections join the card's column so the closing note
+       can sit after the skills block */
+    display: contents;
+  }
+`;
+
+export const ClosingNote = styled.div`
+  @media ${({ theme }) => theme.media.tablet} {
+    order: 3;
+    margin-top: 0.5rem;
   }
 `;
 export const SummaryHeader = styled.header``;
