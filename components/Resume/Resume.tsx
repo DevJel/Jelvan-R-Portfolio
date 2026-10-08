@@ -191,14 +191,17 @@ const Resume = (): JSX.Element => {
             ))}
           </Styled.Projects>
 
-          <Styled.HR />
-          <Styled.Projects>
-            <p>
-              For strategic client advisory cases, continuous workspace
-              operations and professional portfolios, or any verification
-              documentation needed, email me at <strong>{EMAIL}</strong>
-            </p>
-          </Styled.Projects>
+          {/* CLOSING NOTE - always the last block on the page */}
+          <Styled.ClosingNote>
+            <Styled.HR />
+            <Styled.Projects>
+              <p>
+                For strategic client advisory cases, continuous workspace
+                operations and professional portfolios, or any verification
+                or documentation needed, email me at <strong>{EMAIL}</strong>
+              </p>
+            </Styled.Projects>
+          </Styled.ClosingNote>
         </Styled.RightColumn>
       </Styled.ResumeWrapper>
     </Styled.Container>
