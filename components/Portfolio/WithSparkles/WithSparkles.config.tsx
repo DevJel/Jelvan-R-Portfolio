@@ -24,7 +24,7 @@ export const generateSparkle = (color = DEFAULT_COLOR): ISparkle => {
     createdAt: Date.now(),
     // Bright yellow color:
     color,
-    size: random(10, 20),
+    size: random(14, 26),
     style: {
       // Pick a random spot in the available space
       top: random(0, 100) + '%',
