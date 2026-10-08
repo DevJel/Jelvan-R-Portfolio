@@ -3,13 +3,16 @@ import * as Styled from './Resume.styles';
 import TextList from '../TextList/TextList';
 
 import {
-  keyTechSkills,
-  otherSkills,
+  aiAutomationSkills,
+  certifications,
+  digitalStrategySkills,
+  education,
+  keyHighlights,
   professionalExperience,
+  strategicHrSkills,
 } from './Resume.config';
 import {
   FiDownload,
-  FiGithub,
   FiGlobe,
   FiMail,
   FiPhoneOutgoing,
@@ -18,7 +21,13 @@ import { SiLinkedin } from 'react-icons/si';
 import PortfolioParagraph from '../Typography/PortfolioParagraph/PortfolioParagraph';
 import ProfessionalExperience from '../ProfessionalExperience/ProfessionalExperience';
 import Navbar from '../Navbar/Navbar';
-import Link from 'next/link';
+
+const PHONE_DISPLAY = '+60 11-2561 1502';
+const PHONE_HREF = 'tel:+601125611502';
+const EMAIL = 'hello@work.jelvan.pro';
+const PORTFOLIO_URL = 'https://portfolio.jelvan.pro';
+const LINKEDIN_URL = 'https://www.linkedin.com/in/jelvanricolcol/';
+const CV_PDF = '/assets/jelvan-ricolcol-resume.pdf';
 
 /**
  *Renders resume component
@@ -33,36 +42,42 @@ const Resume = (): JSX.Element => {
         <Styled.LeftColumn>
           <Styled.ContactInfo>
             <Styled.ContactLink
-              href={'https://github.com/jelvan'}
+              href={PORTFOLIO_URL}
               target="_blank"
               rel="noopener"
             >
               <FiGlobe />
-              Jelvan®
+              portfolio.jelvan.pro
             </Styled.ContactLink>
 
-            <Styled.ContactLink href="mailto:contact@jelvan.com">
+            <Styled.ContactLink href={`mailto:${EMAIL}`}>
               <FiMail />
-              contact@jelvan.com
+              {EMAIL}
             </Styled.ContactLink>
 
-            <Styled.ContactLink href="tel:+16048343600">
+            <Styled.ContactLink href={PHONE_HREF}>
               <FiPhoneOutgoing />
-              604-834-3600
+              {PHONE_DISPLAY}
             </Styled.ContactLink>
-            <p>Vancouver, BC, Canada</p>
+            <p>Philippines / Malaysia</p>
           </Styled.ContactInfo>
 
           <TextList
             variant={'withHeader'}
-            textBulletPoints={keyTechSkills}
-            headerText={'key technical skills'}
+            textBulletPoints={strategicHrSkills}
+            headerText={'Strategic HR'}
           />
 
           <TextList
             variant={'withHeader'}
-            textBulletPoints={otherSkills}
-            headerText={'Other skills'}
+            textBulletPoints={digitalStrategySkills}
+            headerText={'Digital Strategy & Branding Systems'}
+          />
+
+          <TextList
+            variant={'withHeader'}
+            textBulletPoints={aiAutomationSkills}
+            headerText={'AI & Automation'}
           />
         </Styled.LeftColumn>
 
@@ -70,14 +85,17 @@ const Resume = (): JSX.Element => {
           {/*HEADER WITH NAME*/}
           <Styled.SummaryHeader>
             <Styled.Name>
-              Jelvan<span>®</span>, PhD
+              Jelvan<span>®</span> Ricolcol
             </Styled.Name>
-            <Styled.Title>Principal Software Engineer</Styled.Title>
+            <Styled.Title>
+              Strategic HR Professional | Full Stack Software Developer |
+              Certified AI & Digital Transformation Practitioner
+            </Styled.Title>
 
             {/*SOCIAL MEDIA LINKS*/}
             <Styled.SocialLinksWrapper>
               <Styled.SocialMediaLink
-                href={'https://www.linkedin.com/'}
+                href={LINKEDIN_URL}
                 target={'_blank'}
                 rel="noopener"
               >
@@ -85,25 +103,25 @@ const Resume = (): JSX.Element => {
                 Linkedin
               </Styled.SocialMediaLink>
               <Styled.SocialMediaLink
-                href={'https://github.com/jelvan'}
+                href={PORTFOLIO_URL}
                 target={'_blank'}
                 rel="noopener"
               >
-                <FiGithub className={'social-media-icon'} />
-                GitHub
+                <FiGlobe className={'social-media-icon'} />
+                Portfolio
               </Styled.SocialMediaLink>
-              <Styled.SocialMediaLink href="mailto:contact@jelvan.com">
+              <Styled.SocialMediaLink href={`mailto:${EMAIL}`}>
                 <FiMail className={'social-media-icon'} />
                 Email
               </Styled.SocialMediaLink>
-              <Styled.SocialMediaLink href="tel:+16048343600">
+              <Styled.SocialMediaLink href={PHONE_HREF}>
                 <FiPhoneOutgoing className={'social-media-icon'} />
-                +1 604 834 3600
+                {PHONE_DISPLAY}
               </Styled.SocialMediaLink>
 
               <Styled.SocialMediaLink
-                href={'/assets/vushenko2026.pdf'}
-                download="jelvan-cv.pdf"
+                href={CV_PDF}
+                download="Jelvan-Ricolcol-Resume.pdf"
               >
                 <FiDownload className={'social-media-icon'} />
                 Download CV
@@ -113,10 +131,10 @@ const Resume = (): JSX.Element => {
             <Styled.HR />
             {/*SUMMARY*/}
             <Styled.Summary>
-              <Styled.ResumeHeader>Summary</Styled.ResumeHeader>
+              <Styled.ResumeHeader>Profile Summary</Styled.ResumeHeader>
               <PortfolioParagraph
                 margin={'0'}
-                paragraphText={`Innovative Principal Software Engineer with deep expertise in AI-integrated enterprise solutions, cloud architecture, and scalable web systems. Holder of multiple patents and Oracle Stand Out awards, with a proven record of transforming Oracle's leading Configure, Price, Quote (CPQ) platform through AI agents, natural-language configuration, and next-gen 3D visualization. Trusted for technical leadership, cross-team mentoring, and driving innovations that accelerate business impact and adoption.`}
+                paragraphText={`A results-driven HR Generalist and Digital Transformation Specialist with a dual Master's background, dedicated to empowering organizations through strategic Human Resources Management, AI-driven Business Systems, and Modern Digital Operations. Proven ability to support over 30,000 employees internationally and deliver a 100% compliance rate across HR operations, in help and coordination with leaders and offshore teams globally. Expertise in bridging the gap between people strategy and technology implementation to enhance efficiency and organizational scaling.`}
                 withDarkColor={true}
                 variant={'medium'}
                 withAnimatedPresence={false}
@@ -124,13 +142,23 @@ const Resume = (): JSX.Element => {
             </Styled.Summary>
           </Styled.SummaryHeader>
 
+          {/*KEY HIGHLIGHTS*/}
+          <Styled.ResumeHeader>Key Highlights</Styled.ResumeHeader>
+          <Styled.Projects>
+            {keyHighlights.map((highlight) => (
+              <p key={highlight.label}>
+                <strong>{highlight.value}</strong> {highlight.label}
+              </p>
+            ))}
+          </Styled.Projects>
+
           {/*EXPERIENCE*/}
 
-          <Styled.ResumeHeader>Experience</Styled.ResumeHeader>
+          <Styled.ResumeHeader>Professional Experience</Styled.ResumeHeader>
           <PortfolioParagraph
             margin={'0'}
             paragraphText={
-              "I've led and contributed to enterprise SaaS, AI, CRM, CPQ, and research software initiatives across Oracle and academia."
+              'HR operations, digital advertising, web development and customer experience roles across Malaysia, the Philippines, the USA and remote global teams.'
             }
             withDarkColor={true}
             variant={'medium'}
@@ -140,104 +168,49 @@ const Resume = (): JSX.Element => {
           {professionalExperience.map((experience, id) => (
             <ProfessionalExperience key={id} {...experience} />
           ))}
-          {/*PROJECTS*/}
-          <Styled.ResumeHeader>Key Product Highlights</Styled.ResumeHeader>
-
-          <Styled.Projects>
-            <p>
-              <strong>
-                Oracle Configure, Price, Quote (CPQ) - Quote Designer / Runtime:
-              </strong>{' '}
-              Developed and patented a dynamic configuration and quoting engine,
-              enabling rapid creation of complex quotes for top enterprise
-              clients.
-            </p>
-            <p>
-              <strong>Oracle CPQ - AI-Powered 3D Product Configurator:</strong>{' '}
-              Built a browser-based 3D visualizer integrated with Oracle CPQ,
-              leveraging AI agents to automate interactive product configuration
-              and visualization.
-            </p>
-            <p>
-              <strong>Migration Tools for Legacy CPQ:</strong> Engineered
-              one-click migration tools for customers transitioning from legacy
-              CPQ systems, reducing implementation time and accelerating
-              adoption.
-            </p>
-            <p>
-              <strong>Oracle Sales Cloud:</strong> Played a key role in the
-              reimplementation of Oracle Sales Cloud across web, mobile, Zoom,
-              and Outlook embedded environments.
-            </p>
-            <p>
-              More selected work can be found on{' '}
-              <Link href={'/portfolio/projects'}>/portfolio/projects</Link>.
-            </p>
-          </Styled.Projects>
-
-          <Styled.ResumeHeader>Awards and Patents</Styled.ResumeHeader>
-          <Styled.Projects>
-            <p>
-              <strong>Oracle CX - Outstanding Contribution 2024:</strong>{' '}
-              Recognized for leading the successful launch of the CPQ
-              project&apos;s quoting flow for Oracle&apos;s largest customers.{' '}
-              <a
-                href="/assets/portfolio/oracle-award.pdf"
-                target="_blank"
-                rel="noopener"
-              >
-                Award
-              </a>
-            </p>
-            <p>
-              <strong>Oracle CX - Stand Outs 2025:</strong> Honored for
-              exceptional contributions and consistent high-impact performance
-              across Oracle CX initiatives.
-            </p>
-            <p>
-              <strong>2025 US Patent:</strong> Method and System to Define a
-              Real-time Customization Model for Configuring an Enterprise Web
-              Application.
-            </p>
-            <p>
-              <strong>2026 Pending Patent:</strong> Agentic Interface System for
-              Managing Enterprise Configurations with Dynamic Transition and
-              Updates to Non-Agentic Operations.
-            </p>
-          </Styled.Projects>
 
           {/* EDUCATION */}
-          <Styled.ResumeHeader>Education</Styled.ResumeHeader>
+          <Styled.ResumeHeader>
+            Education & Professional Development
+          </Styled.ResumeHeader>
 
-          <Styled.EducationDetails>
-            <h4>
-              PhD
-              <span>Bioinformatics | Biomedical Engineering</span>
-            </h4>
-            <Styled.University>
-              Taras Shevchenko National University of Kyiv
-            </Styled.University>
-          </Styled.EducationDetails>
+          {education.map((item) => (
+            <Styled.EducationDetails key={item.school}>
+              <h4>
+                {item.degree}
+                <span>{item.timeFrame}</span>
+              </h4>
+              <Styled.University>{item.school}</Styled.University>
+              <PortfolioParagraph
+                margin={'0 0 1rem 0'}
+                paragraphText={item.description}
+                withDarkColor={true}
+                variant={'medium'}
+                withAnimatedPresence={false}
+              />
+            </Styled.EducationDetails>
+          ))}
 
-          <Styled.EducationDetails>
-            <h4>
-              Master of Computer Engineering
-              <span>Advanced Computer Networks</span>
-            </h4>
-            <Styled.University>
-              Chernivtsi National University
-            </Styled.University>
-          </Styled.EducationDetails>
+          {/* CERTIFICATIONS */}
+          <Styled.ResumeHeader>Professional Certifications</Styled.ResumeHeader>
+          <Styled.Projects>
+            {certifications.map((certification) => (
+              <p key={certification.title}>
+                <strong>{certification.title}:</strong> {certification.issuer}
+              </p>
+            ))}
+          </Styled.Projects>
 
-          <Styled.EducationDetails>
-            <h4>
-              Bachelor of Computer Engineering
-              <span>Computer Networking</span>
-            </h4>
-            <Styled.University>
-              Chernivtsi National University
-            </Styled.University>
-          </Styled.EducationDetails>
+          <Styled.HR />
+          <Styled.Projects>
+            <p>
+              For strategic client advisory cases, continuous workspace
+              operations and professional portfolios, please visit:{' '}
+              <a href={PORTFOLIO_URL} target="_blank" rel="noopener">
+                portfolio.jelvan.pro
+              </a>
+            </p>
+          </Styled.Projects>
         </Styled.RightColumn>
       </Styled.ResumeWrapper>
     </Styled.Container>
