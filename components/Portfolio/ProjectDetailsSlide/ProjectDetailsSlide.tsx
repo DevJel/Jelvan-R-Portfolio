@@ -28,19 +28,17 @@ const ProjectDetailsSlide = ({
 }: Props): JSX.Element => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isElementVisible] = useIntersectionObserver(containerRef, {
-    threshold: 0.5,
+    threshold: 0.35,
   });
   const [isOnScreen, setIsOnScreen] = useState(false);
+
   useEffect(() => {
     if (isElementVisible && !isOnScreen) setIsOnScreen(true);
   }, [isElementVisible, isOnScreen]);
 
-  const randomKey = `${~~Math.random() * 10000}${isOnScreen}`;
-
   return (
     <Styled.Container
       ref={containerRef}
-      key={randomKey}
       slideHeight={slideHeight}
       slideBgColor={slideBgColor}
     >

@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { slideTop } from '../../../design-system/reusableCss';
 
-export const Container = styled.button`
+export const Container = styled.div`
   /* styling */
   height: 2rem;
   width: auto;
@@ -10,6 +10,8 @@ export const Container = styled.button`
   outline: 0;
   cursor: pointer;
   position: relative;
+  display: flex;
+  align-items: center;
 
   .hamburger {
     z-index: ${({ theme }) => theme.zIndex.navigation + 1};
@@ -87,6 +89,7 @@ const slideOutAnimation = css`
 const isOpenStyle = css`
   visibility: visible;
   opacity: 1;
+  pointer-events: auto;
 `;
 
 const isClosedStyle = css`
@@ -94,6 +97,7 @@ const isClosedStyle = css`
   transition: visibility 0.5s,
     opacity 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53);
   opacity: 0;
+  pointer-events: none;
 `;
 
 export const Menu = styled.nav<Props>`

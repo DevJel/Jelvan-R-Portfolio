@@ -14,7 +14,7 @@ import WithSparkles from '../../../WithSparkles/WithSparkles';
 const FirstSlide = (): JSX.Element => {
   return (
     <Slide bgColor={'#ffffff'} height={`100vh`} anchorID={'first-slide'}>
-      <Styled.FirstSlide id={'first-slide'} className="page first-page">
+      <Styled.FirstSlide className="page first-page">
         <SectionHeader
           variant={'medium'}
           headerText={'Creative Web Developer'}

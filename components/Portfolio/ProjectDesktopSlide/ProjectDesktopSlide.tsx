@@ -28,18 +28,16 @@ const ProjectDesktopSlide = ({
 }: IHighlightedProject): JSX.Element | null => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isElementVisible] = useIntersectionObserver(containerRef, {
-    threshold: 0.5,
+    threshold: 0.35,
   });
   const [isOnScreen, setIsOnScreen] = useState(false);
+
   useEffect(() => {
     if (isElementVisible && !isOnScreen) setIsOnScreen(true);
   }, [isElementVisible, isOnScreen]);
 
-  const randomKey = `${~~Math.random() * 10000}${isOnScreen}`;
-
   return (
     <Styled.Container
-      key={randomKey}
       slideHeight={slideHeight}
       slideBgColor={slideBgColor}
       ref={containerRef}
@@ -81,7 +79,7 @@ const ProjectDesktopSlide = ({
               variant={'small'}
               headerText={projectTitle}
               margin={'0'}
-              color={'#2bff88'}
+              color={'#f48120'}
               withGradient
             />
 

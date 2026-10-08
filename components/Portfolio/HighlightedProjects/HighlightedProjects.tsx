@@ -14,12 +14,16 @@ import {
   projectDetailsQuotes,
 } from '../ProjectDetailsSlide/ProjectDetailsSlide.config';
 
+export interface Props {
+  withNavbar?: boolean;
+}
+
 /**
  *Renders sections with some of my projects
  *@function HighlightedProjects
  *@returns {JSX.Element} - Rendered HighlightedProjects component
  */
-const HighlightedProjects = (): JSX.Element => {
+const HighlightedProjects = ({ withNavbar = true }: Props): JSX.Element => {
   const { highlightedProjects } = useHighlightedProjectsData();
   const projectOne = highlightedProjects[0];
   const projectTwo = highlightedProjects[1];
@@ -29,7 +33,7 @@ const HighlightedProjects = (): JSX.Element => {
   return (
     <Styled.Container>
       {/* NAVIGATION */}
-      <Navbar isLogoExpanded={true} />
+      {withNavbar && <Navbar isLogoExpanded={true} />}
       {/* HERO */}
       <Styled.ProjectsHero>
         <Styled.HeroLeftColumn>

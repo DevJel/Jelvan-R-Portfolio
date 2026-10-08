@@ -17,6 +17,7 @@ import {
 import { SiLinkedin } from 'react-icons/si';
 import PortfolioParagraph from '../Typography/PortfolioParagraph/PortfolioParagraph';
 import ProfessionalExperience from '../ProfessionalExperience/ProfessionalExperience';
+import Navbar from '../Navbar/Navbar';
 import Link from 'next/link';
 
 /**
@@ -27,6 +28,7 @@ import Link from 'next/link';
 const Resume = (): JSX.Element => {
   return (
     <Styled.Container>
+      <Navbar isLogoExpanded={true} />
       <Styled.ResumeWrapper>
         <Styled.LeftColumn>
           <Styled.ContactInfo>

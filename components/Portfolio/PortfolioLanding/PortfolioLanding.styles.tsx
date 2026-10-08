@@ -4,6 +4,7 @@ export const Container = styled.section`
   display: flex;
   overflow: hidden;
   min-height: 100vh;
+  position: relative;
 `;
 
 export const Navigation = styled.nav`

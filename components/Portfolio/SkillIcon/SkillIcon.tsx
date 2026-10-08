@@ -1,7 +1,6 @@
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
 import * as Styled from './SkillIcon.styles';
 import Image from 'next/legacy/image';
-import useHover from '../../../hooks/useHover';
 
 export interface Props {
   iconSrc: string;
@@ -17,10 +16,13 @@ export interface Props {
  *@returns {JSX.Element} - Rendered SkillIcon component
  */
 const Component = ({ iconSrc, text, iconSize }: Props): JSX.Element => {
-  const containerRef = useRef<null | HTMLDivElement>(null);
-  const isHovering = useHover(containerRef);
+  const [isHovering, setIsHovering] = useState(false);
   return (
-    <Styled.Container ref={containerRef} isHovering={isHovering}>
+    <Styled.Container
+      isHovering={isHovering}
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => setIsHovering(false)}
+    >
       <Image
         src={iconSrc}
         height={iconSize.height}

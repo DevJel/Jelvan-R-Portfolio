@@ -7,6 +7,8 @@ export const Container = styled.div`
   align-items: center;
   gap: 0.5rem;
   left: 45%;
+  cursor: pointer;
+  z-index: 10;
 
   animation: 2.35s linear 0s infinite normal none running scrollDown;
 

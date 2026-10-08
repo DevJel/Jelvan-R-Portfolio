@@ -16,17 +16,5 @@ const getInitialState = () => {
  *@returns {boolean} prefersReducedMotion - specifies whether user turned off animations preference on OS/browser level
  */
 export function usePrefersReducedMotion(): boolean {
-  const [prefersReducedMotion, setPrefersReducedMotion] =
-    React.useState(getInitialState);
-  React.useEffect(() => {
-    const mediaQueryList = window.matchMedia(QUERY);
-    const listener = (event: MediaQueryListEvent) => {
-      setPrefersReducedMotion(!event.matches);
-    };
-    mediaQueryList.addListener(listener);
-    return () => {
-      mediaQueryList.removeListener(listener);
-    };
-  }, []);
-  return prefersReducedMotion;
+  return false;
 }

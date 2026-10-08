@@ -20,22 +20,26 @@ export const useIntersectionObserver = (
   options: IntersectionObserverOptions
 ): boolean[] => {
   const [isElementVisible, setIsElementVisible] = useState(false);
+  const { rootMargin = '0px', threshold = 0 } = options;
 
   useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      setIsElementVisible(entry.isIntersecting);
-    }, options);
+    const node = ref?.current;
+    if (!node) return;
 
-    if (ref?.current) {
-      observer.observe(ref.current);
-    }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsElementVisible(entry.isIntersecting);
+      },
+      { rootMargin, threshold }
+    );
+
+    observer.observe(node);
 
     return () => {
-      if (ref?.current) {
-        observer.unobserve(ref.current);
-      }
+      observer.unobserve(node);
+      observer.disconnect();
     };
-  }, [ref, options]);
+  }, [ref, rootMargin, threshold]);
 
   return [isElementVisible];
 };

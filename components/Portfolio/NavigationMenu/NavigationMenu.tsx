@@ -15,8 +15,8 @@ const NavigationMenu = (): JSX.Element => {
   const [isActive, setIsActive] = useState(false);
   const toggleNavMenu = () => setIsActive((prev) => !prev);
   //kind of hack, re-render keys used to toggle re-render of lists, thereby kicking-off animation
-  const reRenderKey = `${Math.random() * 500}${isActive}`;
-  const reRenderKeyTwo = `${Math.random() * 100}${isActive}`;
+  const reRenderKey = `router-list-${isActive}`;
+  const reRenderKeyTwo = `social-media-${isActive}`;
 
   return (
     <Styled.Container onClick={toggleNavMenu}>

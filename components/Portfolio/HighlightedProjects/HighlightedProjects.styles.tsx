@@ -3,16 +3,12 @@ import {
   floatingMobileKeyframes,
   floatingWatchKeyframes,
   floatKeyframes,
+  slideTop,
 } from '../../../design-system/reusableCss';
 
 export const Container = styled.section`
-  height: 100vh;
-
-  @media ${({ theme }) => theme.media.desktop} {
-    scroll-snap-type: y mandatory;
-    overflow-y: scroll;
-    scroll-behavior: smooth;
-  }
+  min-height: 100vh;
+  width: 100%;
 `;
 
 export const ProjectsHero = styled.div`
@@ -53,6 +49,7 @@ export const HeroRightColumn = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  animation: ${slideTop} 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 
   :hover {
     .laptop-wrapper {

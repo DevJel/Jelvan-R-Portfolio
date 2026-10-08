@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import * as Styled from './FilterOption.styles';
 import { ArticleSortingOption } from '../../../types/redux/articles-reducer-types';
+import { useTypedSelector } from '../../../hooks/useTypedSelector';
 
 export type Props = (
   | {
@@ -27,12 +28,18 @@ export type Props = (
  *@returns {JSX.Element} - Rendered FilterOption component
  */
 const FilterOption: React.FunctionComponent<Props> = (props): JSX.Element => {
-  const [isActive, setIsActive] = useState<boolean>(false);
+  const { filterOptions, sortArticlesBy } = useTypedSelector(
+    (state) => state.articles
+  );
+
+  const isActive =
+    props.variant === 'filterOption'
+      ? filterOptions.includes(props.filterTag)
+      : sortArticlesBy === props.sortingTag;
 
   const handleClick = () => {
     if (props.variant === 'sortingOption') props.action(props.sortingTag);
     if (props.variant === 'filterOption') props.action(props.filterTag);
-    setIsActive((prev) => !prev);
   };
 
   return (

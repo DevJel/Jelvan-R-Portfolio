@@ -1,7 +1,6 @@
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
 import * as Styled from './AnimatedRouterLink.styles';
 import Link from 'next/link';
-import useHover from '../../../hooks/useHover';
 
 export interface Props {
   variant: 'standard' | 'highlight';
@@ -24,15 +23,15 @@ const AnimatedRouterLink = ({
   hoverText,
   animationTimeout,
 }: Props): JSX.Element => {
-  const linkRef = useRef<HTMLAnchorElement>(null);
-  const isHovering = useHover(linkRef);
+  const [isHovering, setIsHovering] = useState(false);
 
   return (
     <Link href={href} passHref legacyBehavior>
       <Styled.A
-        ref={linkRef}
         variant={variant}
         animationTimeout={animationTimeout}
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
       >
         {isHovering ? hoverText : text}
       </Styled.A>

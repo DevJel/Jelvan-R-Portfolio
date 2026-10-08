@@ -22,7 +22,7 @@ const ThirdSlide = (): JSX.Element => {
 
   return (
     <Slide bgColor={'#ffffff'} height={'100vh'} anchorID={'third-slide'}>
-      <Styled.ThirdSlide id={'third-slide'}>
+      <Styled.ThirdSlide>
         <div className="skills-wrapper">
           <SectionHeader
             variant={'small'}

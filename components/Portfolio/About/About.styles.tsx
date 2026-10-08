@@ -4,14 +4,6 @@ import styled from 'styled-components';
 //scrollbar snap
 
 export const Container = styled.div`
-  height: 100vh;
-
-  @media ${({ theme }) => theme.media.desktop} {
-    /**
-    * Scroll snapping will be applied only on desktop screens
-    */
-    scroll-snap-type: y mandatory;
-    overflow-y: scroll;
-    scroll-behavior: smooth;
-  }
+  min-height: 100vh;
+  width: 100%;
 `;

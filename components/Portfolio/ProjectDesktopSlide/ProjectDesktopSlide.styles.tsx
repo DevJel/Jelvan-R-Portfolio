@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import { IHighlightedProject } from '../../../types/portfolio';
-import { slideTop, trackingInExpand } from '../../../design-system/reusableCss';
+import {
+  slidInCenter,
+  slideTop,
+  trackingInExpand,
+} from '../../../design-system/reusableCss';
 
 type ContainerProps = Pick<IHighlightedProject, 'slideBgColor' | 'slideHeight'>;
 
@@ -25,6 +29,7 @@ export const LeftColumn = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  animation: ${slidInCenter} 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 
   @media ${({ theme }) => theme.media.tablet} {
     width: 100%;

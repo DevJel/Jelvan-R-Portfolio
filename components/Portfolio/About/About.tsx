@@ -10,32 +10,44 @@ import FifthSlide from './Slides/FifthSlide/FifthSlide';
 import SixthSlide from './Slides/SixthSlide/SixthSlide';
 import FirstSlide from './Slides/FirstSlide/FirstSlide';
 
+export interface Props {
+  withNavbar?: boolean;
+}
+
 /**
  *Renders About section in resume
  *@function About
  *@returns {JSX.Element} - Rendered CardContent component
  */
-const About = (): JSX.Element => {
+const About = ({ withNavbar = true }: Props): JSX.Element => {
   const ref = useRef<HTMLDivElement>(null);
   const [isLogoExpanded, setIsLogoExpanded] = useState(true);
-  const [isWaveVisible] = useIntersectionObserver(ref, { threshold: 0.5 });
+  const [isFirstSlideVisible] = useIntersectionObserver(ref, {
+    threshold: 0.2,
+  });
 
   useEffect(() => {
-    if (isWaveVisible) setIsLogoExpanded((p) => !p);
-  }, [isWaveVisible]);
+    const handleScroll = () => {
+      const thresholdY = window.innerHeight * 0.8;
+      setIsLogoExpanded(window.scrollY <= thresholdY || isFirstSlideVisible);
+    };
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isFirstSlideVisible]);
 
   return (
     <Styled.Container>
       {/*   NAVIGATION    */}
-      <Navbar isLogoExpanded={isLogoExpanded} />
+      {withNavbar && <Navbar isLogoExpanded={isLogoExpanded} />}
       {/*   FIRST SLIDE   */}
-      <FirstSlide />
+      <div ref={ref}>
+        <FirstSlide />
+      </div>
       <WaveDivider
         waveImg={'/assets/portfolio/blob-1.svg'}
         dividerHeight={'150px'}
       />
-      {/*THIS EMPTY DIV IS USED TO TOGGLE COLLAPSE EFFECT OF LOGO*/}
-      <div ref={ref} />
       {/*   SECOND SLIDE   */}
       <SecondSlide />
       <WaveDivider

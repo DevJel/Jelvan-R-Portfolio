@@ -10,8 +10,14 @@ import { FiArrowDown } from 'react-icons/fi';
  *@returns {JSX.Element} - Rendered ScrollHint component
  */
 const ScrollHint = (): JSX.Element => {
+  const handleScrollDown = () => {
+    if (typeof window !== 'undefined') {
+      window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+    }
+  };
+
   return (
-    <Styled.Container>
+    <Styled.Container onClick={handleScrollDown}>
       <Image
         src={'/assets/icons/scroll-bar.svg'}
         height={50}

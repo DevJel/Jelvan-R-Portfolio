@@ -11,21 +11,25 @@ import WaveDivider from '../WaveDivider/WaveDivider';
 import Navbar from '../Navbar/Navbar';
 import WithSparkles from '../WithSparkles/WithSparkles';
 
+export interface Props {
+  withNavbar?: boolean;
+}
+
 /**
  *Renders contact screen @ portfolio/contact
  *@function Contact
  *@returns {JSX.Element} - Rendered Contact component
  */
-const Contact = (): JSX.Element => {
+const Contact = ({ withNavbar = true }: Props): JSX.Element => {
   const { myContacts } = useContactConfig();
 
   return (
     <Styled.Container>
       {/* Navigation - positioned absolutely */}
-      <Navbar isLogoExpanded={true} />
+      {withNavbar && <Navbar isLogoExpanded={true} />}
 
       {/* Slide # 1*/}
-      <Slide bgColor={'#ffffff'} height={`100vh`} anchorID={'first-slide'}>
+      <Slide bgColor={'#ffffff'} height={`100vh`} anchorID={'contact-first-slide'}>
         <Styled.FirstSlide>
           <SectionHeader variant={'large'} margin={'0'} color={'#17181d'}>
             Let`s build something{' '}
@@ -39,7 +43,7 @@ const Contact = (): JSX.Element => {
         dividerHeight={'150px'}
       />
       {/* Slide # 2*/}
-      <Slide bgColor={'#fff7f0'} height={`100vh`} anchorID={'first-slide'}>
+      <Slide bgColor={'#fff7f0'} height={`100vh`} anchorID={'contact-second-slide'}>
         <Styled.SecondSlide>
           <Styled.ColumnWrapper>
             <Styled.LeftColumn>

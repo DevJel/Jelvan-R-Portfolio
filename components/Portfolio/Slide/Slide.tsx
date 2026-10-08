@@ -29,6 +29,7 @@ const Slide: FC<Props> = ({
     threshold: 0.35,
   });
   const [isOnScreen, setIsOnScreen] = useState(false);
+
   useEffect(() => {
     if (isElementVisible && !isOnScreen) setIsOnScreen(true);
   }, [isElementVisible, isOnScreen]);

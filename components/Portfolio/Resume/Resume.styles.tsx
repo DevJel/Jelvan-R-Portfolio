@@ -92,7 +92,7 @@ export const Title = styled.h2`
   line-height: 1;
 `;
 
-export const Summary = styled.summary`
+export const Summary = styled.div`
   margin: 1rem 0;
 `;
 
