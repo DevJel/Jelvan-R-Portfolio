@@ -72,6 +72,8 @@ npm run dev          # http://localhost:3000
 
 ## ☁️ Deployment (GitHub → Cloudflare)
 
+> Full step-by-step guide: **[DEPLOYMENT.md](./DEPLOYMENT.md)**
+
 The site is a static export (`next build` → `out/`) served by a Cloudflare Worker with static assets. Only `/api/*` runs Worker code (`worker/index.ts`); every page and image is served straight from Cloudflare's edge. Config lives in `wrangler.jsonc`.
 
 Pick **one** of these:
