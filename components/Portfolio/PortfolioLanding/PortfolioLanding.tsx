@@ -44,7 +44,11 @@ const PortfolioLanding = (): JSX.Element => {
           />
         </Styled.LinkWrapper>
       </Styled.Navigation>
-      <Styled.Photo photo={'/assets/portfolio/processed-avatar.png'} />
+      <Styled.Photo
+        photo={
+          'https://res.cloudinary.com/mxazzuct/image/upload/portfolio_cover.webp'
+        }
+      />
 
       <TapHint />
     </Styled.Container>
