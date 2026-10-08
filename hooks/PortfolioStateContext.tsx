@@ -54,6 +54,10 @@ const INITIAL_ARTICLES: IDevToArticle[] = [
   },
 ];
 
+const AVAILABLE_TAGS: string[] = Array.from(
+  new Set(INITIAL_ARTICLES.flatMap((article) => article.tag_list))
+);
+
 export interface LocalRootState {
   ui: {
     theme: 'dark' | 'light';
@@ -63,7 +67,7 @@ export interface LocalRootState {
 }
 
 export interface PortfolioActions {
-  sendEmailViaSendgrid: (data: ContactFormData) => void;
+  sendContactMessage: (data: ContactFormData) => Promise<void>;
   addFilterOption: (filterOption: string) => void;
   removeFilterOption: (filterOption: string) => void;
   applySortingOption: (sortingOption: ArticleSortingOption) => void;
@@ -83,6 +87,7 @@ const defaultState: LocalRootState = {
   },
   articles: {
     articles: INITIAL_ARTICLES,
+    availableTags: AVAILABLE_TAGS,
     areArticlesLoading: false,
     filterOptions: [],
     sortArticlesBy: 'likes',
@@ -93,7 +98,7 @@ const defaultState: LocalRootState = {
 const PortfolioStateContext = createContext<PortfolioContextValue>({
   state: defaultState,
   actions: {
-    sendEmailViaSendgrid: () => {},
+    sendContactMessage: async () => {},
     addFilterOption: () => {},
     removeFilterOption: () => {},
     applySortingOption: () => {},
@@ -131,11 +136,33 @@ export const PortfolioStateProvider: React.FC<{ children: React.ReactNode }> = (
 
   const actions = useMemo<PortfolioActions>(
     () => ({
-      sendEmailViaSendgrid: () => {
+      sendContactMessage: async (data: ContactFormData) => {
         setContact({ isEmailSending: true, isEmailSent: false, error: null });
-        setTimeout(() => {
+        try {
+          // Handled by the Cloudflare Worker in /worker/index.ts
+          const response = await fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(data),
+          });
+          const result = (await response.json().catch(() => null)) as {
+            ok?: boolean;
+            error?: string;
+          } | null;
+          if (!response.ok || !result?.ok) {
+            throw new Error(result?.error || 'Message could not be sent');
+          }
           setContact({ isEmailSending: false, isEmailSent: true, error: null });
-        }, 500);
+        } catch (error) {
+          setContact({
+            isEmailSending: false,
+            isEmailSent: false,
+            error:
+              error instanceof Error
+                ? error.message
+                : 'Message could not be sent',
+          });
+        }
       },
       addFilterOption: (tag: string) => {
         setFilterOptions((prev) =>
@@ -158,6 +185,7 @@ export const PortfolioStateProvider: React.FC<{ children: React.ReactNode }> = (
       contact,
       articles: {
         articles: filteredAndSortedArticles,
+        availableTags: AVAILABLE_TAGS,
         areArticlesLoading: false,
         filterOptions,
         sortArticlesBy,

@@ -25,6 +25,8 @@ export type ArticleSortingOption = 'date' | 'likes' | 'views';
 
 export interface ArticlesReducerState {
   articles: IDevToArticle[];
+  /** Unique tags across all articles (not just the currently filtered ones) */
+  availableTags: string[];
   areArticlesLoading: boolean;
   filterOptions: string[];
   sortArticlesBy: ArticleSortingOption;

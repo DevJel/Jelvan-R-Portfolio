@@ -2,6 +2,8 @@ export interface ContactFormData {
   name: string;
   email: string;
   message: string;
+  /** Hidden honeypot field used to filter bots */
+  company?: string;
 }
 
 export interface ContactState {

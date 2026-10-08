@@ -42,13 +42,13 @@ export const useAboutConfig = (): {
     {
       id: 6,
       text: 'Next.js',
-      iconSrc: '/assets/portfolio/skills/jest-plain.svg',
+      iconSrc: '/assets/portfolio/skills/nextjs-original.svg',
       iconSize: { height: 50, width: 50 },
     },
     {
       id: 7,
       text: 'Jest',
-      iconSrc: '/assets/portfolio/skills/nextjs-original.svg',
+      iconSrc: '/assets/portfolio/skills/jest-plain.svg',
       iconSize: { height: 50, width: 50 },
     },
   ];

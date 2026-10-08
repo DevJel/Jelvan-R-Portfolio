@@ -100,7 +100,7 @@ const FourthSlide = (): JSX.Element => {
             <Styled.FloatingImgContainer variant={'tech'}>
               <Image
                 src={'/assets/portfolio/skills/Redux.svg'}
-                alt={'React'}
+                alt={'Redux'}
                 height={150}
                 width={150}
                 quality={90}
@@ -118,7 +118,7 @@ const FourthSlide = (): JSX.Element => {
             <Styled.FloatingImgContainer variant={'tech'}>
               <Image
                 src={'/assets/portfolio/skills/Node.svg'}
-                alt={'React'}
+                alt={'Node.js'}
                 height={150}
                 width={150}
                 quality={90}

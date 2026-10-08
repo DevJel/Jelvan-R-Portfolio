@@ -18,13 +18,14 @@ export const useGetMouseCoordinates = (): MouseCoordinates => {
   });
 
   useEffect(() => {
-    document.addEventListener('contextmenu', (e) => {
+    const handleContextMenu = (e: MouseEvent) => {
       setMouseCoords({ x: e.clientX, y: e.clientY });
-    });
+    };
+    document.addEventListener('contextmenu', handleContextMenu);
 
-    return document.removeEventListener('contextmenu', (e) => {
-      setMouseCoords({ x: e.clientX, y: e.clientY });
-    });
+    return () => {
+      document.removeEventListener('contextmenu', handleContextMenu);
+    };
   }, []);
 
   return mouseCoords;
