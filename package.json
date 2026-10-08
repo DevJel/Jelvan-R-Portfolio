@@ -1,6 +1,8 @@
 {
   "name": "jelvan-r-portfolio",
   "private": true,
+  "license": "UNLICENSED",
+  "author": "Jelvan B. Ricolcol <hello@work.jelvan.pro>",
   "engines": {
     "node": ">=18.18.0"
   },

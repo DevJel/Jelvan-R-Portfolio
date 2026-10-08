@@ -102,4 +102,10 @@ Messages are delivered to your inbox through Cloudflare Email Service (free when
 
 ## ⚖️ License & Attribution
 
-* **Property Notice:** All code modifications, brand metadata, functional dashboard modules, custom business systems, personal engineering assets, and text materials are explicitly owned by **Jelvan®** and **Operava Global Solutions**. Absolute protection applies; no direct copyright replication or unauthorized commercial cloning permitted.
+**Proprietary. All rights reserved.** This repository and https://portfolio.jelvan.pro belong exclusively to **Mr. Jelvan B. Ricolcol, CHRA, MHR, MBAI (Jelvan®)**. Copying, cloning for reuse, redistribution or derivative works are not permitted without written permission. See [LICENSE](./LICENSE).
+
+Open-source libraries and third-party code this project builds on remain under their own licenses.
+
+**Security:** report issues privately; see [SECURITY.md](./SECURITY.md).
+
+**Website projects, permissions and security reports:** hello@work.jelvan.pro

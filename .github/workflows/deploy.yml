@@ -57,6 +57,8 @@ jobs:
           test -f out/llms.txt
           test -f out/llms-full.txt
           test -f out/humans.txt
+          test -f out/_headers
+          test -f out/.well-known/security.txt
           grep -q 'application/ld+json' out/index.html
           grep -q 'rel="canonical" href="https://portfolio.jelvan.pro/"' out/index.html
           grep -q 'portfolio.jelvan.pro/portfolio/resume' out/portfolio/resume.html
