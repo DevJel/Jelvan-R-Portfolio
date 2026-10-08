@@ -1,0 +1,30 @@
+# Jelvan Ricolcol
+
+> Jelvan Ricolcol (full name Jelvan Baloaloa Ricolcol, brand Jelvan®) is a Strategic HR Professional, Full Stack Software Developer and Certified AI & Digital Transformation Practitioner based in the Philippines and Malaysia. He holds a dual Master's in Artificial Intelligence for Business and in Human Resource and Talent Management, has 6+ years of international experience, has supported 30,000+ employees, completed 30+ projects and maintains a 100% compliance rate across HR operations.
+
+Jelvan bridges people strategy and technology: strategic Human Resources management, AI-driven business systems and modern digital operations. He currently works as an English Global Advertising Expert / Meta Pro at Concentrix Malaysia (Kuala Lumpur) and as a freelance web developer for international clients.
+
+- Website: https://portfolio.jelvan.pro
+- Email: hello@work.jelvan.pro
+- Phone: +60 11-2561 1502
+- LinkedIn: https://www.linkedin.com/in/jelvanricolcol/
+- Location: Philippines / Malaysia
+
+## Pages
+
+- [Home](https://portfolio.jelvan.pro/): Introduction and overview of Jelvan Ricolcol
+- [Résumé](https://portfolio.jelvan.pro/portfolio/resume): Full experience, education, certifications and skills
+- [About](https://portfolio.jelvan.pro/portfolio/about): Background, skills and approach
+- [Projects](https://portfolio.jelvan.pro/portfolio/projects): Selected work
+- [Contact](https://portfolio.jelvan.pro/portfolio/contact): Contact form and details
+- [Résumé PDF](https://portfolio.jelvan.pro/assets/jelvan-ricolcol-resume.pdf): Downloadable CV
+
+## Professional summary
+
+- Strategic HR: workforce planning, recruitment and talent acquisition, employee relations, HR policy, performance and offboarding, global and local HR compliance
+- Software and digital: full stack web development, web layout and design, digital branding, domain administration, digital campaign strategy, HRIS and CRM administration
+- AI and automation: automated workflows, business automation, process mapping (Lean Six Sigma), business intelligence, strategic planning models, organizational scaling
+
+## Optional
+
+- [Full profile for LLMs](https://portfolio.jelvan.pro/llms-full.txt): Complete experience, education and all 24 certifications in plain text

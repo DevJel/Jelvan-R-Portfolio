@@ -7,6 +7,7 @@ import Document, {
 } from 'next/document';
 import * as React from 'react';
 import { ServerStyleSheet } from 'styled-components';
+import { SITE, structuredData } from '../utils/seo';
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -51,18 +52,21 @@ export default class MyDocument extends Document {
           <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
           <link rel="manifest" href="/app.webmanifest" />
 
-          <meta property="og:title" content="Jelvan Baloaloa Ricolcol | Portfolio" />
-          <meta name="author" content="Jelvan®" />
-          <meta property="og:locale" content="en_US" />
-          <meta
-            name="description"
-            content="Personal portfolio of Jelvan Baloaloa Ricolcol — Full-Stack Software Developer, HR Practitioner, and Automation Specialist."
+          {/* Site-wide SEO (per-page tags live in PortfolioLayout) */}
+          <meta name="author" content={SITE.name} />
+          <meta name="keywords" content={SITE.keywords.join(', ')} />
+          <meta name="application-name" content={SITE.brand} />
+          <meta property="og:site_name" content={`${SITE.name} | Portfolio`} />
+          <meta property="og:locale" content={SITE.locale} />
+          <meta name="format-detection" content="telephone=no" />
+          <link rel="alternate" type="text/plain" title="LLM summary" href="/llms.txt" />
+          <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(structuredData()),
+            }}
           />
-          <meta
-            property="og:description"
-            content="Personal portfolio of Jelvan Baloaloa Ricolcol — Full-Stack Software Developer, HR Practitioner, and Automation Specialist."
-          />
-          <meta property="og:site_name" content="Jelvan®" />
         </Head>
 
         <body>

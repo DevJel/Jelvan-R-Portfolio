@@ -52,6 +52,14 @@ jobs:
           test -f out/portfolio/contact.html
           test -f out/portfolio/resume.html
           test -f out/articles.html
+          test -f out/robots.txt
+          test -f out/sitemap.xml
+          test -f out/llms.txt
+          test -f out/llms-full.txt
+          grep -q 'application/ld+json' out/index.html
+          grep -q 'rel="canonical" href="https://portfolio.jelvan.pro/"' out/index.html
+          grep -q 'portfolio.jelvan.pro/portfolio/resume' out/portfolio/resume.html
+          grep -q 'noindex' out/articles.html
           echo "Pages in export:" && find out -name '*.html' | sort
 
       - name: Validate Worker bundle and wrangler config
