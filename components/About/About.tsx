@@ -59,6 +59,10 @@ const About = ({ withNavbar = true }: Props): JSX.Element => {
 
       {/*   AUTOMATION & AI AGENTS   */}
       <AutomationSlide />
+      <WaveDivider
+        waveImg={'/assets/portfolio/blob-band-white.svg'}
+        dividerHeight={'200px'}
+      />
       {/*   SKILLS   */}
       <ThirdSlide />
       <WaveDivider
