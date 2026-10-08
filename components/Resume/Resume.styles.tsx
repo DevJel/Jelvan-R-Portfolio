@@ -11,7 +11,8 @@ export const Container = styled.section`
   padding: 5rem 1rem;
 
   @media ${({ theme }) => theme.media.tablet} {
-    padding: 0;
+    display: block;
+    padding: 6rem 0.75rem 2rem;
   }
 `;
 
@@ -24,7 +25,12 @@ export const ResumeWrapper = styled.div`
 
   @media ${({ theme }) => theme.media.tablet} {
     flex-direction: column;
-    padding: 0;
+    gap: 0;
+    max-width: 100%;
+    padding: 1.5rem 1.25rem;
+    border: 1px solid rgba(0, 0, 0, 0.14);
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
   }
 `;
 
@@ -41,8 +47,26 @@ export const LeftColumn = styled.aside`
   }
 
   @media ${({ theme }) => theme.media.tablet} {
+    order: 2;
     width: 100%;
     padding: 0;
+    margin-top: 1.5rem;
+
+    ul {
+      margin: 0 0 1rem;
+      gap: 0.5rem;
+    }
+
+    /* Skill group titles match the full-width section titles */
+    ul h3 {
+      margin: 1rem -1.25rem 0.5rem;
+      padding: 0 1.25rem 0.5rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+      font-size: 1.25rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      line-height: 1.3;
+    }
   }
 `;
 
@@ -51,6 +75,15 @@ export const ContactInfo = styled.address`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+
+  @media ${({ theme }) => theme.media.tablet} {
+    p {
+      margin: 0 -1.25rem;
+      padding: 0 1.25rem 0.75rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+      font-weight: 600;
+    }
+  }
 `;
 
 export const ContactLink = styled.a`
@@ -58,6 +91,10 @@ export const ContactLink = styled.a`
   align-items: center;
   gap: 0.25rem;
   color: ${({ theme }) => theme.portfolio.resumeColors.accentColor};
+
+  @media ${({ theme }) => theme.media.tablet} {
+    display: none;
+  }
 `;
 
 /**
@@ -68,6 +105,7 @@ export const RightColumn = styled.section`
   width: 75%;
 
   @media ${({ theme }) => theme.media.tablet} {
+    order: 1;
     width: 100%;
   }
 `;
@@ -77,7 +115,7 @@ export const Name = styled.h1`
   font-size: 3.5rem;
   letter-spacing: -3px;
 
-  span {
+  .reg {
     color: ${({ theme }) => theme.portfolio.resumeColors.accentColor};
   }
 
@@ -86,10 +124,27 @@ export const Name = styled.h1`
     line-height: 1.4;
   }
 `;
+export const NameSparkles = styled.span`
+  @media (min-width: 769px) {
+    > span {
+      display: inline;
+    }
+    div {
+      display: none;
+    }
+  }
+`;
+
 export const Title = styled.h2`
   font-size: 2rem;
   letter-spacing: -1px;
   line-height: 1;
+
+  @media ${({ theme }) => theme.media.tablet} {
+    font-size: 1.35rem;
+    letter-spacing: -0.5px;
+    line-height: 1.3;
+  }
 `;
 
 export const Summary = styled.div`
@@ -106,7 +161,7 @@ export const SocialLinksWrapper = styled.div`
     flex-direction: column;
   }
 `;
-export const SocialMediaLink = styled.a`
+export const SocialMediaLink = styled.a<{ $hideOnMobile?: boolean }>`
   display: flex;
   align-items: center;
   cursor: default;
@@ -117,6 +172,10 @@ export const SocialMediaLink = styled.a`
     margin-right: 0.25rem;
     font-size: 1.25rem;
   }
+
+  @media ${({ theme }) => theme.media.tablet} {
+    ${({ $hideOnMobile }) => ($hideOnMobile ? 'display: none;' : '')}
+  }
 `;
 
 export const ResumeHeader = styled.h3`
@@ -124,6 +183,13 @@ export const ResumeHeader = styled.h3`
   text-transform: uppercase;
   margin: 1rem 0;
   color: ${({ theme }) => theme.portfolio.resumeColors.accentColor};
+
+  @media ${({ theme }) => theme.media.tablet} {
+    margin: 1.5rem -1.25rem 0.75rem;
+    padding: 0 1.25rem 0.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    line-height: 1.3;
+  }
 `;
 
 export const EducationDetails = styled.div`
@@ -131,6 +197,11 @@ export const EducationDetails = styled.div`
     display: flex;
     justify-content: space-between;
     color: ${({ theme }) => theme.portfolio.resumeColors.accentColor};
+
+    @media ${({ theme }) => theme.media.tablet} {
+      flex-direction: column;
+      gap: 0.25rem;
+    }
   }
 
   span {
