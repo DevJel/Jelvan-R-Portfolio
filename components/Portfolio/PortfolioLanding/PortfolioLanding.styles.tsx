@@ -44,7 +44,7 @@ export const Photo = styled.div<Props>`
 
   background: ${({
     photo,
-  }) => `linear-gradient(to top, #ffffff, transparent 200%),
+  }) => `linear-gradient(to top, #ffffff, transparent 120%),
     url(${photo}) center/cover`};
   /**
    * ----------------------------------------
@@ -68,7 +68,7 @@ export const Photo = styled.div<Props>`
     width: 100%;
     background: ${({
       photo,
-    }) => `linear-gradient(to top, #ffffff, rgba(255, 255, 255, 0.45) 250%),
+    }) => `linear-gradient(to top, #ffffff, rgba(255, 255, 255, 0.2) 160%),
     url(${photo}) left/cover`};
   }
 `;
