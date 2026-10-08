@@ -45,8 +45,9 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700;900&display=swap"
             rel="stylesheet"
           />
-          <link rel="icon" href="/logo.png" />
-          <link rel="apple-touch-icon" href="/logo.png" />
+          <link rel="icon" href="/favicon.ico" sizes="48x48" />
+          <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+          <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
           <link rel="manifest" href="/app.webmanifest" />
 
           <meta property="og:title" content="Jelvan Baloaloa Ricolcol | Portfolio" />

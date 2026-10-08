@@ -8,9 +8,14 @@
   "background_color": "#ffffff",
   "icons": [
     {
+      "src": "/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
       "src": "/logo.png",
       "type": "image/png",
-      "sizes": "150x160"
+      "sizes": "512x512"
     }
   ],
   "description": "Portfolio website of Jelvan®, a full-stack software developer."
