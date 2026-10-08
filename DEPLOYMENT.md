@@ -19,7 +19,7 @@ How to put this portfolio live on Cloudflare from GitHub.
 ## Before the first deploy
 
 - [ ] Replace content that is not yours. The résumé, phone number, location, career history, CV PDF (`public/assets/vushenko2026.pdf`), award PDF and Google Scholar link still come from the original template.
-- [ ] Update the social links in `components/Portfolio/Contact/Contact.config.tsx` and the GitHub/LinkedIn links in `components/Portfolio/Resume/Resume.tsx`.
+- [ ] Update the social links in `components/Contact/Contact.config.tsx` and the GitHub/LinkedIn links in `components/Resume/Resume.tsx`.
 - [ ] Replace images, keeping the same file names and paths so no code changes are needed.
 - [ ] Decide which Cloudflare account the site belongs to.
 

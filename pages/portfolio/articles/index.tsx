@@ -2,8 +2,8 @@ import type { NextPage } from 'next';
 import React from 'react';
 import { PAGES } from '../../../utils/seo';
 
-import PortfolioLayout from '../../../components/Portfolio/PortfolioLayout/PortfolioLayout';
-import AllDevToArticles from '../../../components/Portfolio/AllDevToArticles/AllDevToArticles';
+import PortfolioLayout from '../../../components/PortfolioLayout/PortfolioLayout';
+import AllDevToArticles from '../../../components/AllDevToArticles/AllDevToArticles';
 
 const ArticlesPage: NextPage = () => {
   return (

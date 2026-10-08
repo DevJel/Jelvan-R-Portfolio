@@ -1,0 +1,101 @@
+import React, { useEffect, useRef, useState } from 'react';
+import * as Styled from './ProjectDesktopSlide.styles';
+import { IHighlightedProject } from '../../types/portfolio';
+import Image from 'next/legacy/image';
+import SectionHeader from '../Typography/SectionHeader/SectionHeader';
+import PortfolioParagraph from '../Typography/PortfolioParagraph/PortfolioParagraph';
+import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
+
+/**
+ *Renders full-viewport project slide
+ *@function Slide
+ *@param {IHighlightedProject} projectDetails - project details data to be mapped into view
+ *@returns {JSX.Element} - Rendered ProjectDesktopSlide component
+ */
+const ProjectDesktopSlide = ({
+  slideNumberImg,
+  projectDescription,
+  projectImg,
+  projectTechnologies,
+  projectTitle,
+  slideBgColor,
+  technologyIcons,
+  slideHeight,
+}: IHighlightedProject): JSX.Element | null => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isElementVisible] = useIntersectionObserver(containerRef, {
+    threshold: 0.35,
+  });
+  const [isOnScreen, setIsOnScreen] = useState(false);
+
+  useEffect(() => {
+    if (isElementVisible && !isOnScreen) setIsOnScreen(true);
+  }, [isElementVisible, isOnScreen]);
+
+  return (
+    <Styled.Container
+      slideHeight={slideHeight}
+      slideBgColor={slideBgColor}
+      ref={containerRef}
+    >
+      {isOnScreen && (
+        <>
+          <Styled.LeftColumn>
+            <Styled.Figure>
+              <Styled.SlideNumber>
+                {slideNumberImg && (
+                  <Image
+                    src={slideNumberImg}
+                    height={200}
+                    width={200}
+                    quality={90}
+                    objectFit={'contain'}
+                    alt={`This image indicates the number of current slide`}
+                  />
+                )}
+              </Styled.SlideNumber>
+              <Styled.Figcaption>
+                <h3>{projectTechnologies.join(` ● `)}</h3>
+              </Styled.Figcaption>
+              <Styled.ImageWrapper>
+                <Image
+                  src={projectImg}
+                  height={800}
+                  width={800}
+                  quality={90}
+                  objectFit={'contain'}
+                  alt={projectTitle}
+                />
+              </Styled.ImageWrapper>
+            </Styled.Figure>
+          </Styled.LeftColumn>
+
+          <Styled.RightColumn>
+            <SectionHeader
+              variant={'small'}
+              headerText={projectTitle}
+              margin={'0'}
+              color={'#f48120'}
+              withGradient
+            />
+
+            <Styled.IconWrapper>
+              {technologyIcons.map((icon, id) => (
+                <Styled.Icon key={id}>{icon}</Styled.Icon>
+              ))}
+            </Styled.IconWrapper>
+            <PortfolioParagraph
+              margin={'2rem 0'}
+              paragraphText={projectDescription}
+              withDarkColor={false}
+              variant={'large'}
+              withAnimatedPresence={true}
+            />
+          </Styled.RightColumn>
+        </>
+      )}
+    </Styled.Container>
+  );
+};
+
+export default ProjectDesktopSlide;

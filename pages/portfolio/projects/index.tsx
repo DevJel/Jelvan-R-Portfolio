@@ -2,8 +2,8 @@ import type { NextPage } from 'next';
 import React from 'react';
 import { PAGES } from '../../../utils/seo';
 
-import PortfolioLayout from '../../../components/Portfolio/PortfolioLayout/PortfolioLayout';
-import HighlightedProjects from '../../../components/Portfolio/HighlightedProjects/HighlightedProjects';
+import PortfolioLayout from '../../../components/PortfolioLayout/PortfolioLayout';
+import HighlightedProjects from '../../../components/HighlightedProjects/HighlightedProjects';
 
 const PortfolioLandingPage: NextPage = () => {
   return (
