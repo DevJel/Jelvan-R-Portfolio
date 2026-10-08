@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.2" baseProfile="tiny-ps" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <title>Jelvan Ricolcol</title>
+  <desc>Orange J and black R interlocking monogram on a solid white background.</desc>
+  <rect width="1024" height="1024" fill="#fff"/>
+  <path fill="#ff7400" d="M330 216H539V632C539 761 476 823 352 823 231 823 168 755 168 633H292C292 681 307 700 353 700 396 700 414 682 414 632V342H330Z"/>
+  <path fill="#000" d="M539 216H651C762 216 848 302 848 417 848 513 791 583 717 611L856 814H710L539 568 414 428V342L556 496H651C694 496 725 462 725 419S694 342 651 342H539Z"/>
+</svg>
