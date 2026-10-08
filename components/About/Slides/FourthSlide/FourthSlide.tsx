@@ -5,6 +5,7 @@ import PortfolioParagraph from '../../../Typography/PortfolioParagraph/Portfolio
 import Slide from '../../../Slide/Slide';
 import Image from 'next/legacy/image';
 import WithSparkles from '../../../WithSparkles/WithSparkles';
+import { SiAmazonaws, SiCloudflare, SiPython } from 'react-icons/si';
 
 /**
  *Renders fourth slide in About Portfolio presentation
@@ -72,58 +73,37 @@ const FourthSlide = (): JSX.Element => {
               />
             </Styled.FloatingImgContainer>
           </Styled.ImageContainer>
-          {/* REACT */}
+          {/* CLOUDFLARE */}
           <Styled.ImageContainer
             position={{ top: '30%', right: '4rem' }}
             className={'react-wrapper'}
           >
             <Styled.FloatingImgContainer variant={'tech'}>
-              <Image
-                src={'/assets/portfolio/skills/React.svg'}
-                alt={'React'}
-                height={150}
-                width={150}
-                quality={90}
-                objectFit={'contain'}
-                className={'react'}
-                priority
-              />
+              <Styled.TechBadge className={'react'} aria-label={'Cloudflare'}>
+                <SiCloudflare style={{ color: '#f38020' }} />
+              </Styled.TechBadge>
             </Styled.FloatingImgContainer>
-            {/* REDUX */}
+            {/* AWS */}
           </Styled.ImageContainer>
           <Styled.ImageContainer
             position={{ bottom: '3rem', right: '6rem' }}
             className={'redux-wrapper'}
           >
             <Styled.FloatingImgContainer variant={'tech'}>
-              <Image
-                src={'/assets/portfolio/skills/Redux.svg'}
-                alt={'Redux'}
-                height={150}
-                width={150}
-                quality={90}
-                objectFit={'contain'}
-                className={'redux'}
-                priority
-              />
+              <Styled.TechBadge className={'redux'} aria-label={'AWS'}>
+                <SiAmazonaws style={{ color: '#232f3e' }} />
+              </Styled.TechBadge>
             </Styled.FloatingImgContainer>
           </Styled.ImageContainer>
-          {/* NODE */}
+          {/* PYTHON */}
           <Styled.ImageContainer
             position={{ bottom: '6rem', left: '5rem' }}
             className={'node-wrapper'}
           >
             <Styled.FloatingImgContainer variant={'tech'}>
-              <Image
-                src={'/assets/portfolio/skills/Node.svg'}
-                alt={'Node.js'}
-                height={150}
-                width={150}
-                quality={90}
-                objectFit={'contain'}
-                className={'node'}
-                priority
-              />
+              <Styled.TechBadge className={'node'} aria-label={'Python'}>
+                <SiPython style={{ color: '#3776ab' }} />
+              </Styled.TechBadge>
             </Styled.FloatingImgContainer>
           </Styled.ImageContainer>
         </div>

@@ -11,6 +11,7 @@ import {
   SiTypescript,
 } from 'react-icons/si';
 import { IHighlightedProject } from '../../types/portfolio';
+import BrandCard from '../BrandCard/BrandCard';
 
 export const useHighlightedProjectsData = (): {
   highlightedProjects: IHighlightedProject[];
@@ -23,6 +24,7 @@ export const useHighlightedProjectsData = (): {
       slideHeight: '100vh',
       projectImg: '/assets/portfolio/projects/lms-desktop.svg',
       projectMobileImg: '/assets/portfolio/projects/lms-mobile.svg',
+      projectArt: <BrandCard brands={['cloudflare']} subtitle={'Learning Management'} />,
       projectTechnologies: ['Cloudflare Workers', 'D1', 'TypeScript', 'React'],
 
       slideBgColor: '#fff7f0',
@@ -39,6 +41,7 @@ export const useHighlightedProjectsData = (): {
       slideHeight: '100vh',
       projectImg: '/assets/portfolio/projects/devai-desktop.svg',
       projectMobileImg: '/assets/portfolio/projects/devai-mobile.svg',
+      projectArt: <BrandCard brands={['cloudflare']} subtitle={"Dev'Ai Controller"} />,
       projectTechnologies: ['Cloudflare Workers', 'Workers AI', 'TypeScript'],
 
       slideBgColor: '#ffffff',
@@ -54,6 +57,7 @@ export const useHighlightedProjectsData = (): {
       slideHeight: '100vh',
       projectImg: '/assets/portfolio/projects/email-desktop.svg',
       projectMobileImg: '/assets/portfolio/projects/email-mobile.svg',
+      projectArt: <BrandCard brands={['cloudflare', 'aws']} subtitle={'Email Platform'} />,
       projectTechnologies: ['Cloudflare Workers', 'AWS SES', 'Workers AI', 'Email Routing'],
 
       slideBgColor: '#fff7f0',
@@ -70,6 +74,7 @@ export const useHighlightedProjectsData = (): {
       slideHeight: '100vh',
       projectImg: '/assets/portfolio/projects/mis-desktop.svg',
       projectMobileImg: '/assets/portfolio/projects/mis-mobile.svg',
+      projectArt: <BrandCard brands={['cloudflare']} subtitle={'Management Information'} />,
       projectTechnologies: ['Cloudflare Workers', 'D1', 'TypeScript', 'React'],
 
       slideBgColor: '#ffffff',
@@ -86,6 +91,7 @@ export const useHighlightedProjectsData = (): {
       slideHeight: '100vh',
       projectImg: '/assets/portfolio/projects/finance-desktop.svg',
       projectMobileImg: '/assets/portfolio/projects/finance-mobile.svg',
+      projectArt: <BrandCard brands={['cloudflare']} subtitle={'Finance & Invoicing'} />,
       projectTechnologies: ['Cloudflare Workers', 'D1', 'Turnstile', 'TypeScript'],
 
       slideBgColor: '#fff7f0',

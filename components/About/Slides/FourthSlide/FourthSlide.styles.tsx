@@ -121,3 +121,22 @@ export const FloatingImgContainer = styled.figure<FloatingImgContainerProps>`
   ${({ variant }) => variant === 'person' && personAnimation};
   ${({ variant }) => variant === 'tech' && reactAnimation};
 `;
+
+export const TechBadge = styled.div`
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid rgba(244, 129, 32, 0.22);
+  box-shadow: 0 15px 35px rgba(244, 129, 32, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4.5rem;
+
+  @media ${({ theme }) => theme.media.tablet} {
+    width: 110px;
+    height: 110px;
+    font-size: 3.25rem;
+  }
+`;
