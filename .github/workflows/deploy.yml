@@ -56,6 +56,7 @@ jobs:
           test -f out/sitemap.xml
           test -f out/llms.txt
           test -f out/llms-full.txt
+          test -f out/humans.txt
           grep -q 'application/ld+json' out/index.html
           grep -q 'rel="canonical" href="https://portfolio.jelvan.pro/"' out/index.html
           grep -q 'portfolio.jelvan.pro/portfolio/resume' out/portfolio/resume.html

@@ -1,4 +1,5 @@
 # robots.txt for https://portfolio.jelvan.pro
+# This website is owned, customized and maintained by Mr. Jelvan B. Ricolcol, CHRA, MHR, MBAI.
 # Search engines and AI assistants are welcome to index this portfolio.
 
 User-agent: *

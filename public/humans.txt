@@ -1,0 +1,12 @@
+/* OWNER */
+Name: Mr. Jelvan B. Ricolcol, CHRA, MHR, MBAI
+Role: Owner, content and branding; customization and maintenance
+Contact: hello@work.jelvan.pro
+Location: Philippines / Malaysia
+
+/* SITE */
+This website is owned, customized and maintained by Mr. Jelvan B. Ricolcol, CHRA, MHR, MBAI.
+Last update: 2026-10-08
+Standards: HTML5, CSS3, TypeScript
+Components: Next.js, React, styled-components
+Hosting: Cloudflare

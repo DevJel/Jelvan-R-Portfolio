@@ -53,7 +53,9 @@ export default class MyDocument extends Document {
           <link rel="manifest" href="/app.webmanifest" />
 
           {/* Site-wide SEO (per-page tags live in PortfolioLayout) */}
-          <meta name="author" content={SITE.name} />
+          <meta name="author" content={SITE.owner} />
+          <meta name="copyright" content={SITE.credit} />
+          <link rel="author" type="text/plain" href="/humans.txt" />
           <meta name="keywords" content={SITE.keywords.join(', ')} />
           <meta name="application-name" content={SITE.brand} />
           <meta property="og:site_name" content={`${SITE.name} | Portfolio`} />

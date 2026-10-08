@@ -18,6 +18,9 @@ export const SITE = {
   image: 'https://res.cloudinary.com/mxazzuct/image/upload/portfolio_cover.webp',
   logo: 'https://portfolio.jelvan.pro/logo.png',
   locale: 'en_US',
+  owner: 'Mr. Jelvan B. Ricolcol, CHRA, MHR, MBAI',
+  credit:
+    'This website is owned, customized and maintained by Mr. Jelvan B. Ricolcol, CHRA, MHR, MBAI.',
   themeColor: '#f48120',
   keywords: [
     'Jelvan Ricolcol',
@@ -112,7 +115,10 @@ export const structuredData = (): Record<string, unknown> => ({
       '@id': `${SITE.url}/#person`,
       name: SITE.name,
       alternateName: [SITE.fullName, SITE.brand],
+      honorificPrefix: 'Mr.',
+      honorificSuffix: 'CHRA, MHR, MBAI',
       givenName: 'Jelvan',
+      additionalName: 'Baloaloa',
       familyName: 'Ricolcol',
       url: SITE.url,
       image: SITE.image,
@@ -203,6 +209,9 @@ export const structuredData = (): Record<string, unknown> => ({
       description: DEFAULT_DESCRIPTION,
       inLanguage: 'en',
       publisher: { '@id': `${SITE.url}/#person` },
+      copyrightHolder: { '@id': `${SITE.url}/#person` },
+      maintainer: { '@id': `${SITE.url}/#person` },
+      creditText: SITE.credit,
     },
     {
       '@type': 'ProfilePage',
