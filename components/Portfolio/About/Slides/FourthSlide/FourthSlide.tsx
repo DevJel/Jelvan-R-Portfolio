@@ -28,7 +28,7 @@ const FourthSlide = (): JSX.Element => {
             variant={'large'}
             withAnimatedPresence={true}
           >
-            🌠 I’ve worked for several companies and universities around the
+            I’ve worked for several companies and universities around the
             globe and built products ranging from marketing websites to complex
             enterprise apps with the focus on elegant, performant and
             user-friendly experiences.
@@ -40,7 +40,7 @@ const FourthSlide = (): JSX.Element => {
             withAnimatedPresence={true}
           >
             {/* eslint-disable-next-line react/no-unescaped-entities */}
-            🌠 I've constructed full-stack web-solutions with React, Node and
+            I've constructed full-stack web-solutions with React, Node and
             Next.js. Although I’ve worked mainly as a front-end developer, I am{' '}
             <WithSparkles color={'#f48120'}>not a typical one</WithSparkles> .
             I’ve always been immersed in full-stack development, building api’s
@@ -52,7 +52,7 @@ const FourthSlide = (): JSX.Element => {
             variant={'large'}
             withAnimatedPresence={true}
           >
-            🌠 Currently, I work at Oracle as a Senior Application Developer
+            Currently, I work at Oracle as a Senior Application Developer
             crafting well-thought and elegant experiences for Oracle CX clients.
           </PortfolioParagraph>
         </div>

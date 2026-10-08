@@ -26,7 +26,7 @@ const ContactForm = (): JSX.Element => {
   );
 
   const buttonText = isEmailSent
-    ? 'Sent 👍'
+    ? 'Sent'
     : error
     ? 'Not sent, retry'
     : 'Shoot';

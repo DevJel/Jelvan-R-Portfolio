@@ -21,6 +21,22 @@ jobs:
         with:
           node-version: 20
 
+      - name: Brand check (no emoji in site content)
+        shell: python3 {0}
+        run: |
+          import os, re, sys
+          emoji = re.compile('[\U0001F000-\U0001FAFF☀-➿⬀-⯿️]')
+          found = False
+          for folder in ('components', 'pages', 'hooks'):
+              for root, _, files in os.walk(folder):
+                  for name in files:
+                      path = os.path.join(root, name)
+                      for n, line in enumerate(open(path, encoding='utf-8'), 1):
+                          if emoji.search(line):
+                              found = True
+                              print(f"::error file={path},line={n}::Emoji found. Remove it to keep the branding clean.")
+          sys.exit(1 if found else 0)
+
       - name: Install dependencies
         run: npm install --no-audit --no-fund
 

@@ -28,7 +28,7 @@ const SecondSlide = (): JSX.Element => {
             variant={'large'}
             withAnimatedPresence={true}
           >
-            💫 I am a{' '}
+            I am a{' '}
             <WithSparkles color={'#f48120'}>
               multifaceted personality
             </WithSparkles>{' '}
@@ -42,7 +42,7 @@ const SecondSlide = (): JSX.Element => {
           <PortfolioParagraph
             margin={'0'}
             paragraphText={
-              '🚀 I have excellent knowledge of modern JS stack for building complex user interfaces for the web platform. In crafting JavaScript applications, I have a strong passion to build elegant, performant, scalable and user-friendly experiences.'
+              'I have excellent knowledge of modern JS stack for building complex user interfaces for the web platform. In crafting JavaScript applications, I have a strong passion to build elegant, performant, scalable and user-friendly experiences.'
             }
             withDarkColor={false}
             variant={'large'}

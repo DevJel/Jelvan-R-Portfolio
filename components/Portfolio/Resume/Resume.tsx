@@ -50,7 +50,7 @@ const Resume = (): JSX.Element => {
               <FiPhoneOutgoing />
               604-834-3600
             </Styled.ContactLink>
-            <p>Vancouver, BC, Canada 🇨🇦</p>
+            <p>Vancouver, BC, Canada</p>
           </Styled.ContactInfo>
 
           <TextList
