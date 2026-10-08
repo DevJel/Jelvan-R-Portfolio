@@ -25,10 +25,9 @@ export interface Props {
  */
 const HighlightedProjects = ({ withNavbar = true }: Props): JSX.Element => {
   const { highlightedProjects } = useHighlightedProjectsData();
-  const projectOne = highlightedProjects[0];
-  const projectTwo = highlightedProjects[1];
-  const projectThree = highlightedProjects[2];
-  const projectFour = highlightedProjects[3];
+  // The last two projects keep their extra detail slides
+  const featuredProjects = highlightedProjects.slice(0, -2);
+  const [projectThree, projectFour] = highlightedProjects.slice(-2);
 
   return (
     <Styled.Container>
@@ -111,13 +110,12 @@ const HighlightedProjects = ({ withNavbar = true }: Props): JSX.Element => {
         <ScrollHint />
       </Styled.ProjectsHero>
 
-      {/* PROJECT1 */}
-      <ProjectDesktopSlide {...projectOne} />
+      {/* PROJECTS */}
+      {featuredProjects.map((project) => (
+        <ProjectDesktopSlide key={project.projectTitle} {...project} />
+      ))}
 
-      {/* PROJECT2 */}
-      <ProjectDesktopSlide {...projectTwo} />
-
-      {/* PROJECT 2*/}
+      {/* SNEAKER MANIACS */}
       <ProjectDesktopSlide {...projectThree} />
 
       <ProjectDetailsSlide

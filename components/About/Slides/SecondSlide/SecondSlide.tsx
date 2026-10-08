@@ -17,7 +17,7 @@ const SecondSlide = (): JSX.Element => {
         <div className="left-column">
           <SectionHeader
             variant={'medium'}
-            headerText={'Design'}
+            headerText={'People'}
             margin={'0'}
             color={'#f48120'}
           />
@@ -30,19 +30,18 @@ const SecondSlide = (): JSX.Element => {
           >
             I am a{' '}
             <WithSparkles color={'#f48120'}>
-              multifaceted personality
+              multifaceted professional
             </WithSparkles>{' '}
-            driven by the exploration of unknown. You can also call me a
-            frontend, backend, full-stack web developer or by any other
-            market-defined title. I am devoted to constructing inclusive, rich
-            web experiences for next-gen web platforms.
+            who bridges people strategy and technology. HR generalist, web
+            developer and AI practitioner, I help organizations hire, manage and
+            grow their workforce with clear, compliant and modern systems.
           </PortfolioParagraph>
         </div>
         <div className="right-column">
           <PortfolioParagraph
             margin={'0'}
             paragraphText={
-              'I have excellent knowledge of modern JS stack for building complex user interfaces for the web platform. In crafting JavaScript applications, I have a strong passion to build elegant, performant, scalable and user-friendly experiences.'
+              'With IBM Full Stack and AWS AI certifications, I design and build web systems, AI agents and automated workflows that make HR and business operations faster, smarter and easier to run.'
             }
             withDarkColor={false}
             variant={'large'}
@@ -50,7 +49,7 @@ const SecondSlide = (): JSX.Element => {
           />
           <SectionHeader
             variant={'medium'}
-            headerText={'Engineering'}
+            headerText={'Technology'}
             margin={'0'}
             color={'#f48120'}
           />

@@ -18,7 +18,7 @@ const FourthSlide = (): JSX.Element => {
         <div className="left-column">
           <SectionHeader
             variant={'small'}
-            headerText={'Over the past five years'}
+            headerText={'Over the past six years'}
             margin={'0'}
             color={'#f48120'}
           />
@@ -28,10 +28,9 @@ const FourthSlide = (): JSX.Element => {
             variant={'large'}
             withAnimatedPresence={true}
           >
-            I’ve worked for several companies and universities around the
-            globe and built products ranging from marketing websites to complex
-            enterprise apps with the focus on elegant, performant and
-            user-friendly experiences.
+            I’ve supported a workforce of 30,000+ employees across Malaysia, the
+            Philippines, the USA and remote global teams, keeping a 100%
+            compliance record in HR operations.
           </PortfolioParagraph>
           <PortfolioParagraph
             margin={'1rem 0'}
@@ -39,12 +38,10 @@ const FourthSlide = (): JSX.Element => {
             variant={'large'}
             withAnimatedPresence={true}
           >
-            {/* eslint-disable-next-line react/no-unescaped-entities */}
-            I've constructed full-stack web-solutions with React, Node and
-            Next.js. Although I’ve worked mainly as a front-end developer, I am{' '}
-            <WithSparkles color={'#f48120'}>not a typical one</WithSparkles> .
-            I’ve always been immersed in full-stack development, building api’s
-            and backends for frontends using Node.
+            I’ve led high-volume onboarding, managed the full employee lifecycle
+            and delivered 30+ web and digital projects for international
+            clients. I’m an HR professional, but{' '}
+            <WithSparkles color={'#f48120'}>not a typical one</WithSparkles>.
           </PortfolioParagraph>
           <PortfolioParagraph
             margin={'1rem 0'}
@@ -52,8 +49,9 @@ const FourthSlide = (): JSX.Element => {
             variant={'large'}
             withAnimatedPresence={true}
           >
-            Currently, I work at Oracle as a Senior Application Developer
-            crafting well-thought and elegant experiences for Oracle CX clients.
+            Currently, I work at Concentrix Malaysia as an English Global
+            Advertising Expert (Meta Pro), and I take on freelance web
+            development projects alongside.
           </PortfolioParagraph>
         </div>
         {/*  PERSON */}
