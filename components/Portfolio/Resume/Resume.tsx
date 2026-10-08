@@ -190,8 +190,8 @@ const Resume = (): JSX.Element => {
           <Styled.Projects>
             <p>
               For strategic client advisory cases, continuous workspace
-              operations and professional portfolios, please visit:{' '}
-              <strong>portfolio.jelvan.pro</strong>
+              operations and professional portfolios, or any verification
+              documentation needed, email me at <strong>{EMAIL}</strong>
             </p>
           </Styled.Projects>
         </Styled.RightColumn>
