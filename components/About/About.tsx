@@ -9,6 +9,8 @@ import FourthSlide from './Slides/FourthSlide/FourthSlide';
 import FifthSlide from './Slides/FifthSlide/FifthSlide';
 import SixthSlide from './Slides/SixthSlide/SixthSlide';
 import FirstSlide from './Slides/FirstSlide/FirstSlide';
+import AutomationSlide from './Slides/AutomationSlide/AutomationSlide';
+import EmailBrandingSlide from './Slides/EmailBrandingSlide/EmailBrandingSlide';
 
 export interface Props {
   withNavbar?: boolean;
@@ -55,7 +57,9 @@ const About = ({ withNavbar = true }: Props): JSX.Element => {
         dividerHeight={'200px'}
       />
 
-      {/*   THIRD SLIDE   */}
+      {/*   AUTOMATION & AI AGENTS   */}
+      <AutomationSlide />
+      {/*   SKILLS   */}
       <ThirdSlide />
       <WaveDivider
         waveImg={'/assets/portfolio/blob-1.svg'}
@@ -69,6 +73,16 @@ const About = ({ withNavbar = true }: Props): JSX.Element => {
       />
       {/*   FIFTH SLIDE   */}
       <FifthSlide />
+      <WaveDivider
+        waveImg={'/assets/portfolio/blob-1.svg'}
+        dividerHeight={'200px'}
+      />
+      {/*   EMAIL BRANDING   */}
+      <EmailBrandingSlide />
+      <WaveDivider
+        waveImg={'/assets/portfolio/blob-2.svg'}
+        dividerHeight={'200px'}
+      />
       {/*   SIXTH SLIDE   */}
       <SixthSlide />
     </Styled.Container>

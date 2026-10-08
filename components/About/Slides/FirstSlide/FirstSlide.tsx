@@ -17,7 +17,7 @@ const FirstSlide = (): JSX.Element => {
       <Styled.FirstSlide className="page first-page">
         <SectionHeader
           variant={'medium'}
-          headerText={'Creative Web Developer'}
+          headerText={'Strategic HR & Digital Transformation'}
           margin={'0'}
           color={'#f48120'}
         />
@@ -28,8 +28,8 @@ const FirstSlide = (): JSX.Element => {
           variant={'large'}
           withAnimatedPresence={true}
         >
-          Designing and building of simple, intuitive and scalable web products
-          is my <WithSparkles color={'#f48120'}>calling.</WithSparkles>
+          Building people systems, AI agents and digital operations that help
+          organizations scale is my <WithSparkles color={'#f48120'}>calling.</WithSparkles>
         </PortfolioParagraph>
 
         <ScrollHint />

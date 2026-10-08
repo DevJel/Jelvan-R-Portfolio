@@ -16,6 +16,7 @@ const ProjectDesktopSlide = ({
   slideNumberImg,
   projectDescription,
   projectImg,
+  projectArt,
   projectTechnologies,
   projectTitle,
   slideBgColor,
@@ -58,14 +59,16 @@ const ProjectDesktopSlide = ({
                 <h3>{projectTechnologies.join(` ● `)}</h3>
               </Styled.Figcaption>
               <Styled.ImageWrapper>
-                <Image
-                  src={projectImg}
-                  height={800}
-                  width={800}
-                  quality={90}
-                  objectFit={'contain'}
-                  alt={projectTitle}
-                />
+                {projectArt ?? (
+                  <Image
+                    src={projectImg}
+                    height={800}
+                    width={800}
+                    quality={90}
+                    objectFit={'contain'}
+                    alt={projectTitle}
+                  />
+                )}
               </Styled.ImageWrapper>
             </Styled.Figure>
           </Styled.LeftColumn>

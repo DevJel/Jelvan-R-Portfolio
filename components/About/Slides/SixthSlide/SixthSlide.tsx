@@ -4,7 +4,7 @@ import SectionHeader from '../../../Typography/SectionHeader/SectionHeader';
 import PortfolioParagraph from '../../../Typography/PortfolioParagraph/PortfolioParagraph';
 import Slide from '../../../Slide/Slide';
 import ActionButton from '../../../ActionButton/ActionButton';
-import { FiBookOpen, FiChevronsRight } from 'react-icons/fi';
+import { FiChevronsRight, FiFileText } from 'react-icons/fi';
 import { useRouter } from 'next/router';
 
 /**
@@ -17,8 +17,8 @@ const SixthSlide = (): JSX.Element => {
   const redirectToProjects = () => {
     router.push('/portfolio/projects');
   };
-  const redirectToArticles = () => {
-    router.push('/articles');
+  const redirectToResume = () => {
+    router.push('/portfolio/resume');
   };
   return (
     <Slide bgColor={'#ffffff'} height={'100vh'} anchorID={'sixth-slide'}>
@@ -27,13 +27,13 @@ const SixthSlide = (): JSX.Element => {
           <div className="content-wrapper">
             <SectionHeader
               variant={'small'}
-              headerText={'I build & create'}
+              headerText={'I build & automate'}
               margin={'0'}
               color={'#f48120'}
             />
             <PortfolioParagraph
               margin={'2rem 0 4rem 0'}
-              paragraphText={`Web applications, open source projects, tutorials that I'm more than happy to share`}
+              paragraphText={`Websites, HR systems and automated workflows for businesses and teams`}
               withDarkColor={false}
               variant={'large'}
               withAnimatedPresence={true}
@@ -49,23 +49,23 @@ const SixthSlide = (): JSX.Element => {
           <div className="content-wrapper">
             <SectionHeader
               variant={'small'}
-              headerText={'I write & advise'}
+              headerText={'I advise & support'}
               margin={'0'}
               color={'#f48120'}
             />
             <PortfolioParagraph
               margin={'2rem 0 4rem 0'}
               paragraphText={
-                'About web-development, frontend, typescript and the importance of balance'
+                'On HR operations, compliance, digital branding and AI adoption for growing organizations'
               }
               withDarkColor={false}
               variant={'large'}
               withAnimatedPresence={true}
             />
             <ActionButton
-              buttonText={'Read my articles'}
-              icon={<FiBookOpen className="action-icon" />}
-              onClick={redirectToArticles}
+              buttonText={'View my resume'}
+              icon={<FiFileText className="action-icon" />}
+              onClick={redirectToResume}
             />
           </div>
         </div>

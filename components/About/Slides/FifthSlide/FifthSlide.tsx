@@ -21,14 +21,14 @@ const FifthSlide = (): JSX.Element => {
         />
         <Styled.Milestone variant={'first'}>
           <Styled.MilestoneHeader>
-            <h3>Software Development Project Lead</h3>
-            <time>2023-Present</time>
+            <h3>Cloudflare-native Systems</h3>
+            <time>Present</time>
           </Styled.MilestoneHeader>
-          <h4>Oracle</h4>
+          <h4>Cloudflare Platform</h4>
           <PortfolioParagraph
             margin={'1rem 0'}
             paragraphText={
-              'I currently lead the frontend development of a modernized version of Oracle CPQ (Configure, Price, Quote). A dynamic application that helps over 500 large customers to configure complex products and services, price them according to the rules and constraints, and generate quotes and proposals.'
+              'I build full applications on Cloudflare: Workers for APIs, D1 databases, Email Routing, Turnstile sign-in and Workers AI. That covers hosting, data, email and AI with no separate servers.'
             }
             withDarkColor={false}
             variant={'medium'}
@@ -38,13 +38,13 @@ const FifthSlide = (): JSX.Element => {
 
         <Styled.Milestone variant={'second'}>
           <Styled.MilestoneHeader>
-            <h3>Senior Software Engineer</h3>
-            <time>2021-2023</time>
+            <h3>API Gateway & Control Plane</h3>
+            <time>2026</time>
           </Styled.MilestoneHeader>
-          <h4>Oracle</h4>
+          <h4>Cloudflare Workers</h4>
           <PortfolioParagraph
             margin={'1rem 0'}
-            paragraphText={`As a senior engineer, I have contributed to the biggest customer facing applications and services of Oracle CX. I prototyped, designed and helped my team to build a Zoom application integration for Oracle CX Sales (CRM Selling System) from scratch. Played a key role in the modernization and re-implementation of biggest Oracle's CRM - CX Sales.`}
+            paragraphText={`A secure API gateway on Cloudflare Workers, with human verification, emailed sign-in codes and admin-level access control.`}
             withDarkColor={false}
             variant={'medium'}
             withAnimatedPresence={true}

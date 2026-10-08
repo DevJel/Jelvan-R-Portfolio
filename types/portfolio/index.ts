@@ -6,6 +6,8 @@ export interface IHighlightedProject {
   projectDescription: string;
   projectImg: string;
   projectMobileImg: string;
+  /** Optional artwork shown instead of projectImg (e.g. a platform brand card) */
+  projectArt?: ReactNode;
   projectTechnologies: string[];
   technologyIcons: ReactNode[];
   slideBgColor: string;
