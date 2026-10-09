@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import {
+  floatKeyframes,
   rollInLeft,
   rollInRight,
   slideTop,
@@ -11,10 +12,27 @@ export const ThirdSlide = styled.div`
   min-height: 100vh;
 
   .skills-wrapper {
+    /* keep headings and text above the decorative circles */
+    position: relative;
+    z-index: 5;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+
+  .cover {
+    position: relative;
+    z-index: 5;
+    width: min(38rem, 100%);
+    margin: 0 auto 1rem;
+    animation: ${floatKeyframes} 6s ease-in-out infinite;
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
   }
 
   .glass-wrapper {
@@ -77,6 +95,11 @@ export const ThirdSlide = styled.div`
   }
 
   @media ${({ theme }) => theme.media.tablet} {
+    .cover {
+      width: 100%;
+      margin: 1.5rem auto 0.5rem;
+    }
+
     .skills-wrapper {
       padding: 0 1.25rem;
 

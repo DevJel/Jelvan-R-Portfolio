@@ -16,6 +16,10 @@ const EmailBrandingSlide = (): JSX.Element => (
       'Making sure your emails are trusted, delivered and recognized at a glance'
     }
     cards={emailBrandingCards}
+    cover={{
+      src: '/assets/portfolio/email-branding-cover.webp',
+      alt: 'Illustration of email branding: SMTP, DMARC, S/MIME, ACME, CPaaS, AWS SES, Cloudflare Routing and subdomains',
+    }}
   />
 );
 

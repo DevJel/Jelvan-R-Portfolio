@@ -19,6 +19,8 @@ export interface Props {
   headerText: string;
   paragraphText: string;
   cards: IGlassCard[];
+  /** Optional cover illustration shown above the heading, floating like the other slide illustrations */
+  cover?: { src: string; alt: string };
 }
 
 /**
@@ -33,11 +35,17 @@ const GlassSkillsSlide = ({
   headerText,
   paragraphText,
   cards,
+  cover,
 }: Props): JSX.Element => {
   return (
     <Slide bgColor={bgColor} height={'100vh'} anchorID={anchorID}>
       <Styled.ThirdSlide>
         <div className="skills-wrapper">
+          {cover && (
+            <figure className="cover">
+              <img src={cover.src} alt={cover.alt} width={1200} height={731} />
+            </figure>
+          )}
           <SectionHeader
             variant={'small'}
             headerText={headerText}
