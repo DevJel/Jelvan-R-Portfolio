@@ -72,7 +72,7 @@ const HighlightedProjects = ({ withNavbar = true }: Props): JSX.Element => {
           >
             <Styled.FloatingImgContainer variant={'laptop'}>
               <Image
-                src={'/assets/portfolio/laptop-lms.webp'}
+                src={'/assets/portfolio/laptop-lms.png'}
                 quality={95}
                 height={800}
                 width={800}

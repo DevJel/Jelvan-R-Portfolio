@@ -16,7 +16,7 @@ import BrandCard from '../BrandCard/BrandCard';
 /** One phone image used for every project's mobile view */
 const PHONE_IMG = '/assets/portfolio/landing-mobile.png';
 /** One laptop image used for every laptop / desktop view */
-const LAPTOP_IMG = '/assets/portfolio/laptop-lms.webp';
+const LAPTOP_IMG = '/assets/portfolio/laptop-lms.png';
 
 export const useHighlightedProjectsData = (): {
   highlightedProjects: IHighlightedProject[];
