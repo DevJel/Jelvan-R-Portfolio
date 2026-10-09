@@ -1,0 +1,25 @@
+name: Temporary mobile check
+on:
+  push:
+    branches: ['tmp-mobile-check']
+permissions:
+  contents: write
+jobs:
+  shoot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install --no-audit --no-fund
+      - run: npm run build
+      - run: npm install --no-save playwright@1.47.2 && npx playwright install --with-deps chromium
+      - run: (cd out && python3 -m http.server 8080 >/dev/null 2>&1 &) && sleep 2 && node .mobile-check/shoot.mjs
+      - name: Commit screenshots back to this branch
+        run: |
+          git config user.name "mobile-check"
+          git config user.email "noreply@github.com"
+          git add -f mobile-check
+          git commit -m "mobile check screenshots"
+          git push
