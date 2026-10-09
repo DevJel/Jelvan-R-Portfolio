@@ -70,16 +70,17 @@ const FifthSlide = (): JSX.Element => {
 
         <Styled.Milestone variant={'fourth'}>
           <Styled.MilestoneHeader>
-            <h3>Dual Master&apos;s Degree</h3>
+            <h3>Master&apos;s Degree</h3>
             <time>2024-2025</time>
           </Styled.MilestoneHeader>
           <h4>
-            Universidad Isabel I | AI for Business, HR & Talent Management
+            Universidad Isabel I | Dual Specialization: AI for Business, HR &
+            Talent Management
           </h4>
           <PortfolioParagraph
             margin={'1rem 0'}
             paragraphText={
-              'I completed dual graduate studies in Artificial Intelligence for Business and in Human Resource and Talent Management, covering talent pipelines, performance and international labor compliance, alongside Python, machine learning and automated SaaS pipelines.'
+              'I completed a dual-specialization master\'s program in Artificial Intelligence for Business and in Human Resource and Talent Management, covering talent pipelines, performance and international labor compliance, alongside Python, machine learning and automated SaaS pipelines.'
             }
             withDarkColor={false}
             variant={'medium'}

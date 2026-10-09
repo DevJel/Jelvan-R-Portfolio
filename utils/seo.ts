@@ -46,7 +46,7 @@ export const SITE = {
 };
 
 export const DEFAULT_DESCRIPTION =
-  "Jelvan Ricolcol is a Strategic HR Professional, Full Stack Software Developer and Certified AI & Digital Transformation Practitioner based in the Philippines and Malaysia. Dual Master's in AI for Business and HR & Talent Management, 6+ years of international experience, 30,000+ employees supported and a 100% compliance rate.";
+  "Jelvan Ricolcol is a Strategic HR Professional, Full Stack Software Developer and Certified AI & Digital Transformation Practitioner based in the Philippines and Malaysia. Dual-specialization Master's in AI for Business and HR & Talent Management, 6+ years of international experience, 30,000+ employees supported and a 100% compliance rate.";
 
 export interface PageSeo {
   title: string;
@@ -88,7 +88,7 @@ export const PAGES: Record<
   resume: {
     title: 'Résumé | Jelvan Ricolcol, Strategic HR & Full Stack Developer',
     description:
-      "Résumé of Jelvan Ricolcol: HR operations at Teleperformance (30,000+ employees, 100% audit record), Meta advertising expert at Concentrix Malaysia, freelance web developer, dual Master's in AI for Business and HR & Talent Management, IBM, AWS, Wharton and SHRM certifications.",
+      "Résumé of Jelvan Ricolcol: HR operations at Teleperformance (30,000+ employees, 100% audit record), Meta advertising expert at Concentrix Malaysia, freelance web developer, dual-specialization Master's in AI for Business and HR & Talent Management, IBM, AWS, Wharton and SHRM certifications.",
     path: '/portfolio/resume',
   },
   articles: {
