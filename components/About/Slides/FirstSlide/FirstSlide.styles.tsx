@@ -8,6 +8,19 @@ export const FirstSlide = styled.div`
   width: 100%;
   padding: 2rem;
   height: 100vh;
+
+  /* Long headline must fit the phone width (no sideways scroll) */
+  @media ${({ theme }) => theme.media.tablet} {
+    padding: 2rem 1.25rem;
+
+    h1 {
+      font-size: clamp(1.9rem, 9vw, 3rem);
+      line-height: 1.15;
+      letter-spacing: -1px;
+      text-align: center;
+      overflow-wrap: anywhere;
+    }
+  }
 `;
 
 export const Message = styled.div`
