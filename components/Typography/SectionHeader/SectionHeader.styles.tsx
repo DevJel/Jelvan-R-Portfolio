@@ -48,5 +48,8 @@ export const H1 = styled.h1<HeaderProps>`
   @media ${({ theme }) => theme.media.phone} {
     font-size: 4rem;
     line-height: 4rem;
+    /* Safety net: a long word wraps instead of running off the screen */
+    max-width: 100%;
+    overflow-wrap: break-word;
   }
 `;
