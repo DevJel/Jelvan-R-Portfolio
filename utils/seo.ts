@@ -134,15 +134,6 @@ export const structuredData = (): Record<string, unknown> => ({
         '@type': 'Country',
         name: country,
       })),
-      worksFor: {
-        '@type': 'Organization',
-        name: 'Concentrix Malaysia',
-        address: {
-          '@type': 'PostalAddress',
-          addressLocality: 'Kuala Lumpur',
-          addressCountry: 'MY',
-        },
-      },
       hasOccupation: [
         {
           '@type': 'Occupation',

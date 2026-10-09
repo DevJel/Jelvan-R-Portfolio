@@ -50,9 +50,9 @@ const FourthSlide = (): JSX.Element => {
             variant={'large'}
             withAnimatedPresence={true}
           >
-            Currently, I work at Concentrix Malaysia as an English Global
-            Advertising Expert (Meta Pro), and I take on freelance web
-            development projects alongside.
+            Most recently, I worked at Concentrix Malaysia as an English Global
+            Advertising Expert (Meta Pro) until October 2026, and I continue to
+            take on freelance web development projects.
           </PortfolioParagraph>
         </div>
         {/*  PERSON */}
