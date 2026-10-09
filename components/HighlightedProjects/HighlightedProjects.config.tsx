@@ -59,9 +59,8 @@ export const useHighlightedProjectsData = (): {
       projectTitle: 'Customized Email Platform',
       projectDescription: `A branded email platform powered by AI and AWS SES that writes, personalises and sends email, fully authenticated with SPF, DKIM, DMARC and BIMI.`,
       slideHeight: '100vh',
-      projectImg: '/assets/portfolio/projects/email-desktop.svg',
+      projectImg: '/assets/portfolio/email-platform.png',
       projectMobileImg: PHONE_IMG,
-      projectArt: <BrandCard brands={['cloudflare', 'aws']} subtitle={'Email Platform'} />,
       projectTechnologies: ['Cloudflare Workers', 'AWS SES', 'Workers AI', 'Email Routing'],
 
       slideBgColor: '#fff7f0',
