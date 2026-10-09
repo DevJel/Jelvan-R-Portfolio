@@ -78,8 +78,14 @@ export const ThirdSlide = styled.div`
 
   @media ${({ theme }) => theme.media.tablet} {
     .skills-wrapper {
+      padding: 0 1.25rem;
+
       h1 {
         font-size: 2.5rem;
+      }
+
+      > p {
+        text-align: center;
       }
     }
 
