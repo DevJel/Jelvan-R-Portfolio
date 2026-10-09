@@ -52,7 +52,7 @@ export const professionalExperience: IProfessionalExperience[] = [
     role: 'English Global Advertising Expert / Meta Pro',
     shortSummary:
       'Optimized Meta advertising campaigns across Facebook and Instagram for global brands by refining audience targeting, ad creatives, and bidding strategies to maximize ROI and maintain compliance.',
-    timeFrame: 'July 2024 - Present',
+    timeFrame: 'July 2024 - October 7, 2026',
     responsibilities: [
       {
         text: 'Provided expert consulting and troubleshooting for a worldwide client base.',
