@@ -72,12 +72,12 @@ const HighlightedProjects = ({ withNavbar = true }: Props): JSX.Element => {
           >
             <Styled.FloatingImgContainer variant={'laptop'}>
               <Image
-                src={'/assets/portfolio/landing-laptop.png'}
+                src={'/assets/portfolio/laptop-lms.webp'}
                 quality={95}
                 height={800}
                 width={800}
                 objectFit={'contain'}
-                alt={'Laptop with open IDE'}
+                alt={'Laptop showing the Jelvan LMS dashboard'}
                 priority
                 className={'laptop'}
               />
