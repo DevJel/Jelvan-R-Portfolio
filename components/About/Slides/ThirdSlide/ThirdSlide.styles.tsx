@@ -12,6 +12,9 @@ export const ThirdSlide = styled.div`
   min-height: 100vh;
 
   .skills-wrapper {
+    /* keep headings and text above the decorative circles */
+    position: relative;
+    z-index: 5;
     display: flex;
     flex-direction: column;
     align-items: center;
