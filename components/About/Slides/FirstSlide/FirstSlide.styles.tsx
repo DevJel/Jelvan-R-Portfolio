@@ -14,7 +14,7 @@ export const FirstSlide = styled.div`
     padding: 2rem 1.25rem;
 
     h1 {
-      font-size: clamp(1.9rem, 9vw, 3rem);
+      font-size: clamp(1.75rem, 8.5vw, 3rem);
       line-height: 1.15;
       letter-spacing: -1px;
       text-align: center;
