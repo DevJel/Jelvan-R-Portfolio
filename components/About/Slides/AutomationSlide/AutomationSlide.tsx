@@ -16,6 +16,12 @@ const AutomationSlide = (): JSX.Element => (
       'I design AI agents and automations that do the repetitive work, so your team can focus on people'
     }
     cards={automationCards}
+    cover={{
+      src: '/assets/portfolio/automation-cover.png',
+      alt: 'Business automation: workflows, real impact and a five-step automation process',
+      width: 1400,
+      height: 906,
+    }}
   />
 );
 

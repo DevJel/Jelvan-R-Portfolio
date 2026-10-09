@@ -19,6 +19,8 @@ const EmailBrandingSlide = (): JSX.Element => (
     cover={{
       src: '/assets/portfolio/email-branding-cover.webp',
       alt: 'Illustration of email branding: SMTP, DMARC, S/MIME, ACME, CPaaS, AWS SES, Cloudflare Routing and subdomains',
+      width: 1200,
+      height: 731,
     }}
   />
 );

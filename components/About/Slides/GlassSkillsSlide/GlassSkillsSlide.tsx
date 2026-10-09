@@ -20,7 +20,7 @@ export interface Props {
   paragraphText: string;
   cards: IGlassCard[];
   /** Optional cover illustration shown above the heading, floating like the other slide illustrations */
-  cover?: { src: string; alt: string };
+  cover?: { src: string; alt: string; width: number; height: number };
 }
 
 /**
@@ -43,7 +43,12 @@ const GlassSkillsSlide = ({
         <div className="skills-wrapper">
           {cover && (
             <figure className="cover">
-              <img src={cover.src} alt={cover.alt} width={1200} height={731} />
+              <img
+                src={cover.src}
+                alt={cover.alt}
+                width={cover.width}
+                height={cover.height}
+              />
             </figure>
           )}
           <SectionHeader
