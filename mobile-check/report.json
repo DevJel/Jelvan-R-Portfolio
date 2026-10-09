@@ -1,0 +1,20 @@
+{
+  "phone390": {
+    "loaded": true,
+    "anim": "juaUnY",
+    "sw": 390,
+    "vw": 390
+  },
+  "w320": {
+    "loaded": true,
+    "anim": "juaUnY",
+    "sw": 320,
+    "vw": 320
+  },
+  "desk1440": {
+    "loaded": true,
+    "anim": "juaUnY",
+    "sw": 1440,
+    "vw": 1440
+  }
+}
