@@ -53,14 +53,14 @@ const FifthSlide = (): JSX.Element => {
 
         <Styled.Milestone variant={'third'}>
           <Styled.MilestoneHeader>
-            <h3>Full-Stack Developer</h3>
-            <time>2019-2021</time>
+            <h3>Shared Services HR Specialist</h3>
+            <time>2022-2024</time>
           </Styled.MilestoneHeader>
-          <h4>Chernivtsi National University</h4>
+          <h4>Teleperformance USA | Remote</h4>
           <PortfolioParagraph
             margin={'1rem 0'}
             paragraphText={
-              'I worked at Chernivtsi National University on a number of educational and Web projects as a front and back end developer. I architected and constructed solutions daily used by tens of thousands of students and thousands of employees.'
+              'I managed the end-to-end employee lifecycle for a 30,000+ global workforce, onboarding 70+ agents every week and processing critical compliance documentation with a perfect 100% audit record.'
             }
             withDarkColor={false}
             variant={'medium'}
@@ -70,16 +70,17 @@ const FifthSlide = (): JSX.Element => {
 
         <Styled.Milestone variant={'fourth'}>
           <Styled.MilestoneHeader>
-            <h3>PhD Student | Applied Scientist</h3>
-            <time>2015-2019</time>
+            <h3>Master&apos;s Degree</h3>
+            <time>2024-2025</time>
           </Styled.MilestoneHeader>
           <h4>
-            University of Oulu | Taras Shevchenko National University of Kyiv
+            Universidad Isabel I | Dual Specialization: AI for Business, HR &
+            Talent Management
           </h4>
           <PortfolioParagraph
             margin={'1rem 0'}
             paragraphText={
-              'I worked in an interdisplinary international research team on the development of cutting-edge medical image processing techniques. I have published a number of papers in high-impact journals and conferences.'
+              'I completed a dual-specialization master\'s program in Artificial Intelligence for Business and in Human Resource and Talent Management, covering talent pipelines, performance and international labor compliance, alongside Python, machine learning and automated SaaS pipelines.'
             }
             withDarkColor={false}
             variant={'medium'}
