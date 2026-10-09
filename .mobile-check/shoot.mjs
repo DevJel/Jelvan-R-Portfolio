@@ -13,7 +13,7 @@ for (const [name, vp, mobile] of [['phone390', { width: 390, height: 844 }, true
     await page.waitForTimeout(250);
     if (await page.$('#email-branding-slide figure.cover')) break;
   }
-  await page.evaluate(() => document.querySelector('#email-branding-slide figure.cover').scrollIntoView({block: 'start'}); window.scrollBy(0, -90));
+  await page.evaluate(() => { document.querySelector('#email-branding-slide figure.cover').scrollIntoView({ block: 'start' }); window.scrollBy(0, -90); });
   await page.waitForTimeout(2500);
   await page.screenshot({ path: `mobile-check/cover-${name}-a.png` });
   await page.evaluate((h) => window.scrollBy(0, h), vp.height);
