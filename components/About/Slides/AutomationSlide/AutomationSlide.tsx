@@ -19,8 +19,8 @@ const AutomationSlide = (): JSX.Element => (
     cover={{
       src: '/assets/portfolio/automation-cover.png',
       alt: 'Business automation: workflows, real impact and a five-step automation process',
-      width: 1400,
-      height: 906,
+      width: 1600,
+      height: 1100,
     }}
   />
 );
