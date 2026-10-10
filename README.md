@@ -92,11 +92,14 @@ The site appears at `https://jelvan-r-portfolio.<your-subdomain>.workers.dev`. T
 
 ### Contact form
 
-Messages are delivered to your inbox through Cloudflare Email Service (free when sending to your own verified address). Until this is set up, the form shows "Not sent, retry".
+Every message is forwarded to **hello@work.jelvan.pro** through Cloudflare Email Service. The reply-to address is set to the visitor's email, so replying in your inbox goes straight to them. The Worker (`worker/index.ts`) handles the delivery; the form itself has no AI or third-party components.
 
-1. Cloudflare dashboard → **Email Service** → onboard your domain (it must use Cloudflare DNS) and verify your inbox as a destination address.
-2. In `wrangler.jsonc`: set `CONTACT_TO` (your inbox) and `CONTACT_FROM` (an address on your domain, e.g. `portfolio@yourdomain.com`), and uncomment the `send_email` block with your inbox in `allowed_destination_addresses`.
-3. Deploy again.
+Setup (already in `wrangler.jsonc`):
+- `CONTACT_TO`: `hello@work.jelvan.pro`
+- `CONTACT_FROM`: `portfolio@work.jelvan.pro` (the sending domain must be onboarded in Cloudflare Email Service)
+- `send_email` binding `EMAIL`, with `hello@work.jelvan.pro` as the allowed destination
+
+Requirement: `work.jelvan.pro` must be onboarded in Cloudflare → **Email Service** and `hello@work.jelvan.pro` verified as a destination. Until then, the form shows "Not sent, retry".
 
 ---
 

@@ -20,18 +20,18 @@
     "enabled": true
   },
 
-  // Contact form settings (see README → "Contact form").
+  // Contact form: every submission is forwarded to this inbox.
   "vars": {
-    "CONTACT_TO": "",
-    "CONTACT_FROM": ""
+    "CONTACT_TO": "hello@work.jelvan.pro",
+    "CONTACT_FROM": "portfolio@work.jelvan.pro"
   },
 
-  // Uncomment after onboarding your domain in Cloudflare → Email Service,
-  // then fill CONTACT_TO / CONTACT_FROM above:
-  // "send_email": [
-  //   {
-  //     "name": "EMAIL",
-  //     "allowed_destination_addresses": ["you@example.com"]
-  //   }
-  // ],
+  // Cloudflare Email Service binding used by worker/index.ts to send.
+  // The domain must be onboarded in Cloudflare → Email Service.
+  "send_email": [
+    {
+      "name": "EMAIL",
+      "allowed_destination_addresses": ["hello@work.jelvan.pro"]
+    }
+  ]
 }
