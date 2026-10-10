@@ -26,12 +26,15 @@
     "CONTACT_FROM": "portfolio@work.jelvan.pro"
   },
 
-  // Cloudflare Email Service binding used by worker/index.ts to send.
-  // The domain must be onboarded in Cloudflare → Email Service.
+  // Cloudflare Email Service binding used by worker/index.ts to send:
+  // the inbox forward and the submitter confirmation. No destination
+  // allowlist, because confirmations go to whoever submitted the form.
+  // The sender is locked to the portfolio address. The domain must be
+  // onboarded in Cloudflare → Email Service.
   "send_email": [
     {
       "name": "EMAIL",
-      "allowed_destination_addresses": ["hello@work.jelvan.pro"]
+      "allowed_sender_addresses": ["portfolio@work.jelvan.pro"]
     }
   ]
 }

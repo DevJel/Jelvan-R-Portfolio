@@ -58,6 +58,35 @@ const json = (body: unknown, status = 200): Response =>
 const clean = (value: unknown, max: number): string =>
   typeof value === 'string' ? value.trim().slice(0, max) : '';
 
+const escapeHtml = (value: string): string =>
+  value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+
+/** Receipt sent to the person who submitted the form. */
+const confirmationEmail = (from: string, to: string, name: string) => ({
+  to,
+  from: { email: from, name: 'Jelvan' },
+  subject: 'We received your message',
+  text:
+    `Hi ${name},\n\n` +
+    `Thanks for getting in touch. Your message has been received and I will reply to you at this address.\n\n` +
+    `Jelvan\nhello@work.jelvan.pro`,
+  html:
+    '<!doctype html><html><body style="margin:0;padding:24px;background:#ffffff;' +
+    'font-family:Arial,Helvetica,sans-serif;color:#111111;text-align:left;">' +
+    '<div style="max-width:560px;">' +
+    `<p style="margin:0 0 16px;font-size:16px;line-height:24px;">Hi ${escapeHtml(name)},</p>` +
+    '<p style="margin:0 0 16px;font-size:16px;line-height:24px;">Thanks for getting in touch. ' +
+    'Your message has been received and I will reply to you at this address.</p>' +
+    '<p style="margin:0;font-size:16px;line-height:24px;">Jelvan<br>' +
+    '<a href="mailto:hello@work.jelvan.pro" style="color:#111111;">hello@work.jelvan.pro</a></p>' +
+    '</div></body></html>',
+});
+
 async function handleContact(request: Request, env: Env): Promise<Response> {
   if (request.method !== 'POST') {
     return json({ ok: false, error: 'Method not allowed' }, 405);
@@ -96,20 +125,34 @@ async function handleContact(request: Request, env: Env): Promise<Response> {
     );
   }
 
+  // Subject lines must be single-line, so strip any line breaks from the name.
+  const subjectName = name.replace(/[\r\n]+/g, ' ');
+
+  // 1. Forward the message to the inbox. If this fails, the visitor is told.
   try {
     await env.EMAIL.send({
       to: env.CONTACT_TO,
       from: { email: env.CONTACT_FROM, name: 'Portfolio contact form' },
-      replyTo: { email, name },
-      subject: `Portfolio message from ${name}`,
+      replyTo: { email, name: subjectName },
+      subject: `Portfolio message from ${subjectName}`,
       text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
     });
-    return json({ ok: true });
   } catch (error) {
     const code = (error as { code?: string }).code ?? 'UNKNOWN';
     console.error('Contact email failed', code, (error as Error).message);
     return json({ ok: false, error: 'Message could not be sent' }, 502);
   }
+
+  // 2. Confirm receipt to the submitter. The message is already delivered,
+  //    so a failure here is logged but does not fail the request.
+  try {
+    await env.EMAIL.send(confirmationEmail(env.CONTACT_FROM, email, subjectName));
+  } catch (error) {
+    const code = (error as { code?: string }).code ?? 'UNKNOWN';
+    console.error('Confirmation email failed', code, (error as Error).message);
+  }
+
+  return json({ ok: true });
 }
 
 export default {
