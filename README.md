@@ -56,7 +56,7 @@ npm install
 npm run dev          # http://localhost:3000
 ```
 
-`npm run dev` serves the site only. The contact form posts to `/api/contact`, which is handled by the Cloudflare Worker, so to test it locally run `npm run preview` (builds the site and starts `wrangler dev`).
+`npm run dev` serves the static portfolio locally. In production, `/api/contact` is intercepted by the dedicated `jelvan-portfolio-contact` Cloudflare Worker. `npm run preview` builds the static export and starts the contact Worker with Wrangler; the production Pages site and API Worker are deployed independently.
 
 ### Scripts
 
@@ -65,41 +65,33 @@ npm run dev          # http://localhost:3000
 | `npm run dev` | Next.js dev server |
 | `npm run build` | Static export to `out/` (type-checks too) |
 | `npm run typecheck` | TypeScript check only |
-| `npm run preview` | Build, then run the full site + Worker locally with Wrangler |
+| `npm run preview` | Build the site, then run the contact Worker locally with Wrangler |
 | `npm run deploy` | Build, then deploy to Cloudflare |
 
 ---
 
 ## ☁️ Deployment (GitHub → Cloudflare)
 
-> Full step-by-step guide: **[DEPLOYMENT.md](./DEPLOYMENT.md)**
+The production portfolio uses **Cloudflare Pages for the static Next.js export** and a **dedicated Cloudflare Worker for the contact API**:
 
-The site is a static export (`next build` → `out/`) served by a Cloudflare Worker with static assets. Only `/api/*` runs Worker code (`worker/index.ts`); every page and image is served straight from Cloudflare's edge. Config lives in `wrangler.jsonc`.
+- **Pages project:** `jelvan-r-portfolio` serves the exported site at `portfolio.jelvan.pro`.
+- **Contact Worker:** `jelvan-portfolio-contact` is routed only to `portfolio.jelvan.pro/api/contact*`.
+- **Internal mail service:** the contact Worker calls `operava-employee-control` through a Cloudflare service binding. The internal endpoint is addressed as `portfolio-mail.internal` and is not exposed as a public website route.
+- **Outbound email:** the internal mail service submits over **Amazon SES SMTP** in Sydney (`ap-southeast-2`) using implicit TLS on port **465**.
+- AWS credentials remain bound as Cloudflare Worker secrets on the mail service. The SES SMTP password is derived in memory and is never committed to this repository.
 
-Pick **one** of these:
-
-**Option A: Cloudflare Workers Builds (no secrets in GitHub)**
-1. Cloudflare dashboard → **Workers & Pages** → **Create** → **Import a repository** → choose `jelvan-operava/jelvan-r-portfolio`.
-2. Build command: `npm run build`. Deploy command: `npx wrangler deploy`.
-3. Every push to `main` deploys; other branches get preview URLs.
-
-**Option B: GitHub Actions (`.github/workflows/deploy.yml`)**
-1. Create a Cloudflare API token with the **Edit Cloudflare Workers** template.
-2. In GitHub → **Settings** → **Secrets and variables** → **Actions**, add `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`.
-3. Pushes to `main` build and deploy. Every branch and PR is built and validated even without the secrets.
-
-The site appears at `https://jelvan-r-portfolio.<your-subdomain>.workers.dev`. To use your own domain: Worker → **Settings** → **Domains & Routes** → **Add custom domain**.
+The Pages Git integration deploys the static site from `main`. The repository's `wrangler.jsonc` describes the separate contact Worker, so `npx wrangler deploy` updates only the contact API route.
 
 ### Contact form
 
-Every message is forwarded to **hello@work.jelvan.pro** through Cloudflare Email Service. The reply-to address is set to the visitor's email, so replying in your inbox goes straight to them. The Worker (`worker/index.ts`) handles the delivery; the form itself has no AI or third-party components.
+A successful submission sends **two messages through AWS SES SMTP**:
 
-Setup (already in `wrangler.jsonc`):
-- `CONTACT_TO`: `hello@work.jelvan.pro`
-- `CONTACT_FROM`: `portfolio@work.jelvan.pro` (the sending domain must be onboarded in Cloudflare Email Service)
-- `send_email` binding `EMAIL`, with `hello@work.jelvan.pro` as the allowed destination
+1. The inquiry is delivered to **hello@work.jelvan.pro**. Its `Reply-To` is the visitor's email so a normal inbox reply goes directly to the person who contacted you.
+2. The visitor receives a themed acknowledgment email from **Jelvan Ricolcol <hello@work.jelvan.pro>**.
 
-Requirement: `work.jelvan.pro` must be onboarded in Cloudflare → **Email Service** and `hello@work.jelvan.pro` verified as a destination. Until then, the form shows "Not sent, retry".
+The confirmation template follows the portfolio's current visual language: cream `#fff7f0`, orange `#f48120`, dark `#17181d`, white cards, rounded surfaces, and the **JELVAN® / PORTFOLIO** identity. The visitor's submitted message is echoed back safely with HTML escaping.
+
+The Worker validates the request, enforces a body-size limit, uses the existing honeypot field, and rejects cross-origin browser submissions before mail delivery. It returns success only after the internal mail service has accepted both SMTP messages.
 
 ---
 
