@@ -79,14 +79,22 @@ const server = http.createServer((req,res) => {
  await page.getByLabel('Search HTTP status codes').fill('404');
  assert.ok(await page.getByRole('listitem').filter({hasText:'Not Found'}).isVisible());
  const developerNav=page.getByRole('navigation',{name:'Developer tools'});
- assert.equal(await developerNav.getByRole('button').count(),33);
+ assert.equal(await developerNav.getByRole('button').count(),32);
+ assert.equal(await developerNav.getByRole('button',{name:/Original SVG Library/}).count(),0,'SVG library must not be a developer utility');
  // The desktop /tools route is a fixed SaaS viewport, never a page-length document.
  for (const size of [{width:1440,height:1000},{width:1280,height:720}]) {
    await page.setViewportSize(size);
    assert.ok(await page.evaluate(() => document.scrollingElement.scrollHeight <= innerHeight + 1), 'desktop page must not scroll');
  }
  await page.setViewportSize({width:1440,height:1000});
- await developerNav.getByRole('button',{name:/Original SVG Library/}).click();
+ const sections = page.getByRole('navigation',{name:'Developer workspace sections'});
+ assert.equal(await sections.getByRole('link').count(),2);
+ assert.equal(await sections.getByRole('link',{name:'Dev Tools'}).getAttribute('aria-current'),'page');
+ await sections.getByRole('link',{name:'SVG Library'}).click();
+ await page.getByRole('heading',{name:'SVG Library.'}).waitFor();
+ assert.equal(await page.getByRole('navigation',{name:'Developer tools'}).count(),0,'SVG Library has its own full-width workspace');
+ assert.equal(await page.getByRole('navigation',{name:'Developer workspace sections'}).getByRole('link',{name:'SVG Library'}).getAttribute('aria-current'),'page');
+ assert.ok(await page.evaluate(()=>document.scrollingElement.scrollHeight<=innerHeight+1),'SVG page must also use the fixed SaaS desktop viewport');
  assert.equal(await page.getByRole('button',{name:/Copy SVG for/}).count(),24);
  assert.match(await page.getByRole('status').filter({hasText:'108 designs found'}).textContent(),/108 designs found/);
  const alignedArt = await page.locator('[aria-label="Original SVG designs"] svg').evaluateAll(items =>
@@ -132,6 +140,9 @@ const server = http.createServer((req,res) => {
  const svgDownload=page.waitForEvent('download');
  await page.getByRole('button',{name:'Download .svg'}).click();
  assert.equal((await svgDownload).suggestedFilename(),'jelvan-orbit-nodes.svg');
+ await page.getByRole('navigation',{name:'Developer workspace sections'}).getByRole('link',{name:'Dev Tools'}).click();
+ await page.getByRole('navigation',{name:'Developer tools'}).waitFor();
+ assert.equal(await developerNav.getByRole('button').count(),32);
  await developerNav.getByRole('button',{name:/CSV \/ JSON Converter/}).click();
  await page.getByRole('button',{name:'Convert data'}).click();
  assert.deepEqual(JSON.parse(await page.getByLabel('Converted data').inputValue()),[{name:'Ada',role:'Developer'},{name:'Lin',role:'Design, UI'}]);
@@ -200,13 +211,19 @@ const server = http.createServer((req,res) => {
    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`overflow at ${width}: ${name}`);
   }
  }
- await page.setViewportSize({width:390,height:844}); await page.getByRole('button',{name:/HTML Viewer/}).click();
+ await page.setViewportSize({width:390,height:844});
+ await page.goto('http://127.0.0.1:3022/svg-library.html');
+ await page.getByRole('heading',{name:'SVG Library.'}).waitFor();
+ assert.equal(await page.getByRole('button',{name:/Copy SVG for/}).count(),24);
+ assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'SVG mobile gallery must not overflow');
+ await page.goto('http://127.0.0.1:3022/tools.html');
+ await page.getByRole('button',{name:/HTML Viewer/}).click();
  await page.screenshot({path:'.test-artifacts/tools-mobile.png',fullPage:true});
  for(const route of ['articles.html','portfolio/articles.html']) {
   await page.goto('http://127.0.0.1:3022/'+route); await page.getByRole('heading',{name:'Dev Tools.'}).waitFor();
  }
  assert.deepEqual(errors,[]);
- console.log('PASS: 33 tool panels, fixed desktop SaaS viewport, 108 aligned and downloadable SVG assets, premium utilities, preview isolation, OTP, 64-character keys, clipboard, passwords, encoding validation, note reload/download/deletion, legacy routes, 320px/390px layouts. No page errors.');
+ console.log('PASS: 32 tool panels, independent SVG Library route and tab, fixed desktop SaaS viewport, 108 aligned and downloadable SVG assets, premium utilities, preview isolation, OTP, 64-character keys, clipboard, passwords, encoding validation, note reload/download/deletion, legacy routes, 320px/390px layouts. No page errors.');
  await browser.close();
  server.close();
 })().catch(e=>{console.error(e);process.exit(1)});
