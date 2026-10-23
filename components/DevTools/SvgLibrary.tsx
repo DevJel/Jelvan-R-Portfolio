@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './SvgLibrary.module.css';
 import { additionalSvgAssets } from './SvgLibraryCollection';
 import { saveCollectionZip } from './SvgLibraryExport';
+import SvgHardwareGallery from './SvgHardwareGallery';
 
 type SvgAsset = {
   id: string;
@@ -132,7 +133,6 @@ const categoryCounts = categories.map(name => ({
   name,
   count: assets.filter(asset => asset.kind === name).length,
 }));
-const driveCollectionUrl = 'https://drive.google.com/drive/folders/1ZNQQhj1U1Us_6WHKbMOq1Xk5sXtQmonJ';
 const PAGE_SIZE = 24;
 
 const validColor = (value: string): string =>
@@ -233,6 +233,7 @@ export default function SvgLibrary() {
           <button className={styles.downloadAll} type="button" onClick={saveAll}>Download all {assets.length} SVGs (.zip)</button>
         </div>
       </div>
+      <SvgHardwareGallery />
       <section className={styles.categorySection} aria-labelledby="svg-category-heading">
         <div className={styles.categoryHeading}>
           <div>
@@ -256,14 +257,6 @@ export default function SvgLibrary() {
           ))}
         </div>
       </section>
-      <aside className={styles.driveSource} aria-label="Additional design collection on Google Drive">
-        <div>
-          <strong>Additional design source</strong>
-          <p>Browse the linked Google Drive folder. Access depends on its sharing permissions; its contents have not yet been imported into the SVG gallery or ZIP download.</p>
-        </div>
-        <a href={driveCollectionUrl} target="_blank" rel="noopener noreferrer"
-          aria-label="Open additional design folder in Google Drive (opens in a new tab)">Open Drive folder ↗</a>
-      </aside>
       <div className={styles.filters}>
         <label htmlFor="svg-library-search">Search designs
           <input id="svg-library-search" aria-label="Search designs" type="search" value={query} onChange={event => changeSearch(event.target.value)} placeholder="Search by name or style..." autoComplete="off" />
