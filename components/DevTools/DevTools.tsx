@@ -233,6 +233,7 @@ export default function DevTools() {
       <div className={styles.workspace}>
         <nav className={styles.navigation} aria-label="Developer tools">
           <div className={styles.searchBox}><label htmlFor="developer-tool-search">Find a tool</label><input id="developer-tool-search" aria-label="Search developer tools" type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="Search 18 tools..." autoComplete="off" /></div>
+          <div className={styles.navScroll}>
           {categories.map(category => {
             const members = visibleTools.filter(tool => tool.category === category.id);
             return members.length ? <div className={styles.navGroup} key={category.id}>
@@ -243,6 +244,7 @@ export default function DevTools() {
             </div> : null;
           })}
           {visibleTools.length === 0 ? <p className={styles.hint}>No matching tools. Try a shorter search.</p> : null}
+          </div>
         </nav>
         <section className={styles.panel} id="tool-workspace" aria-labelledby="tool-heading"><div className={styles.panelHeader}><span className={styles.toolIcon}><Icon name={current.icon} /></span><div><h2 id="tool-heading">{current.name}</h2><p>{current.description}</p></div></div>
           <div className={styles.content}>{active === 'html' ? <HtmlTool /> : active === 'otp' ? <OtpTool /> : active === 'keys' ? <KeyTool /> : active === 'password' ? <PasswordTool /> : active === 'encoding' ? <ExtraTools tool="encoding" /> : active === 'notes' ? <NotesTool /> : <ExtraTools tool={active as ExtraToolId} />}</div>
