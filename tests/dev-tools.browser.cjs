@@ -105,6 +105,7 @@ const server = http.createServer((req,res) => {
  assert.equal(new Set(alignedHardware.map(item=>item.width + 'x' + item.height)).size,1,
    'hardware SVG preview dimensions must align');
  await hardwareGrid.getByRole('button',{name:'Copy hardware SVG for Graphics Cards · 001'}).click();
+ await page.waitForFunction(() => document.querySelector('#hardware-svg-source')?.value.startsWith('<svg'));
  const hardwareSVG = await page.getByLabel('Hardware SVG source').inputValue();
  assert.match(hardwareSVG,/^<svg xmlns="http:\/\/www\.w3\.org\/2000\/svg"/);
  assert.equal(await page.evaluate(()=>navigator.clipboard.readText()), hardwareSVG,
