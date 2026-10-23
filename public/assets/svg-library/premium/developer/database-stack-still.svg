@@ -8,5 +8,5 @@
 <path d="M22 15h22M76 105h22" stroke="url(#edge)" stroke-width="2.3" stroke-linecap="round" opacity=".8"/>
 <circle cx="98" cy="23" r="2.5" fill="#65C5EB" opacity=".85"/>
 <g><path d="M29 42v36c0 18 62 18 62 0V42" stroke="#E9F2FB" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="60" cy="41" rx="31" ry="12" fill="#203247" stroke="#FFAD61" stroke-width="3"/><path d="M29 57c0 17 62 17 62 0M29 72c0 17 62 17 62 0" stroke="#6ECBD2" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
-<g><circle cx="60" cy="60" r="45" fill="none" stroke="#65C5EB" stroke-width="1.6" stroke-dasharray="8 20" opacity=".65"/><circle cx="60" cy="15" r="3.5" fill="#FFAD61"/></g>
+<g><path d="M20 84l5-9 6 9-6 9ZM88 29l5-9 6 9-6 9Z" fill="#65C5EB" opacity=".7"/></g>
 </svg>
