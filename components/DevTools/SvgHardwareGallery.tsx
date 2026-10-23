@@ -98,14 +98,29 @@ export default function SvgHardwareGallery() {
   const copyAsset = async (asset: HardwareAsset) => {
     setActive(asset.id);
     setMessage('');
+    const svgPromise = getSvg(asset);
     try {
-      const svg = await getSvg(asset);
+      if (typeof ClipboardItem !== 'undefined' && navigator.clipboard?.write) {
+        // Begin the clipboard write during the click's user activation, even for an uncached SVG.
+        await navigator.clipboard.write([
+          new ClipboardItem({ 'text/plain': svgPromise.then(svg => new Blob([svg], { type: 'text/plain' })) }),
+        ]);
+      } else {
+        await navigator.clipboard.writeText(await svgPromise);
+      }
+      const svg = await svgPromise;
       setSource(svg);
       setLoadedPath(asset.path);
-      await navigator.clipboard.writeText(svg);
       setMessage(asset.name + ' copied as complete, editable SVG markup. Paste into an HTML file or SVG editor.');
     } catch {
-      setMessage('Clipboard unavailable. Select and copy the SVG source from the inspector.');
+      try {
+        setSource(await svgPromise);
+        setLoadedPath(asset.path);
+      } catch {
+        setMessage('This SVG could not be loaded. Please retry.');
+        return;
+      }
+      setMessage('Clipboard access unavailable. Select and copy the SVG source from the inspector.');
     }
   };
 
