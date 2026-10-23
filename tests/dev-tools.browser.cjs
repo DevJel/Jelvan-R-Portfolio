@@ -97,6 +97,22 @@ const server = http.createServer((req,res) => {
  assert.equal(await page.getByRole('navigation',{name:'Developer tools'}).count(),0,'SVG Library has its own full-width workspace');
  assert.equal(await page.getByRole('navigation',{name:'Developer workspace sections'}).getByRole('link',{name:'SVG Library'}).getAttribute('aria-current'),'page');
  assert.ok(await page.evaluate(()=>document.scrollingElement.scrollHeight<=innerHeight+1),'SVG page must also use the fixed SaaS desktop viewport');
+ const hardwareGrid = page.locator('[aria-label="Hardware SVG designs"]');
+ assert.equal(await hardwareGrid.getByRole('button',{name:/Copy hardware SVG for/}).count(),24,
+   'hardware gallery should use the same 24-card pagination as the original collection');
+ const alignedHardware = await hardwareGrid.locator('img').evaluateAll(items =>
+   items.slice(0,6).map(item=>({width:item.getBoundingClientRect().width,height:item.getBoundingClientRect().height})));
+ assert.equal(new Set(alignedHardware.map(item=>item.width + 'x' + item.height)).size,1,
+   'hardware SVG preview dimensions must align');
+ await hardwareGrid.getByRole('button',{name:'Copy hardware SVG for Graphics Cards · 001'}).click();
+ const hardwareSVG = await page.getByLabel('Hardware SVG source').inputValue();
+ assert.match(hardwareSVG,/^<svg xmlns="http:\/\/www\.w3\.org\/2000\/svg"/);
+ assert.equal(await page.evaluate(()=>navigator.clipboard.readText()), hardwareSVG,
+   'copy on the hardware card should place full standalone SVG on the clipboard');
+ await page.getByRole('group',{name:'Hardware design categories'}).getByRole('button',{name:/Memory \/ RAM/}).click();
+ assert.equal(await hardwareGrid.getByRole('button',{name:/Copy hardware SVG for/}).count(),10);
+ await page.getByRole('group',{name:'Hardware design categories'}).getByRole('button',{name:/All designs/}).click();
+ assert.equal(await hardwareGrid.getByRole('button',{name:/Copy hardware SVG for/}).count(),24);
  assert.equal(await page.getByRole('button',{name:/Copy SVG for/}).count(),24);
  assert.match(await page.getByRole('status').filter({hasText:'108 designs found'}).textContent(),/108 designs found/);
  const alignedArt = await page.locator('[aria-label="Original SVG designs"] svg').evaluateAll(items =>
