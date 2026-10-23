@@ -217,10 +217,10 @@ export default function SvgLibrary() {
       </div>
       <div className={styles.filters}>
         <label htmlFor="svg-library-search">Search designs
-          <input id="svg-library-search" type="search" value={query} onChange={event => changeSearch(event.target.value)} placeholder="Search by name or style..." autoComplete="off" />
+          <input id="svg-library-search" aria-label="Search designs" type="search" value={query} onChange={event => changeSearch(event.target.value)} placeholder="Search by name or style..." autoComplete="off" />
         </label>
         <label htmlFor="svg-library-category">Collection
-          <select id="svg-library-category" value={category} onChange={event => changeCategory(event.target.value)}>
+          <select id="svg-library-category" aria-label="Collection" value={category} onChange={event => changeCategory(event.target.value)}>
             <option value="all">All collections</option>
             {categories.map(group => <option key={group} value={group}>{group}</option>)}
           </select>
