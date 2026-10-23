@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import styles from './SvgLibrary.module.css';
+import { additionalSvgAssets } from './SvgLibraryCollection';
+import { saveCollectionZip } from './SvgLibraryExport';
 
 type SvgAsset = {
   id: string;
@@ -13,7 +15,7 @@ type SvgAsset = {
  * An original Jelvan Elements collection. All SVG geometry is authored for
  * this project; no icon packs, copied paths, external images or scripts.
  */
-const assets: SvgAsset[] = [
+const originalAssets: SvgAsset[] = [
   {
     id: 'orbit-nodes',
     name: 'Orbit Nodes',
@@ -124,12 +126,31 @@ const assets: SvgAsset[] = [
   },
 ];
 
+const assets: SvgAsset[] = [...originalAssets, ...additionalSvgAssets];
+const categories = Array.from(new Set(assets.map(asset => asset.kind))).sort();
+const PAGE_SIZE = 24;
+
 const validColor = (value: string): string =>
   /^#[a-f\d]{6}$/i.test(value) ? value : '#172b4d';
 
-const renderSvg = (asset: SvgAsset, ink: string, accent: string): string => `<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" fill="none" role="img" aria-label="${asset.name}">
-  <title>${asset.name} — Jelvan Elements</title>${asset.drawing(validColor(ink), validColor(accent))}
+/**
+ * Attribution is embedded in every copied, standalone and ZIP-exported SVG.
+ * The branded definition ID is a functional rendering dependency: removing
+ * or renaming it without updating the matching <use> reference hides the art.
+ * SVG is an open editable format, so this is not cryptographic DRM.
+ * A different instance scope prevents <use> collisions between previews.
+ */
+const renderSvg = (asset: SvgAsset, ink: string, accent: string, instance: string = 'public'): string => {
+  const artworkId = 'jelvan-original-' + asset.id + '-' + instance;
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" fill="none" role="img" aria-label="${asset.name}" data-creator="Jelvan B. Ricolcol" data-brand="Jelvan Elements">
+  <!-- Original SVG artwork by Jelvan B. Ricolcol (Jelvan Elements). Please retain creator credit. https://portfolio.jelvan.pro/tools -->
+  <title>${asset.name} — Original Jelvan Elements SVG by Jelvan B. Ricolcol</title>
+  <desc>Original vector design by Jelvan B. Ricolcol for Jelvan Elements. Creator: https://portfolio.jelvan.pro/tools. Please retain attribution when copying or modifying.</desc>
+  <metadata>Creator: Jelvan B. Ricolcol | Brand: Jelvan Elements | Source: https://portfolio.jelvan.pro/tools | Attribution requested.</metadata>
+  <defs><g id="${artworkId}">${asset.drawing(validColor(ink), validColor(accent))}</g></defs>
+  <use href="#${artworkId}"/>
 </svg>`;
+};
 
 function saveSvg(svg: string, name: string) {
   const url = URL.createObjectURL(new Blob([svg], { type: 'image/svg+xml;charset=utf-8' }));
@@ -147,8 +168,16 @@ export default function SvgLibrary() {
   const [ink, setInk] = useState('#172b4d');
   const [accent, setAccent] = useState('#f48120');
   const [message, setMessage] = useState('');
-  const current = assets.find(asset => asset.id === selected) || assets[0];
-  const currentSvg = renderSvg(current, ink, accent);
+  const [query, setQuery] = useState('');
+  const [category, setCategory] = useState('all');
+  const [shown, setShown] = useState(PAGE_SIZE);
+  const search = query.trim().toLowerCase();
+  const matches = assets.filter(asset =>
+    (category === 'all' || asset.kind === category) &&
+    (asset.name + ' ' + asset.kind + ' ' + asset.description).toLowerCase().includes(search));
+  const visible = matches.slice(0, shown);
+  const current = matches.find(asset => asset.id === selected) || matches[0] || assets[0];
+  const currentSvg = renderSvg(current, ink, accent, 'public');
 
   const copySvg = async (asset: SvgAsset) => {
     setSelected(asset.id);
@@ -160,25 +189,51 @@ export default function SvgLibrary() {
     }
   };
 
+  const saveAll = () => {
+    saveCollectionZip(assets.map(asset => ({
+      name: 'jelvan-' + asset.id + '.svg',
+      content: renderSvg(asset, ink, accent),
+    })));
+    setMessage('Full library downloaded as ' + assets.length + ' editable SVG files.');
+  };
+  const changeSearch = (value: string) => { setQuery(value); setShown(PAGE_SIZE); setMessage(''); };
+  const changeCategory = (value: string) => { setCategory(value); setShown(PAGE_SIZE); setMessage(''); };
+
   return (
     <div className={styles.library}>
       <div className={styles.intro}>
         <div>
           <p className={styles.kicker}>JELVAN ELEMENTS / ORIGINAL VECTOR COLLECTION</p>
           <h3>Own the details. Copy the vectors.</h3>
-          <p>Eight original symbols and interface elements made for this portfolio. Free for visitors to copy, customize and download as editable SVG markup.</p>
+          <p>{assets.length} original symbols and interface elements made for this portfolio. Free to copy, recolor or download as editable SVG files. Creator attribution is included in every file.</p>
         </div>
-        <div className={styles.palette}>
-          <label>Primary color<input aria-label="SVG primary color" type="color" value={ink} onChange={event => { setInk(event.target.value); setMessage(''); }} /></label>
-          <label>Accent color<input aria-label="SVG accent color" type="color" value={accent} onChange={event => { setAccent(event.target.value); setMessage(''); }} /></label>
+        <div className={styles.controls}>
+          <div className={styles.palette}>
+            <label>Primary color<input aria-label="SVG primary color" type="color" value={ink} onChange={event => { setInk(event.target.value); setMessage(''); }} /></label>
+            <label>Accent color<input aria-label="SVG accent color" type="color" value={accent} onChange={event => { setAccent(event.target.value); setMessage(''); }} /></label>
+          </div>
+          <button className={styles.downloadAll} type="button" onClick={saveAll}>Download all {assets.length} SVGs (.zip)</button>
         </div>
       </div>
+      <div className={styles.filters}>
+        <label htmlFor="svg-library-search">Search designs
+          <input id="svg-library-search" aria-label="Search designs" type="search" value={query} onChange={event => changeSearch(event.target.value)} placeholder="Search by name or style..." autoComplete="off" />
+        </label>
+        <label htmlFor="svg-library-category">Collection
+          <select id="svg-library-category" aria-label="Collection" value={category} onChange={event => changeCategory(event.target.value)}>
+            <option value="all">All collections</option>
+            {categories.map(group => <option key={group} value={group}>{group}</option>)}
+          </select>
+        </label>
+        <p className={styles.count} role="status">{matches.length} designs found · Showing {visible.length}</p>
+      </div>
       <div className={styles.layout}>
+        <div className={styles.gallery}>
         <div className={styles.collection} aria-label="Original SVG designs">
-          {assets.map(asset => (
+          {visible.map(asset => (
             <div key={asset.id} className={`${styles.tile} ${current.id === asset.id ? styles.activeTile : ''}`}>
               <button type="button" className={styles.previewButton} aria-label={`Preview ${asset.name}`} aria-pressed={current.id === asset.id} onClick={() => { setSelected(asset.id); setMessage(''); }}>
-                <span className={styles.art} aria-hidden="true" dangerouslySetInnerHTML={{ __html: renderSvg(asset, ink, accent) }} />
+                <span className={styles.art} aria-hidden="true" dangerouslySetInnerHTML={{ __html: renderSvg(asset, ink, accent, 'gallery') }} />
                 <span className={styles.assetName}>{asset.name}</span>
                 <span className={styles.assetKind}>{asset.kind}</span>
               </button>
@@ -186,8 +241,14 @@ export default function SvgLibrary() {
             </div>
           ))}
         </div>
+        {matches.length === 0 ? <p className={styles.empty}>No SVG designs match this search. Try another name or collection.</p> : null}
+        {visible.length < matches.length ?
+          <button className={styles.showMore} type="button" onClick={() => setShown(count => count + PAGE_SIZE)}>
+            Show more SVG designs ({matches.length - visible.length} remaining)
+          </button> : null}
+        </div>
         <section className={styles.inspector} aria-label="SVG source and download">
-          <div className={styles.inspectorArt} aria-hidden="true" dangerouslySetInnerHTML={{ __html: currentSvg }} />
+          <div className={styles.inspectorArt} aria-hidden="true" dangerouslySetInnerHTML={{ __html: renderSvg(current, ink, accent, 'inspector') }} />
           <p className={styles.assetKind}>{current.kind} · 120 × 120 · transparent</p>
           <h4>{current.name}</h4>
           <p>{current.description}</p>
@@ -198,7 +259,7 @@ export default function SvgLibrary() {
           <p className={styles.status} role="status" aria-live="polite">{message}</p>
           <label className={styles.sourceLabel} htmlFor="original-svg-source">Editable SVG source</label>
           <textarea id="original-svg-source" aria-label="Original SVG source" value={currentSvg} readOnly spellCheck={false} rows={6} />
-          <p className={styles.legal}>Original artwork created for Jelvan's developer portfolio. Public copying and customization are welcome. No external dependencies.</p>
+          <p className={styles.legal}>Original artwork by Jelvan B. Ricolcol for Jelvan Elements. Copying and customization are welcome; please retain the embedded creator credit. Each SVG uses a branded definition reference to render its artwork. Editing both matching references can bypass this protection because SVG is an open format.</p>
         </section>
       </div>
     </div>
