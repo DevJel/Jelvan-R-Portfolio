@@ -5,7 +5,7 @@ import styles from './DevTools.module.css';
 import ExtraTools, { ExtraToolId } from './ExtraTools';
 import DataWorkbench, { DataToolId } from './DataWorkbench';
 import FrontendWorkbench, { FrontendToolId } from './FrontendWorkbench';
-import SvgLibrary from './SvgLibrary';
+import DeveloperSectionsTabs from './DeveloperSectionsTabs';
 
 const categories = [
   { id: 'build', title: 'BUILD & PREVIEW' },
@@ -13,7 +13,6 @@ const categories = [
   { id: 'security', title: 'SECURITY & IDENTIFIERS' },
   { id: 'debug', title: 'DEBUGGING & REFERENCE' },
   { id: 'design', title: 'CSS & DESIGN' },
-  { id: 'assets', title: 'SVG & ELEMENTS' },
   { id: 'seo', title: 'SEO & DEPLOYMENT' },
 ] as const;
 const tools = [
@@ -45,7 +44,6 @@ const tools = [
   { id: 'time', name: 'Timestamp Converter', description: 'Unix, ISO and local time', icon: 'note', category: 'debug' },
   { id: 'curl', name: 'cURL Builder', description: 'HTTP request commands', icon: 'code', category: 'debug' },
   { id: 'cron', name: 'Cron Builder', description: 'Scheduled job expressions', icon: 'note', category: 'debug' },
-  { id: 'svg-library', name: 'Original SVG Library', description: 'Copy & download Jelvan vector art', icon: 'svg', category: 'assets' },
   { id: 'meta-tags', name: 'Meta Tag Generator', description: 'SEO and social metadata', icon: 'code', category: 'seo' },
   { id: 'robots', name: 'Robots.txt Builder', description: 'Search crawler rules', icon: 'note', category: 'seo' },
   { id: 'sitemap', name: 'Sitemap Generator', description: 'Canonical XML sitemap', icon: 'code', category: 'seo' },
@@ -60,7 +58,6 @@ const MAX_NOTES = 100000;
 function Icon({ name }: { name: string }) {
   const paths: Record<string, React.ReactNode> = {
     code: <><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-13-2 16" /></>,
-    svg: <><rect x="3" y="3" width="18" height="18" rx="3" /><path d="m7 13 3-3 3 3 4-5M7 17h10" /></>,
     shield: <><path d="M12 3 4 6v6c0 5 8 9 8 9s8-4 8-9V6z" /><path d="m8 12 3 3 5-6" /></>,
     key: <><circle cx="8" cy="8" r="5" /><path d="m12 12 9 9m-5-5 3-3m-6 0 3-3" /></>,
     lock: <><rect x="5" y="10" width="14" height="11" rx="3" /><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 5v2" /></>,
@@ -253,6 +250,7 @@ export default function DevTools() {
     <Navbar isLogoExpanded />
     <main className={styles.main}>
       <header className={styles.header}><span className={styles.eyebrow}>{'DEVELOPER WORKSPACE / ' + tools.length + ' UTILITIES'}</span><h1>Dev Tools<span>.</span></h1><p>Essential utilities for building, debugging and shipping on the web.</p><span className={styles.local}>Local-first tools · No login needed</span></header>
+      <DeveloperSectionsTabs current="tools" />
       <div className={styles.workspace}>
         <nav className={styles.navigation} aria-label="Developer tools">
           <div className={styles.searchBox}><label htmlFor="developer-tool-search">Find a tool</label><input id="developer-tool-search" aria-label="Search developer tools" type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder={`Search ${tools.length} tools...`} autoComplete="off" /></div>
@@ -271,7 +269,7 @@ export default function DevTools() {
           </div>
         </nav>
         <section className={styles.panel} id="tool-workspace" aria-labelledby="tool-heading"><div className={styles.panelHeader}><span className={styles.toolIcon}><Icon name={current.icon} /></span><div><h2 id="tool-heading">{current.name}</h2><p>{current.description}</p></div></div>
-          <div className={styles.content}>{active === 'html' ? <HtmlTool /> : active === 'otp' ? <OtpTool /> : active === 'keys' ? <KeyTool /> : active === 'password' ? <PasswordTool /> : active === 'encoding' ? <ExtraTools tool="encoding" /> : active === 'notes' ? <NotesTool /> : active === 'svg-library' ? <SvgLibrary /> : ['csv-json','json-path','query-builder','text-case','text-cleaner','curl'].includes(active) ? <DataWorkbench tool={active as DataToolId} /> : ['css-units','gradient','shadow','meta-tags','robots','sitemap','redirects','cron'].includes(active) ? <FrontendWorkbench tool={active as FrontendToolId} /> : <ExtraTools tool={active as ExtraToolId} />}</div>
+          <div className={styles.content}>{active === 'html' ? <HtmlTool /> : active === 'otp' ? <OtpTool /> : active === 'keys' ? <KeyTool /> : active === 'password' ? <PasswordTool /> : active === 'encoding' ? <ExtraTools tool="encoding" /> : active === 'notes' ? <NotesTool /> : ['csv-json','json-path','query-builder','text-case','text-cleaner','curl'].includes(active) ? <DataWorkbench tool={active as DataToolId} /> : ['css-units','gradient','shadow','meta-tags','robots','sitemap','redirects','cron'].includes(active) ? <FrontendWorkbench tool={active as FrontendToolId} /> : <ExtraTools tool={active as ExtraToolId} />}</div>
         </section>
       </div>
       <footer className={styles.footer}>Developed and Designed by Jelvan® <span>2026</span></footer>

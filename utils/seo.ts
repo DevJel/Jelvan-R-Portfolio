@@ -58,9 +58,14 @@ export interface PageSeo {
 }
 
 export const PAGES: Record<
-  'home' | 'about' | 'projects' | 'contact' | 'resume' | 'articles' | 'tools',
+  'home' | 'about' | 'projects' | 'contact' | 'resume' | 'articles' | 'tools' | 'svgLibrary',
   PageSeo
 > = {
+  svgLibrary: {
+    title: 'SVG Library | Original Jelvan Elements by Jelvan Ricolcol',
+    description: 'Browse 108 original SVG elements by Jelvan Ricolcol. Copy, recolor and download the editable vector designs with creator attribution.',
+    path: '/svg-library',
+  },
   home: {
     title:
       'Jelvan Ricolcol | Strategic HR Professional & Full Stack Software Developer',
