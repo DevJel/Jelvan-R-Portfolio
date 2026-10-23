@@ -125,7 +125,11 @@ jobs:
         if: steps.secrets.outputs.ready == 'true'
         run: npm install --no-audit --no-fund
 
-      - name: Build and deploy
+      # The portfolio site is Cloudflare Pages. The wrangler.jsonc file is for
+      # the separate contact API Worker; 'npm run deploy' only updates that Worker.
+      - name: Build and deploy static portfolio to Cloudflare Pages
         if: steps.secrets.outputs.ready == 'true'
-        run: npm run deploy
+        run: |
+          npm run build
+          npx wrangler pages deploy out --project-name=jelvan-r-portfolio --branch=main --commit-hash="$GITHUB_SHA"
 
