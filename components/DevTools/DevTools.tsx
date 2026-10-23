@@ -14,7 +14,7 @@ const tools = [
   { id: 'html', name: 'HTML Viewer', description: 'Safe HTML/CSS preview', icon: 'code', category: 'build' },
   { id: 'json', name: 'JSON Formatter', description: 'Validate, format and minify', icon: 'code', category: 'build' },
   { id: 'diff', name: 'Text Compare', description: 'Line-level differences', icon: 'note', category: 'build' },
-  { id: 'notes', name: 'Notes', description: 'Private local scratchpad', icon: 'note', category: 'build' },
+  { id: 'notes', name: 'Notes', description: 'A little space to think', icon: 'note', category: 'build' },
   { id: 'encoding', name: 'Base32 / Base64', description: 'Encode, decode and inspect', icon: 'convert', category: 'data' },
   { id: 'url-codec', name: 'URL Encoder', description: 'URIComponent and URI tools', icon: 'convert', category: 'data' },
   { id: 'entities', name: 'HTML Entities', description: 'Escape and unescape markup', icon: 'code', category: 'data' },
