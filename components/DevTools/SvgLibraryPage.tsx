@@ -14,7 +14,7 @@ export default function SvgLibraryPage() {
           <span className={styles.eyebrow}>JELVAN ELEMENTS / ORIGINAL VECTOR DESIGNS</span>
           <h1>SVG Library<span>.</span></h1>
           <p>Explore, recolor, copy and download original SVG artwork.</p>
-          <span className={styles.local}>208 vector designs · 108 original symbols + 100 PC component illustrations</span>
+          <span className={styles.local}>209 vector designs · 108 original symbols + 101 PC component illustrations</span>
         </header>
         <DeveloperSectionsTabs current="svg" />
         <section className={`${styles.panel} ${pageStyles.svgPanel}`} aria-label="SVG Library workspace">

@@ -31,6 +31,12 @@ const assets: HardwareAsset[] = Array.from({ length: 100 }, (_, index) => {
     path: `/assets/svg-library/pc-components/${type.code}/${filename}`,
   };
 });
+assets.push({
+  id: '100-alt',
+  name: 'Processors / CPU · 100 (alternate)',
+  kind: 'Processors / CPU',
+  path: '/assets/svg-library/pc-components/cpu/pc_component_100_cpu_premium-variant-2.svg',
+});
 const CHUNK_SIZE = 20;
 
 async function readSvg(asset: HardwareAsset) {
@@ -102,7 +108,7 @@ export default function SvgHardwareGallery() {
   const downloadAll = async () => {
     if (busy) return;
     setBusy(true);
-    setStatus('Preparing the 100-piece SVG collection...');
+    setStatus('Preparing the 101-piece SVG collection...');
     try {
       const result: { name: string; content: string }[] = [];
       for (let i = 0; i < assets.length; i += 10) {
@@ -113,7 +119,7 @@ export default function SvgHardwareGallery() {
         }
       }
       saveCollectionZip(result);
-      setStatus('100 SVG files packaged and downloaded.');
+      setStatus('101 SVG files packaged and downloaded.');
     } catch {
       setStatus('Could not prepare the archive. Check your connection and retry.');
     } finally {
@@ -126,22 +132,22 @@ export default function SvgHardwareGallery() {
       <div className={styles.heading}>
         <div>
           <p className={styles.eyebrow}>PREMIUM VECTOR COLLECTION</p>
-          <h4>Computer components <span>100 SVGs</span></h4>
+          <h4>Computer components <span>101 SVGs</span></h4>
           <p>Browse individual hardware designs, copy editable SVG code, or download the collection.</p>
         </div>
         <button type="button" className={styles.toggle} aria-expanded={open} onClick={() => setOpen(value => !value)}>
-          {open ? 'Hide collection' : 'Browse 100 designs'}
+          {open ? 'Hide collection' : 'Browse 101 designs'}
         </button>
       </div>
       {open && (
         <div className={styles.content}>
           <div className={styles.categories} role="group" aria-label="Hardware design categories">
             <button type="button" aria-pressed={category === 'all'} onClick={() => changeCategory('all')}>
-              All <strong>100</strong>
+              All <strong>101</strong>
             </button>
             {types.map(group => (
               <button key={group.code} type="button" aria-pressed={category === group.label} onClick={() => changeCategory(group.label)}>
-                {group.label} <strong>10</strong>
+                {group.label} <strong>{group.code === 'cpu' ? 11 : 10}</strong>
               </button>
             ))}
           </div>
@@ -151,7 +157,7 @@ export default function SvgHardwareGallery() {
                 placeholder="Search name or number..." />
             </label>
             <button type="button" onClick={() => void downloadAll()} disabled={busy}>
-              {busy ? 'Preparing archive...' : 'Download 100 SVGs (.zip)'}
+              {busy ? 'Preparing archive...' : 'Download 101 SVGs (.zip)'}
             </button>
           </div>
           <p className={styles.count} role="status">{matches.length} matching designs · {visible.length} shown</p>
