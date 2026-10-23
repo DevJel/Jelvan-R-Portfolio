@@ -248,7 +248,7 @@ export default function DevTools() {
   return <div className={styles.root}>
     <Navbar isLogoExpanded />
     <main className={styles.main}>
-      <header className={styles.header}><span className={styles.eyebrow}>DEVELOPER WORKSPACE / ${tools.length} UTILITIES</span><h1>Dev Tools<span>.</span></h1><p>Essential utilities for building, debugging and shipping on the web.</p><span className={styles.local}>Local-first tools · No login needed</span></header>
+      <header className={styles.header}><span className={styles.eyebrow}>{'DEVELOPER WORKSPACE / ' + tools.length + ' UTILITIES'}</span><h1>Dev Tools<span>.</span></h1><p>Essential utilities for building, debugging and shipping on the web.</p><span className={styles.local}>Local-first tools · No login needed</span></header>
       <div className={styles.workspace}>
         <nav className={styles.navigation} aria-label="Developer tools">
           <div className={styles.searchBox}><label htmlFor="developer-tool-search">Find a tool</label><input id="developer-tool-search" aria-label="Search developer tools" type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="Search 32 tools..." autoComplete="off" /></div>
