@@ -50,8 +50,8 @@ This application translates complex cloud architectures into a responsive, deskt
 ### Run locally
 
 ```bash
-git clone https://github.com/jelvan-operava/jelvan-r-portfolio.git
-cd jelvan-r-portfolio
+git clone https://github.com/Dev-Jel-Works/Jelvan-R-Portfolio.git
+cd Jelvan-R-Portfolio
 npm install
 npm run dev          # http://localhost:3000
 ```
@@ -80,7 +80,9 @@ The production portfolio uses **Cloudflare Pages for the static Next.js export**
 - **Outbound email:** the internal mail service submits over **Amazon SES SMTP** in Sydney (`ap-southeast-2`) using implicit TLS on port **465**.
 - AWS credentials remain bound as Cloudflare Worker secrets on the mail service. The SES SMTP password is derived in memory and is never committed to this repository.
 
-The Pages Git integration deploys the static site from `main`. The repository's `wrangler.jsonc` describes the separate contact Worker, so `npx wrangler deploy` updates only the contact API route.
+The repository is now owned by `Dev-Jel-Works`. The existing Pages Git integration still references the former owner (`jelvan-operava`) after the repository transfer; it does not currently publish new commits. To deploy the static site, the GitHub Actions workflow builds the `out/` directory and runs `npx wrangler pages deploy out --project-name=jelvan-r-portfolio --branch=main`. The workflow requires `CLOUDFLARE_API_TOKEN` (with Pages write access) and `CLOUDFLARE_ACCOUNT_ID` as repository Actions secrets. Until both secrets are set, it validates the build but skips deployment. This upload path keeps the existing Pages project and custom domain; do not delete the production Pages project to repair the Git connection.
+
+The repository's `wrangler.jsonc` describes the separate contact Worker, so `npx wrangler deploy` (or `npm run deploy`) updates only the contact API route and does **not** publish the website. Deploy the contact Worker separately only when contact API changes are intended.
 
 ### Contact form
 
