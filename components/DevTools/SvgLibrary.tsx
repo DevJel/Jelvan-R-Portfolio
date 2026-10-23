@@ -3,6 +3,7 @@ import styles from './SvgLibrary.module.css';
 import { additionalSvgAssets } from './SvgLibraryCollection';
 import { saveCollectionZip } from './SvgLibraryExport';
 import SvgHardwareGallery from './SvgHardwareGallery';
+import SvgPremiumGallery from './SvgPremiumGallery';
 
 type SvgAsset = {
   id: string;
@@ -233,6 +234,7 @@ export default function SvgLibrary() {
           <button className={styles.downloadAll} type="button" onClick={saveAll}>Download all {assets.length} SVGs (.zip)</button>
         </div>
       </div>
+      <SvgPremiumGallery />
       <SvgHardwareGallery />
       <section className={styles.categorySection} aria-labelledby="svg-category-heading">
         <div className={styles.categoryHeading}>
