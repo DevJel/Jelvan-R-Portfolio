@@ -8,12 +8,12 @@
 @keyframes pulse{0%,100%{opacity:.26;transform:scale(.86)}50%{opacity:1;transform:scale(1.12)}}
 @keyframes drift{0%,100%{transform:translateY(-4px)}50%{transform:translateY(4px)}}
 @keyframes shimmer{0%,100%{opacity:.16}50%{opacity:.85}}
-.motion{transform-box:fill-box;transform-origin:center;animation:orbit 8s linear infinite;}
+.motion{transform-box:fill-box;transform-origin:center;animation:drift 3.4s ease-in-out infinite;}
 @media(prefers-reduced-motion:reduce){.motion{animation:none!important}}
 </style>
 <rect x="5" y="5" width="110" height="110" rx="24" fill="url(#surface)" stroke="#4B5F74" stroke-opacity=".7" stroke-width="1.6"/>
 <path d="M22 15h22M76 105h22" stroke="url(#edge)" stroke-width="2.3" stroke-linecap="round" opacity=".8"/>
 <circle cx="98" cy="23" r="2.5" fill="#F6A4C4" opacity=".85"/>
 <g><path d="M30 37h60M60 37v52M43 89h34" stroke="#E9F2FB" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M33 50v-13m54 0v13M44 64h32" stroke="#FFAD61" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="60" cy="64" r="5" fill="#6ECBD2" stroke="#6ECBD2" stroke-width="1"/></g>
-<g class="motion"><circle cx="60" cy="60" r="45" fill="none" stroke="#F6A4C4" stroke-width="1.6" stroke-dasharray="8 20" opacity=".65"/><circle cx="60" cy="15" r="3.5" fill="#FFAD61"/></g>
+<g class="motion"><path d="M20 84l5-9 6 9-6 9ZM88 29l5-9 6 9-6 9Z" fill="#F6A4C4" opacity=".7"/></g>
 </svg>

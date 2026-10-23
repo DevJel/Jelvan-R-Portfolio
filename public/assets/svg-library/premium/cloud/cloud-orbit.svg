@@ -8,12 +8,12 @@
 @keyframes pulse{0%,100%{opacity:.26;transform:scale(.86)}50%{opacity:1;transform:scale(1.12)}}
 @keyframes drift{0%,100%{transform:translateY(-4px)}50%{transform:translateY(4px)}}
 @keyframes shimmer{0%,100%{opacity:.16}50%{opacity:.85}}
-.motion{transform-box:fill-box;transform-origin:center;animation:drift 3.4s ease-in-out infinite;}
+.motion{transform-box:fill-box;transform-origin:center;animation:shimmer 2.8s ease-in-out infinite;}
 @media(prefers-reduced-motion:reduce){.motion{animation:none!important}}
 </style>
 <rect x="5" y="5" width="110" height="110" rx="24" fill="url(#surface)" stroke="#4B5F74" stroke-opacity=".7" stroke-width="1.6"/>
 <path d="M22 15h22M76 105h22" stroke="url(#edge)" stroke-width="2.3" stroke-linecap="round" opacity=".8"/>
 <circle cx="98" cy="23" r="2.5" fill="#74D5CE" opacity=".85"/>
 <g><path d="M39 79h43c20 0 20-29-1-29-3-22-36-27-43-4-24 0-22 33 1 33Z" stroke="#E9F2FB" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="84" cy="34" r="6" fill="#FFAD61" stroke="#FFAD61" stroke-width="1"/><path d="M91 45q8 13 0 26" stroke="#6ECBD2" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
-<g class="motion"><path d="M20 84l5-9 6 9-6 9ZM88 29l5-9 6 9-6 9Z" fill="#74D5CE" opacity=".7"/></g>
+<g class="motion"><path d="M21 20h20M79 100h20M22 100h8M90 20h8" stroke="#74D5CE" stroke-width="2" stroke-linecap="round" opacity=".5"/></g>
 </svg>

@@ -10,15 +10,15 @@ const renderIcon=function renderIcon(asset,motion=true){
 @keyframes pulse{0%,100%{opacity:.26;transform:scale(.86)}50%{opacity:1;transform:scale(1.12)}}
 @keyframes drift{0%,100%{transform:translateY(-4px)}50%{transform:translateY(4px)}}
 @keyframes shimmer{0%,100%{opacity:.16}50%{opacity:.85}}
-.motion{transform-box:fill-box;transform-origin:center;animation:${['orbit 8s linear infinite','pulse 3s ease-in-out infinite','drift 3.4s ease-in-out infinite','shimmer 2.8s ease-in-out infinite'][defs.indexOf(asset)%4]};}
+.motion{transform-box:fill-box;transform-origin:center;animation:${['orbit 8s linear infinite','pulse 3s ease-in-out infinite','drift 3.4s ease-in-out infinite','shimmer 2.8s ease-in-out infinite'][Math.floor(defs.indexOf(asset)/2)%4]};}
 @media(prefers-reduced-motion:reduce){.motion{animation:none!important}}
 </style>`;
  const motionMark=asset.animated
- ?`<g${animated?' class="motion"':''}>${defs.indexOf(asset)%4===0
+ ?`<g${animated?' class="motion"':''}>${Math.floor(defs.indexOf(asset)/2)%4===0
  ?`<circle cx="60" cy="60" r="45" fill="none" stroke="${family}" stroke-width="1.6" stroke-dasharray="8 20" opacity=".65"/><circle cx="60" cy="15" r="3.5" fill="#FFAD61"/>`
- :defs.indexOf(asset)%4===1
+ :Math.floor(defs.indexOf(asset)/2)%4===1
  ?`<circle cx="60" cy="60" r="44" fill="none" stroke="${family}" stroke-width="1.8" opacity=".42"/>`
- :defs.indexOf(asset)%4===2
+ :Math.floor(defs.indexOf(asset)/2)%4===2
  ?`<path d="M20 84l5-9 6 9-6 9ZM88 29l5-9 6 9-6 9Z" fill="${family}" opacity=".7"/>`
  :`<path d="M21 20h20M79 100h20M22 100h8M90 20h8" stroke="${family}" stroke-width="2" stroke-linecap="round" opacity=".5"/>`
  }</g>`:'';
