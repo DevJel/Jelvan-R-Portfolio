@@ -177,3 +177,98 @@
   .navigation button { flex-basis: 138px; width: 138px; }
   .panelHeader { padding-inline: 12px; }
 }
+
+
+/* Premium density update: applies to the /tools component only. */
+.root { font-size: 12px; line-height: 1.46; background: #f6f8fb; }
+.main { max-width: 1500px; padding: 105px 31px 25px; }
+.header { padding-bottom: 23px; }
+.eyebrow { font-size: 10px; letter-spacing: .1em; }
+.header h1 { font-size: clamp(27px, 2.6vw, 35px); margin: 8px 0; }
+.header p { font-size: 12px; }
+.local { font-size: 10px; padding: 7px 11px; bottom: 22px; }
+.workspace { grid-template-columns: 251px minmax(0,1fr); gap: 16px; }
+.navigation { padding: 12px 8px; border-radius: 9px; top: 76px; max-height: calc(100vh - 95px); }
+.navGroup { margin-top: 10px; }
+.navGroup h3 { font-size: 9px; margin: 7px 0 5px; padding: 0 8px; }
+.navigation button { min-height: 37px; gap: 8px; padding: 6px 8px; border-radius: 6px; }
+.navigation strong { font-size: 11px; line-height: 1.35; }
+.navigation small { font-size: 9.5px; margin-top: 1px; }
+.toolIcon { width: 28px; height: 28px; flex-basis: 28px; border-radius: 6px; }
+.toolIcon svg { width: 16px; height: 16px; }
+.searchBox label { font-size: 10px; margin-bottom: 4px; }
+.searchBox input { font-size: 12px; min-height: 36px; padding: 8px 10px; }
+.panel { border-radius: 10px; }
+.panelHeader { padding: 17px 21px; gap: 11px; }
+.panelHeader h2 { font-size: 17px; }
+.panelHeader p { font-size: 10.5px; margin-top: 3px; }
+.content { padding: 20px 21px; }
+.content label { font-size: 11px; margin-bottom: 13px; }
+.content textarea, .content select, .content input:not([type=checkbox]):not([type=range]):not([type=file]) {
+  min-height: 37px; font-size: 12px; padding: 8px 10px; border-radius: 6px; margin-top: 5px;
+}
+.content textarea { line-height: 1.55; }
+.content textarea.editor { font-size: 12px; }
+.content button, .content .file { font-size: 11px; min-height: 36px; padding: 7px 11px; border-radius: 6px; }
+.root button { font-size: 11px; min-height: 36px; }
+.fields { gap: 12px; }
+.hint { font-size: 10px; line-height: 1.58; margin: 10px 0 13px; }
+.error { font-size: 11px; }
+.notice { font-size: 10.5px; padding: 11px 13px; line-height: 1.56; margin-bottom: 17px; }
+.notice strong { font-size: 11px; }
+.result { margin: 16px 0 13px; padding: 13px; }
+.result textarea { min-height: 74px; font-size: 11px; }
+.referenceList > div { font-size: 11px; padding: 8px 11px; gap: 10px; }
+.referenceList code { font-size: 10px; }
+.footer { font-size: 10px; padding-top: 21px; }
+.copy span, .noteStatus, .content legend { font-size: 10px; }
+.stylePreview { width: 100%; height: 145px; margin: 12px 0 16px; border: 1px solid #dfe5ed; border-radius: 8px; overflow: hidden; }
+.mobileFilter { display: none; }
+.mobileFilter label { display: block; font-size: 10px; font-weight: 600; color: #5d6878; margin: 0 0 5px; }
+.mobileFilter select { width: 100%; background: #fff; color: #293346; border: 1px solid #d6dee8; border-radius: 6px; min-height: 36px; padding: 7px 10px; font-size: 12px; }
+.content .checks label { font-size: 11px; }
+@media (max-width: 1100px) {
+ .main { padding-inline: 19px; }
+ .workspace { grid-template-columns: 223px minmax(0,1fr); gap: 12px; }
+ .panelHeader, .content { padding: 17px; }
+}
+@media (max-width: 760px) {
+ .root { font-size: 11px; }
+ .main { padding: 97px 12px 20px; }
+ .header { padding-bottom: 14px; }
+ .eyebrow { font-size: 9px; }
+ .header h1 { font-size: 27px; margin: 7px 0; }
+ .header p { font-size: 11px; line-height: 1.45; }
+ .local { font-size: 9px; margin-top: 10px; padding: 5px 9px; }
+ .workspace { gap: 9px; }
+ .navigation { padding: 9px 9px 5px; max-height: none; }
+ .searchBox { padding: 0 1px 7px; }
+ .searchBox label, .mobileFilter label { font-size: 10px; }
+ .searchBox input { font-size: 16px; min-height: 37px; padding: 6px 9px; }
+ .mobileFilter { display: block; padding: 0 1px 7px; }
+ .mobileFilter select { font-size: 16px; min-height: 38px; }
+ .navScroll { gap: 5px; padding: 4px 1px 7px; }
+ .navigation button { flex: 0 0 127px; width: 127px; min-height: 40px; gap: 6px; padding: 5px 6px; }
+ .navigation strong { font-size: 10px; }
+ .toolIcon { width: 23px; height: 23px; flex-basis: 23px; }
+ .toolIcon svg { width: 14px; height: 14px; }
+ .panelHeader { padding: 13px 12px; gap: 8px; }
+ .panelHeader h2 { font-size: 16px; }
+ .panelHeader p { font-size: 10px; }
+ .content { padding: 13px 12px; }
+ .content label { font-size: 11px; margin-bottom: 11px; }
+ .content textarea, .content select, .content input:not([type=checkbox]):not([type=range]):not([type=file]) { font-size: 16px; min-height: 38px; padding: 7px 9px; }
+ .content textarea[readonly], .content textarea.editor, .result textarea { font-size: 12px; }
+ .content button, .root button { font-size: 11px; min-height: 35px; padding: 7px 9px; }
+ .hint { font-size: 10px; }
+ .notice { font-size: 10px; padding: 10px 11px; }
+ .notice strong { font-size: 10.5px; }
+ .result { padding: 10px; }
+ .stylePreview { height: 118px; }
+ .footer { font-size: 9px; padding-top: 18px; }
+}
+@media (max-width: 360px) {
+ .main { padding-inline: 9px; }
+ .navigation button { flex-basis: 120px; width: 120px; }
+ .content { padding-inline: 10px; }
+}
