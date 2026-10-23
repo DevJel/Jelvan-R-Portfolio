@@ -64,3 +64,116 @@
 @media(max-width: 1000px) { .main { padding-inline: 28px; } .workspace { grid-template-columns: 220px minmax(0, 1fr); gap: 18px; } .content, .panelHeader { padding: 22px; } }
 @media(max-width: 760px) { .main { padding: 105px 18px 22px; } .header { padding-bottom: 26px; } .header p { font-size: 13px; } .local { position: static; display: inline-block; margin-top: 18px; } .workspace { display: block; } .navigation { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 6px; margin-bottom: 20px; } .navigation button { padding: 12px 8px; gap: 8px; } .navigation strong { font-size: 10px; } .navigation small { display: none; } .toolIcon { flex-basis: 30px; height: 30px; width: 30px; } .toolIcon svg { width: 18px; height: 18px; } .panelHeader { padding: 20px 16px; } .content { padding: 20px 16px; } .toolbar .inline { margin-left: 0; width: 100%; justify-content: space-between; } .fields { gap: 12px; } .root input, .content textarea, .content select { font-size: 16px; } .content textarea.editor { font-size: 16px; } .copy { min-width: 0; } }
 @media(prefers-reduced-motion: reduce) { .root button { transition: none; } }
+
+
+/* Developer workspace dashboard treatment: scoped entirely to the tools route. */
+.root {
+  background: #f8f9fb;
+  color: #1b2534;
+  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 14px;
+  line-height: 1.55;
+}
+.root *, .root *::before, .root *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+.main { max-width: 1480px; padding: 112px 40px 32px; }
+.header { padding-bottom: 28px; }
+.eyebrow { color: #747c89; font-size: 12px; letter-spacing: .09em; font-weight: 700; }
+.header h1 { font-size: clamp(30px, 3vw, 44px); line-height: 1.18; letter-spacing: -.04em; font-weight: 740; margin: 10px 0; }
+.header h1 span { color: #ed6d21; }
+.header p { font-size: 14px; color: #606977; }
+.local { bottom: 28px; border-color: #dde2e9; color: #576578; background: #fff; font-size: 12px; padding: 8px 13px; }
+.workspace { grid-template-columns: 276px minmax(0,1fr); gap: 22px; }
+.navigation { display: block; position: sticky; top: 86px; max-height: calc(100vh - 108px); overflow-y: auto; scrollbar-width: thin; background: #fff; border: 1px solid #e3e7ed; border-radius: 12px; padding: 14px 10px 18px; }
+.navScroll { display: block; }
+.navGroup { margin-top: 14px; }
+.navGroup h3 { font-size: 10px; color: #788291; font-weight: 750; letter-spacing: .09em; padding: 0 10px; margin: 6px 0 7px; }
+.navigation button { display: flex; width: 100%; min-height: 44px; align-items: center; gap: 10px; background: transparent; border: 1px solid transparent; padding: 9px 10px; border-radius: 8px; text-align: left; }
+.navigation button.selected { background: #fff5ee; border-color: #f1dbcc; box-shadow: none; }
+.navigation button.selected strong { color: #a64d16; }
+.navigation button.selected .toolIcon { color: #b75d1a; background: #ffe8d8; }
+.navigation strong { font-size: 13px; line-height: 1.35; font-weight: 640; color: #253141; }
+.navigation small { font-size: 11px; line-height: 1.25; color: #707b89; margin-top: 3px; }
+.toolIcon { width: 33px; height: 33px; flex-basis: 33px; border-radius: 8px; background: #edf0f4; color: #566477; }
+.toolIcon svg { width: 19px; height: 19px; }
+.searchBox { padding: 2px 5px 8px; }
+.searchBox label { display: block; color: #566374; font-size: 12px; font-weight: 650; margin-bottom: 6px; }
+.searchBox input { display: block; width: 100%; border: 1px solid #d6dce5; border-radius: 7px; padding: 11px 12px; background: #fff; color: #1f2a37; font-size: 14px; min-height: 42px; }
+.panel { border-radius: 12px; border-color: #e0e5ec; box-shadow: 0 2px 12px rgba(19, 29, 47, .035); }
+.panelHeader { padding: 23px 26px; border-color: #e9edf2; }
+.panelHeader h2 { font-size: 22px; font-weight: 720; letter-spacing: -.03em; }
+.panelHeader p { font-size: 13px; color: #667486; }
+.content { padding: 26px; }
+.content label { color: #344357; font-size: 13px; font-weight: 620; margin-bottom: 18px; }
+.content textarea, .content select, .content input:not([type=checkbox]):not([type=range]):not([type=file]) { background: #fff; border: 1px solid #d7dee8; color: #172236; border-radius: 7px; min-height: 44px; font-size: 14px; padding: 11px 12px; }
+.content textarea { line-height: 1.6; max-width: 100%; }
+.content textarea.editor { font-size: 13px; }
+.content button, .content .file { border-radius: 7px; font-size: 13px; min-height: 40px; border-color: #d5dce5; font-weight: 600; padding: 9px 15px; }
+.root .primary { background: #ed6d21; border-color: #d95f17; color: #fff; }
+.root .primary:hover { background: #d45c15; border-color: #c65313; }
+.root button:hover { background: #f3f5f8; border-color: #b8c2cf; }
+.root button.primary:hover { background: #d45c15; }
+.result { border: 1px solid #e5eaf0; border-radius: 9px; padding: 18px; background: #fafbfc; }
+.result textarea { min-height: 94px; font-size: 13px; overflow-wrap: anywhere; }
+.hint { font-size: 12px; line-height: 1.55; color: #6a7687; }
+.error { font-size: 13px; color: #ba2835; }
+.notice { background: #fffaf5; border: 1px solid #eed8c5; border-left: 4px solid #ed6d21; border-radius: 8px; padding: 14px 16px; margin: 0 0 24px; font-size: 13px; line-height: 1.6; color: #6b4b31; }
+.notice strong { display: block; color: #513421; font-weight: 750; font-size: 14px; }
+.notice p { margin: 6px 0 0; }
+.optionLabel { display: flex !important; gap: 9px; align-items: center; margin-top: 24px; }
+.optionLabel input { width: 17px; height: 17px; accent-color: #c15c20; }
+.colorSwatch { width: 100%; height: 56px; margin: -5px 0 19px; border: 1px solid #cbd4de; border-radius: 8px; }
+.referenceList { border: 1px solid #e1e6ed; border-radius: 9px; max-height: 400px; overflow-y: auto; }
+.referenceList > div { display: flex; align-items: center; gap: 16px; padding: 11px 16px; border-bottom: 1px solid #e8edf2; font-size: 13px; }
+.referenceList > div:last-child { border-bottom: 0; }
+.referenceList code { background: #edf1f5; border-radius: 5px; padding: 4px 8px; font-weight: 700; font-size: 12px; color: #314255; min-width: 44px; text-align: center; }
+.content .checks label { margin: 0; }
+.content .fields > label { min-width: 0; }
+.footer { font-size: 12px; color: #7b8796; }
+.root :is(button, input, textarea, select, a):focus-visible { outline: 2px solid #c65b1b; outline-offset: 2px; }
+@media (max-width: 1100px) {
+  .main { padding-inline: 24px; }
+  .workspace { grid-template-columns: 244px minmax(0,1fr); gap: 16px; }
+  .content, .panelHeader { padding: 22px; }
+}
+@media (max-width: 760px) {
+  .main { padding: 100px 14px 24px; }
+  .header { padding-bottom: 19px; }
+  .header h1 { font-size: 34px; }
+  .header p { font-size: 13px; }
+  .local { margin-top: 14px; }
+  .workspace { display: flex; flex-direction: column; gap: 12px; }
+  .navigation { position: static; width: 100%; overflow: visible; max-height: none; padding: 10px 10px 8px; flex: 0 0 auto; border-radius: 10px; margin: 0; }
+  .searchBox { padding: 0 2px 7px; }
+  .navScroll { display: flex; overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: thin; max-width: 100%; gap: 8px; padding: 5px 2px 11px; }
+  .navGroup { display: contents; }
+  .navGroup h3 { display: none; }
+  .navigation button { flex: 0 0 152px; width: 152px; min-height: 50px; padding: 8px 7px; margin: 0; }
+  .navigation small { display: none; }
+  .navigation strong { display: block; font-size: 12px; }
+  .toolIcon { width: 29px; height: 29px; flex-basis: 29px; }
+  .toolIcon svg { width: 17px; height: 17px; }
+  .panel { width: 100%; border-radius: 10px; }
+  .panelHeader { padding: 18px 15px; gap: 10px; }
+  .panelHeader h2 { font-size: 19px; }
+  .panelHeader p { font-size: 12px; }
+  .content { padding: 16px 14px; }
+  .content textarea, .content select, .content input:not([type=checkbox]):not([type=range]):not([type=file]) { font-size: 16px; }
+  .fields { grid-template-columns: minmax(0,1fr); gap: 0; }
+  .optionLabel { margin-top: 0; padding-bottom: 10px; }
+  .toolbar { gap: 8px; }
+  .toolbar button { flex: 0 1 auto; }
+  .toolbar .inline { display: flex; flex-wrap: wrap; }
+  .hint { font-size: 12px; }
+  .notice { padding: 12px 13px; font-size: 12px; }
+  .footer { padding-top: 25px; }
+}
+@media (max-width: 360px) {
+  .main { padding-inline: 10px; }
+  .content { padding-inline: 11px; }
+  .navigation button { flex-basis: 138px; width: 138px; }
+  .panelHeader { padding-inline: 12px; }
+}
