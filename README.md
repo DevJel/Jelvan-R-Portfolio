@@ -66,7 +66,7 @@ npm run dev          # http://localhost:3000
 | `npm run build` | Static export to `out/` (type-checks too) |
 | `npm run typecheck` | TypeScript check only |
 | `npm run preview` | Build the site, then run the contact Worker locally with Wrangler |
-| `npm run deploy` | Build, then deploy to Cloudflare |
+| `npm run deploy` | Build, then deploy the contact API Worker only (not the Pages website) |
 
 ---
 
