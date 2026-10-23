@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" role="img" aria-label="Notification Bell" data-creator="Jelvan Elements" data-collection="Premium Icon Studio">
+<svg xmlns="http://www.w3.org/2000/svg" id="premium-icon-notification-bell" width="120" height="120" viewBox="0 0 120 120" role="img" aria-label="Notification Bell" data-creator="Jelvan Elements" data-collection="Premium Icon Studio">
 <title>Notification Bell — Jelvan Elements premium vector icon</title>
 <desc>Communication original vector icon. Static edition.</desc>
 <metadata>Jelvan Elements | Communication | notification-bell | Original vector artwork</metadata>
-<defs><linearGradient id="surface" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#1D2C3E"/><stop offset="1" stop-color="#0B121F"/></linearGradient><linearGradient id="edge" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#80C6FF"/><stop offset="1" stop-color="#FF9A56"/></linearGradient></defs>
+<defs><linearGradient id="premium-surface-notification-bell" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#1D2C3E"/><stop offset="1" stop-color="#0B121F"/></linearGradient><linearGradient id="premium-edge-notification-bell" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#80C6FF"/><stop offset="1" stop-color="#FF9A56"/></linearGradient></defs>
 
-<rect x="5" y="5" width="110" height="110" rx="24" fill="url(#surface)" stroke="#4B5F74" stroke-opacity=".7" stroke-width="1.6"/>
-<path d="M22 15h22M76 105h22" stroke="url(#edge)" stroke-width="2.3" stroke-linecap="round" opacity=".8"/>
+<rect x="5" y="5" width="110" height="110" rx="24" fill="url(#premium-surface-notification-bell)" stroke="#4B5F74" stroke-opacity=".7" stroke-width="1.6"/>
+<path d="M22 15h22M76 105h22" stroke="url(#premium-edge-notification-bell)" stroke-width="2.3" stroke-linecap="round" opacity=".8"/>
 <circle cx="98" cy="23" r="2.5" fill="#80C6FF" opacity=".85"/>
 <g><path d="M37 78h46l-8-13V48c0-22-30-22-30 0v17Z" stroke="#E9F2FB" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M53 87q7 15 14 0" stroke="#FFAD61" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="60" cy="30" r="4" fill="#FFAD61" stroke="#FFAD61" stroke-width="1"/><path d="M91 35q7 10 7 20" stroke="#6ECBD2" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
 

@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" role="img" aria-label="Edge Network" data-creator="Jelvan Elements" data-collection="Premium Icon Studio">
+<svg xmlns="http://www.w3.org/2000/svg" id="premium-icon-edge-network" width="120" height="120" viewBox="0 0 120 120" role="img" aria-label="Edge Network" data-creator="Jelvan Elements" data-collection="Premium Icon Studio">
 <title>Edge Network — Jelvan Elements premium vector icon</title>
 <desc>Cloud original vector icon. Static edition.</desc>
 <metadata>Jelvan Elements | Cloud | edge-network | Original vector artwork</metadata>
-<defs><linearGradient id="surface" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#1D2C3E"/><stop offset="1" stop-color="#0B121F"/></linearGradient><linearGradient id="edge" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#74D5CE"/><stop offset="1" stop-color="#FF9A56"/></linearGradient></defs>
+<defs><linearGradient id="premium-surface-edge-network" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#1D2C3E"/><stop offset="1" stop-color="#0B121F"/></linearGradient><linearGradient id="premium-edge-edge-network" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#74D5CE"/><stop offset="1" stop-color="#FF9A56"/></linearGradient></defs>
 
-<rect x="5" y="5" width="110" height="110" rx="24" fill="url(#surface)" stroke="#4B5F74" stroke-opacity=".7" stroke-width="1.6"/>
-<path d="M22 15h22M76 105h22" stroke="url(#edge)" stroke-width="2.3" stroke-linecap="round" opacity=".8"/>
+<rect x="5" y="5" width="110" height="110" rx="24" fill="url(#premium-surface-edge-network)" stroke="#4B5F74" stroke-opacity=".7" stroke-width="1.6"/>
+<path d="M22 15h22M76 105h22" stroke="url(#premium-edge-edge-network)" stroke-width="2.3" stroke-linecap="round" opacity=".8"/>
 <circle cx="98" cy="23" r="2.5" fill="#74D5CE" opacity=".85"/>
 <g><polygon points="60,25 89,43 89,77 60,95 31,77 31,43" fill="none" stroke="#E9F2FB" stroke-width="3" stroke-linejoin="round"/><path d="M60 25v70M31 43l58 34M89 43L31 77" stroke="#6ECBD2" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="60" cy="25" r="4" fill="#6ECBD2" stroke="#6ECBD2" stroke-width="1"/><circle cx="89" cy="43" r="4" fill="#FFAD61" stroke="#FFAD61" stroke-width="1"/><circle cx="89" cy="77" r="4" fill="#6ECBD2" stroke="#6ECBD2" stroke-width="1"/><circle cx="60" cy="95" r="4" fill="#FFAD61" stroke="#FFAD61" stroke-width="1"/><circle cx="31" cy="77" r="4" fill="#6ECBD2" stroke="#6ECBD2" stroke-width="1"/><circle cx="31" cy="43" r="4" fill="#FFAD61" stroke="#FFAD61" stroke-width="1"/></g>
 

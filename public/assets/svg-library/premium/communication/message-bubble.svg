@@ -1,18 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" role="img" aria-label="Message Pulse" data-creator="Jelvan Elements" data-collection="Premium Icon Studio">
+<svg xmlns="http://www.w3.org/2000/svg" id="premium-icon-message-bubble" width="120" height="120" viewBox="0 0 120 120" role="img" aria-label="Message Pulse" data-creator="Jelvan Elements" data-collection="Premium Icon Studio">
 <title>Message Pulse — Jelvan Elements premium vector icon</title>
 <desc>Communication original vector icon. Includes subtle CSS animation and reduced-motion support.</desc>
 <metadata>Jelvan Elements | Communication | message-bubble | Original vector artwork</metadata>
-<defs><linearGradient id="surface" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#1D2C3E"/><stop offset="1" stop-color="#0B121F"/></linearGradient><linearGradient id="edge" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#80C6FF"/><stop offset="1" stop-color="#FF9A56"/></linearGradient></defs>
+<defs><linearGradient id="premium-surface-message-bubble" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#1D2C3E"/><stop offset="1" stop-color="#0B121F"/></linearGradient><linearGradient id="premium-edge-message-bubble" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#80C6FF"/><stop offset="1" stop-color="#FF9A56"/></linearGradient></defs>
 <style>
 @keyframes orbit{to{transform:rotate(360deg)}}
 @keyframes pulse{0%,100%{opacity:.26;transform:scale(.86)}50%{opacity:1;transform:scale(1.12)}}
 @keyframes drift{0%,100%{transform:translateY(-4px)}50%{transform:translateY(4px)}}
 @keyframes shimmer{0%,100%{opacity:.16}50%{opacity:.85}}
-.motion{transform-box:fill-box;transform-origin:center;animation:drift 3.4s ease-in-out infinite;}
-@media(prefers-reduced-motion:reduce){.motion{animation:none!important}}
+#premium-icon-message-bubble .motion{transform-box:fill-box;transform-origin:center;animation:drift 3.4s ease-in-out infinite;}
+@media(prefers-reduced-motion:reduce){#premium-icon-message-bubble .motion{animation:none!important}}
 </style>
-<rect x="5" y="5" width="110" height="110" rx="24" fill="url(#surface)" stroke="#4B5F74" stroke-opacity=".7" stroke-width="1.6"/>
-<path d="M22 15h22M76 105h22" stroke="url(#edge)" stroke-width="2.3" stroke-linecap="round" opacity=".8"/>
+<rect x="5" y="5" width="110" height="110" rx="24" fill="url(#premium-surface-message-bubble)" stroke="#4B5F74" stroke-opacity=".7" stroke-width="1.6"/>
+<path d="M22 15h22M76 105h22" stroke="url(#premium-edge-message-bubble)" stroke-width="2.3" stroke-linecap="round" opacity=".8"/>
 <circle cx="98" cy="23" r="2.5" fill="#80C6FF" opacity=".85"/>
 <g><path d="M24 31h72v48H56L36 95V79H24Z" stroke="#E9F2FB" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M38 58h13l8-12 10 23 8-12h8" stroke="#FFAD61" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
 <g class="motion"><path d="M20 84l5-9 6 9-6 9ZM88 29l5-9 6 9-6 9Z" fill="#80C6FF" opacity=".7"/></g>

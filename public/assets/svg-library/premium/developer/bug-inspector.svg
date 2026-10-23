@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" role="img" aria-label="Bug Inspector" data-creator="Jelvan Elements" data-collection="Premium Icon Studio">
+<svg xmlns="http://www.w3.org/2000/svg" id="premium-icon-bug-inspector" width="120" height="120" viewBox="0 0 120 120" role="img" aria-label="Bug Inspector" data-creator="Jelvan Elements" data-collection="Premium Icon Studio">
 <title>Bug Inspector — Jelvan Elements premium vector icon</title>
 <desc>Developer original vector icon. Static edition.</desc>
 <metadata>Jelvan Elements | Developer | bug-inspector | Original vector artwork</metadata>
-<defs><linearGradient id="surface" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#1D2C3E"/><stop offset="1" stop-color="#0B121F"/></linearGradient><linearGradient id="edge" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#65C5EB"/><stop offset="1" stop-color="#FF9A56"/></linearGradient></defs>
+<defs><linearGradient id="premium-surface-bug-inspector" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#1D2C3E"/><stop offset="1" stop-color="#0B121F"/></linearGradient><linearGradient id="premium-edge-bug-inspector" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#65C5EB"/><stop offset="1" stop-color="#FF9A56"/></linearGradient></defs>
 
-<rect x="5" y="5" width="110" height="110" rx="24" fill="url(#surface)" stroke="#4B5F74" stroke-opacity=".7" stroke-width="1.6"/>
-<path d="M22 15h22M76 105h22" stroke="url(#edge)" stroke-width="2.3" stroke-linecap="round" opacity=".8"/>
+<rect x="5" y="5" width="110" height="110" rx="24" fill="url(#premium-surface-bug-inspector)" stroke="#4B5F74" stroke-opacity=".7" stroke-width="1.6"/>
+<path d="M22 15h22M76 105h22" stroke="url(#premium-edge-bug-inspector)" stroke-width="2.3" stroke-linecap="round" opacity=".8"/>
 <circle cx="98" cy="23" r="2.5" fill="#65C5EB" opacity=".85"/>
 <g><circle cx="60" cy="62" r="17" fill="#253648" stroke="#E9F2FB" stroke-width="3"/><path d="M48 42l-6-7m30 7 6-7M43 57H29m14 12H29m48-12h14m-14 12h14M49 81l-8 8m30-8 8 8" stroke="#FFAD61" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M50 45q10-17 20 0M60 51v27" stroke="#6ECBD2" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
 

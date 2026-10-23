@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" role="img" aria-label="Agent Navigator" data-creator="Jelvan Elements" data-collection="Premium Icon Studio">
+<svg xmlns="http://www.w3.org/2000/svg" id="premium-icon-agent-navigator" width="120" height="120" viewBox="0 0 120 120" role="img" aria-label="Agent Navigator" data-creator="Jelvan Elements" data-collection="Premium Icon Studio">
 <title>Agent Navigator — Jelvan Elements premium vector icon</title>
 <desc>AI original vector icon. Static edition.</desc>
 <metadata>Jelvan Elements | AI | agent-navigator | Original vector artwork</metadata>
-<defs><linearGradient id="surface" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#1D2C3E"/><stop offset="1" stop-color="#0B121F"/></linearGradient><linearGradient id="edge" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#BBAAFF"/><stop offset="1" stop-color="#FF9A56"/></linearGradient></defs>
+<defs><linearGradient id="premium-surface-agent-navigator" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#1D2C3E"/><stop offset="1" stop-color="#0B121F"/></linearGradient><linearGradient id="premium-edge-agent-navigator" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#BBAAFF"/><stop offset="1" stop-color="#FF9A56"/></linearGradient></defs>
 
-<rect x="5" y="5" width="110" height="110" rx="24" fill="url(#surface)" stroke="#4B5F74" stroke-opacity=".7" stroke-width="1.6"/>
-<path d="M22 15h22M76 105h22" stroke="url(#edge)" stroke-width="2.3" stroke-linecap="round" opacity=".8"/>
+<rect x="5" y="5" width="110" height="110" rx="24" fill="url(#premium-surface-agent-navigator)" stroke="#4B5F74" stroke-opacity=".7" stroke-width="1.6"/>
+<path d="M22 15h22M76 105h22" stroke="url(#premium-edge-agent-navigator)" stroke-width="2.3" stroke-linecap="round" opacity=".8"/>
 <circle cx="98" cy="23" r="2.5" fill="#BBAAFF" opacity=".85"/>
 <g><circle cx="60" cy="60" r="32" fill="#1C3042" stroke="#E9F2FB" stroke-width="3"/><polygon points="60,30 75,75 60,66 45,75" fill="#FFAD61" stroke="#FFAD61" stroke-width="2" stroke-linejoin="round"/><circle cx="60" cy="61" r="6" fill="#EDF2F8" stroke="#EDF2F8" stroke-width="1"/><path d="M29 29l9 9m44 44 9 9" stroke="#6ECBD2" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
 <g><path d="M20 84l5-9 6 9-6 9ZM88 29l5-9 6 9-6 9Z" fill="#BBAAFF" opacity=".7"/></g>

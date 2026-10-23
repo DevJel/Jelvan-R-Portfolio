@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" role="img" aria-label="Global Compass" data-creator="Jelvan Elements" data-collection="Premium Icon Studio">
+<svg xmlns="http://www.w3.org/2000/svg" id="premium-icon-global-compass" width="120" height="120" viewBox="0 0 120 120" role="img" aria-label="Global Compass" data-creator="Jelvan Elements" data-collection="Premium Icon Studio">
 <title>Global Compass — Jelvan Elements premium vector icon</title>
 <desc>Business original vector icon. Static edition.</desc>
 <metadata>Jelvan Elements | Business | global-compass | Original vector artwork</metadata>
-<defs><linearGradient id="surface" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#1D2C3E"/><stop offset="1" stop-color="#0B121F"/></linearGradient><linearGradient id="edge" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#A3D49B"/><stop offset="1" stop-color="#FF9A56"/></linearGradient></defs>
+<defs><linearGradient id="premium-surface-global-compass" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#1D2C3E"/><stop offset="1" stop-color="#0B121F"/></linearGradient><linearGradient id="premium-edge-global-compass" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#A3D49B"/><stop offset="1" stop-color="#FF9A56"/></linearGradient></defs>
 
-<rect x="5" y="5" width="110" height="110" rx="24" fill="url(#surface)" stroke="#4B5F74" stroke-opacity=".7" stroke-width="1.6"/>
-<path d="M22 15h22M76 105h22" stroke="url(#edge)" stroke-width="2.3" stroke-linecap="round" opacity=".8"/>
+<rect x="5" y="5" width="110" height="110" rx="24" fill="url(#premium-surface-global-compass)" stroke="#4B5F74" stroke-opacity=".7" stroke-width="1.6"/>
+<path d="M22 15h22M76 105h22" stroke="url(#premium-edge-global-compass)" stroke-width="2.3" stroke-linecap="round" opacity=".8"/>
 <circle cx="98" cy="23" r="2.5" fill="#A3D49B" opacity=".85"/>
 <g><circle cx="60" cy="60" r="35" fill="none" stroke="#E9F2FB" stroke-width="3"/><ellipse cx="60" cy="60" rx="15" ry="35" fill="none" stroke="#6ECBD2" stroke-width="2"/><path d="M25 60h70M30 45h60M30 75h60" stroke="#6ECBD2" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><polygon points="60,39 68,63 60,60 52,63" fill="#FFAD61" stroke="#FFAD61" stroke-width="1" stroke-linejoin="round"/></g>
 

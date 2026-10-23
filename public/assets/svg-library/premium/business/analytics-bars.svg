@@ -1,18 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" role="img" aria-label="Analytics Bars" data-creator="Jelvan Elements" data-collection="Premium Icon Studio">
+<svg xmlns="http://www.w3.org/2000/svg" id="premium-icon-analytics-bars" width="120" height="120" viewBox="0 0 120 120" role="img" aria-label="Analytics Bars" data-creator="Jelvan Elements" data-collection="Premium Icon Studio">
 <title>Analytics Bars — Jelvan Elements premium vector icon</title>
 <desc>Business original vector icon. Includes subtle CSS animation and reduced-motion support.</desc>
 <metadata>Jelvan Elements | Business | analytics-bars | Original vector artwork</metadata>
-<defs><linearGradient id="surface" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#1D2C3E"/><stop offset="1" stop-color="#0B121F"/></linearGradient><linearGradient id="edge" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#A3D49B"/><stop offset="1" stop-color="#FF9A56"/></linearGradient></defs>
+<defs><linearGradient id="premium-surface-analytics-bars" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#1D2C3E"/><stop offset="1" stop-color="#0B121F"/></linearGradient><linearGradient id="premium-edge-analytics-bars" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#A3D49B"/><stop offset="1" stop-color="#FF9A56"/></linearGradient></defs>
 <style>
 @keyframes orbit{to{transform:rotate(360deg)}}
 @keyframes pulse{0%,100%{opacity:.26;transform:scale(.86)}50%{opacity:1;transform:scale(1.12)}}
 @keyframes drift{0%,100%{transform:translateY(-4px)}50%{transform:translateY(4px)}}
 @keyframes shimmer{0%,100%{opacity:.16}50%{opacity:.85}}
-.motion{transform-box:fill-box;transform-origin:center;animation:shimmer 2.8s ease-in-out infinite;}
-@media(prefers-reduced-motion:reduce){.motion{animation:none!important}}
+#premium-icon-analytics-bars .motion{transform-box:fill-box;transform-origin:center;animation:shimmer 2.8s ease-in-out infinite;}
+@media(prefers-reduced-motion:reduce){#premium-icon-analytics-bars .motion{animation:none!important}}
 </style>
-<rect x="5" y="5" width="110" height="110" rx="24" fill="url(#surface)" stroke="#4B5F74" stroke-opacity=".7" stroke-width="1.6"/>
-<path d="M22 15h22M76 105h22" stroke="url(#edge)" stroke-width="2.3" stroke-linecap="round" opacity=".8"/>
+<rect x="5" y="5" width="110" height="110" rx="24" fill="url(#premium-surface-analytics-bars)" stroke="#4B5F74" stroke-opacity=".7" stroke-width="1.6"/>
+<path d="M22 15h22M76 105h22" stroke="url(#premium-edge-analytics-bars)" stroke-width="2.3" stroke-linecap="round" opacity=".8"/>
 <circle cx="98" cy="23" r="2.5" fill="#A3D49B" opacity=".85"/>
 <g><rect x="29" y="63" width="13" height="27" rx="3" fill="#375C70" stroke="#6ECBD2" stroke-width="2"/><rect x="53" y="45" width="13" height="45" rx="3" fill="#35546B" stroke="#FFAD61" stroke-width="2"/><rect x="77" y="31" width="13" height="59" rx="3" fill="#365066" stroke="#E9F2FB" stroke-width="2"/><path d="M25 91h72" stroke="#FFAD61" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M29 49l28-19 25 9" stroke="#6ECBD2" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
 <g class="motion"><path d="M21 20h20M79 100h20M22 100h8M90 20h8" stroke="#A3D49B" stroke-width="2" stroke-linecap="round" opacity=".5"/></g>

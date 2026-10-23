@@ -5,13 +5,16 @@ const paletteMap={"Developer":"#65C5EB","Cloud":"#74D5CE","Security":"#F9BC76","
 const renderIcon=function renderIcon(asset,motion=true){
  const animated=asset.animated&&motion;
  const family=paletteMap[asset.category];
+ const surfaceId='premium-surface-'+asset.slug;
+ const edgeId='premium-edge-'+asset.slug;
+ const iconId='premium-icon-'+asset.slug;
  const motionStyle=`<style>
 @keyframes orbit{to{transform:rotate(360deg)}}
 @keyframes pulse{0%,100%{opacity:.26;transform:scale(.86)}50%{opacity:1;transform:scale(1.12)}}
 @keyframes drift{0%,100%{transform:translateY(-4px)}50%{transform:translateY(4px)}}
 @keyframes shimmer{0%,100%{opacity:.16}50%{opacity:.85}}
-.motion{transform-box:fill-box;transform-origin:center;animation:${['orbit 8s linear infinite','pulse 3s ease-in-out infinite','drift 3.4s ease-in-out infinite','shimmer 2.8s ease-in-out infinite'][Math.floor(defs.indexOf(asset)/2)%4]};}
-@media(prefers-reduced-motion:reduce){.motion{animation:none!important}}
+#${iconId} .motion{transform-box:fill-box;transform-origin:center;animation:${['orbit 8s linear infinite','pulse 3s ease-in-out infinite','drift 3.4s ease-in-out infinite','shimmer 2.8s ease-in-out infinite'][Math.floor(defs.indexOf(asset)/2)%4]};}
+@media(prefers-reduced-motion:reduce){#${iconId} .motion{animation:none!important}}
 </style>`;
  const motionMark=asset.animated
  ?`<g${animated?' class="motion"':''}>${Math.floor(defs.indexOf(asset)/2)%4===0
@@ -22,14 +25,14 @@ const renderIcon=function renderIcon(asset,motion=true){
  ?`<path d="M20 84l5-9 6 9-6 9ZM88 29l5-9 6 9-6 9Z" fill="${family}" opacity=".7"/>`
  :`<path d="M21 20h20M79 100h20M22 100h8M90 20h8" stroke="${family}" stroke-width="2" stroke-linecap="round" opacity=".5"/>`
  }</g>`:'';
- return `<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" role="img" aria-label="${asset.name}" data-creator="Jelvan Elements" data-collection="Premium Icon Studio">
+ return `<svg xmlns="http://www.w3.org/2000/svg" id="${iconId}" width="120" height="120" viewBox="0 0 120 120" role="img" aria-label="${asset.name}" data-creator="Jelvan Elements" data-collection="Premium Icon Studio">
 <title>${asset.name} — Jelvan Elements premium vector icon</title>
 <desc>${asset.category} original vector icon. ${animated?'Includes subtle CSS animation and reduced-motion support.':'Static edition.'}</desc>
 <metadata>Jelvan Elements | ${asset.category} | ${asset.slug} | Original vector artwork</metadata>
-<defs><linearGradient id="surface" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#1D2C3E"/><stop offset="1" stop-color="#0B121F"/></linearGradient><linearGradient id="edge" x1="0" x2="1" y1="0" y2="1"><stop stop-color="${family}"/><stop offset="1" stop-color="#FF9A56"/></linearGradient></defs>
+<defs><linearGradient id="${surfaceId}" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#1D2C3E"/><stop offset="1" stop-color="#0B121F"/></linearGradient><linearGradient id="${edgeId}" x1="0" x2="1" y1="0" y2="1"><stop stop-color="${family}"/><stop offset="1" stop-color="#FF9A56"/></linearGradient></defs>
 ${animated?motionStyle:''}
-<rect x="5" y="5" width="110" height="110" rx="24" fill="url(#surface)" stroke="#4B5F74" stroke-opacity=".7" stroke-width="1.6"/>
-<path d="M22 15h22M76 105h22" stroke="url(#edge)" stroke-width="2.3" stroke-linecap="round" opacity=".8"/>
+<rect x="5" y="5" width="110" height="110" rx="24" fill="url(#${surfaceId})" stroke="#4B5F74" stroke-opacity=".7" stroke-width="1.6"/>
+<path d="M22 15h22M76 105h22" stroke="url(#${edgeId})" stroke-width="2.3" stroke-linecap="round" opacity=".8"/>
 <circle cx="98" cy="23" r="2.5" fill="${family}" opacity=".85"/>
 <g>${asset.svg}</g>
 ${motionMark}
