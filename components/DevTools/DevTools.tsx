@@ -3,22 +3,31 @@ import Navbar from '../Navbar/Navbar';
 import { convertEncoding, generatePassword, generateTotp, htmlPreview, randomString } from '../../utils/dev-tools';
 import styles from './DevTools.module.css';
 import ExtraTools, { ExtraToolId } from './ExtraTools';
+import DataWorkbench, { DataToolId } from './DataWorkbench';
+import FrontendWorkbench, { FrontendToolId } from './FrontendWorkbench';
 
 const categories = [
   { id: 'build', title: 'BUILD & PREVIEW' },
   { id: 'data', title: 'DATA & ENCODING' },
   { id: 'security', title: 'SECURITY & IDENTIFIERS' },
   { id: 'debug', title: 'DEBUGGING & REFERENCE' },
+  { id: 'design', title: 'CSS & DESIGN' },
+  { id: 'seo', title: 'SEO & DEPLOYMENT' },
 ] as const;
 const tools = [
   { id: 'html', name: 'HTML Viewer', description: 'Safe HTML/CSS preview', icon: 'code', category: 'build' },
   { id: 'json', name: 'JSON Formatter', description: 'Validate, format and minify', icon: 'code', category: 'build' },
   { id: 'diff', name: 'Text Compare', description: 'Line-level differences', icon: 'note', category: 'build' },
   { id: 'notes', name: 'Notes', description: 'A little space to think', icon: 'note', category: 'build' },
+  { id: 'text-case', name: 'Case & Slug Converter', description: 'Text case and URL slugs', icon: 'convert', category: 'build' },
+  { id: 'text-cleaner', name: 'Text Cleaner', description: 'Sort and deduplicate lines', icon: 'note', category: 'build' },
   { id: 'encoding', name: 'Base32 / Base64', description: 'Encode, decode and inspect', icon: 'convert', category: 'data' },
   { id: 'url-codec', name: 'URL Encoder', description: 'URIComponent and URI tools', icon: 'convert', category: 'data' },
   { id: 'entities', name: 'HTML Entities', description: 'Escape and unescape markup', icon: 'code', category: 'data' },
-  { id: 'jwt', name: 'JWT Inspector', description: 'Unverified token claims', icon: 'shield', category: 'data' },
+  { id: 'csv-json', name: 'CSV / JSON Converter', description: 'Convert tabular data', icon: 'convert', category: 'data' },
+  { id: 'json-path', name: 'JSON Path Inspector', description: 'Extract JSON values', icon: 'code', category: 'data' },
+  { id: 'query-builder', name: 'Query String Builder', description: 'URL parameters and arrays', icon: 'convert', category: 'data' },
+  { id: 'jwt', name: 'JWT Inspector', description: 'Unverified token claims', icon: 'shield', category: 'security' },
   { id: 'otp', name: 'OTP Generator', description: 'Random and timed codes', icon: 'shield', category: 'security' },
   { id: 'keys', name: 'Key Generator', description: '16–128 character random keys', icon: 'key', category: 'security' },
   { id: 'password', name: 'Password Generator', description: 'Secure password strings', icon: 'lock', category: 'security' },
@@ -27,8 +36,17 @@ const tools = [
   { id: 'regex', name: 'Regex Tester', description: 'Match and inspect patterns', icon: 'code', category: 'debug' },
   { id: 'url-inspect', name: 'URL Inspector', description: 'Parse URLs and queries', icon: 'convert', category: 'debug' },
   { id: 'http', name: 'HTTP Status Codes', description: 'Common response reference', icon: 'note', category: 'debug' },
-  { id: 'color', name: 'Color Converter', description: 'HEX, RGB, HSL and contrast', icon: 'convert', category: 'debug' },
+  { id: 'color', name: 'Color Converter', description: 'HEX, RGB, HSL and contrast', icon: 'convert', category: 'design' },
+  { id: 'css-units', name: 'CSS Unit Converter', description: 'px, rem and em conversions', icon: 'convert', category: 'design' },
+  { id: 'gradient', name: 'Gradient Builder', description: 'Visual CSS color gradients', icon: 'code', category: 'design' },
+  { id: 'shadow', name: 'Shadow Builder', description: 'Visual box-shadow settings', icon: 'code', category: 'design' },
   { id: 'time', name: 'Timestamp Converter', description: 'Unix, ISO and local time', icon: 'note', category: 'debug' },
+  { id: 'curl', name: 'cURL Builder', description: 'HTTP request commands', icon: 'code', category: 'debug' },
+  { id: 'cron', name: 'Cron Builder', description: 'Scheduled job expressions', icon: 'note', category: 'debug' },
+  { id: 'meta-tags', name: 'Meta Tag Generator', description: 'SEO and social metadata', icon: 'code', category: 'seo' },
+  { id: 'robots', name: 'Robots.txt Builder', description: 'Search crawler rules', icon: 'note', category: 'seo' },
+  { id: 'sitemap', name: 'Sitemap Generator', description: 'Canonical XML sitemap', icon: 'code', category: 'seo' },
+  { id: 'redirects', name: 'Redirect Rule Builder', description: 'Cloudflare Pages redirects', icon: 'convert', category: 'seo' },
 ] as const;
 type ToolId = typeof tools[number]['id'];
 const SAMPLE = '<style>body { font-family: system-ui; padding: 32px; color: #27272a; } h1 { color: #b94e0a; } .card { padding: 28px; background: #fff7ed; border-radius: 18px; }</style>\n<div class="card">\n  <h1>Hello, developer.</h1>\n  <p>Your next idea starts here.</p>\n</div>';
@@ -224,15 +242,17 @@ function NotesTool() {
 export default function DevTools() {
   const [active, setActive] = useState<ToolId>('html');
   const [query, setQuery] = useState('');
-  const visibleTools = tools.filter(tool => (tool.name + ' ' + tool.description).toLowerCase().includes(query.toLowerCase().trim()));
+  const [category, setCategory] = useState('all');
+  const visibleTools = tools.filter(tool => (category === 'all' || category === tool.category) && (tool.name + ' ' + tool.description + ' ' + tool.category).toLowerCase().includes(query.toLowerCase().trim()));
   const current = tools.find(tool => tool.id === active)!;
   return <div className={styles.root}>
     <Navbar isLogoExpanded />
     <main className={styles.main}>
-      <header className={styles.header}><span className={styles.eyebrow}>DEVELOPER WORKSPACE / TOOLS</span><h1>Dev Tools<span>.</span></h1><p>Essential utilities for building, debugging and shipping on the web.</p><span className={styles.local}>Local-first tools · No login needed</span></header>
+      <header className={styles.header}><span className={styles.eyebrow}>{'DEVELOPER WORKSPACE / ' + tools.length + ' UTILITIES'}</span><h1>Dev Tools<span>.</span></h1><p>Essential utilities for building, debugging and shipping on the web.</p><span className={styles.local}>Local-first tools · No login needed</span></header>
       <div className={styles.workspace}>
         <nav className={styles.navigation} aria-label="Developer tools">
-          <div className={styles.searchBox}><label htmlFor="developer-tool-search">Find a tool</label><input id="developer-tool-search" aria-label="Search developer tools" type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="Search 18 tools..." autoComplete="off" /></div>
+          <div className={styles.searchBox}><label htmlFor="developer-tool-search">Find a tool</label><input id="developer-tool-search" aria-label="Search developer tools" type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="Search 32 tools..." autoComplete="off" /></div>
+          <div className={styles.mobileFilter}><label htmlFor="mobile-tool-category">Category</label><select id="mobile-tool-category" aria-label="Tool category" value={category} onChange={event => { const next = event.target.value; setCategory(next); setQuery(''); const first = tools.find(tool => next === 'all' || tool.category === next); if (first) setActive(first.id); }}><option value="all">All tools ({tools.length})</option>{categories.map(group => <option key={group.id} value={group.id}>{group.title}</option>)}</select></div>
           <div className={styles.navScroll}>
           {categories.map(category => {
             const members = visibleTools.filter(tool => tool.category === category.id);
@@ -247,7 +267,7 @@ export default function DevTools() {
           </div>
         </nav>
         <section className={styles.panel} id="tool-workspace" aria-labelledby="tool-heading"><div className={styles.panelHeader}><span className={styles.toolIcon}><Icon name={current.icon} /></span><div><h2 id="tool-heading">{current.name}</h2><p>{current.description}</p></div></div>
-          <div className={styles.content}>{active === 'html' ? <HtmlTool /> : active === 'otp' ? <OtpTool /> : active === 'keys' ? <KeyTool /> : active === 'password' ? <PasswordTool /> : active === 'encoding' ? <ExtraTools tool="encoding" /> : active === 'notes' ? <NotesTool /> : <ExtraTools tool={active as ExtraToolId} />}</div>
+          <div className={styles.content}>{active === 'html' ? <HtmlTool /> : active === 'otp' ? <OtpTool /> : active === 'keys' ? <KeyTool /> : active === 'password' ? <PasswordTool /> : active === 'encoding' ? <ExtraTools tool="encoding" /> : active === 'notes' ? <NotesTool /> : ['csv-json','json-path','query-builder','text-case','text-cleaner','curl'].includes(active) ? <DataWorkbench tool={active as DataToolId} /> : ['css-units','gradient','shadow','meta-tags','robots','sitemap','redirects','cron'].includes(active) ? <FrontendWorkbench tool={active as FrontendToolId} /> : <ExtraTools tool={active as ExtraToolId} />}</div>
         </section>
       </div>
       <footer className={styles.footer}>Developed and Designed by Jelvan® <span>2026</span></footer>
