@@ -79,7 +79,25 @@ const server = http.createServer((req,res) => {
  await page.getByLabel('Search HTTP status codes').fill('404');
  assert.ok(await page.getByRole('listitem').filter({hasText:'Not Found'}).isVisible());
  const developerNav=page.getByRole('navigation',{name:'Developer tools'});
- assert.equal(await developerNav.getByRole('button').count(),32);
+ assert.equal(await developerNav.getByRole('button').count(),33);
+ // The desktop /tools route is a fixed SaaS viewport, never a page-length document.
+ for (const size of [{width:1440,height:1000},{width:1280,height:720}]) {
+   await page.setViewportSize(size);
+   assert.ok(await page.evaluate(() => document.scrollingElement.scrollHeight <= innerHeight + 1), 'desktop page must not scroll');
+ }
+ await page.setViewportSize({width:1440,height:1000});
+ await developerNav.getByRole('button',{name:/Original SVG Library/}).click();
+ assert.equal(await page.getByRole('button',{name:/Copy SVG for/}).count(),8);
+ const source = await page.getByLabel('Original SVG source').inputValue();
+ assert.match(source,/^<svg xmlns="http:\/\/www\.w3\.org\/2000\/svg"/);
+ assert.match(source,/Orbit Nodes/);
+ await page.getByRole('button',{name:'Copy SVG code'}).click();
+ assert.equal(await page.evaluate(() => navigator.clipboard.readText()),source);
+ await page.getByLabel('SVG primary color').fill('#345678');
+ assert.ok((await page.getByLabel('Original SVG source').inputValue()).includes('#345678'));
+ const svgDownload=page.waitForEvent('download');
+ await page.getByRole('button',{name:'Download .svg'}).click();
+ assert.equal((await svgDownload).suggestedFilename(),'jelvan-orbit-nodes.svg');
  await developerNav.getByRole('button',{name:/CSV \/ JSON Converter/}).click();
  await page.getByRole('button',{name:'Convert data'}).click();
  assert.deepEqual(JSON.parse(await page.getByLabel('Converted data').inputValue()),[{name:'Ada',role:'Developer'},{name:'Lin',role:'Design, UI'}]);
@@ -151,7 +169,7 @@ const server = http.createServer((req,res) => {
   await page.goto('http://127.0.0.1:3022/'+route); await page.getByRole('heading',{name:'Dev Tools.'}).waitFor();
  }
  assert.deepEqual(errors,[]);
- console.log('PASS: 32 tool panels, premium utilities, preview isolation, OTP, 64-character keys, clipboard, passwords, encoding validation, note reload/download/deletion, legacy routes, 320px/390px layouts. No page errors.');
+ console.log('PASS: 33 tool panels, fixed desktop SaaS viewport, 8 original public-copy SVG assets, premium utilities, preview isolation, OTP, 64-character keys, clipboard, passwords, encoding validation, note reload/download/deletion, legacy routes, 320px/390px layouts. No page errors.');
  await browser.close();
  server.close();
 })().catch(e=>{console.error(e);process.exit(1)});
