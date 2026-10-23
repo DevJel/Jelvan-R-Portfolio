@@ -58,7 +58,7 @@ export interface PageSeo {
 }
 
 export const PAGES: Record<
-  'home' | 'about' | 'projects' | 'contact' | 'resume' | 'articles',
+  'home' | 'about' | 'projects' | 'contact' | 'resume' | 'articles' | 'tools',
   PageSeo
 > = {
   home: {
@@ -91,11 +91,17 @@ export const PAGES: Record<
       "Résumé of Jelvan Ricolcol: HR operations at Teleperformance (30,000+ employees, 100% audit record), Meta advertising expert at Concentrix Malaysia, freelance web developer, dual-specialization Master's in AI for Business and HR & Talent Management, IBM, AWS, Wharton and SHRM certifications.",
     path: '/portfolio/resume',
   },
+  tools: {
+    title: 'Dev Tools | Jelvan Ricolcol',
+    description: 'Browser-based HTML viewer, OTP and password generators, random keys, Base32 and Base64 converters, and local notes.',
+    path: '/tools',
+    noindex: true,
+  },
   articles: {
-    title: 'Articles | Jelvan Ricolcol',
-    description: 'Articles by Jelvan Ricolcol.',
-    path: '/articles',
-    // Placeholder articles; keep out of search until real posts are added.
+    title: 'Dev Tools | Jelvan Ricolcol',
+    description: 'Browser-based HTML viewer, OTP and password generators, random keys, Base32 and Base64 converters, and local notes.',
+    path: '/tools',
+    // Preserve the existing indexing policy for legacy article URLs.
     noindex: true,
   },
 };
@@ -214,3 +220,4 @@ export const structuredData = (): Record<string, unknown> => ({
     },
   ],
 });
+

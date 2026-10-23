@@ -40,8 +40,24 @@ jobs:
       - name: Install dependencies
         run: npm install --no-audit --no-fund
 
+      - name: Validate developer tools
+        run: npm run test:tools
+
       - name: Build static site (also type-checks)
         run: npm run build
+
+      - name: Install browser for developer tools checks
+        run: npx playwright install --with-deps chromium
+
+      - name: Test developer tools in the browser
+        run: npm run test:tools:browser
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: dev-tools-screenshots
+          path: .test-artifacts
+          retention-days: 7
 
       - name: Check export output
         run: |
@@ -52,6 +68,8 @@ jobs:
           test -f out/portfolio/contact.html
           test -f out/portfolio/resume.html
           test -f out/articles.html
+          test -f out/tools.html
+          grep -q 'HTML Viewer' out/tools.html
           test -f out/robots.txt
           test -f out/sitemap.xml
           test -f out/llms.txt
@@ -110,3 +128,4 @@ jobs:
       - name: Build and deploy
         if: steps.secrets.outputs.ready == 'true'
         run: npm run deploy
+
