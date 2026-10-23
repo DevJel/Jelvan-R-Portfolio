@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './SvgLibrary.module.css';
 import { additionalSvgAssets } from './SvgLibraryCollection';
 import { saveCollectionZip } from './SvgLibraryExport';
@@ -128,6 +128,11 @@ const originalAssets: SvgAsset[] = [
 
 const assets: SvgAsset[] = [...originalAssets, ...additionalSvgAssets];
 const categories = Array.from(new Set(assets.map(asset => asset.kind))).sort();
+const categoryCounts = categories.map(name => ({
+  name,
+  count: assets.filter(asset => asset.kind === name).length,
+}));
+const driveCollectionUrl = 'https://drive.google.com/drive/folders/1ZNQQhj1U1Us_6WHKbMOq1Xk5sXtQmonJ';
 const PAGE_SIZE = 24;
 
 const validColor = (value: string): string =>
@@ -171,6 +176,11 @@ export default function SvgLibrary() {
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState('all');
   const [shown, setShown] = useState(PAGE_SIZE);
+  useEffect(() => {
+    const requested = new URLSearchParams(window.location.search).get('collection');
+    if (requested && categories.includes(requested)) setCategory(requested);
+  }, []);
+
   const search = query.trim().toLowerCase();
   const matches = assets.filter(asset =>
     (category === 'all' || asset.kind === category) &&
@@ -197,7 +207,15 @@ export default function SvgLibrary() {
     setMessage('Full library downloaded as ' + assets.length + ' editable SVG files.');
   };
   const changeSearch = (value: string) => { setQuery(value); setShown(PAGE_SIZE); setMessage(''); };
-  const changeCategory = (value: string) => { setCategory(value); setShown(PAGE_SIZE); setMessage(''); };
+  const changeCategory = (value: string) => {
+    setCategory(value);
+    setShown(PAGE_SIZE);
+    setMessage('');
+    const url = new URL(window.location.href);
+    if (value === 'all') url.searchParams.delete('collection');
+    else url.searchParams.set('collection', value);
+    window.history.replaceState(window.history.state, '', url.pathname + url.search + url.hash);
+  };
 
   return (
     <div className={styles.library}>
@@ -215,14 +233,45 @@ export default function SvgLibrary() {
           <button className={styles.downloadAll} type="button" onClick={saveAll}>Download all {assets.length} SVGs (.zip)</button>
         </div>
       </div>
+      <section className={styles.categorySection} aria-labelledby="svg-category-heading">
+        <div className={styles.categoryHeading}>
+          <div>
+            <h4 id="svg-category-heading">Browse design categories</h4>
+            <p>Every original design is assigned to a collection. Select one to explore it.</p>
+          </div>
+          <span>{categories.length} categories</span>
+        </div>
+        <div className={styles.categoryGrid} role="group" aria-label="Filter by SVG design category">
+          <button type="button" className={category === 'all' ? styles.categoryActive : styles.categoryButton}
+            aria-pressed={category === 'all'} onClick={() => changeCategory('all')}>
+            <span>All designs</span><strong>{assets.length}</strong>
+          </button>
+          {categoryCounts.map(group => (
+            <button key={group.name} type="button"
+              className={category === group.name ? styles.categoryActive : styles.categoryButton}
+              aria-pressed={category === group.name}
+              onClick={() => changeCategory(group.name)}>
+              <span>{group.name}</span><strong>{group.count}</strong>
+            </button>
+          ))}
+        </div>
+      </section>
+      <aside className={styles.driveSource} aria-label="Additional design collection on Google Drive">
+        <div>
+          <strong>Additional design source</strong>
+          <p>Browse the linked Google Drive folder. Access depends on its sharing permissions; its contents have not yet been imported into the SVG gallery or ZIP download.</p>
+        </div>
+        <a href={driveCollectionUrl} target="_blank" rel="noopener noreferrer"
+          aria-label="Open additional design folder in Google Drive (opens in a new tab)">Open Drive folder ↗</a>
+      </aside>
       <div className={styles.filters}>
         <label htmlFor="svg-library-search">Search designs
           <input id="svg-library-search" aria-label="Search designs" type="search" value={query} onChange={event => changeSearch(event.target.value)} placeholder="Search by name or style..." autoComplete="off" />
         </label>
         <label htmlFor="svg-library-category">Collection
           <select id="svg-library-category" aria-label="Collection" value={category} onChange={event => changeCategory(event.target.value)}>
-            <option value="all">All collections</option>
-            {categories.map(group => <option key={group} value={group}>{group}</option>)}
+            <option value="all">All collections ({assets.length})</option>
+            {categoryCounts.map(group => <option key={group.name} value={group.name}>{group.name} ({group.count})</option>)}
           </select>
         </label>
         <p className={styles.count} role="status">{matches.length} designs found · Showing {visible.length}</p>
