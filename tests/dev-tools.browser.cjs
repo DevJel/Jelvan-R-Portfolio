@@ -94,6 +94,31 @@ const server = http.createServer((req,res) => {
  assert.equal(await sections.getByRole('link',{name:'Dev Tools'}).getAttribute('aria-current'),'page');
  await sections.getByRole('link',{name:'SVG Library'}).click();
  await page.getByRole('heading',{name:'SVG Library.'}).waitFor();
+ const premiumGrid=page.locator('[aria-label="Premium SVG designs"]');
+ assert.equal(await premiumGrid.getByRole('button',{name:/Copy premium SVG for/}).count(),24,
+   'The premium icon studio should show 24 aligned cards by default.');
+ const premiumDims=await premiumGrid.locator('img').evaluateAll(items =>
+   items.slice(0,6).map(item=>({width:item.getBoundingClientRect().width,height:item.getBoundingClientRect().height})));
+ assert.equal(new Set(premiumDims.map(item=>item.width + 'x' + item.height)).size,1,
+   'Premium icon sizes should align across cards.');
+ await page.getByRole('button',{name:'Pause motion'}).click();
+ assert.match(await premiumGrid.locator('img').first().getAttribute('src'),/-still\.svg$/);
+ await page.getByRole('button',{name:'Play motion'}).click();
+ assert.doesNotMatch(await premiumGrid.locator('img').first().getAttribute('src'),/-still\.svg$/);
+ await premiumGrid.getByRole('button',{name:'Copy premium SVG for Code Brackets'}).click();
+ await page.waitForFunction(() => document.querySelector('#premium-svg-source')?.value.startsWith('<svg'));
+ const premiumSource=await page.getByLabel('Premium SVG source').inputValue();
+ assert.match(premiumSource,/@media\(prefers-reduced-motion:reduce\)/);
+ assert.equal(await page.evaluate(()=>navigator.clipboard.readText()),premiumSource,
+   'Copying a premium card should copy the full animated SVG markup.');
+ await page.getByLabel('Artwork type').selectOption('animated');
+ assert.equal(await premiumGrid.getByRole('button',{name:/Copy premium SVG for/}).count(),24);
+ await page.getByLabel('Artwork type').selectOption('static');
+ assert.equal(await premiumGrid.getByRole('button',{name:/Copy premium SVG for/}).count(),24);
+ await page.getByLabel('Artwork type').selectOption('all');
+ await page.getByRole('group',{name:'Premium icon categories'}).getByRole('button',{name:/Security/}).click();
+ assert.equal(await premiumGrid.getByRole('button',{name:/Copy premium SVG for/}).count(),6);
+ await page.getByRole('group',{name:'Premium icon categories'}).getByRole('button',{name:/All icons/}).click();
  assert.equal(await page.getByRole('navigation',{name:'Developer tools'}).count(),0,'SVG Library has its own full-width workspace');
  assert.equal(await page.getByRole('navigation',{name:'Developer workspace sections'}).getByRole('link',{name:'SVG Library'}).getAttribute('aria-current'),'page');
  assert.ok(await page.evaluate(()=>document.scrollingElement.scrollHeight<=innerHeight+1),'SVG page must also use the fixed SaaS desktop viewport');

@@ -231,7 +231,7 @@ export default function SvgHardwareGallery() {
               <p>Copy this self-contained SVG into HTML, another project or an SVG editor.</p>
               <div className={shared.actions}>
                 <button type="button" disabled={!selectedSource} onClick={() => void copyAsset(selected)}>Copy selected SVG</button>
-                <button type="button" onClick={() => void downloadAsset(selected)}>Download .svg</button>
+                <button type="button" onClick={() => void downloadAsset(selected)}>Download hardware .svg</button>
               </div>
               <p className={styles.status} role="status" aria-live="polite">{message}</p>
               <label className={shared.sourceLabel} htmlFor="hardware-svg-source">Hardware SVG source · select to copy and paste</label>
