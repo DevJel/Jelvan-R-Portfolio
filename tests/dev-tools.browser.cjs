@@ -87,7 +87,27 @@ const server = http.createServer((req,res) => {
  }
  await page.setViewportSize({width:1440,height:1000});
  await developerNav.getByRole('button',{name:/Original SVG Library/}).click();
- assert.equal(await page.getByRole('button',{name:/Copy SVG for/}).count(),8);
+ assert.equal(await page.getByRole('button',{name:/Copy SVG for/}).count(),24);
+ assert.match(await page.getByRole('status').filter({hasText:'108 designs found'}).textContent(),/108 designs found/);
+ const alignedArt = await page.locator('[aria-label="Original SVG designs"] svg').evaluateAll(items =>
+   items.slice(0,6).map(item=>({w:item.getBoundingClientRect().width,h:item.getBoundingClientRect().height})));
+ assert.equal(new Set(alignedArt.map(item=>item.w + 'x' + item.h)).size,1,'SVG previews should align to one artwork size');
+ await page.getByLabel('Collection',{exact:true}).selectOption('Botanical');
+ assert.equal(await page.getByRole('button',{name:/Copy SVG for/}).count(),10);
+ await page.getByLabel('Search designs').fill('Flora Crown');
+ assert.equal(await page.getByRole('button',{name:/Copy SVG for/}).count(),1);
+ await page.getByLabel('Search designs').fill('');
+ await page.getByLabel('Collection',{exact:true}).selectOption('all');
+ assert.equal(await page.getByRole('button',{name:/Copy SVG for/}).count(),24);
+ await page.getByRole('button',{name:/Show more SVG designs/}).click();
+ assert.equal(await page.getByRole('button',{name:/Copy SVG for/}).count(),48);
+ const allDownload = page.waitForEvent('download');
+ await page.getByRole('button',{name:'Download all 108 SVGs (.zip)'}).click();
+ const zipFile=await allDownload;
+ assert.equal(zipFile.suggestedFilename(),'jelvan-original-svg-collection-108.zip');
+ const zipBytes=fs.readFileSync(await zipFile.path());
+ assert.equal(zipBytes.readUInt32LE(0),0x04034b50);
+ assert.equal(zipBytes.readUInt16LE(zipBytes.length-12),108);
  const source = await page.getByLabel('Original SVG source').inputValue();
  assert.match(source,/^<svg xmlns="http:\/\/www\.w3\.org\/2000\/svg"/);
  assert.match(source,/Orbit Nodes/);
@@ -172,7 +192,7 @@ const server = http.createServer((req,res) => {
   await page.goto('http://127.0.0.1:3022/'+route); await page.getByRole('heading',{name:'Dev Tools.'}).waitFor();
  }
  assert.deepEqual(errors,[]);
- console.log('PASS: 33 tool panels, fixed desktop SaaS viewport, 8 original public-copy SVG assets, premium utilities, preview isolation, OTP, 64-character keys, clipboard, passwords, encoding validation, note reload/download/deletion, legacy routes, 320px/390px layouts. No page errors.');
+ console.log('PASS: 33 tool panels, fixed desktop SaaS viewport, 108 aligned and downloadable SVG assets, premium utilities, preview isolation, OTP, 64-character keys, clipboard, passwords, encoding validation, note reload/download/deletion, legacy routes, 320px/390px layouts. No page errors.');
  await browser.close();
  server.close();
 })().catch(e=>{console.error(e);process.exit(1)});
