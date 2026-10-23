@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" role="img" aria-label="Motion Ribbon" data-creator="Jelvan Elements" data-collection="Premium Icon Studio">
+<title>Motion Ribbon — Jelvan Elements premium vector icon</title>
+<desc>Design original vector icon. Static edition.</desc>
+<metadata>Jelvan Elements | Design | motion-ribbon | Original vector artwork</metadata>
+<defs><linearGradient id="surface" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#1D2C3E"/><stop offset="1" stop-color="#0B121F"/></linearGradient><linearGradient id="edge" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#F6A4C4"/><stop offset="1" stop-color="#FF9A56"/></linearGradient></defs>
+
+<rect x="5" y="5" width="110" height="110" rx="24" fill="url(#surface)" stroke="#4B5F74" stroke-opacity=".7" stroke-width="1.6"/>
+<path d="M22 15h22M76 105h22" stroke="url(#edge)" stroke-width="2.3" stroke-linecap="round" opacity=".8"/>
+<circle cx="98" cy="23" r="2.5" fill="#F6A4C4" opacity=".85"/>
+<g><path d="M26 42c25-27 46 22 68-4M26 59c30-28 43 28 68 0M26 76c28-30 44 27 68 5" stroke="#E9F2FB" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M75 33l19 5-8 17" stroke="#FFAD61" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="37" cy="77" r="5" fill="#6ECBD2" stroke="#6ECBD2" stroke-width="1"/></g>
+
+</svg>

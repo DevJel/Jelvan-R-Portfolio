@@ -1,0 +1,290 @@
+[
+  {
+    "slug": "code-brackets",
+    "name": "Code Brackets",
+    "category": "Developer",
+    "animated": true
+  },
+  {
+    "slug": "terminal-window",
+    "name": "Terminal Window",
+    "category": "Developer",
+    "animated": false
+  },
+  {
+    "slug": "api-circuit",
+    "name": "API Circuit",
+    "category": "Developer",
+    "animated": true
+  },
+  {
+    "slug": "git-branch",
+    "name": "Git Branch",
+    "category": "Developer",
+    "animated": false
+  },
+  {
+    "slug": "database-stack",
+    "name": "Database Stack",
+    "category": "Developer",
+    "animated": true
+  },
+  {
+    "slug": "bug-inspector",
+    "name": "Bug Inspector",
+    "category": "Developer",
+    "animated": false
+  },
+  {
+    "slug": "cloud-orbit",
+    "name": "Cloud Orbit",
+    "category": "Cloud",
+    "animated": true
+  },
+  {
+    "slug": "edge-network",
+    "name": "Edge Network",
+    "category": "Cloud",
+    "animated": false
+  },
+  {
+    "slug": "server-rack",
+    "name": "Server Rack",
+    "category": "Cloud",
+    "animated": true
+  },
+  {
+    "slug": "launch-rocket",
+    "name": "Launch Rocket",
+    "category": "Cloud",
+    "animated": false
+  },
+  {
+    "slug": "data-stream",
+    "name": "Data Stream",
+    "category": "Cloud",
+    "animated": true
+  },
+  {
+    "slug": "sync-arrows",
+    "name": "Sync Arrows",
+    "category": "Cloud",
+    "animated": false
+  },
+  {
+    "slug": "secure-lock",
+    "name": "Secure Lock",
+    "category": "Security",
+    "animated": true
+  },
+  {
+    "slug": "key-vault",
+    "name": "Key Vault",
+    "category": "Security",
+    "animated": false
+  },
+  {
+    "slug": "shield-check",
+    "name": "Shield Check",
+    "category": "Security",
+    "animated": true
+  },
+  {
+    "slug": "fingerprint",
+    "name": "Fingerprint",
+    "category": "Security",
+    "animated": false
+  },
+  {
+    "slug": "privacy-eye",
+    "name": "Privacy Eye",
+    "category": "Security",
+    "animated": true
+  },
+  {
+    "slug": "identity-portal",
+    "name": "Identity Portal",
+    "category": "Security",
+    "animated": false
+  },
+  {
+    "slug": "neural-spark",
+    "name": "Neural Spark",
+    "category": "AI",
+    "animated": true
+  },
+  {
+    "slug": "brain-circuit",
+    "name": "Brain Circuit",
+    "category": "AI",
+    "animated": false
+  },
+  {
+    "slug": "agent-navigator",
+    "name": "Agent Navigator",
+    "category": "AI",
+    "animated": true
+  },
+  {
+    "slug": "model-layers",
+    "name": "Model Layers",
+    "category": "AI",
+    "animated": false
+  },
+  {
+    "slug": "prompt-stars",
+    "name": "Prompt Stars",
+    "category": "AI",
+    "animated": true
+  },
+  {
+    "slug": "data-lens",
+    "name": "Data Lens",
+    "category": "AI",
+    "animated": false
+  },
+  {
+    "slug": "vector-pen",
+    "name": "Vector Pen",
+    "category": "Design",
+    "animated": true
+  },
+  {
+    "slug": "color-palette",
+    "name": "Color Palette",
+    "category": "Design",
+    "animated": false
+  },
+  {
+    "slug": "layout-grid",
+    "name": "Layout Grid",
+    "category": "Design",
+    "animated": true
+  },
+  {
+    "slug": "magic-wand",
+    "name": "Magic Wand",
+    "category": "Design",
+    "animated": false
+  },
+  {
+    "slug": "type-studio",
+    "name": "Type Studio",
+    "category": "Design",
+    "animated": true
+  },
+  {
+    "slug": "motion-ribbon",
+    "name": "Motion Ribbon",
+    "category": "Design",
+    "animated": false
+  },
+  {
+    "slug": "analytics-bars",
+    "name": "Analytics Bars",
+    "category": "Business",
+    "animated": true
+  },
+  {
+    "slug": "growth-arrow",
+    "name": "Growth Arrow",
+    "category": "Business",
+    "animated": false
+  },
+  {
+    "slug": "calendar-planner",
+    "name": "Calendar Planner",
+    "category": "Business",
+    "animated": true
+  },
+  {
+    "slug": "workflow-steps",
+    "name": "Workflow Steps",
+    "category": "Business",
+    "animated": false
+  },
+  {
+    "slug": "invoice-seal",
+    "name": "Invoice Seal",
+    "category": "Business",
+    "animated": true
+  },
+  {
+    "slug": "global-compass",
+    "name": "Global Compass",
+    "category": "Business",
+    "animated": false
+  },
+  {
+    "slug": "message-bubble",
+    "name": "Message Pulse",
+    "category": "Communication",
+    "animated": true
+  },
+  {
+    "slug": "email-flight",
+    "name": "Email Flight",
+    "category": "Communication",
+    "animated": false
+  },
+  {
+    "slug": "call-waves",
+    "name": "Call Waves",
+    "category": "Communication",
+    "animated": true
+  },
+  {
+    "slug": "team-orbit",
+    "name": "Team Orbit",
+    "category": "Communication",
+    "animated": false
+  },
+  {
+    "slug": "broadcast-signal",
+    "name": "Broadcast Signal",
+    "category": "Communication",
+    "animated": true
+  },
+  {
+    "slug": "notification-bell",
+    "name": "Notification Bell",
+    "category": "Communication",
+    "animated": false
+  },
+  {
+    "slug": "map-pin",
+    "name": "Map Pin",
+    "category": "Navigation",
+    "animated": true
+  },
+  {
+    "slug": "compass-rose",
+    "name": "Compass Rose",
+    "category": "Navigation",
+    "animated": false
+  },
+  {
+    "slug": "route-markers",
+    "name": "Route Markers",
+    "category": "Navigation",
+    "animated": true
+  },
+  {
+    "slug": "radar-scope",
+    "name": "Radar Scope",
+    "category": "Navigation",
+    "animated": false
+  },
+  {
+    "slug": "travel-case",
+    "name": "Travel Case",
+    "category": "Navigation",
+    "animated": true
+  },
+  {
+    "slug": "direction-arrows",
+    "name": "Direction Arrows",
+    "category": "Navigation",
+    "animated": false
+  }
+]

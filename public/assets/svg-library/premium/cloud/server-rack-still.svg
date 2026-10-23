@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" role="img" aria-label="Server Rack" data-creator="Jelvan Elements" data-collection="Premium Icon Studio">
+<title>Server Rack — Jelvan Elements premium vector icon</title>
+<desc>Cloud original vector icon. Static edition.</desc>
+<metadata>Jelvan Elements | Cloud | server-rack | Original vector artwork</metadata>
+<defs><linearGradient id="surface" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#1D2C3E"/><stop offset="1" stop-color="#0B121F"/></linearGradient><linearGradient id="edge" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#74D5CE"/><stop offset="1" stop-color="#FF9A56"/></linearGradient></defs>
+
+<rect x="5" y="5" width="110" height="110" rx="24" fill="url(#surface)" stroke="#4B5F74" stroke-opacity=".7" stroke-width="1.6"/>
+<path d="M22 15h22M76 105h22" stroke="url(#edge)" stroke-width="2.3" stroke-linecap="round" opacity=".8"/>
+<circle cx="98" cy="23" r="2.5" fill="#74D5CE" opacity=".85"/>
+<g><rect x="27" y="31" width="66" height="17" rx="4" fill="#202D3F" stroke="#E9F2FB" stroke-width="2"/><circle cx="36" cy="39" r="2.5" fill="#6ECBD2" stroke="#6ECBD2" stroke-width="1"/><path d="M47 39L80 39" stroke="#FFAD61" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="27" y="52" width="66" height="17" rx="4" fill="#202D3F" stroke="#FFAD61" stroke-width="2"/><circle cx="36" cy="60" r="2.5" fill="#6ECBD2" stroke="#6ECBD2" stroke-width="1"/><path d="M47 60L80 60" stroke="#FFAD61" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="27" y="73" width="66" height="17" rx="4" fill="#202D3F" stroke="#E9F2FB" stroke-width="2"/><circle cx="36" cy="81" r="2.5" fill="#6ECBD2" stroke="#6ECBD2" stroke-width="1"/><path d="M47 81L80 81" stroke="#FFAD61" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g><circle cx="60" cy="60" r="45" fill="none" stroke="#74D5CE" stroke-width="1.6" stroke-dasharray="8 20" opacity=".65"/><circle cx="60" cy="15" r="3.5" fill="#FFAD61"/></g>
+</svg>
