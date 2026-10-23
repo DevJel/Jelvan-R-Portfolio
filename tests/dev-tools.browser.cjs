@@ -108,8 +108,22 @@ const server = http.createServer((req,res) => {
  const zipBytes=fs.readFileSync(await zipFile.path());
  assert.equal(zipBytes.readUInt32LE(0),0x04034b50);
  assert.equal(zipBytes.readUInt16LE(zipBytes.length-12),108);
+ assert.equal((zipBytes.toString('utf8').match(/Creator: Jelvan B\. Ricolcol/g) || []).length,108, 'ZIP should preserve author metadata in every design');
  const source = await page.getByLabel('Original SVG source').inputValue();
  assert.match(source,/^<svg xmlns="http:\/\/www\.w3\.org\/2000\/svg"/);
+ assert.match(source,/Creator: Jelvan B\. Ricolcol/);
+ assert.match(source,/<g id="jelvan-original-orbit-nodes-public">/);
+ assert.match(source,/<use href="#jelvan-original-orbit-nodes-public"\/>/);
+ const links = await page.locator('[aria-label="Original SVG designs"] svg').evaluateAll(artworks =>
+   artworks.map(svg => {
+     const use=svg.querySelector('use');
+     const target=use && use.getAttribute('href');
+     const referenced=target && Array.from(svg.querySelectorAll('defs [id]')).some(node => '#'+node.id===target);
+     const bbox=use && use.getBBox();
+     return {referenced:!!referenced, visible:!!(bbox && bbox.width>0 && bbox.height>0)};
+   })
+ );
+ assert.ok(links.every(link=>link.referenced && link.visible),'every gallery SVG requires its own working Jelvan definition');
  assert.match(source,/Orbit Nodes/);
  await page.getByRole('button',{name:'Copy SVG code'}).click();
  assert.equal(await page.evaluate(() => navigator.clipboard.readText()),source);
