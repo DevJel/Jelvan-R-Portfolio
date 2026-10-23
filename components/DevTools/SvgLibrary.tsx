@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import styles from './SvgLibrary.module.css';
+import { additionalSvgAssets } from './SvgLibraryCollection';
+import { saveCollectionZip } from './SvgLibraryExport';
 
 type SvgAsset = {
   id: string;
@@ -13,7 +15,7 @@ type SvgAsset = {
  * An original Jelvan Elements collection. All SVG geometry is authored for
  * this project; no icon packs, copied paths, external images or scripts.
  */
-const assets: SvgAsset[] = [
+const originalAssets: SvgAsset[] = [
   {
     id: 'orbit-nodes',
     name: 'Orbit Nodes',
@@ -124,6 +126,10 @@ const assets: SvgAsset[] = [
   },
 ];
 
+const assets: SvgAsset[] = [...originalAssets, ...additionalSvgAssets];
+const categories = Array.from(new Set(assets.map(asset => asset.kind))).sort();
+const PAGE_SIZE = 24;
+
 const validColor = (value: string): string =>
   /^#[a-f\d]{6}$/i.test(value) ? value : '#172b4d';
 
@@ -147,7 +153,15 @@ export default function SvgLibrary() {
   const [ink, setInk] = useState('#172b4d');
   const [accent, setAccent] = useState('#f48120');
   const [message, setMessage] = useState('');
-  const current = assets.find(asset => asset.id === selected) || assets[0];
+  const [query, setQuery] = useState('');
+  const [category, setCategory] = useState('all');
+  const [shown, setShown] = useState(PAGE_SIZE);
+  const search = query.trim().toLowerCase();
+  const matches = assets.filter(asset =>
+    (category === 'all' || asset.kind === category) &&
+    (asset.name + ' ' + asset.kind + ' ' + asset.description).toLowerCase().includes(search));
+  const visible = matches.slice(0, shown);
+  const current = matches.find(asset => asset.id === selected) || matches[0] || assets[0];
   const currentSvg = renderSvg(current, ink, accent);
 
   const copySvg = async (asset: SvgAsset) => {
@@ -160,22 +174,48 @@ export default function SvgLibrary() {
     }
   };
 
+  const saveAll = () => {
+    saveCollectionZip(assets.map(asset => ({
+      name: 'jelvan-' + asset.id + '.svg',
+      content: renderSvg(asset, ink, accent),
+    })));
+    setMessage('Full library downloaded as ' + assets.length + ' editable SVG files.');
+  };
+  const changeSearch = (value: string) => { setQuery(value); setShown(PAGE_SIZE); setMessage(''); };
+  const changeCategory = (value: string) => { setCategory(value); setShown(PAGE_SIZE); setMessage(''); };
+
   return (
     <div className={styles.library}>
       <div className={styles.intro}>
         <div>
           <p className={styles.kicker}>JELVAN ELEMENTS / ORIGINAL VECTOR COLLECTION</p>
           <h3>Own the details. Copy the vectors.</h3>
-          <p>Eight original symbols and interface elements made for this portfolio. Free for visitors to copy, customize and download as editable SVG markup.</p>
+          <p>{assets.length} original symbols and interface elements made for this portfolio. Free to copy, recolor or download as editable SVG files.</p>
         </div>
-        <div className={styles.palette}>
-          <label>Primary color<input aria-label="SVG primary color" type="color" value={ink} onChange={event => { setInk(event.target.value); setMessage(''); }} /></label>
-          <label>Accent color<input aria-label="SVG accent color" type="color" value={accent} onChange={event => { setAccent(event.target.value); setMessage(''); }} /></label>
+        <div className={styles.controls}>
+          <div className={styles.palette}>
+            <label>Primary color<input aria-label="SVG primary color" type="color" value={ink} onChange={event => { setInk(event.target.value); setMessage(''); }} /></label>
+            <label>Accent color<input aria-label="SVG accent color" type="color" value={accent} onChange={event => { setAccent(event.target.value); setMessage(''); }} /></label>
+          </div>
+          <button className={styles.downloadAll} type="button" onClick={saveAll}>Download all {assets.length} SVGs (.zip)</button>
         </div>
       </div>
+      <div className={styles.filters}>
+        <label htmlFor="svg-library-search">Search designs
+          <input id="svg-library-search" type="search" value={query} onChange={event => changeSearch(event.target.value)} placeholder="Search by name or style..." autoComplete="off" />
+        </label>
+        <label htmlFor="svg-library-category">Collection
+          <select id="svg-library-category" value={category} onChange={event => changeCategory(event.target.value)}>
+            <option value="all">All collections</option>
+            {categories.map(group => <option key={group} value={group}>{group}</option>)}
+          </select>
+        </label>
+        <p className={styles.count} role="status">{matches.length} designs found · Showing {visible.length}</p>
+      </div>
       <div className={styles.layout}>
+        <div className={styles.gallery}>
         <div className={styles.collection} aria-label="Original SVG designs">
-          {assets.map(asset => (
+          {visible.map(asset => (
             <div key={asset.id} className={`${styles.tile} ${current.id === asset.id ? styles.activeTile : ''}`}>
               <button type="button" className={styles.previewButton} aria-label={`Preview ${asset.name}`} aria-pressed={current.id === asset.id} onClick={() => { setSelected(asset.id); setMessage(''); }}>
                 <span className={styles.art} aria-hidden="true" dangerouslySetInnerHTML={{ __html: renderSvg(asset, ink, accent) }} />
@@ -185,6 +225,12 @@ export default function SvgLibrary() {
               <button className={styles.quickCopy} type="button" onClick={() => void copySvg(asset)} aria-label={`Copy SVG for ${asset.name}`}>Copy SVG</button>
             </div>
           ))}
+        </div>
+        {matches.length === 0 ? <p className={styles.empty}>No SVG designs match this search. Try another name or collection.</p> : null}
+        {visible.length < matches.length ?
+          <button className={styles.showMore} type="button" onClick={() => setShown(count => count + PAGE_SIZE)}>
+            Show more SVG designs ({matches.length - visible.length} remaining)
+          </button> : null}
         </div>
         <section className={styles.inspector} aria-label="SVG source and download">
           <div className={styles.inspectorArt} aria-hidden="true" dangerouslySetInnerHTML={{ __html: currentSvg }} />
