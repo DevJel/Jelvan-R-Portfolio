@@ -6,7 +6,9 @@ const path = require('node:path');
 const root = path.resolve('out');
 const mime = {'.html':'text/html', '.js':'application/javascript', '.css':'text/css', '.woff':'font/woff', '.woff2':'font/woff2', '.svg':'image/svg+xml', '.png':'image/png', '.ico':'image/x-icon'};
 const server = http.createServer((req,res) => {
- const file = path.resolve(root, '.' + decodeURIComponent(new URL(req.url, 'http://localhost').pathname));
+ let file = path.resolve(root, '.' + decodeURIComponent(new URL(req.url, 'http://localhost').pathname));
+ // Serve clean exported routes just like Cloudflare Pages after client-side tab navigation.
+ if (!fs.existsSync(file) && fs.existsSync(file + '.html')) file += '.html';
  if (!file.startsWith(root + path.sep) || !fs.existsSync(file) || !fs.statSync(file).isFile()) { res.writeHead(404); res.end(); return; }
  res.setHeader('content-type', mime[path.extname(file)] || 'application/octet-stream'); fs.createReadStream(file).pipe(res);
 });
