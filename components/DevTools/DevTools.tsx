@@ -2,14 +2,33 @@ import React, { useEffect, useRef, useState } from 'react';
 import Navbar from '../Navbar/Navbar';
 import { convertEncoding, generatePassword, generateTotp, htmlPreview, randomString } from '../../utils/dev-tools';
 import styles from './DevTools.module.css';
+import ExtraTools, { ExtraToolId } from './ExtraTools';
 
+const categories = [
+  { id: 'build', title: 'BUILD & PREVIEW' },
+  { id: 'data', title: 'DATA & ENCODING' },
+  { id: 'security', title: 'SECURITY & IDENTIFIERS' },
+  { id: 'debug', title: 'DEBUGGING & REFERENCE' },
+] as const;
 const tools = [
-  { id: 'html', name: 'HTML Viewer', description: 'Preview your markup', icon: 'code' },
-  { id: 'otp', name: 'OTP Generator', description: 'Random and timed codes', icon: 'shield' },
-  { id: 'keys', name: 'Key Generator', description: '32, 64 and 128 characters', icon: 'key' },
-  { id: 'password', name: 'Password Generator', description: 'Choose your own rules', icon: 'lock' },
-  { id: 'encoding', name: 'Base32 / Base64', description: 'Encode and decode text', icon: 'convert' },
-  { id: 'notes', name: 'Notes', description: 'A little space to think', icon: 'note' },
+  { id: 'html', name: 'HTML Viewer', description: 'Safe HTML/CSS preview', icon: 'code', category: 'build' },
+  { id: 'json', name: 'JSON Formatter', description: 'Validate, format and minify', icon: 'code', category: 'build' },
+  { id: 'diff', name: 'Text Compare', description: 'Line-level differences', icon: 'note', category: 'build' },
+  { id: 'notes', name: 'Notes', description: 'Private local scratchpad', icon: 'note', category: 'build' },
+  { id: 'encoding', name: 'Base32 / Base64', description: 'Encode, decode and inspect', icon: 'convert', category: 'data' },
+  { id: 'url-codec', name: 'URL Encoder', description: 'URIComponent and URI tools', icon: 'convert', category: 'data' },
+  { id: 'entities', name: 'HTML Entities', description: 'Escape and unescape markup', icon: 'code', category: 'data' },
+  { id: 'jwt', name: 'JWT Inspector', description: 'Unverified token claims', icon: 'shield', category: 'data' },
+  { id: 'otp', name: 'OTP Generator', description: 'Random and timed codes', icon: 'shield', category: 'security' },
+  { id: 'keys', name: 'Key Generator', description: '16–128 character random keys', icon: 'key', category: 'security' },
+  { id: 'password', name: 'Password Generator', description: 'Secure password strings', icon: 'lock', category: 'security' },
+  { id: 'hash', name: 'Hash Generator', description: 'SHA-256, SHA-384 and SHA-512', icon: 'shield', category: 'security' },
+  { id: 'uuid', name: 'UUID Generator', description: 'Secure random v4 identifiers', icon: 'key', category: 'security' },
+  { id: 'regex', name: 'Regex Tester', description: 'Match and inspect patterns', icon: 'code', category: 'debug' },
+  { id: 'url-inspect', name: 'URL Inspector', description: 'Parse URLs and queries', icon: 'convert', category: 'debug' },
+  { id: 'http', name: 'HTTP Status Codes', description: 'Common response reference', icon: 'note', category: 'debug' },
+  { id: 'color', name: 'Color Converter', description: 'HEX, RGB, HSL and contrast', icon: 'convert', category: 'debug' },
+  { id: 'time', name: 'Timestamp Converter', description: 'Unix, ISO and local time', icon: 'note', category: 'debug' },
 ] as const;
 type ToolId = typeof tools[number]['id'];
 const SAMPLE = '<style>body { font-family: system-ui; padding: 32px; color: #27272a; } h1 { color: #b94e0a; } .card { padding: 28px; background: #fff7ed; border-radius: 18px; }</style>\n<div class="card">\n  <h1>Hello, developer.</h1>\n  <p>Your next idea starts here.</p>\n</div>';
@@ -204,15 +223,29 @@ function NotesTool() {
 
 export default function DevTools() {
   const [active, setActive] = useState<ToolId>('html');
+  const [query, setQuery] = useState('');
+  const visibleTools = tools.filter(tool => (tool.name + ' ' + tool.description).toLowerCase().includes(query.toLowerCase().trim()));
   const current = tools.find(tool => tool.id === active)!;
   return <div className={styles.root}>
     <Navbar isLogoExpanded />
     <main className={styles.main}>
-      <header className={styles.header}><span className={styles.eyebrow}>DEVELOPER WORKSPACE</span><h1>Dev Tools<span>.</span></h1><p>Small tools. More room to build.</p><span className={styles.local}>Runs in your browser</span></header>
+      <header className={styles.header}><span className={styles.eyebrow}>DEVELOPER WORKSPACE / TOOLS</span><h1>Dev Tools<span>.</span></h1><p>Essential utilities for building, debugging and shipping on the web.</p><span className={styles.local}>Local-first tools · No login needed</span></header>
       <div className={styles.workspace}>
-        <nav className={styles.navigation} aria-label="Developer tools">{tools.map(tool => <button key={tool.id} type="button" className={active === tool.id ? styles.selected : ''} aria-pressed={active === tool.id} aria-controls="tool-workspace" onClick={() => setActive(tool.id)}><span className={styles.toolIcon}><Icon name={tool.icon} /></span><span><strong>{tool.name}</strong><small>{tool.description}</small></span></button>)}</nav>
+        <nav className={styles.navigation} aria-label="Developer tools">
+          <div className={styles.searchBox}><label htmlFor="developer-tool-search">Find a tool</label><input id="developer-tool-search" aria-label="Search developer tools" type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="Search 18 tools..." autoComplete="off" /></div>
+          {categories.map(category => {
+            const members = visibleTools.filter(tool => tool.category === category.id);
+            return members.length ? <div className={styles.navGroup} key={category.id}>
+              <h3>{category.title}</h3>
+              {members.map(tool => <button key={tool.id} type="button" className={active === tool.id ? styles.selected : ''} aria-pressed={active === tool.id} aria-controls="tool-workspace" onClick={() => setActive(tool.id)}>
+                <span className={styles.toolIcon}><Icon name={tool.icon} /></span><span><strong>{tool.name}</strong><small>{tool.description}</small></span>
+              </button>)}
+            </div> : null;
+          })}
+          {visibleTools.length === 0 ? <p className={styles.hint}>No matching tools. Try a shorter search.</p> : null}
+        </nav>
         <section className={styles.panel} id="tool-workspace" aria-labelledby="tool-heading"><div className={styles.panelHeader}><span className={styles.toolIcon}><Icon name={current.icon} /></span><div><h2 id="tool-heading">{current.name}</h2><p>{current.description}</p></div></div>
-          <div className={styles.content}>{active === 'html' ? <HtmlTool /> : active === 'otp' ? <OtpTool /> : active === 'keys' ? <KeyTool /> : active === 'password' ? <PasswordTool /> : active === 'encoding' ? <EncodingTool /> : <NotesTool />}</div>
+          <div className={styles.content}>{active === 'html' ? <HtmlTool /> : active === 'otp' ? <OtpTool /> : active === 'keys' ? <KeyTool /> : active === 'password' ? <PasswordTool /> : active === 'encoding' ? <ExtraTools tool="encoding" /> : active === 'notes' ? <NotesTool /> : <ExtraTools tool={active as ExtraToolId} />}</div>
         </section>
       </div>
       <footer className={styles.footer}>Developed and Designed by Jelvan® <span>2026</span></footer>
