@@ -241,7 +241,7 @@ export default function SvgPremiumGallery() {
               <p>Fully editable vector markup. Motion variants contain CSS only, never JavaScript.</p>
               <div className={shared.actions}>
                 <button type="button" onClick={() => void copyIcon(selected)} disabled={!selectedSource}>Copy SVG source</button>
-                <button type="button" onClick={() => void downloadIcon(selected)}>Download .svg</button>
+                <button type="button" onClick={() => void downloadIcon(selected)}>Download premium .svg</button>
               </div>
               <p className={styles.status} role="status" aria-live="polite">{message}</p>
               <label className={shared.sourceLabel} htmlFor="premium-svg-source">SVG markup · copy and paste</label>
