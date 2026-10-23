@@ -143,7 +143,10 @@ const server = http.createServer((req,res) => {
  assert.equal(await page.getByLabel('Five-field cron expression').inputValue(),'0 9 * * *');
  await page.getByRole('button',{name:/Notes A little/}).click();
  await page.getByLabel('Your notes').fill('Remember this note.');
+ assert.ok(await page.evaluate(() => localStorage.getItem('jelvan.devtools.notes.v1')?.includes('Remember this note.')));
  await page.reload(); await page.getByRole('button',{name:/Notes A little/}).click();
+ // Wait for the notes hydration effect before asserting the restored value.
+ await page.waitForFunction(() => Array.from(document.querySelectorAll('textarea')).some(element => element.value === 'Remember this note.'));
  assert.equal(await page.getByLabel('Your notes').inputValue(),'Remember this note.');
  const download=page.waitForEvent('download'); await page.getByRole('button',{name:'Download notes'}).click();
  assert.equal((await download).suggestedFilename(),'developer-notes.txt');
