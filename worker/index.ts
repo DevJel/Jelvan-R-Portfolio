@@ -25,6 +25,8 @@ const MAX_MESSAGE = 5000;
 const MAX_BODY_BYTES = 16000;
 const EMAIL_RE = /^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/;
 const EXPECTED_HOST = 'portfolio.jelvan.pro';
+// BCC only the visitor's confirmation, never the private inquiry notification.
+const CONFIRMATION_BCC = 'rjelvan@operavaglobal.com';
 const LOCAL_HOSTS = new Set(['localhost', '127.0.0.1']);
 
 const json = (body: unknown, status = 200): Response =>
@@ -242,6 +244,7 @@ async function handleContact(request: Request, env: Env): Promise<Response> {
             },
             {
               to: email,
+              bcc: CONFIRMATION_BCC,
               subject: 'Thanks for reaching out — Jelvan Ricolcol',
               text: confirmation.text,
               html: confirmation.html,
