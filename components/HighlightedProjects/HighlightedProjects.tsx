@@ -52,14 +52,14 @@ const HighlightedProjects = ({ withNavbar = true }: Props): JSX.Element => {
         <Styled.HeroLeftColumn>
           <SectionHeader
             variant={'medium'}
-            headerText={`Selected list of projects`}
+            headerText={`Project Disclaimer`}
             margin={'0'}
             color={'#f48120'}
           />
 
           <PortfolioParagraph
             margin={'1rem 0'}
-            paragraphText={`Due to NDA agreements, I am limited to personal projects and already shipped products that I've build and worked on in the past`}
+            paragraphText={`Due to non-disclosure agreements, the repositories and code showcased here have been modified from their original enterprise versions. All client-specific branding, logic, and identifying data have been removed or anonymized with prior client approval. These projects serve strictly as demonstration concepts to illustrate specific features and architectural implementations.`}
             withDarkColor={false}
             variant={'large'}
             withAnimatedPresence
