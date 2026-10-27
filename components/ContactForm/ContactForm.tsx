@@ -63,6 +63,15 @@ const ContactForm = (): JSX.Element => {
             disabled={isEmailSent}
             type="submit"
           />
+          {error && (
+            <p role="alert" style={{ marginTop: '1rem', lineHeight: 1.5 }}>
+              Your message was not sent. You can email me directly at{' '}
+              <a href="mailto:hello@work.jelvan.pro">
+                hello@work.jelvan.pro
+              </a>
+              .
+            </p>
+          )}
         </Form>
       </Formik>
     </Styled.Container>
