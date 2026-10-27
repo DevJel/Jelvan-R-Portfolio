@@ -74,7 +74,7 @@ const FifthSlide = (): JSX.Element => {
             <time>2024-2025</time>
           </Styled.MilestoneHeader>
           <h4>
-            Universidad Isabel I | Dual Specialization: AI for Business, HR &
+            Universidad Internacional Isabel 1 de Castilla | Dual Specialization: AI for Business, HR &
             Talent Management
           </h4>
           <PortfolioParagraph

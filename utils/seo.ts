@@ -11,7 +11,7 @@ export const SITE = {
   headline:
     'Strategic HR Professional | Full Stack Software Developer | Certified AI & Digital Transformation Practitioner',
   email: 'hello@work.jelvan.pro',
-  telephone: '+60-11-2561-1502',
+  telephone: '+63-960-519-3602',
   linkedin: 'https://www.linkedin.com/in/jelvanricolcol/',
   locations: ['Philippines', 'Malaysia'],
   // Social share image (Open Graph / Twitter / Google)
@@ -163,7 +163,7 @@ export const structuredData = (): Record<string, unknown> => ({
       alumniOf: [
         {
           '@type': 'CollegeOrUniversity',
-          name: 'Universidad Isabel I',
+          name: 'Universidad Internacional Isabel 1 de Castilla',
         },
         {
           '@type': 'CollegeOrUniversity',
@@ -171,7 +171,7 @@ export const structuredData = (): Record<string, unknown> => ({
         },
       ],
       hasCredential: [
-        "Master in Artificial Intelligence for Business & in Human Resource and Talent Management (Universidad Isabel I)",
+        "Master in Artificial Intelligence for Business & in Human Resource and Talent Management (Universidad Internacional Isabel 1 de Castilla)",
         'BS in Business Administration, Major in Human Resources & Development Management (University of Northern Philippines)',
         'IBM Full Stack Software Developer Professional Certificate',
         'AWS Certified Artificial Intelligence Practitioner',

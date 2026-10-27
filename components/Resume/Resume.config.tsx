@@ -47,6 +47,29 @@ export const keyHighlights: { value: string; label: string }[] = [
 export const professionalExperience: IProfessionalExperience[] = [
   {
     variant: 'withResponsibilities',
+    company: 'Freelance & Consulting | Remote Globally',
+    companyImg: COMPANY_ICON,
+    role: 'Web Developer (Contractual / Project Base)',
+    shortSummary:
+      'Built responsive websites, client portfolios, email marketing systems, and interactive support tools for international clients.',
+    timeFrame: 'November 2021 - Present',
+    responsibilities: [
+      {
+        text: 'Introduced single-agent and multi-agent AI assistants to organize inquiries, repetitive activities, and connected business workflows.',
+        iconUrl: CHECK,
+      },
+      {
+        text: 'Integrated tools with Model Context Protocol (MCP), secure APIs, and controlled access tokens.',
+        iconUrl: CHECK,
+      },
+      {
+        text: 'Applied permissions and human oversight to support dependable, efficient operations.',
+        iconUrl: CHECK,
+      },
+    ],
+  },
+  {
+    variant: 'withResponsibilities',
     company: 'Concentrix Malaysia | Kuala Lumpur, Malaysia',
     companyImg: COMPANY_ICON,
     role: 'English Global Advertising Expert / Meta Pro',
@@ -64,29 +87,6 @@ export const professionalExperience: IProfessionalExperience[] = [
       },
       {
         text: 'Analyzed performance datasets to generate actionable strategic insights.',
-        iconUrl: CHECK,
-      },
-    ],
-  },
-  {
-    variant: 'withResponsibilities',
-    company: 'Freelance & Consulting | Remote Globally',
-    companyImg: COMPANY_ICON,
-    role: 'Web Developer (Contractual / Project Base)',
-    shortSummary:
-      'Delivered bespoke, responsive web systems and high-performing client portfolios to an international customer base on contractual terms.',
-    timeFrame: 'November 2021 - Present',
-    responsibilities: [
-      {
-        text: 'Engineered secure, cross-client HTML email marketing landscapes.',
-        iconUrl: CHECK,
-      },
-      {
-        text: 'Implemented responsive interactive UI features, including smart floating communication widgets, live chat trigger panels, and high-conversion navigation flows.',
-        iconUrl: CHECK,
-      },
-      {
-        text: 'Integrated IBM Full Stack Software Developer certifications to ensure technical excellence.',
         iconUrl: CHECK,
       },
     ],
@@ -124,7 +124,7 @@ export const professionalExperience: IProfessionalExperience[] = [
     companyImg: COMPANY_ICON,
     role: 'Customer Experience Agent',
     shortSummary:
-      'Resolved a wide range of customer issues, order placements, modifications, billing, and cancellations for Amazon US/UK campaigns under strict SLA limits.',
+      'Resolved customer issues, order placements, modifications, billing, and cancellations for Amazon US/UK campaigns under strict SLA limits.',
     timeFrame: 'July 29, 2019 - October 18, 2021',
     responsibilities: [
       {
@@ -152,7 +152,7 @@ export const education: {
     degree:
       'Master in Artificial Intelligence for Business & in Human Resource and Talent Management',
     timeFrame: '2024 - 2025',
-    school: 'Universidad Isabel I',
+    school: 'Universidad Internacional Isabel 1 de Castilla',
     description:
       'Completed dual-specialization graduate program studies; mastering strategic talent recruitment pipelines, corporate performance matrices, and international labor compliance for HR operations, paired with Python software scripting, predictive machine learning models, and automated SaaS pipelines in Artificial Intelligence.',
   },

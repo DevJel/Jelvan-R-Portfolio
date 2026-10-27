@@ -23,7 +23,7 @@ import ProfessionalExperience from '../ProfessionalExperience/ProfessionalExperi
 import Navbar from '../Navbar/Navbar';
 import WithSparkles from '../WithSparkles/WithSparkles';
 
-const PHONE_DISPLAY = '+60 11-2561 1502';
+const PHONE_DISPLAY = '+63 960 519 3602';
 const EMAIL = 'hello@work.jelvan.pro';
 const CV_PDF = '/assets/jelvan-ricolcol-resume.pdf';
 
@@ -124,7 +124,7 @@ const Resume = (): JSX.Element => {
               <Styled.ResumeHeader>Profile Summary</Styled.ResumeHeader>
               <PortfolioParagraph
                 margin={'0'}
-                paragraphText={`A results-driven HR Generalist and Digital Transformation Specialist with a dual-specialization Master's background, dedicated to empowering organizations through strategic Human Resources Management, AI-driven Business Systems, and Modern Digital Operations. Proven ability to support over 30,000 employees internationally and deliver a 100% compliance rate across HR operations, in help and coordination with leaders and offshore teams globally. Expertise in bridging the gap between people strategy and technology implementation to enhance efficiency and organizational scaling.`}
+                paragraphText={`A results-driven HR Generalist and Digital Transformation Specialist with a dual Master's background, dedicated to empowering organizations through strategic Human Resources Management, AI-driven Business Systems, and Modern Digital Operations. Proven ability to support over 30,000 employees internationally and deliver a 100% compliance rate across HR operations, in help and coordination with leaders and offshore teams globally. Expertise in bridging the gap between people strategy and technology implementation to enhance efficiency and organizational scaling.`}
                 withDarkColor={true}
                 variant={'medium'}
                 withAnimatedPresence={false}
