@@ -23,7 +23,7 @@
   "services": [
     {
       "binding": "MAILER",
-      "service": "operava-employee-control"
+      "service": "jelvan-portfolio-mailer"
     }
   ]
 }
