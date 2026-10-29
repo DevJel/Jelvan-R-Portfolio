@@ -123,9 +123,9 @@ const CardHeader = styled.div`
   h3 { font-size: 1.05rem; line-height: 1.35; margin: 0; }
   p { font-size: .8rem; line-height: 1.45; color: #7b8190; margin: .15rem 0 0; }
 `;
-/** A real, fixed-size A4 viewing surface: on small screens the paper pans, never resizes. */
+/** The viewport shrinks A4 uniformly; the document itself keeps fixed dimensions. */
 const PageViewport = styled.div`
-  /* The A4 paper is unchanged internally. This wrapper contains its rendered size. */
+  /* The A4 paper stays 794 × 1123 internally; this wrapper holds the scaled result. */
   max-width: 100%;
   margin: 0 auto;
   overflow: hidden;
