@@ -79,11 +79,11 @@ The portfolio is published at **[portfolio.jelvan.pro](https://portfolio.jelvan.
 - GitHub Actions can validate builds and publish the site when the required deployment configuration is available.
 - API credentials and deployment settings are maintained outside the repository.
 
-The website and contact endpoint are deployed separately. Running `npm run deploy` updates the contact endpoint, not the static website.
+The website and contact endpoint are deployed separately. Running `npm run deploy` updates the contact endpoint, not the static website. `npm run deploy:mailer` deploys the separate private SMTP relay. Both Workers must be deployed in the **Jelvan - Projects - Works** Cloudflare account.
 
 ### Contact form
 
-The form accepts a message, validates submitted input, and sends a notification and an acknowledgment email. Server-side checks include input-size limits, anti-spam measures, and origin validation.
+The form accepts a message, validates submitted input, and sends a notification and an acknowledgment email **(not an SMS code)**. The contact Worker binds `MAILER` to the private `jelvan-portfolio-mailer` Worker, which uses existing account Secrets Store `SES_SMTP_*` credentials to submit through Amazon SES. The relay has no public Workers route or workers.dev URL. Server-side checks include input-size limits, anti-spam measures, and origin validation.
 
 For inquiries, use **[hello@work.jelvan.pro](mailto:hello@work.jelvan.pro)**.
 

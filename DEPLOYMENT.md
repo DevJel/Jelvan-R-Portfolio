@@ -92,29 +92,26 @@ The domain must be on Cloudflare DNS in the same account.
 
 ---
 
-## Contact form (Cloudflare Email Service)
+## Contact form (Amazon SES via private Cloudflare service binding)
 
-Until this is configured, the form shows **"Not sent, retry"**. Nothing else on the site depends on it.
+The static site runs on Pages. `jelvan-portfolio-contact` handles `/api/contact`;
+it calls `jelvan-portfolio-mailer` over a same-account Cloudflare **service binding**.
+The mailer submits through the existing Amazon SES SMTP credentials in the
+**Jelvan - Projects - Works** account Secrets Store. It has no public route.
 
-1. Cloudflare dashboard → **Email Service** → **Onboard Domain** → pick your domain. It adds the SPF/DKIM DNS records.
-2. In **Email Routing → Destination addresses**, add the inbox that should receive messages and click the verification link Cloudflare emails you.
-3. Edit `wrangler.jsonc`:
+1. Deploy the relay first: `npm run deploy:mailer`
+   (uses `wrangler.mailer.jsonc` and existing Secrets Store bindings).
+2. Deploy the contact Worker: `npm run deploy`
+   (uses `wrangler.jsonc` and its `MAILER` service binding).
+3. In Cloudflare Worker Settings verify `MAILER` points to
+   `jelvan-portfolio-mailer` and is **not deleted**.
+4. Submit one test inquiry from `/portfolio/contact` and verify both
+   the inquiry email and visitor's email confirmation arrive.
 
-   ```jsonc
-   "vars": {
-     "CONTACT_TO": "you@example.com",            // the verified inbox
-     "CONTACT_FROM": "portfolio@yourdomain.com"  // any address on the onboarded domain
-   },
-   "send_email": [
-     {
-       "name": "EMAIL",
-       "allowed_destination_addresses": ["you@example.com"]
-     }
-   ],
-   ```
-
-4. Commit and push (Option A/C) or run `npm run deploy` (Option B).
-5. Send a test message from the Contact page. Replies go straight to the visitor because their address is set as Reply-To.
+The portfolio contact form **does not send SMS or OTP codes**. Never commit
+SMTP credential values to the repository. The relevant Secrets Store
+bindings are `SES_SMTP_HOST`, `SES_SMTP_PORT`,
+`SES_SMTP_USERNAME`, and `SES_SMTP_PASSWORD`.
 
 ---
 
@@ -138,7 +135,7 @@ Until this is configured, the form shows **"Not sent, retry"**. Nothing else on 
 | "A Worker with this name already exists" | Change `name` in `wrangler.jsonc`, or deploy into the existing Worker on purpose. |
 | Deploy asks which account to use | Set `CLOUDFLARE_ACCOUNT_ID` (Option B/C). |
 | Page works from links but 404s when opened directly | Confirm `out/` contains that page's `.html` file after `npm run build`. |
-| Contact form says "Not sent, retry" | Email Service not set up, `CONTACT_TO`/`CONTACT_FROM` empty, or `send_email` still commented out. Check logs in Worker → **Observability**. |
+| Contact form says "Not sent, retry" | Check that the contact Worker `MAILER` binding references the live `jelvan-portfolio-mailer` service and SES SMTP secret bindings exist. Check both Workers → **Observability**. |
 | Old version still showing | Hard refresh (Ctrl/Cmd + Shift + R); check the latest deployment under Worker → **Deployments**. |
 
 ## Rollback
