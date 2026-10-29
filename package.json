@@ -12,6 +12,7 @@
     "typecheck": "tsc --noEmit",
     "preview": "npm run build && wrangler dev",
     "deploy": "npm run build && wrangler deploy",
+    "deploy:mailer": "wrangler deploy --config wrangler.mailer.jsonc",
     "test:tools": "node --test tests/dev-tools.test.cjs tests/contact-confirmation.test.cjs tests/svg-library.test.cjs tests/premium-svg.test.cjs",
     "test:tools:browser": "node tests/dev-tools.browser.cjs"
   },
