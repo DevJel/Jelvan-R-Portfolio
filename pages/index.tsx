@@ -22,7 +22,7 @@ const PortfolioLandingPage: NextPage = () => (
       <Navbar isLogoExpanded={true} />
       <PortfolioLanding />
     </FullscreenHome>
-      </PortfolioLayout>
+  </PortfolioLayout>
 );
 
 export default PortfolioLandingPage;
