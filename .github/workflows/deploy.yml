@@ -88,6 +88,9 @@ jobs:
       - name: Validate Worker bundle and wrangler config
         run: npx wrangler deploy --dry-run --outdir dist-worker
 
+      - name: Validate private mail relay bundle
+        run: npx wrangler deploy --config wrangler.mailer.jsonc --dry-run --outdir dist-mailer
+
       - uses: actions/upload-artifact@v4
         with:
           name: site
