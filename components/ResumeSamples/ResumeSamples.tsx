@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import {
   aiAutomationSkills,
@@ -123,20 +123,23 @@ const CardHeader = styled.div`
   h3 { font-size: 1.05rem; line-height: 1.35; margin: 0; }
   p { font-size: .8rem; line-height: 1.45; color: #7b8190; margin: .15rem 0 0; }
 `;
-/** A real, fixed-size A4 viewing surface: on small screens the paper pans, never resizes. */
+/** The viewport shrinks A4 uniformly; the document itself keeps fixed dimensions. */
 const PageViewport = styled.div`
-  width: 100%;
-  max-width: 794px;
+  /* The A4 paper stays 794 × 1123 internally; this wrapper holds the scaled result. */
+  max-width: 100%;
   margin: 0 auto;
-  overflow-x: auto;
-  overflow-y: hidden;
-  overscroll-behavior-x: contain;
-  scrollbar-width: thin;
-  scrollbar-color: #c9a88f #fff7ef;
-  background: #f4f0eb;
+  overflow: hidden;
+  position: relative;
+  background: #ffffff;
   box-shadow: 0 16px 48px rgba(23,43,77,.12);
-  border: 1px solid #ded6ce;
   border-radius: 2px;
+`;
+const ScaledPaper = styled.div`
+  width: 794px;
+  height: 1123px;
+  min-width: 794px;
+  transform-origin: top left;
+  will-change: transform;
 `;
 const Sheet = styled.div`
   --accent: #f48120;
@@ -329,6 +332,31 @@ function ResumeSheet({ designIndex }: { designIndex: number }): JSX.Element {
 const ResumeSamples = (): JSX.Element => {
   const trackRef = useRef<HTMLOListElement>(null);
   const [active, setActive] = useState(0);
+  const [paperScale, setPaperScale] = useState(1);
+
+  // Keep the original 794 x 1123 A4 layout intact. On phones aim for 50%,
+  // then shrink only as much as needed to show the entire page within the track.
+  // Desktop keeps the 1:1 A4 size and centers the page in the available width.
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    const recalculate = () => {
+      const available = Math.max(1, track.clientWidth - 2);
+      const onPhone = window.matchMedia('(max-width: 767px)').matches;
+      const maximum = onPhone ? 0.5 : 1;
+      const scale = Math.min(maximum, available / 794);
+      setPaperScale((previous) => Math.abs(previous - scale) < 0.0001 ? previous : scale);
+    };
+    recalculate();
+    const resizeObserver = typeof ResizeObserver !== 'undefined'
+      ? new ResizeObserver(recalculate) : null;
+    resizeObserver?.observe(track);
+    window.addEventListener('resize', recalculate);
+    return () => {
+      resizeObserver?.disconnect();
+      window.removeEventListener('resize', recalculate);
+    };
+  }, []);
 
   const goTo = (index: number) => {
     const next = Math.max(0, Math.min(index, designs.length - 1));
@@ -363,7 +391,7 @@ const ResumeSamples = (): JSX.Element => {
             <div className="eyebrow">Design gallery / 20 styles</div>
             <h2 id="resume-samples-heading">Resume Sample Designs</h2>
             <p>
-              Twenty full-size, locked A4 resume pages based on the supplied design reference,
+              Twenty full A4 resume pages based on the supplied design reference,
               using Jelvan’s portfolio details. Browse the previews directly in this carousel.
             </p>
           </div>
@@ -387,14 +415,22 @@ const ResumeSamples = (): JSX.Element => {
                   <p>{design.description}</p>
                 </div>
               </CardHeader>
-              <PageViewport aria-label={`${design.name} full-size A4 page; pan horizontally on narrow screens`}>
-                <ResumeSheet designIndex={index} />
+              <PageViewport
+                aria-label={`${design.name} A4 page, fully visible at a phone-friendly scale`}
+                style={{
+                  width: `${794 * paperScale}px`,
+                  height: `${1123 * paperScale}px`,
+                }}
+              >
+                <ScaledPaper style={{ transform: `scale(${paperScale})` }}>
+                  <ResumeSheet designIndex={index} />
+                </ScaledPaper>
               </PageViewport>
             </Card>
           ))}
         </Track>
         <Footer>
-          Use the arrows to change designs, or swipe between slides. Each page is locked to A4 size (794 × 1123 px); on narrow screens, pan across the page to read it without resizing. No zoom, lightbox or focus mode.
+          Use the arrows or swipe to change designs. On desktop, each A4 page is full-size and centered. On phones, the entire page is displayed at up to half-size and adjusted to fit the screen without cutting off either side. No zoom, lightbox or focus mode.
         </Footer>
       </Container>
     </Section>
