@@ -1,6 +1,14 @@
 import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
-import { keyHighlights, professionalExperience, strategicHrSkills } from '../Resume/Resume.config';
+import {
+  aiAutomationSkills,
+  certifications,
+  digitalStrategySkills,
+  education,
+  keyHighlights,
+  professionalExperience,
+  strategicHrSkills,
+} from '../Resume/Resume.config';
 
 type ResumeDesign = {
   name: string;
@@ -83,77 +91,103 @@ const Controls = styled.div`
 `;
 const Track = styled.ol`
   display: flex;
-  gap: 1.15rem;
+  gap: 0;
   margin: 0;
-  padding: .3rem .2rem 1.5rem;
+  padding: 0;
   list-style: none;
   overflow-x: auto;
   overscroll-behavior-inline: contain;
   scroll-snap-type: x mandatory;
-  scroll-padding-inline: .2rem;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  scrollbar-color: #dcaa80 #fff1e4;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
 `;
 const Card = styled.li`
-  flex: 0 0 min(84vw, 342px);
-  scroll-snap-align: start;
-  border-radius: 14px;
-  border: 1px solid #eadfd4;
-  background: #ffffff;
-  box-shadow: 0 8px 28px rgba(23, 43, 77, .07);
-  padding: .85rem;
+  flex: 0 0 100%;
   min-width: 0;
+  max-width: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  padding: 0 0 1.5rem;
 `;
 const CardHeader = styled.div`
   display: flex;
   align-items: center;
   gap: .75rem;
   min-height: 64px;
+  width: 100%;
+  max-width: 794px;
   padding: 0 .3rem .8rem;
+  margin: 0 auto;
   .number { background: #172b4d; color: #fff; border-radius: 8px; width: 29px; height: 29px; display: grid; place-items: center; font-size: .74rem; font-weight: 700; flex: 0 0 auto; }
-  h3 { font-size: .9rem; line-height: 1.35; margin: 0; }
-  p { font-size: .7rem; line-height: 1.45; color: #7b8190; margin: .15rem 0 0; }
+  h3 { font-size: 1.05rem; line-height: 1.35; margin: 0; }
+  p { font-size: .8rem; line-height: 1.45; color: #7b8190; margin: .15rem 0 0; }
+`;
+/** A real, fixed-size A4 viewing surface: on small screens the paper pans, never resizes. */
+const PageViewport = styled.div`
+  width: 100%;
+  max-width: 794px;
+  margin: 0 auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #c9a88f #fff7ef;
+  background: #f4f0eb;
+  box-shadow: 0 16px 48px rgba(23,43,77,.12);
+  border: 1px solid #ded6ce;
+  border-radius: 2px;
 `;
 const Sheet = styled.div`
   --accent: #f48120;
   --ink: #182437;
   --paper: #ffffff;
   --muted: #64748b;
-  aspect-ratio: 210 / 297;
+  /* ISO A4 at 96 CSS pixels per inch: never shrink/stretch with viewport. */
+  width: 794px;
+  height: 1123px;
+  min-width: 794px;
+  min-height: 1123px;
+  max-width: 794px;
+  max-height: 1123px;
+  flex: 0 0 794px;
+  box-sizing: border-box;
   overflow: hidden;
   background: var(--paper);
   color: var(--ink);
-  border: 1px solid rgba(0,0,0,.10);
-  padding: 22px 19px;
+  padding: 48px;
   font-family: Inter, Arial, sans-serif;
-  font-size: 9px;
+  font-size: 14px;
   line-height: 1.55;
   position: relative;
-  .masthead { border-bottom: 2px solid var(--accent); padding-bottom: 12px; margin-bottom: 12px; }
-  .kicker { color: var(--accent); font-size: 8px; text-transform: uppercase; letter-spacing: .16em; font-weight: 700; }
-  h4 { margin: 4px 0 2px; font-weight: 800; font-size: 23px; line-height: 1.06; letter-spacing: -.045em; }
-  .role { font-size: 9px; font-weight: 600; }
-  .contact { margin-top: 7px; font-size: 7px; color: var(--muted); }
-  .profile { line-height: 1.65; color: var(--muted); margin: 0 0 13px; font-size: 8.5px; }
-  .body { display: grid; grid-template-columns: 1.5fr 1fr; gap: 14px; }
-  h5 { text-transform: uppercase; letter-spacing: .11em; font-size: 8px; margin: 0 0 7px; padding-bottom: 4px; border-bottom: 1px solid var(--accent); }
-  .job { margin-bottom: 9px; padding-left: 8px; border-left: 2px solid var(--accent); }
-  .job strong { font-size: 8px; display: block; line-height: 1.3; }
-  .job span { display: block; font-size: 7px; color: var(--muted); margin: 2px 0; }
-  .job p { margin: 0; font-size: 7px; line-height: 1.5; }
-  .skills { list-style: none; padding: 0; margin: 0; }
-  .skills li { padding: 4px 0; border-bottom: 1px solid rgba(100,116,139,.14); font-size: 7.4px; }
-  .impact { margin: 10px 0 0; padding: 9px; background: color-mix(in srgb, var(--accent) 9%, white); }
-  .impact strong { display: block; font-size: 15px; line-height: 1.15; }
-  .impact span { font-size: 7px; color: var(--muted); }
-  .foot { margin-top: 14px; padding-top: 7px; border-top: 1px solid rgba(100,116,139,.20); text-transform: uppercase; font-size: 6px; letter-spacing: .08em; color: var(--muted); }
-
+  .masthead { border-bottom: 2px solid var(--accent); padding-bottom: 22px; margin-bottom: 21px; }
+  .kicker { color: var(--accent); font-size: 11px; text-transform: uppercase; letter-spacing: .16em; font-weight: 700; }
+  h4 { margin: 9px 0 5px; font-weight: 800; font-size: 38px; line-height: 1.1; letter-spacing: -.045em; }
+  .role { font-size: 14px; font-weight: 600; }
+  .contact { margin-top: 12px; font-size: 11px; color: var(--muted); }
+  .profile { line-height: 1.55; color: var(--muted); margin: 0 0 22px; font-size: 13px; }
+  .body { display: grid; grid-template-columns: 1.43fr 1fr; gap: 31px; }
+  h5 { text-transform: uppercase; letter-spacing: .11em; font-size: 12px; margin: 0 0 10px; padding-bottom: 6px; border-bottom: 1px solid var(--accent); }
+  .job { margin-bottom: 17px; padding-left: 12px; border-left: 2px solid var(--accent); }
+  .job strong { font-size: 12px; display: block; line-height: 1.3; }
+  .job span { display: block; font-size: 10px; color: var(--muted); margin: 3px 0 5px; }
+  .job p { margin: 0; font-size: 11px; line-height: 1.45; }
+  .job ul { padding: 0 0 0 15px; margin: 6px 0 0; }
+  .job li { font-size: 10px; line-height: 1.45; margin-bottom: 3px; }
+  .skills { list-style: none; padding: 0; margin: 0 0 14px; }
+  .skills li { padding: 5px 0; border-bottom: 1px solid rgba(100,116,139,.14); font-size: 11px; }
+  .side h5:not(:first-child) { margin-top: 15px; }
+  .minor-entry { font-size: 10px; line-height: 1.4; margin: 0 0 7px; }
+  .minor-entry strong { display: block; font-size: 10px; }
+  .impact { margin: 10px 0 0; padding: 12px; background: color-mix(in srgb, var(--accent) 9%, white); }
+  .impact strong { display: block; font-size: 20px; line-height: 1.15; }
+  .impact span { font-size: 10px; color: var(--muted); }
+  .foot { position: absolute; left: 48px; right: 48px; bottom: 23px; padding-top: 9px; border-top: 1px solid rgba(100,116,139,.20); text-transform: uppercase; font-size: 9px; letter-spacing: .08em; color: var(--muted); }
   /* Each treatment corresponds to a named layout in the supplied sample set. */
   &[data-design="1"] { border-left: 4px solid #161616; --accent: #111; }
   &[data-design="1"] h4 { text-transform: uppercase; letter-spacing: -.02em; }
   &[data-design="2"] { --paper: #fffcf5; --ink: #0a1931; --accent: #d4af37; }
-  &[data-design="2"] .masthead { background: #0a1931; color: white; margin: -22px -19px 16px; padding: 23px 19px 15px; }
+  &[data-design="2"] .masthead { background: #0a1931; color: white; margin: -48px -48px 16px; padding: 48px 48px 22px; }
   &[data-design="3"] { --accent: #222; }
   &[data-design="3"] .body { grid-template-columns: .9fr 1.4fr; direction: rtl; }
   &[data-design="3"] .body > * { direction: ltr; }
@@ -163,7 +197,7 @@ const Sheet = styled.div`
   &[data-design="4"] .job { border-left: 2px solid #111; padding-left: 11px; position: relative; }
   &[data-design="4"] .job:before { content: ''; background: #111; width: 7px; height: 7px; border-radius: 50%; position: absolute; top: 0; left: -5px; }
   &[data-design="5"] { --accent: #111; --paper: #fafaf8; }
-  &[data-design="5"] .masthead { margin: -22px -19px 15px; padding: 22px 19px; background: #111; color: white; }
+  &[data-design="5"] .masthead { margin: -48px -48px 15px; padding: 48px 48px; background: #111; color: white; }
   &[data-design="5"] h4 { font-family: Georgia, serif; font-weight: 400; }
   &[data-design="6"] { --accent: #9b8065; --paper: #f6f3ee; border-radius: 14px; padding: 28px 20px; }
   &[data-design="6"] .masthead, &[data-design="6"] .impact { border-radius: 12px; background: white; padding: 12px; }
@@ -178,7 +212,7 @@ const Sheet = styled.div`
   &[data-design="8"] .impact { background: #f5f5f5; }
   &[data-design="9"] { --paper: #fffbf5; --accent: #f48120; }
   &[data-design="9"] .profile { padding: 8px; border: 1px solid #111; box-shadow: 4px 4px 0 #111; margin-right: 4px; }
-  &[data-design="9"] h4 { font-size: 29px; line-height: .95; }
+  &[data-design="9"] h4 { font-size: 43px; line-height: .95; }
   &[data-design="10"] { --paper: #fdfaf6; --accent: #b2a187; }
   &[data-design="10"] h4, &[data-design="10"] h5 { font-family: Georgia, serif; font-weight: 400; }
   &[data-design="10"] .masthead { text-align: center; padding-top: 10px; }
@@ -190,16 +224,16 @@ const Sheet = styled.div`
   &[data-design="12"] .job, &[data-design="12"] .side { background: white; border: 1px solid #dbe8f4; border-radius: 7px; padding: 8px; }
   &[data-design="12"] .impact { border-radius: 7px; background: #0f172a; color: white; }
   &[data-design="13"] { --accent: #0f4c75; }
-  &[data-design="13"] .masthead { margin: -22px -19px 16px; padding: 22px 19px; color: white; background: #0f4c75; }
+  &[data-design="13"] .masthead { margin: -48px -48px 16px; padding: 48px 48px; color: white; background: #0f4c75; }
   &[data-design="13"] .kicker, &[data-design="13"] .contact { color: #bbe1fa; }
-  &[data-design="14"] { --accent: #111; padding: 15px 13px; font-size: 8px; }
-  &[data-design="14"] h4 { font-size: 19px; }
+  &[data-design="14"] { --accent: #111; padding: 24px 24px; font-size: 11px; }
+  &[data-design="14"] h4 { font-size: 30px; }
   &[data-design="14"] .masthead { margin-bottom: 6px; padding-bottom: 7px; }
   &[data-design="14"] .job { margin-bottom: 5px; }
   &[data-design="14"] .skills li { padding: 2px 0; }
   &[data-design="15"] { --accent: #111; --paper: #fffef9; }
-  &[data-design="15"] h4 { font: 400 29px/1 Georgia, serif; }
-  &[data-design="15"] .profile::first-letter { float: left; font: 36px/.8 Georgia, serif; padding-right: 4px; }
+  &[data-design="15"] h4 { font: 400 39px/1 Georgia, serif; }
+  &[data-design="15"] .profile::first-letter { float: left; font: 50px/.8 Georgia, serif; padding-right: 4px; }
   &[data-design="15"] .body { gap: 20px; }
   &[data-design="16"] { --accent: #222; outline: 1px solid #222; outline-offset: -9px; padding: 27px; }
   &[data-design="16"] .job { border: 1px dashed #aaa; padding: 5px; }
@@ -207,7 +241,7 @@ const Sheet = styled.div`
   &[data-design="17"] .impact { background: #172b4d; color: white; }
   &[data-design="17"] .masthead { border-bottom-width: 4px; }
   &[data-design="18"] { --accent: #f48120; --paper: #f9f6ff; }
-  &[data-design="18"] .masthead { background: linear-gradient(120deg, #6d28d9, #ec4899); color: white; margin: -22px -19px 15px; padding: 22px 19px; }
+  &[data-design="18"] .masthead { background: linear-gradient(120deg, #6d28d9, #ec4899); color: white; margin: -48px -48px 15px; padding: 48px 48px; }
   &[data-design="18"] .kicker { color: #fff; }
   &[data-design="18"] .side { background: rgba(255,255,255,.75); border-radius: 9px; padding: 8px; }
   &[data-design="19"] { --accent: #111; --paper: #fcfcf9; }
@@ -227,46 +261,66 @@ const Footer = styled.p`
 `;
 
 function ResumeSheet({ designIndex }: { designIndex: number }): JSX.Element {
-  const highlights = keyHighlights.slice(0, 2);
   return (
     <Sheet data-design={designIndex + 1} aria-hidden="true">
       <div className="masthead">
         <div className="kicker">Portfolio / Curriculum Vitae</div>
         <h4>Jelvan Ricolcol</h4>
         <div className="role">Strategic HR • Full Stack Software • AI & Digital Transformation</div>
-        <div className="contact">Philippines / Malaysia &nbsp; • &nbsp; portfolio.jelvan.pro</div>
+        <div className="contact">Philippines / Malaysia &nbsp; • &nbsp; portfolio.jelvan.pro &nbsp; • &nbsp; hello@work.jelvan.pro</div>
       </div>
       <p className="profile">
-        Strategic HR and digital transformation professional combining people
-        operations, full-stack software development and practical automation.
+        Results-driven HR and digital transformation professional connecting people
+        operations, full-stack software, and practical AI automation to improve
+        efficiency, compliance, and organizational scale.
       </p>
       <div className="body">
         <div className="career">
-          <h5>Experience</h5>
-          {professionalExperience.slice(0, 3).map((job) => (
+          <h5>Professional Experience</h5>
+          {professionalExperience.map((job) => (
             <div className="job" key={job.company}>
               <strong>{job.role}</strong>
               <span>{job.company} • {job.timeFrame}</span>
               <p>{job.shortSummary}</p>
+              {'responsibilities' in job && (
+                <ul>
+                  {job.responsibilities.slice(0, 2).map((task) => (
+                    <li key={task.text}>{task.text}</li>
+                  ))}
+                </ul>
+              )}
             </div>
           ))}
         </div>
         <div className="side">
-          <h5>Expertise</h5>
+          <h5>Strategic HR</h5>
           <ul className="skills">
-            {strategicHrSkills.slice(0, 4).map((skill) => <li key={skill.text}>{skill.text}</li>)}
+            {strategicHrSkills.slice(0, 5).map((skill) => <li key={skill.text}>{skill.text}</li>)}
           </ul>
+          <h5>Digital & AI</h5>
+          <ul className="skills">
+            {[...digitalStrategySkills.slice(0, 3), ...aiAutomationSkills.slice(0, 3)]
+              .map((skill) => <li key={skill.text}>{skill.text}</li>)}
+          </ul>
+          <h5>Education</h5>
+          {education.map((item) => (
+            <p className="minor-entry" key={item.school}>
+              <strong>{item.degree}</strong>{item.school}
+            </p>
+          ))}
+          <h5>Selected Certifications</h5>
+          {certifications.slice(0, 3).map((item) => (
+            <p className="minor-entry" key={item.title}>
+              <strong>{item.title}</strong>{item.issuer}
+            </p>
+          ))}
           <div className="impact">
-            <strong>{highlights[0].value}</strong>
-            <span>{highlights[0].label}</span>
-          </div>
-          <div className="impact">
-            <strong>{highlights[1].value}</strong>
-            <span>{highlights[1].label}</span>
+            <strong>{keyHighlights[0].value}</strong>
+            <span>{keyHighlights[0].label}</span>
           </div>
         </div>
       </div>
-      <div className="foot">Selected resume style • illustrative, non-interactive design preview</div>
+      <div className="foot">A4 design concept • portfolio resume data • fixed-size page preview</div>
     </Sheet>
   );
 }
@@ -309,7 +363,7 @@ const ResumeSamples = (): JSX.Element => {
             <div className="eyebrow">Design gallery / 20 styles</div>
             <h2 id="resume-samples-heading">Resume Sample Designs</h2>
             <p>
-              Twenty A4-proportion resume concepts based on the supplied design reference,
+              Twenty full-size, locked A4 resume pages based on the supplied design reference,
               using Jelvan’s portfolio details. Browse the previews directly in this carousel.
             </p>
           </div>
@@ -333,13 +387,14 @@ const ResumeSamples = (): JSX.Element => {
                   <p>{design.description}</p>
                 </div>
               </CardHeader>
-              <ResumeSheet designIndex={index} />
+              <PageViewport aria-label={`${design.name} full-size A4 page; pan horizontally on narrow screens`}>
+                <ResumeSheet designIndex={index} />
+              </PageViewport>
             </Card>
           ))}
         </Track>
         <Footer>
-          Swipe horizontally on touch devices, or use the arrows to browse.
-          Previews are intentionally fixed-size; no zoom, lightbox or focus mode.
+          Use the arrows to change designs, or swipe between slides. Each page is locked to A4 size (794 × 1123 px); on narrow screens, pan across the page to read it without resizing. No zoom, lightbox or focus mode.
         </Footer>
       </Container>
     </Section>
