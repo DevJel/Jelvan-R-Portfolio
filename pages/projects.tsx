@@ -4,13 +4,13 @@ import { PAGES } from '../utils/seo';
 
 import PortfolioLayout from '../components/PortfolioLayout/PortfolioLayout';
 import HighlightedProjects from '../components/HighlightedProjects/HighlightedProjects';
+import ResumeSamples from '../components/ResumeSamples/ResumeSamples';
 
-const PortfolioLandingPage: NextPage = () => {
-  return (
-    <PortfolioLayout seo={PAGES.projects}>
-      <HighlightedProjects />
-    </PortfolioLayout>
-  );
-};
+const ProjectsPage: NextPage = () => (
+  <PortfolioLayout seo={PAGES.projects}>
+    <HighlightedProjects />
+    <ResumeSamples />
+  </PortfolioLayout>
+);
 
-export default PortfolioLandingPage;
+export default ProjectsPage;
