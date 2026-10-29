@@ -3,7 +3,8 @@ import styled from 'styled-components';
 export const Container = styled.section`
   display: flex;
   overflow: hidden;
-  min-height: 100vh;
+  height: 100%;
+  min-height: 0;
   position: relative;
 `;
 
