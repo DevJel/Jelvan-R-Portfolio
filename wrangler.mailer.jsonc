@@ -1,0 +1,35 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "jelvan-portfolio-mailer",
+  "main": "worker/mailer.js",
+  "compatibility_date": "2026-10-29",
+  "workers_dev": false,
+  "observability": {
+    "enabled": true
+  },
+  "vars": {
+    "MAIL_FROM": "hello@work.jelvan.pro"
+  },
+  "secrets_store_secrets": [
+    {
+      "binding": "SES_SMTP_HOST",
+      "store_id": "1a77c40addba476788aea7c043ca33db",
+      "secret_name": "SES_SMTP_HOST"
+    },
+    {
+      "binding": "SES_SMTP_PORT",
+      "store_id": "1a77c40addba476788aea7c043ca33db",
+      "secret_name": "SES_SMTP_PORT"
+    },
+    {
+      "binding": "SES_SMTP_USERNAME",
+      "store_id": "1a77c40addba476788aea7c043ca33db",
+      "secret_name": "SES_SMTP_USERNAME"
+    },
+    {
+      "binding": "SES_SMTP_PASSWORD",
+      "store_id": "1a77c40addba476788aea7c043ca33db",
+      "secret_name": "SES_SMTP_PASSWORD"
+    }
+  ]
+}
