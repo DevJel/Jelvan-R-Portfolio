@@ -7,16 +7,10 @@ import PortfolioParagraph from '../Typography/PortfolioParagraph/PortfolioParagr
 import Image from 'next/legacy/image';
 import ScrollHint from '../ScrollHint/ScrollHint';
 import ProjectDesktopSlide from '../ProjectDesktopSlide/ProjectDesktopSlide';
-import ProjectDetailsSlide from '../ProjectDetailsSlide/ProjectDetailsSlide';
 import WaveDivider from '../WaveDivider/WaveDivider';
-import {
-  opticsProjectDetailQuotes,
-  projectDetailsQuotes,
-} from '../ProjectDetailsSlide/ProjectDetailsSlide.config';
 
 const WHITE = '#ffffff';
 
-/** Picks the wave image that blends the background above into the one below */
 const waveBetween = (above: string, below: string): string => {
   if (above === below) {
     return above === WHITE
@@ -32,36 +26,38 @@ export interface Props {
   withNavbar?: boolean;
 }
 
-/**
- *Renders sections with some of my projects
- *@function HighlightedProjects
- *@returns {JSX.Element} - Rendered HighlightedProjects component
- */
+/** Presents the selected projects in a consistent, responsive sequence. */
 const HighlightedProjects = ({ withNavbar = true }: Props): JSX.Element => {
   const { highlightedProjects } = useHighlightedProjectsData();
-  // The last two projects keep their extra detail slides
-  const featuredProjects = highlightedProjects.slice(0, -2);
-  const [projectThree, projectFour] = highlightedProjects.slice(-2);
 
   return (
     <Styled.Container>
-      {/* NAVIGATION */}
       {withNavbar && <Navbar isLogoExpanded={true} />}
-      {/* HERO */}
+
       <Styled.ProjectsHero>
         <Styled.HeroLeftColumn>
           <SectionHeader
             variant={'medium'}
-            headerText={`Project Disclaimer`}
+            headerText={'Selected Projects'}
             margin={'0'}
             color={'#f48120'}
           />
-
           <PortfolioParagraph
             margin={'1rem 0'}
-            paragraphText={`Due to non-disclosure agreements, the repositories and code showcased here have been modified from their original enterprise versions. All client-specific branding, logic, and identifying data have been removed or anonymized with prior client approval. These projects serve strictly as demonstration concepts to illustrate specific features and architectural implementations.`}
+            paragraphText={
+              'A selection of digital products and systems spanning AI automation, knowledge management, business operations, productivity, e-commerce, and developer tooling.'
+            }
             withDarkColor={false}
             variant={'large'}
+            withAnimatedPresence
+          />
+          <PortfolioParagraph
+            margin={'1rem 0'}
+            paragraphText={
+              'Some project details and visuals are presented as demonstrations. Client-specific information and confidential implementation details are not displayed.'
+            }
+            withDarkColor={false}
+            variant={'medium'}
             withAnimatedPresence
           />
         </Styled.HeroLeftColumn>
@@ -77,7 +73,7 @@ const HighlightedProjects = ({ withNavbar = true }: Props): JSX.Element => {
                 height={800}
                 width={800}
                 objectFit={'contain'}
-                alt={'Laptop showing the Jelvan LMS dashboard'}
+                alt={'Laptop showing a portfolio project'}
                 priority
                 className={'laptop'}
               />
@@ -93,7 +89,7 @@ const HighlightedProjects = ({ withNavbar = true }: Props): JSX.Element => {
                 quality={95}
                 height={450}
                 width={350}
-                alt={'Phone showing a project'}
+                alt={'Phone showing a portfolio project'}
                 layout={'fixed'}
                 objectFit={'contain'}
                 priority
@@ -113,21 +109,19 @@ const HighlightedProjects = ({ withNavbar = true }: Props): JSX.Element => {
                 height={200}
                 width={200}
                 objectFit={'contain'}
-                alt={'Smartwatch showing a project'}
+                alt={'Smartwatch showing a portfolio project'}
                 priority
                 className={'watch'}
               />
             </Styled.FloatingImgContainer>
           </Styled.ImageContainer>
         </Styled.HeroRightColumn>
-
         <ScrollHint />
       </Styled.ProjectsHero>
 
-      {/* PROJECTS - a wave between every slide, matched to the colours either side */}
-      {featuredProjects.map((project, index) => {
+      {highlightedProjects.map((project, index) => {
         const previousBg =
-          index === 0 ? '#ffffff' : featuredProjects[index - 1].slideBgColor;
+          index === 0 ? WHITE : highlightedProjects[index - 1].slideBgColor;
         return (
           <React.Fragment key={project.projectTitle}>
             <WaveDivider
@@ -138,45 +132,6 @@ const HighlightedProjects = ({ withNavbar = true }: Props): JSX.Element => {
           </React.Fragment>
         );
       })}
-
-      {/* SNEAKER MANIACS */}
-      <WaveDivider
-        waveImg={waveBetween(
-          featuredProjects[featuredProjects.length - 1].slideBgColor,
-          projectThree.slideBgColor
-        )}
-        dividerHeight={'200px'}
-      />
-      <ProjectDesktopSlide {...projectThree} />
-      <WaveDivider
-        waveImg={'/assets/portfolio/blob-band-white.svg'}
-        dividerHeight={'200px'}
-      />
-
-      <ProjectDetailsSlide
-        slideHeight={'100vh'}
-        slideBgColor={'#ffffff'}
-        projectName={projectThree.projectTitle}
-        projectMobileImg={projectThree.projectMobileImg}
-        projectQuotes={projectDetailsQuotes}
-      />
-      <WaveDivider
-        waveImg={'/assets/portfolio/blob-1.svg'}
-        dividerHeight={'150px'}
-      />
-      {/* Project Three */}
-      <ProjectDesktopSlide {...projectFour} />
-      <WaveDivider
-        waveImg={'/assets/portfolio/blob-band-cream.svg'}
-        dividerHeight={'200px'}
-      />
-      <ProjectDetailsSlide
-        slideHeight={'100vh'}
-        slideBgColor={'#fff7f0'}
-        projectName={projectFour.projectTitle}
-        projectMobileImg={projectFour.projectMobileImg}
-        projectQuotes={opticsProjectDetailQuotes}
-      />
     </Styled.Container>
   );
 };
