@@ -157,6 +157,35 @@ export const Icon = styled.li`
   }
 `;
 
+export const SampleLink = styled.a`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 3.25rem;
+  padding: 0.85rem 1.5rem;
+  border-radius: 999px;
+  border: 1px solid #f48120;
+  background: #f48120;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+
+  :hover {
+    background: #df6f14;
+    box-shadow: 0 8px 22px rgba(244, 129, 32, 0.24);
+    transform: translateY(-2px);
+  }
+
+  :focus-visible {
+    outline: 3px solid rgba(244, 129, 32, 0.35);
+    outline-offset: 3px;
+  }
+`;
+
 export const ButtonsWrapper = styled.div`
   display: flex;
   justify-content: center;
