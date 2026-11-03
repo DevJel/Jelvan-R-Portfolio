@@ -66,15 +66,19 @@ const Component = ({ iconSrc, text, iconSize }: Props): JSX.Element => {
         skillImage
       )}
       <Styled.SkillText>
-        <Styled.IconText
-          isHovering={isHovering}
-          as={referenceUrl ? 'a' : 'p'}
-          href={referenceUrl}
-          target={referenceUrl ? '_blank' : undefined}
-          rel={referenceUrl ? 'noopener noreferrer' : undefined}
-          aria-label={referenceUrl ? `Learn how ${text} works (official documentation)` : undefined}
-        >
-          {text}{referenceUrl ? ' · Official docs ↗' : ''}
+        <Styled.IconText isHovering={isHovering}>
+          {referenceUrl ? (
+            <Styled.ReferenceTextLink
+              href={referenceUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Learn how ${text} works (official documentation)`}
+            >
+              {text} · Official docs ↗
+            </Styled.ReferenceTextLink>
+          ) : (
+            text
+          )}
         </Styled.IconText>
       </Styled.SkillText>
     </Styled.Container>
