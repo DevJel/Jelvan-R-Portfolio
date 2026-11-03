@@ -48,6 +48,18 @@ export const SkillText = styled.figcaption`
   text-align: center;
 `;
 
+export const ReferenceTextLink = styled.a`
+  color: inherit;
+  text-decoration: none;
+  outline-offset: 3px;
+
+  &:hover,
+  &:focus-visible {
+    color: #f48120;
+    text-decoration: underline;
+  }
+`;
+
 const isHoveredStyles = css`
   visibility: visible;
   opacity: 1;
@@ -73,12 +85,6 @@ export const IconText = styled.p<Props>`
   text-decoration: none;
 
   ({ isHovering }) => isHovering === false && slideOutAnimation;
-
-  &[href]:hover,
-  &[href]:focus-visible {
-    color: #f48120;
-    text-decoration: underline;
-  }
 
   @media ${({ theme }) => theme.media.tablet} {
     font-size: 0.7rem;
