@@ -35,7 +35,7 @@ The portfolio uses the following technologies and development patterns:
 
 - **Desktop-style interface:** A multi-window experience with window resizing, focus management, and taskbar interactions.
 - **Interactive workspaces:** Portfolio views styled as desktop utilities, including a file explorer, terminal, code editor, and settings panels.
-- **Project showcases:** Selected projects and technical work presented in an explorable interface.
+- **Project showcases:** Selected projects and technical work presented in an explorable interface, including the [Knowledge Center System sample](https://app-bible.jelvan.pro/).
 - **Responsive design:** Layouts and interactions adapted for different screen sizes.
 - **Contact form:** A server-side endpoint for receiving portfolio inquiries.
 

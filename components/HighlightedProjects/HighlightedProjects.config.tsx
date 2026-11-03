@@ -105,6 +105,20 @@ export const useHighlightedProjectsData = (): {
     },
     {
       slideNumberImg: '/assets/portfolio/6.svg',
+      projectTitle: 'Knowledge Center System',
+      projectDescription: `A web-based knowledge center presented as a structured digital library for organizing and accessing reference content. Open the live sample to explore the application and its available features.`,
+      slideHeight: '100vh',
+      projectImg: LAPTOP_IMG,
+      projectMobileImg: PHONE_IMG,
+      projectArt: <BrandCard brands={['cloudflare']} subtitle={'Knowledge Center'} />,
+      projectSampleUrl: 'https://app-bible.jelvan.pro/',
+      projectTechnologies: ['Knowledge Management', 'Digital Library', 'Web Application'],
+
+      slideBgColor: '#fff7f0',
+      technologyIcons: [],
+    },
+    {
+      slideNumberImg: '/assets/portfolio/7.svg',
       projectTitle: 'Sneaker Maniacs',
       projectDescription:
         'Sneaker-maniacs is a custom e-commerce platform powered by Next.js, Redux and MongoDB. My main goal was to build a web app that employs the best latest practices and on mobile feels like a rich native application. Try it out!',
@@ -130,7 +144,7 @@ export const useHighlightedProjectsData = (): {
       ],
     },
     {
-      slideNumberImg: '/assets/portfolio/7.svg',
+      slideNumberImg: '/assets/portfolio/8.svg',
       projectTitle: 'Department of Optics | Web-portal',
       projectDescription: `A sneak peak of a project that I'm currently building. This is a full-stack portal with 70+ pages designed and built for the department of Optics (Chernivtsi National University). It is powered by Next.js and Node.js on backend.`,
       slideHeight: '100vh',

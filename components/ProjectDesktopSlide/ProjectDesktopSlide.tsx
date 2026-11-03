@@ -17,6 +17,7 @@ const ProjectDesktopSlide = ({
   projectDescription,
   projectImg,
   projectArt,
+  projectSampleUrl,
   projectTechnologies,
   projectTitle,
   slideBgColor,
@@ -94,6 +95,18 @@ const ProjectDesktopSlide = ({
               variant={'large'}
               withAnimatedPresence={true}
             />
+            {projectSampleUrl && (
+              <Styled.ButtonsWrapper>
+                <Styled.SampleLink
+                  href={projectSampleUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Open the live sample for ${projectTitle}`}
+                >
+                  View Sample
+                </Styled.SampleLink>
+              </Styled.ButtonsWrapper>
+            )}
           </Styled.RightColumn>
         </>
       )}

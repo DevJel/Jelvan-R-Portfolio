@@ -28,9 +28,13 @@ const NavigationMenu = (): JSX.Element => {
         <Styled.RouterLinksList className={'router-list'} key={reRenderKey}>
           {navMenuLinks.map((link) => (
             <li key={link.id}>
-              <Link href={link.href} passHref legacyBehavior>
-                <Styled.NavLink>{link.linkText}</Styled.NavLink>
-              </Link>
+              {link.external ? (
+                <Styled.NavLink href={link.href}>{link.linkText}</Styled.NavLink>
+              ) : (
+                <Link href={link.href} passHref legacyBehavior>
+                  <Styled.NavLink>{link.linkText}</Styled.NavLink>
+                </Link>
+              )}
             </li>
           ))}
         </Styled.RouterLinksList>
