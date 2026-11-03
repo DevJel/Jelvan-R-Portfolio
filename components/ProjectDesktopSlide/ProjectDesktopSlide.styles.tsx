@@ -167,7 +167,7 @@ export const SampleLink = styled.a`
   border-radius: 999px;
   border: 1px solid #f48120;
   background: #f48120;
-  color: #ffffff;
+  color: #17181d;
   font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0.02em;
