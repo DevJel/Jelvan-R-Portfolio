@@ -21,6 +21,10 @@ export const useHighlightedProjectsData = (): {
     {
       slideNumberImg: '/assets/portfolio/1.svg',
       projectTitle: 'Multi Agent Worker | Master AI',
+      projectLinks: [
+        { label: 'GitHub · private', url: 'https://github.com/Dev-Jel-Works/master-CEO-ai-' },
+      ],
+      projectLinkNote: 'Public website not confirmed.',
       projectDescription:
         'An AI-powered workforce for small businesses. Master AI coordinates multiple specialized automated workers across business departments, helping teams handle repeatable tasks, organize operations, and support day-to-day workflows. Powered by Muse AI.',
       slideHeight: '100vh',
@@ -37,13 +41,16 @@ export const useHighlightedProjectsData = (): {
     {
       slideNumberImg: '/assets/portfolio/2.svg',
       projectTitle: 'Knowledge Center System',
+      projectLinks: [
+        { label: 'Website · app-bible.jelvan.pro', url: 'https://app-bible.jelvan.pro/' },
+        { label: 'GitHub · public', url: 'https://github.com/DevJel/knowledge-center-system' },
+      ],
       projectDescription:
         'A structured digital knowledge platform for organizing, maintaining, and accessing reference materials. It brings learning resources and documentation into one searchable, easy-to-navigate experience.',
       slideHeight: '100vh',
       projectImg: LAPTOP_IMG,
       projectMobileImg: PHONE_IMG,
       projectArt: <BrandCard brands={['cloudflare']} subtitle={'Knowledge Center'} />,
-      projectSampleUrl: 'https://app-bible.jelvan.pro/',
       projectTechnologies: ['Knowledge Management', 'Digital Library', 'Web Application'],
       slideBgColor: '#ffffff',
       technologyIcons: [
@@ -54,6 +61,10 @@ export const useHighlightedProjectsData = (): {
     {
       slideNumberImg: '/assets/portfolio/3.svg',
       projectTitle: 'Internal Email System',
+      projectLinks: [
+        { label: 'GitHub · private', url: 'https://github.com/Dev-Jel-Works/Email-LEADer-' },
+      ],
+      projectLinkNote: 'Public website not confirmed.',
       projectDescription:
         'An internal email and communications platform powered by Amazon SES. It combines reliable email delivery with workflow automation and AI-assisted capabilities to support operational notifications, messaging, and repeatable business processes.',
       slideHeight: '100vh',
@@ -70,6 +81,11 @@ export const useHighlightedProjectsData = (): {
     {
       slideNumberImg: '/assets/portfolio/4.svg',
       projectTitle: 'HR Information System',
+      projectLinks: [
+        { label: 'Website · jelhr-system.pages.dev (unverified)', url: 'https://jelhr-system.pages.dev/' },
+        { label: 'GitHub · public', url: 'https://github.com/DevJel/jelhr-system' },
+      ],
+      projectLinkNote: 'HR system is in development; not ready for real employee data.',
       projectDescription:
         'A centralized HR platform for managing employee information and workforce processes across the employee lifecycle, including recruitment, onboarding, employee records, access control, and operational reporting.',
       slideHeight: '100vh',
@@ -87,6 +103,10 @@ export const useHighlightedProjectsData = (): {
     {
       slideNumberImg: '/assets/portfolio/5.svg',
       projectTitle: 'Workspace Pad | BOLEKpad',
+      projectLinks: [
+        { label: 'Website · bolekpad.jelvan.pro (unverified)', url: 'https://bolekpad.jelvan.pro/' },
+        { label: 'GitHub · private', url: 'https://github.com/Dev-Jel-Works/Bolekpad' },
+      ],
       projectDescription:
         'A personal productivity workspace that brings notes, documents, attachments, and communication tools together. Designed as a focused digital workspace with AI-assisted features and workflow reminders.',
       slideHeight: '100vh',
@@ -120,6 +140,11 @@ export const useHighlightedProjectsData = (): {
     {
       slideNumberImg: '/assets/portfolio/7.svg',
       projectTitle: 'Developers Playground | DevAI',
+      projectLinks: [
+        { label: 'Website · app.xcoder.jelvan.pro', url: 'https://app.xcoder.jelvan.pro/' },
+        { label: 'xCoder GitHub · private', url: 'https://github.com/DevJel/xCoder-V2' },
+        { label: 'Controller GitHub · private', url: 'https://github.com/Dev-Jel-Works/Dev-ai-Controller' },
+      ],
       projectDescription:
         'A developer-focused environment for web development, coding workflows, and project monitoring. DevAI brings development utilities and AI-assisted capabilities together to help organize work, inspect progress, and support the software delivery lifecycle.',
       slideHeight: '100vh',
