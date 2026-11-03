@@ -17,7 +17,8 @@ const ProjectDesktopSlide = ({
   projectDescription,
   projectImg,
   projectArt,
-  projectSampleUrl,
+  projectLinks,
+  projectLinkNote,
   projectTechnologies,
   projectTitle,
   slideBgColor,
@@ -95,18 +96,22 @@ const ProjectDesktopSlide = ({
               variant={'large'}
               withAnimatedPresence={true}
             />
-            {projectSampleUrl && (
+            {projectLinks && (
               <Styled.ButtonsWrapper>
-                <Styled.SampleLink
-                  href={projectSampleUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Open the live sample for ${projectTitle}`}
-                >
-                  View Sample
-                </Styled.SampleLink>
+                {projectLinks.map(({ label, url }) => (
+                  <Styled.SampleLink
+                    key={url}
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${label} for ${projectTitle} (opens in a new tab)`}
+                  >
+                    {label}
+                  </Styled.SampleLink>
+                ))}
               </Styled.ButtonsWrapper>
             )}
+            {projectLinkNote && <Styled.ProjectLinkNote>{projectLinkNote}</Styled.ProjectLinkNote>}
           </Styled.RightColumn>
         </>
       )}

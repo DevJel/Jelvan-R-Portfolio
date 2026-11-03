@@ -1,7 +1,7 @@
 # Jelvan® — Personal Portfolio
 
 **Live website:** [https://portfolio.jelvan.pro](https://portfolio.jelvan.pro)  
-**Repository:** [Dev-Jel-Works/Jelvan-R-Portfolio](https://github.com/Dev-Jel-Works/Jelvan-R-Portfolio)  
+**Repository:** [DevJel/Jelvan-R-Portfolio](https://github.com/DevJel/Jelvan-R-Portfolio)<br />
 **Owner:** Jelvan B. Ricolcol  
 **Primary branch:** `main`  
 **License:** Proprietary — all rights reserved
@@ -59,27 +59,31 @@ The design uses a restrained visual system with orange brand accents, light/crea
     <td width="50%" valign="top">
       <h3>Master AI — Multi Agent Worker</h3>
       <p>Specialized AI workers coordinate repeatable small-business tasks and department workflows. AI platform: Muse AI.</p>
+      <p>Website: not confirmed · <a href="https://github.com/Dev-Jel-Works/master-CEO-ai-">GitHub (private)</a></p>
     </td>
     <td width="50%" valign="top">
       <h3>Knowledge Center System</h3>
       <p>A digital library for organized documentation, learning resources, and reference materials.</p>
-      <a href="https://app-bible.jelvan.pro/">Open sample Knowledge Center ↗</a><br />
+      <a href="https://app-bible.jelvan.pro/">Website</a> · <a href="https://github.com/DevJel/knowledge-center-system">GitHub (public)</a>
     </td>
   </tr>
   <tr>
     <td width="50%" valign="top">
       <h3>Internal Email System</h3>
       <p>Internal communications and workflow automation, with Amazon SES as the email delivery platform.</p>
+      <p>Website: not confirmed · <a href="https://github.com/Dev-Jel-Works/Email-LEADer-">GitHub (private)</a></p>
     </td>
     <td width="50%" valign="top">
       <h3>HR Information System</h3>
-      <p>Recruitment, onboarding, employee records, access control, and workforce reporting.</p>
+      <p>Recruitment, onboarding, employee records, access control, and workforce reporting. In development; not ready for real employee data.</p>
+      <p><a href="https://jelhr-system.pages.dev/">Website (availability unverified)</a> · <a href="https://github.com/DevJel/jelhr-system">GitHub (public)</a></p>
     </td>
   </tr>
   <tr>
     <td width="50%" valign="top">
       <h3>Workspace Pad — BOLEKpad</h3>
       <p>A productivity workspace for notes, documents, attachments, AI-assisted features, and reminders.</p>
+      <p><a href="https://bolekpad.jelvan.pro/">Website (availability unverified)</a> · <a href="https://github.com/Dev-Jel-Works/Bolekpad">GitHub (private)</a></p>
     </td>
     <td width="50%" valign="top">
       <h3>Online Printing Store</h3>
@@ -90,6 +94,7 @@ The design uses a restrained visual system with orange brand accents, light/crea
     <td width="50%" valign="top">
       <h3>Developers Playground — DevAI</h3>
       <p>A developer environment for web development, coding workflows, project progress, and monitoring.</p>
+      <p><a href="https://app.xcoder.jelvan.pro/">xCoder website</a> · <a href="https://github.com/DevJel/xCoder-V2">xCoder GitHub (private)</a> · <a href="https://github.com/Dev-Jel-Works/Dev-ai-Controller">Controller GitHub (private)</a></p>
     </td>
     <td width="50%" valign="top">
       <h3>Explore the portfolio</h3>
@@ -425,7 +430,7 @@ Each project entry provides the project title, description, slide number artwork
 2. Add or update an item in the `highlightedProjects` array.
 3. Provide a unique `projectTitle`, accurate `projectDescription`, `projectTechnologies`, and a valid local image or existing brand-art component.
 4. Add technology icons only from installed icon packages.
-5. Add `projectSampleUrl` only when a real, public sample is available and approved.
+5. Use `projectLinks` and `projectLinkNote` to label repository visibility and whether a website is verified. Do not imply that private repositories or unverified deployments are publicly available.
 6. Keep slide backgrounds compatible with the wave divider assets.
 7. Run `npm run typecheck` and `npm run build`.
 8. Review the Projects page at desktop and mobile widths.

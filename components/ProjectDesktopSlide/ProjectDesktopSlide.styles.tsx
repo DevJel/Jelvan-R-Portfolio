@@ -17,6 +17,8 @@ export const Container = styled.section<ContainerProps>`
 
   @media ${({ theme }) => theme.media.tablet} {
     flex-direction: column;
+    height: auto;
+    min-height: 100vh;
   }
 `;
 
@@ -34,11 +36,12 @@ export const LeftColumn = styled.div`
   @media ${({ theme }) => theme.media.tablet} {
     width: 100%;
     padding: 1rem;
-    height: 60%;
+    height: auto;
+    min-height: 32vh;
     align-items: flex-end;
   }
   @media ${({ theme }) => theme.media.phone} {
-    height: 45%;
+    min-height: 28vh;
     align-items: flex-end;
     justify-content: flex-end;
   }
@@ -121,7 +124,7 @@ export const RightColumn = styled.div`
 
   @media ${({ theme }) => theme.media.tablet} {
     width: 100%;
-    height: 40%;
+    height: auto;
     padding: 1rem;
     justify-content: flex-start;
     h1 {
@@ -133,7 +136,6 @@ export const RightColumn = styled.div`
     }
   }
   @media ${({ theme }) => theme.media.phone} {
-    height: 55%;
   }
 `;
 
@@ -161,9 +163,10 @@ export const SampleLink = styled.a`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  min-height: 3.25rem;
-  padding: 0.85rem 1.5rem;
+  min-height: 2.75rem;
+  padding: 0.65rem 1rem;
+  text-align: center;
+  overflow-wrap: anywhere;
   border-radius: 999px;
   border: 1px solid #f48120;
   background: #f48120;
@@ -188,23 +191,21 @@ export const SampleLink = styled.a`
 
 export const ButtonsWrapper = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 2rem;
-  margin-top: 1rem;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
 
   a {
-    width: 280px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    flex: 1 1 160px;
+    max-width: 300px;
     animation: ${slideTop} 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
     animation-delay: 250ms;
   }
+`;
 
-  @media ${({ theme }) => theme.media.phone} {
-    gap: 1rem;
-    a {
-      width: 50%;
-    }
-  }
+export const ProjectLinkNote = styled.p`
+  text-align: center;
+  font-size: 0.9rem;
+  margin: 0.75rem 0 0;
 `;
