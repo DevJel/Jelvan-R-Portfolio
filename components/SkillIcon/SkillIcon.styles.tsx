@@ -15,7 +15,8 @@ export const Container = styled.figure<Props>`
   flex-direction: column;
   width: 5rem;
 
-  :hover {
+  :hover,
+  :focus-within {
     .icon-img {
       filter: brightness(130%);
     }
@@ -28,6 +29,18 @@ export const Container = styled.figure<Props>`
       height: 3rem;
       width: auto;
     }
+  }
+`;
+
+export const IconLink = styled.a`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.4rem;
+  outline-offset: 4px;
+
+  &:focus-visible {
+    outline: 2px solid #f48120;
   }
 `;
 
@@ -52,13 +65,22 @@ const slideOutAnimation = css`
 `;
 
 export const IconText = styled.p<Props>`
-  ${({ isHovering }) => (isHovering ? isHoveredStyles : isNotHoveredStyles)};
-  font-size: 1rem;
+  ({ isHovering }) => (isHovering ? isHoveredStyles : isNotHoveredStyles);
+  font-size: 0.85rem;
+  line-height: 1.35;
   animation: ${slideBottom} 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  color: inherit;
+  text-decoration: none;
 
-  ${({ isHovering }) => isHovering === false && slideOutAnimation};
+  ({ isHovering }) => isHovering === false && slideOutAnimation;
+
+  &[href]:hover,
+  &[href]:focus-visible {
+    color: #f48120;
+    text-decoration: underline;
+  }
 
   @media ${({ theme }) => theme.media.tablet} {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
   }
 `;
