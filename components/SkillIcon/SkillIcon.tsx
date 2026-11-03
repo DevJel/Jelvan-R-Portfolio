@@ -8,31 +8,74 @@ export interface Props {
   iconSize: { height: number; width: number };
 }
 
-/**
- *@function SkillIcon
- *@param {string} iconSrc - skill icon image source
- *@param {string} text - skill description
- *@param {object} iconSize - icon width and height
- *@returns {JSX.Element} - Rendered SkillIcon component
- */
+/** Official learning references for technology logos shown in the About skills cards. */
+const SKILL_REFERENCES: Record<string, string> = {
+  JavaScript: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
+  TypeScript: 'https://www.typescriptlang.org/docs/',
+  React: 'https://react.dev/learn',
+  HTML: 'https://developer.mozilla.org/en-US/docs/Web/HTML',
+  CSS: 'https://developer.mozilla.org/en-US/docs/Web/CSS',
+  'Next.js': 'https://nextjs.org/docs',
+  Jest: 'https://jestjs.io/docs/getting-started',
+  NodeJS: 'https://nodejs.org/en/learn',
+  'Node.js': 'https://nodejs.org/en/learn',
+  Python: 'https://docs.python.org/3/',
+  Express: 'https://expressjs.com/en/starter/installing.html',
+  GraphQL: 'https://graphql.org/learn/',
+  Mongo: 'https://www.mongodb.com/docs/',
+  MongoDB: 'https://www.mongodb.com/docs/',
+  MySQL: 'https://dev.mysql.com/doc/',
+  Postgresql: 'https://www.postgresql.org/docs/',
+  PostgreSQL: 'https://www.postgresql.org/docs/',
+  Cloudflare: 'https://developers.cloudflare.com/',
+};
+
+/** A logo links to official platform documentation whenever a reference is available. */
 const Component = ({ iconSrc, text, iconSize }: Props): JSX.Element => {
   const [isHovering, setIsHovering] = useState(false);
+  const referenceUrl = SKILL_REFERENCES[text];
+
+  const skillImage = (
+    <Image
+      src={iconSrc}
+      height={iconSize.height}
+      width={iconSize.width}
+      alt={`Official ${text} logo`}
+      objectFit={'contain'}
+      className={'icon-img'}
+    />
+  );
+
   return (
     <Styled.Container
       isHovering={isHovering}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
     >
-      <Image
-        src={iconSrc}
-        height={iconSize.height}
-        width={iconSize.width}
-        alt={`Icon of ${text} tool`}
-        objectFit={'contain'}
-        className={'icon-img'}
-      />
+      {referenceUrl ? (
+        <Styled.IconLink
+          href={referenceUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Open official ${text} documentation in a new tab`}
+          title={`Official ${text} documentation`}
+        >
+          {skillImage}
+        </Styled.IconLink>
+      ) : (
+        skillImage
+      )}
       <Styled.SkillText>
-        <Styled.IconText isHovering={isHovering}>{text}</Styled.IconText>
+        <Styled.IconText
+          isHovering={isHovering}
+          as={referenceUrl ? 'a' : 'p'}
+          href={referenceUrl}
+          target={referenceUrl ? '_blank' : undefined}
+          rel={referenceUrl ? 'noopener noreferrer' : undefined}
+          aria-label={referenceUrl ? `Learn how ${text} works (official documentation)` : undefined}
+        >
+          {text}{referenceUrl ? ' · Official docs ↗' : ''}
+        </Styled.IconText>
       </Styled.SkillText>
     </Styled.Container>
   );
