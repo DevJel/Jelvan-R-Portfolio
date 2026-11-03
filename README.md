@@ -57,61 +57,44 @@ The design uses a restrained visual system with orange brand accents, light/crea
 <table>
   <tr>
     <td width="50%" valign="top">
-      <img src="./public/assets/portfolio/automation-cover.png" alt="AI automation artwork" width="100%" />
       <h3>Master AI — Multi Agent Worker</h3>
       <p>Specialized AI workers coordinate repeatable small-business tasks and department workflows. AI platform: Muse AI.</p>
-      <img alt="Multi agent AI" src="https://img.shields.io/badge/AI-Multi--Agent-7C3AED?style=flat-square" />
-      <img alt="Automation" src="https://img.shields.io/badge/Focus-Automation-F48120?style=flat-square" />
     </td>
     <td width="50%" valign="top">
-      <img src="./public/assets/portfolio/services/knowledge-base.svg" alt="Knowledge base illustration" width="100%" />
       <h3>Knowledge Center System</h3>
       <p>A digital library for organized documentation, learning resources, and reference materials.</p>
       <a href="https://app-bible.jelvan.pro/">Open sample Knowledge Center ↗</a><br />
-      <img alt="Knowledge management" src="https://img.shields.io/badge/Focus-Knowledge%20Management-2563EB?style=flat-square" />
     </td>
   </tr>
   <tr>
     <td width="50%" valign="top">
-      <img src="./public/assets/portfolio/email-platform.png" alt="Email platform visual" width="100%" />
       <h3>Internal Email System</h3>
       <p>Internal communications and workflow automation, with Amazon SES as the email delivery platform.</p>
-      <img alt="AWS SES" src="https://img.shields.io/badge/AWS-SES-FF9900?style=flat-square&logo=amazonaws&logoColor=white" />
     </td>
     <td width="50%" valign="top">
-      <img src="./public/assets/portfolio/projects/mis-desktop.svg" alt="HR information system dashboard artwork" width="100%" />
       <h3>HR Information System</h3>
       <p>Recruitment, onboarding, employee records, access control, and workforce reporting.</p>
-      <img alt="HRIS" src="https://img.shields.io/badge/Focus-HRIS-DB2777?style=flat-square" />
     </td>
   </tr>
   <tr>
     <td width="50%" valign="top">
-      <img src="./public/assets/portfolio/landing-mobile.png" alt="Workspace interface preview" width="100%" />
       <h3>Workspace Pad — BOLEKpad</h3>
       <p>A productivity workspace for notes, documents, attachments, AI-assisted features, and reminders.</p>
-      <img alt="Productivity" src="https://img.shields.io/badge/Focus-Productivity-0891B2?style=flat-square" />
     </td>
     <td width="50%" valign="top">
-      <img src="./public/assets/portfolio/services/invoice.svg" alt="Online ordering and invoice illustration" width="100%" />
       <h3>Online Printing Store</h3>
       <p>An online storefront concept for print catalog browsing, order details, and print request intake.</p>
-      <img alt="E-commerce" src="https://img.shields.io/badge/Focus-E--commerce-16A34A?style=flat-square" />
     </td>
   </tr>
   <tr>
     <td width="50%" valign="top">
-      <img src="./public/assets/portfolio/projects/devai-desktop.svg" alt="Developer workspace preview" width="100%" />
       <h3>Developers Playground — DevAI</h3>
       <p>A developer environment for web development, coding workflows, project progress, and monitoring.</p>
-      <img alt="Developer tools" src="https://img.shields.io/badge/Focus-Developer%20Tools-7C3AED?style=flat-square" />
     </td>
     <td width="50%" valign="top">
-      <img src="./public/assets/portfolio/avatar-black-white.png" alt="Portfolio profile artwork" width="100%" />
       <h3>Explore the portfolio</h3>
       <p>Explore the professional profile, selected work, and contact options.</p>
       <a href="https://portfolio.jelvan.pro/">Open live portfolio ↗</a>
-      <p><img alt="Portfolio live" src="https://img.shields.io/badge/Portfolio-Live-F48120?style=flat-square" /></p>
     </td>
   </tr>
 </table>
@@ -503,7 +486,7 @@ The relay:
 | --- | --- | --- |
 | Inquiry notification | `hello@work.jelvan.pro` | Delivers the visitor's inquiry to the portfolio inbox |
 | Visitor acknowledgment | Visitor's submitted email | Confirms that the message was received |
-| Confirmation BCC | `rjelvan@operavaglobal.com` | Receives a copy of the visitor acknowledgment |
+| Confirmation BCC | Address defined in the worker | Receives a copy of the visitor acknowledgment |
 
 The configured sender is `hello@work.jelvan.pro`. The visitor's address is used as the inquiry reply-to address, allowing the recipient to respond to the visitor.
 
