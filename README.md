@@ -1,98 +1,797 @@
-# Jelvan® | Personal Portfolio
+# Jelvan® — Personal Portfolio
 
-Welcome to my personal portfolio: an interactive, minimalist desktop-inspired web experience. The site brings together my professional profile, technical interests, and selected software projects in a responsive interface inspired by modern desktop operating systems.
+**Live website:** [https://portfolio.jelvan.pro](https://portfolio.jelvan.pro)  
+**Repository:** [Dev-Jel-Works/Jelvan-R-Portfolio](https://github.com/Dev-Jel-Works/Jelvan-R-Portfolio)  
+**Owner:** Jelvan B. Ricolcol  
+**Primary branch:** `main`  
+**License:** Proprietary — all rights reserved
 
-Explore the live portfolio at **[portfolio.jelvan.pro](https://portfolio.jelvan.pro)**.
+An interactive, desktop-inspired personal portfolio built with Next.js, React, TypeScript, and Styled Components. It presents professional information and selected digital products through a responsive project showcase, alongside browser-based developer utilities and a server-side contact workflow.
 
----
-
-## 👋 About
-
-I work across full-stack software development, automation, user experience, and human resources practice. This portfolio is a personal project designed to present my work, skills, and approach to building useful digital tools.
-
-**Areas of interest**
-- Full-stack web applications and responsive interfaces
-- Workflow automation, integrations, and developer tooling
-- Cloud deployment and application reliability
-- Data visualization, reporting, and operational analytics
-- Human resources processes and digital productivity
-
-## 🧰 Technologies
-
-The portfolio uses the following technologies and development patterns:
-
-- **Framework:** Next.js
-- **Language:** TypeScript
-- **State management:** Redux Toolkit
-- **Styling:** Styled-Components
-- **Component development:** Storybook
-- **Data and persistence:** MongoDB
-- **Hosting and deployment:** Cloudflare Pages, Cloudflare Workers, and GitHub Actions
+> **Documentation scope:** This README describes the portfolio application and the infrastructure declared in this repository. It does not imply that every showcased project is deployed as part of this portfolio, or that every external service has been independently health-checked.
 
 ---
 
-## ✨ Portfolio Features
+## Contents
 
-- **Desktop-style interface:** A multi-window experience with window resizing, focus management, and taskbar interactions.
-- **Interactive workspaces:** Portfolio views styled as desktop utilities, including a file explorer, terminal, code editor, and settings panels.
-- **Project showcases:** Selected projects and technical work presented in an explorable interface, including the [Knowledge Center System sample](https://app-bible.jelvan.pro/).
-- **Responsive design:** Layouts and interactions adapted for different screen sizes.
-- **Contact form:** A server-side endpoint for receiving portfolio inquiries.
+1. [Purpose and experience](#1-purpose-and-experience)
+2. [Featured projects](#2-featured-projects)
+3. [Technology stack](#3-technology-stack)
+4. [Application architecture](#4-application-architecture)
+5. [Repository structure](#5-repository-structure)
+6. [Portfolio pages and routing](#6-portfolio-pages-and-routing)
+7. [Project showcase implementation](#7-project-showcase-implementation)
+8. [Contact form and email delivery](#8-contact-form-and-email-delivery)
+9. [Cloudflare bindings and configuration](#9-cloudflare-bindings-and-configuration)
+10. [Build, test, and local development](#10-build-test-and-local-development)
+11. [Deployment architecture and procedure](#11-deployment-architecture-and-procedure)
+12. [GitHub Actions workflow](#12-github-actions-workflow)
+13. [Security and operational considerations](#13-security-and-operational-considerations)
+14. [Troubleshooting](#14-troubleshooting)
+15. [Maintenance checklist](#15-maintenance-checklist)
+16. [Ownership and licensing](#16-ownership-and-licensing)
 
 ---
 
-## 🛠️ Local Development
+## 1. Purpose and experience
 
-### Prerequisites
+The portfolio is a personal professional website and interactive presentation environment. Its desktop-inspired interface gives visitors a way to explore the owner's profile, work, projects, contact details, and selected browser tools.
 
-- [Node.js](https://nodejs.org) 18.18 or later (Node.js 20 LTS recommended)
+Core experience:
 
-### Get started
+- **Professional profile:** background, capabilities, résumé, and contact information.
+- **Project showcase:** selected systems across AI, business operations, knowledge management, productivity, commerce, and software development.
+- **Interactive interface:** desktop-inspired visual components and reusable React sections.
+- **Responsive presentation:** content adapts to desktop, tablet, and mobile viewports.
+- **Developer utilities:** browser-based tools and SVG library resources.
+- **Contact workflow:** a static website form connected to a separately deployed Cloudflare Worker and a private email relay.
+
+The design uses a restrained visual system with orange brand accents, light/cream surfaces, dark text, responsive imagery, and reusable components.
+
+---
+
+## 2. Featured projects
+
+The Projects page presents the following seven selected projects. These are portfolio descriptions of the products and their intended capabilities; the showcase does not mean that their separate application infrastructure is hosted inside this repository.
+
+### 2.1 Multi Agent Worker — Master AI
+
+An AI-powered workforce concept for small businesses. Master AI coordinates multiple specialized automated workers across business departments, helping teams handle repeatable tasks, organize operations, and support day-to-day workflows.
+
+- **Purpose:** make department-level automation accessible to small businesses.
+- **Core concept:** multiple specialized AI workers, coordinated workflows, and automated task execution.
+- **AI platform:** powered by **Muse AI**.
+- **Showcase category:** multi-agent systems and business process automation.
+
+### 2.2 Knowledge Center System
+
+A structured digital knowledge platform for organizing, maintaining, and accessing reference materials.
+
+- **Purpose:** centralize learning resources, documentation, and reference content.
+- **Core concept:** organized knowledge collections and an easy-to-navigate digital library.
+- **Sample:** [Open Knowledge Center](https://app-bible.jelvan.pro/).
+
+### 2.3 Internal Email System
+
+An internal email and communications platform powered by **Amazon Simple Email Service (AWS SES)**.
+
+- **Purpose:** support reliable internal and operational email communications.
+- **Core concept:** email delivery combined with workflow automation and AI-assisted capabilities.
+- **Integration:** AWS SES for email delivery, with application-side automation and AI features.
+- **Showcase category:** communications infrastructure and business workflow automation.
+
+### 2.4 HR Information System
+
+A centralized HR platform for managing employee information and workforce processes across the employee lifecycle.
+
+- **Purpose:** bring HR administration and workforce information into a structured system.
+- **Core areas:** recruitment, onboarding, employee records, access control, and operational reporting.
+- **Showcase category:** HR technology, employee lifecycle management, and workforce operations.
+
+### 2.5 Workspace Pad — BOLEKpad
+
+A personal productivity workspace that brings notes, documents, attachments, and communication tools together.
+
+- **Purpose:** provide a focused digital workspace for everyday work.
+- **Core areas:** notes, documents, attachments, AI-assisted features, and workflow reminders.
+- **Showcase category:** personal productivity and workspace tooling.
+
+### 2.6 Online Printing Store
+
+An online storefront concept for ordering print products through a digital shopping experience.
+
+- **Purpose:** make print-product discovery and ordering more convenient.
+- **Core areas:** product presentation, catalog browsing, order details, and print request intake.
+- **Showcase category:** e-commerce and online service ordering.
+
+### 2.7 Developers Playground — DevAI
+
+A developer-focused environment for web development, coding workflows, and project monitoring.
+
+- **Purpose:** bring development utilities and AI-assisted capabilities into one workspace.
+- **Core areas:** web development, coding assistance, project progress, and monitoring.
+- **Showcase category:** developer tooling and software delivery workflows.
+
+---
+
+## 3. Technology stack
+
+The stack below is based on the repository's package manifest and checked-in configuration.
+
+| Area | Technology | Role |
+| --- | --- | --- |
+| Framework | Next.js 14 | Page routing, React application build, static export |
+| UI | React 18 | Component rendering and interactive interface |
+| Language | TypeScript 5 | Typed application code |
+| Styling | Styled Components 5 | Component-scoped styling and theming |
+| Forms | Formik, Yup | Form state and schema validation where used |
+| Icons | React Icons | Technology and interface iconography |
+| Navigation utilities | react-scroll | Scroll-oriented navigation behavior |
+| Static hosting | Cloudflare Pages | Serves the exported website |
+| Server-side contact API | Cloudflare Workers | Validates and routes contact submissions |
+| Internal service communication | Cloudflare Service Binding | Connects contact Worker to private mail relay |
+| Email delivery | Amazon SES SMTP | Sends inquiry and confirmation messages |
+| Secret storage | Cloudflare Secrets Store | Provides SES SMTP connection credentials to relay |
+| Automation | GitHub Actions | Build, tests, export validation, and Pages deployment |
+| Browser tests | Playwright | Browser-level developer tools checks |
+| Worker tooling | Wrangler 4 | Local Worker development, validation, and deployment |
+
+**Important stack accuracy:** the current `package.json` does not list Redux Toolkit, MongoDB, or Storybook as application dependencies. They are therefore not described here as active runtime dependencies of this portfolio.
+
+---
+
+## 4. Application architecture
+
+The website and contact delivery infrastructure are separate deployment units:
+
+1. **Next.js static website** — built into the `out/` directory and served by Cloudflare Pages.
+2. **Contact API Worker** — receives browser form submissions on the portfolio domain.
+3. **Private mailer Worker** — accepts only the internal service-binding request and sends messages through AWS SES SMTP.
+4. **Cloudflare Secrets Store** — supplies SMTP host, port, username, and password to the mailer Worker at runtime.
+
+### 4.1 High-level system diagram
+
+```mermaid
+flowchart TB
+    V[Portfolio visitor]
+    subgraph CF["Cloudflare"]
+      P["Cloudflare Pages\nNext.js static export"]
+      C["Contact Worker\n/api/contact"]
+      S["Service Binding\nMAILER"]
+      M["Private Mailer Worker\nNo public route"]
+      SS["Secrets Store\nSES SMTP credentials"]
+    end
+    SES["Amazon SES SMTP"]
+    IN["Portfolio inbox"]
+    VIS["Visitor confirmation inbox"]
+
+    V --> P
+    P -->|"POST /api/contact"| C
+    C --> S
+    S --> M
+    SS -->|"Runtime secret bindings"| M
+    M -->|"SMTP over TLS"| SES
+    SES --> IN
+    SES --> VIS
+```
+
+### 4.2 Request and email sequence
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Visitor
+    participant Site as Static Portfolio
+    participant API as Contact Worker
+    participant Relay as Private Mailer Worker
+    participant Secrets as Cloudflare Secrets Store
+    participant SES as Amazon SES SMTP
+
+    Visitor->>Site: Complete contact form
+    Site->>API: POST /api/contact (JSON)
+    API->>API: Check host, path, method and origin
+    API->>API: Check body size, honeypot and fields
+    API->>API: Prepare inquiry and visitor confirmation
+    API->>Relay: Internal request through MAILER binding
+    Relay->>Relay: Validate exact two-message workflow
+    Relay->>Secrets: Read SMTP host, port and credentials
+    Secrets-->>Relay: Secret values
+    Relay->>SES: Authenticate and submit messages over TLS
+    SES-->>Relay: SMTP result
+    Relay-->>API: Success or delivery error
+    API-->>Site: JSON response
+    Site-->>Visitor: Submission result
+```
+
+### 4.3 Responsibility boundaries
+
+| Component | Responsibility | Does not do |
+| --- | --- | --- |
+| Cloudflare Pages | Serve static pages, assets, and exported routes | Run the contact email SMTP connection |
+| Contact Worker | Validate form submissions and invoke mail service | Store SMTP credentials or expose a general mail API |
+| Private mailer Worker | Validate the approved mail payload and submit through SES | Expose a public route or act as an unrestricted email relay |
+| Secrets Store | Supply protected SMTP values to the mailer | Replace application-level validation |
+| AWS SES | Process outbound email delivery | Host the portfolio website |
+
+---
+
+## 5. Repository structure
+
+The main source areas are organized by page, reusable component, shared type, utility, and Worker responsibility.
+
+```text
+Jelvan-R-Portfolio/
+├── .github/
+│   └── workflows/
+│       └── deploy.yml                 # CI validation and Pages deployment
+├── components/
+│   ├── HighlightedProjects/           # Projects page and project data
+│   ├── ProjectDesktopSlide/           # Individual project showcase slide
+│   ├── ProjectDetailsSlide/            # Optional project detail presentation
+│   ├── PortfolioLanding/               # Landing screen
+│   ├── PortfolioLayout/                # Shared page wrapper and SEO
+│   ├── Navbar/                         # Main navigation
+│   ├── Typography/                     # Shared text components
+│   └── ...                             # Other reusable interface components
+├── hooks/                              # Reusable React hooks
+├── pages/
+│   ├── index.tsx                       # Home
+│   ├── projects.tsx                    # Projects page
+│   └── ...                             # Other Next.js pages
+├── public/
+│   └── assets/                         # Static images, SVGs, and visual assets
+├── types/
+│   └── portfolio.ts                    # Shared portfolio data types
+├── utils/
+│   └── seo.ts                          # Site metadata and structured data
+├── worker/
+│   ├── index.ts                        # Contact API Worker
+│   ├── mailer.js                       # Private SES relay Worker
+│   └── smtp.js                          # SMTP/MIME transport implementation
+├── tests/                              # Node and browser tests
+├── next.config.mjs                     # Next.js static export settings
+├── package.json                        # Scripts and dependencies
+├── tsconfig.json                       # TypeScript compiler configuration
+├── wrangler.jsonc                      # Contact Worker configuration
+├── wrangler.mailer.jsonc               # Private mailer Worker configuration
+└── README.md                            # Project documentation
+```
+
+The tree above highlights the main architecture. Some folders contain additional components and assets; consult the repository for the complete current inventory.
+
+---
+
+## 6. Portfolio pages and routing
+
+The project uses Next.js Pages Router conventions. Page components are located in `pages/` and reusable UI is located in `components/`.
+
+| Route | Purpose |
+| --- | --- |
+| `/` | Landing experience |
+| `/portfolio/about` | About and professional profile |
+| `/portfolio/projects` | Selected projects |
+| `/portfolio/contact` | Contact page |
+| `/portfolio/resume` | Résumé |
+| `/tools` | Browser-based developer tools |
+| `/svg-library` | SVG resource library |
+
+The static export is configured in `next.config.mjs`. Next.js generates HTML and assets into `out/`; Cloudflare Pages serves that output.
+
+### SEO and discoverability
+
+The shared SEO source is `utils/seo.ts`. It centralizes:
+
+- Site identity and canonical base URL.
+- Page titles, descriptions, and canonical paths.
+- Open Graph and social preview metadata consumed by the shared layout.
+- Person, website, and profile structured data (JSON-LD).
+- The indexing policy for pages intentionally marked `noindex`.
+
+When adding a page, add its metadata to the shared SEO configuration and ensure the export validation in the workflow covers the expected output.
+
+---
+
+## 7. Project showcase implementation
+
+The seven project entries are maintained in:
+
+`components/HighlightedProjects/HighlightedProjects.config.tsx`
+
+The page renderer is:
+
+`components/HighlightedProjects/HighlightedProjects.tsx`
+
+The individual full-screen project presentation is:
+
+`components/ProjectDesktopSlide/ProjectDesktopSlide.tsx`
+
+### 7.1 Data-to-interface flow
+
+```mermaid
+flowchart TD
+    D["HighlightedProjects.config.tsx\nProject data"]
+    P["pages/projects.tsx"]
+    H["HighlightedProjects.tsx\nMaps project entries"]
+    W["WaveDivider\nSection transitions"]
+    S["ProjectDesktopSlide.tsx\nProject title, summary, image, tech"]
+    V["Visitor views project showcase"]
+
+    P --> H
+    D --> H
+    H --> W
+    W --> S
+    S --> V
+```
+
+Each project entry provides the project title, description, slide number artwork, image or brand art, technology labels, optional sample URL, and background color. The renderer maps the data into a consistent slide component. The intersection observer delays the project slide's visual content until it approaches the viewport.
+
+### 7.2 Adding or editing a project
+
+1. Open `components/HighlightedProjects/HighlightedProjects.config.tsx`.
+2. Add or update an item in the `highlightedProjects` array.
+3. Provide a unique `projectTitle`, accurate `projectDescription`, `projectTechnologies`, and a valid local image or existing brand-art component.
+4. Add technology icons only from installed icon packages.
+5. Add `projectSampleUrl` only when a real, public sample is available and approved.
+6. Keep slide backgrounds compatible with the wave divider assets.
+7. Run `npm run typecheck` and `npm run build`.
+8. Review the Projects page at desktop and mobile widths.
+
+Do not publish private credentials, customer data, internal URLs, or confidential implementation details in public project descriptions or screenshots.
+
+---
+
+## 8. Contact form and email delivery
+
+The contact workflow is implemented as a separate server-side service rather than a browser-to-SMTP connection.
+
+### 8.1 Contact API
+
+**Worker:** `jelvan-portfolio-contact`  
+**Source:** `worker/index.ts`  
+**Configuration:** `wrangler.jsonc`  
+**Route:** `portfolio.jelvan.pro/api/contact*`  
+**Accepted endpoint:** `POST /api/contact`
+
+The API performs the following checks:
+
+- Expected host and request path.
+- HTTP method.
+- Origin validation for non-local requests.
+- Request body size limit.
+- JSON parsing.
+- Honeypot field handling.
+- Name, email, and message validation.
+- Availability of the configured mail service binding and recipient.
+- Bounded field lengths and safe HTML escaping for generated email content.
+
+The request is limited to a 16,000-byte body. The API creates two messages: an inquiry notification for the portfolio inbox and an acknowledgment for the visitor.
+
+### 8.2 Private mailer
+
+**Worker:** `jelvan-portfolio-mailer`  
+**Source:** `worker/mailer.js`  
+**Configuration:** `wrangler.mailer.jsonc`
+
+The mailer is intentionally not exposed through a public Worker route or `workers.dev` URL. It is invoked by the contact Worker using the `MAILER` service binding.
+
+The relay:
+
+- Accepts only the internal path and POST method.
+- Requires exactly two messages matching the approved portfolio inquiry/confirmation pattern.
+- Restricts the destination and reply-to fields to the expected workflow.
+- Rejects invalid subjects, message types, addresses, and oversized content.
+- Reads the four SES SMTP values from Cloudflare Secrets Store.
+- Connects to an Amazon SES SMTP endpoint and sends messages over TLS.
+- Returns a controlled success or error response to the contact Worker.
+
+### 8.3 Email message flow
+
+| Message | Recipient | Purpose |
+| --- | --- | --- |
+| Inquiry notification | `hello@work.jelvan.pro` | Delivers the visitor's inquiry to the portfolio inbox |
+| Visitor acknowledgment | Visitor's submitted email | Confirms that the message was received |
+| Confirmation BCC | `rjelvan@operavaglobal.com` | Receives a copy of the visitor acknowledgment |
+
+The configured sender is `hello@work.jelvan.pro`. The visitor's address is used as the inquiry reply-to address, allowing the recipient to respond to the visitor.
+
+**This workflow sends email, not SMS or OTP verification codes.** A successful API response means the relay accepted the message submission; it does not guarantee final inbox placement or that the recipient has read the email.
+
+---
+
+## 9. Cloudflare bindings and configuration
+
+The binding names below are taken from the checked-in Wrangler configuration. They are runtime interfaces between the Worker and its Cloudflare resources.
+
+### 9.1 Contact Worker — `wrangler.jsonc`
+
+| Configuration | Value | Meaning |
+| --- | --- | --- |
+| Worker name | `jelvan-portfolio-contact` | Contact API Worker name |
+| Entry point | `worker/index.ts` | Worker source |
+| Compatibility date | `2026-10-15` | Worker runtime compatibility |
+| Public route | `portfolio.jelvan.pro/api/contact*` | Route attached to the `jelvan.pro` zone |
+| `workers_dev` | `false` | No workers.dev endpoint |
+| Observability | Enabled | Worker observability configuration |
+| Variable `CONTACT_TO` | `hello@work.jelvan.pro` | Inquiry notification destination |
+| Service binding `MAILER` | `jelvan-portfolio-mailer` | Calls the private mailer Worker |
+
+The contact Worker does not need direct SES SMTP credentials. It delegates email delivery to the private mailer through the service binding.
+
+### 9.2 Private mailer — `wrangler.mailer.jsonc`
+
+| Configuration | Value | Meaning |
+| --- | --- | --- |
+| Worker name | `jelvan-portfolio-mailer` | Private relay name |
+| Entry point | `worker/mailer.js` | Relay source |
+| Compatibility date | `2026-10-29` | Worker runtime compatibility |
+| `workers_dev` | `false` | No workers.dev endpoint |
+| Observability | Enabled | Worker observability configuration |
+| Variable `MAIL_FROM` | `hello@work.jelvan.pro` | Sender address |
+| Secret binding | `SES_SMTP_HOST` | SES SMTP hostname |
+| Secret binding | `SES_SMTP_PORT` | SES SMTP port |
+| Secret binding | `SES_SMTP_USERNAME` | SES SMTP username |
+| Secret binding | `SES_SMTP_PASSWORD` | SES SMTP password |
+
+The four secret bindings reference the Cloudflare Secrets Store configured in `wrangler.mailer.jsonc`. The store identifier is infrastructure metadata; the actual secret values must never be committed to source control or copied into this README.
+
+### 9.3 Binding relationship
+
+```mermaid
+flowchart LR
+    Browser["Browser form"]
+    API["Contact Worker"]
+    Binding["MAILER service binding"]
+    Relay["Private mailer Worker"]
+    Host["SES_SMTP_HOST"]
+    Port["SES_SMTP_PORT"]
+    User["SES_SMTP_USERNAME"]
+    Pass["SES_SMTP_PASSWORD"]
+    SES["Amazon SES SMTP"]
+
+    Browser --> API
+    API --> Binding
+    Binding --> Relay
+    Host --> Relay
+    Port --> Relay
+    User --> Relay
+    Pass --> Relay
+    Relay --> SES
+```
+
+### 9.4 Configuration ownership
+
+- **Checked into Git:** Worker names, entry points, compatibility dates, route pattern, service binding, non-secret variables, and Secrets Store references.
+- **Stored outside Git:** SES SMTP credential values and Cloudflare API tokens.
+- **Provided by GitHub Actions:** `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` repository secrets for automated Pages deployment.
+- **Never commit:** `.env` files containing secrets, API tokens, SMTP passwords, private keys, or production credentials.
+
+Do not replace a Secrets Store binding with a plaintext password in Wrangler configuration.
+
+---
+
+## 10. Build, test, and local development
+
+### 10.1 Requirements
+
+- Node.js **18.18 or later** (Node.js 20 is used by the CI workflow).
+- npm.
+- Git.
+- Cloudflare account access only when deploying or testing connected Worker infrastructure.
+
+### 10.2 Clone and install
 
 ```bash
 git clone https://github.com/Dev-Jel-Works/Jelvan-R-Portfolio.git
 cd Jelvan-R-Portfolio
 npm install
+```
+
+### 10.3 Run the website locally
+
+```bash
 npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
 
-### Scripts
+### 10.4 Available scripts
 
-| Script | Purpose |
+| Command | What it does |
 | --- | --- |
-| `npm run dev` | Run the Next.js development server |
-| `npm run build` | Build the static site into `out/` |
-| `npm run typecheck` | Check TypeScript types |
-| `npm run preview` | Build the site and preview the contact endpoint locally |
-| `npm run deploy` | Deploy the contact endpoint only |
+| `npm run dev` | Starts the Next.js development server on port 3000 |
+| `npm run build` | Builds the static website into `out/` |
+| `npm run typecheck` | Runs the TypeScript compiler without emitting files |
+| `npm run preview` | Builds the website, then starts Wrangler local Worker development |
+| `npm run deploy` | Builds and deploys the contact Worker using `wrangler.jsonc` |
+| `npm run deploy:mailer` | Deploys the private mailer Worker using `wrangler.mailer.jsonc` |
+| `npm run test:tools` | Runs the Node test suite for developer tools and SVG-related checks |
+| `npm run test:tools:browser` | Runs Playwright browser checks for developer tools |
+
+**Deployment distinction:** `npm run deploy` does not deploy the static portfolio website. It deploys the contact Worker. The Pages site is deployed separately using the Pages deployment command described below.
+
+### 10.5 Recommended validation sequence
+
+```bash
+npm install
+npm run typecheck
+npm run test:tools
+npm run build
+```
+
+For browser-level checks, install the Playwright browser first:
+
+```bash
+npx playwright install chromium
+npm run test:tools:browser
+```
+
+### 10.6 Build output
+
+The Next.js configuration sets `output: 'export'`. A successful production build creates the static site in:
+
+```text
+out/
+```
+
+Cloudflare Pages publishes this directory. The Next.js image optimizer is disabled because the site is served as static files rather than through a Next.js Node server.
 
 ---
 
-## ☁️ Hosting
+## 11. Deployment architecture and procedure
 
-The portfolio is published at **[portfolio.jelvan.pro](https://portfolio.jelvan.pro)**.
+The portfolio uses separate deployment targets for the website and the email backend.
 
-- The website is built as a static Next.js export and hosted on Cloudflare Pages.
-- A separate Cloudflare Worker handles contact form requests.
-- GitHub Actions can validate builds and publish the site when the required deployment configuration is available.
-- API credentials and deployment settings are maintained outside the repository.
+### 11.1 Static website — Cloudflare Pages
 
-The website and contact endpoint are deployed separately. Running `npm run deploy` updates the contact endpoint, not the static website. `npm run deploy:mailer` deploys the separate private SMTP relay. Both Workers must be deployed in the **Jelvan - Projects - Works** Cloudflare account.
+**Pages project:** `jelvan-r-portfolio`  
+**Production branch in workflow:** `main`  
+**Build output directory:** `out`  
+**Public domain:** [portfolio.jelvan.pro](https://portfolio.jelvan.pro)
 
-### Contact form
+Build locally:
 
-The form accepts a message, validates submitted input, and sends a notification and an acknowledgment email **(not an SMS code)**. The contact Worker binds `MAILER` to the private `jelvan-portfolio-mailer` Worker, which uses existing account Secrets Store `SES_SMTP_*` credentials to submit through Amazon SES. The relay has no public Workers route or workers.dev URL. Server-side checks include input-size limits, anti-spam measures, and origin validation.
+```bash
+npm install
+npm run build
+```
 
-For inquiries, use **[hello@work.jelvan.pro](mailto:hello@work.jelvan.pro)**.
+Deploy the generated static site:
+
+```bash
+npx wrangler pages deploy out --project-name=jelvan-r-portfolio --branch=main
+```
+
+The GitHub Actions workflow includes the commit hash when deploying from CI.
+
+### 11.2 Contact API Worker
+
+Deploy the contact API using:
+
+```bash
+npm run deploy
+```
+
+This command uses the root `wrangler.jsonc` file. It deploys the Worker configured for the `portfolio.jelvan.pro/api/contact*` route.
+
+### 11.3 Private mailer Worker
+
+Deploy the mailer separately:
+
+```bash
+npm run deploy:mailer
+```
+
+This command uses `wrangler.mailer.jsonc`. Verify that the target Cloudflare account has access to the referenced Secrets Store and that all four required secret names exist.
+
+### 11.4 Deployment order
+
+For a fresh environment or a mailer infrastructure change:
+
+1. Confirm the Cloudflare account and target zone.
+2. Confirm the Secrets Store and all SES SMTP secret values.
+3. Deploy the private mailer Worker.
+4. Deploy the contact API Worker and verify its `MAILER` service binding.
+5. Build and deploy the Pages website.
+6. Test the public contact form with a controlled test address.
+7. Review Worker logs and confirm both the inquiry notification and visitor acknowledgment are delivered.
+
+### 11.5 Deployment map
+
+```mermaid
+flowchart TD
+    Repo["GitHub repository / main"]
+    CI["GitHub Actions"]
+    Build["npm install + tests + npm run build"]
+    Out["Static export: out/"]
+    Pages["Cloudflare Pages\njelvan-r-portfolio"]
+    API["Contact Worker\nwrangler.jsonc"]
+    Relay["Private mailer Worker\nwrangler.mailer.jsonc"]
+    Store["Cloudflare Secrets Store"]
+    SES["Amazon SES"]
+
+    Repo --> CI
+    CI --> Build
+    Build --> Out
+    Out --> Pages
+    Repo -. "Separate Worker deployment" .-> API
+    Repo -. "Separate Worker deployment" .-> Relay
+    Store --> Relay
+    API -->|"MAILER service binding"| Relay
+    Relay --> SES
+```
+
+### 11.6 Rollback
+
+- **Pages:** redeploy a previously successful build artifact or the previous known-good commit.
+- **Contact Worker:** redeploy the previous known-good commit/configuration.
+- **Mailer Worker:** redeploy the previous known-good mailer source/configuration.
+- **Secrets:** restore the correct secret value in Cloudflare Secrets Store; never restore secrets by committing them to Git.
+
+After a rollback, test the affected route and inspect Worker logs before declaring service restored.
 
 ---
 
-## ⚖️ License & Attribution
+## 12. GitHub Actions workflow
 
-**Proprietary. All rights reserved.** This repository and [portfolio.jelvan.pro](https://portfolio.jelvan.pro) belong to **Mr. Jelvan B. Ricolcol, CHRA, MHR, MBAI (Jelvan®)**. Copying, redistribution, or derivative works require written permission. See [LICENSE](./LICENSE).
+The workflow is defined in `.github/workflows/deploy.yml`.
+
+### 12.1 Trigger conditions
+
+- Push to branches.
+- Pull requests.
+- Manual `workflow_dispatch`.
+
+### 12.2 Build and validation job
+
+The workflow:
+
+1. Checks out the repository.
+2. Uses Node.js 20.
+3. Runs a brand-content check.
+4. Installs npm dependencies.
+5. Runs `npm run test:tools`.
+6. Builds the static site using `npm run build`.
+7. Installs Chromium and runs Playwright developer-tool checks.
+8. Uploads browser test screenshots as an artifact.
+9. Verifies required static export files and page routes.
+10. Validates the contact Worker bundle with Wrangler dry-run.
+11. Validates the private mailer Worker bundle with Wrangler dry-run.
+12. Uploads the generated `out/` site artifact.
+
+### 12.3 Production deployment job
+
+The deployment job runs only when:
+
+- The event is not a pull request.
+- The branch is `main).
+- The Cloudflare deployment credentials are present.
+
+Required GitHub repository secrets:
+
+| Secret | Purpose |
+| --- | --- |
+| `CLOUDFLARE_API_TOKEN` | Authorizes the Pages deployment |
+| `CLOUDFLARE_ACCOUNT_ID` | Selects the Cloudflare account |
+
+If either secret is missing, the workflow reports a notice and skips the deployment step. A successful build with a skipped deployment is **not** proof that production was updated.
+
+The Pages deploy command is:
+
+```bash
+npx wrangler pages deploy out \
+  --project-name=jelvan-r-portfolio \
+  --branch=main \
+  --commit-hash="$GITHUB_SHA"
+```
+
+The checked-in workflow deploys the Pages site. The contact API and mailer Workers have separate Wrangler configurations and deployment commands; they are not implicitly redeployed by the Pages deployment job.
+
+---
+
+## 13. Security and operational considerations
+
+### 13.1 Secrets and access
+
+- Keep Cloudflare API tokens in GitHub Actions secrets.
+- Keep SES SMTP credentials in Cloudflare Secrets Store.
+- Do not expose the private mailer through a public route or `workers.dev` endpoint.
+- Do not place secrets in browser JavaScript, static assets, README examples, screenshots, or Git history.
+- Restrict deployment tokens to the minimum required account and deployment permissions.
+
+### 13.2 Contact endpoint safeguards
+
+The contact Worker includes request size limits, input validation, an anti-spam honeypot, origin checks, no-store response headers, and HTML escaping for email content.
+
+The mailer independently validates the allowed two-message workflow and approved recipients. It is not designed to be a general-purpose email API.
+
+### 13.3 Privacy
+
+Contact messages contain personal information submitted by visitors. Keep access to the recipient inbox and operational logs limited to authorized people. Avoid logging full message content or SMTP credentials. Define retention and deletion practices for any records stored outside the code repository.
+
+### 13.4 Observability
+
+Both Worker configurations enable Cloudflare observability. Use Cloudflare Worker logs and invocation information to investigate failed requests. Error messages returned to visitors are intentionally generic; use server-side logs for diagnosis and never add credentials to diagnostic output.
+
+### 13.5 Project showcase confidentiality
+
+The portfolio may describe systems that have separate repositories or deployments. Before publishing a project card, confirm that public screenshots, sample links, names, and descriptions do not expose customer information, employee data, private hostnames, internal APIs, or credentials.
+
+---
+
+## 14. Troubleshooting
+
+| Symptom | Likely area | Checks |
+| --- | --- | --- |
+| Website changes do not appear | Pages deployment | Confirm the latest `main` commit was deployed to the correct Pages project and production branch |
+| Build succeeds but live site is unchanged | CI deployment skipped | Check whether `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` are configured |
+| Contact form returns 404 | Worker route or path | Confirm the route, domain, and exact `/api/contact` path |
+| Contact form returns 403 | Origin validation | Confirm the browser origin matches the expected portfolio origin |
+| Contact form returns 413 | Request size | Check payload size against the 16 KB contact API limit |
+| Contact form returns 422 | Submitted data | Check required name, valid email, message, and honeypot field |
+| Contact form returns 503 | Mailer binding or configuration | Check `MAILER`, `CONTACT_TO`, and relay secret bindings |
+| Contact form returns 502 | Relay or SES delivery | Inspect contact Worker and mailer logs; verify SES SMTP connectivity and credentials |
+| Mailer cannot read secrets | Secrets Store | Confirm the target account, store reference, secret names, and permissions |
+| Visitor receives no email | Email delivery | Inspect SES sending status, recipient address, spam folder, and provider-side delivery events |
+| Local Worker preview fails | Wrangler environment | Confirm Node version, npm install, Wrangler authentication when required, and the correct config file |
+
+### Contact workflow smoke test
+
+After deployment, submit a short test message from the public form using an email address you control. Confirm:
+
+1. The form reports success.
+2. The inquiry arrives at the configured portfolio inbox.
+3. The visitor acknowledgment arrives at the submitted address.
+4. The confirmation BCC behaves as configured.
+5. The Worker logs do not contain secrets or full private message content.
+
+Do not use real customer or employee information for test submissions.
+
+---
+
+## 15. Maintenance checklist
+
+### Before merging
+
+- [ ] Review desktop and mobile layouts.
+- [ ] Confirm every project description and sample link is accurate.
+- [ ] Check images, alt text, and responsive behavior.
+- [ ] Run `npm run typecheck`.
+- [ ] Run `npm run test:tools`.
+- [ ] Run `npm run build`.
+- [ ] Review the Git diff for accidental secrets or private data.
+
+### Before production release
+
+- [ ] Confirm the target GitHub branch is `main`.
+- [ ] Confirm GitHub Actions deployment secrets are present.
+- [ ] Confirm Pages project name and production domain.
+- [ ] Confirm the contact Worker route and `MAILER` binding.
+- [ ] Confirm the private mailer and Secrets Store bindings.
+- [ ] Deploy the appropriate changed services.
+- [ ] Verify the public website and contact form.
+- [ ] Review CI results and Cloudflare Worker logs.
+
+### When adding a new showcased project
+
+- [ ] Update `HighlightedProjects.config.tsx`.
+- [ ] Use a concise, accurate description.
+- [ ] Use approved images and technology labels.
+- [ ] Add a public sample link only if it is available.
+- [ ] Update this README's Featured Projects section.
+- [ ] Test the Projects page on desktop and mobile.
+
+---
+
+## 16. Ownership and licensing
+
+**Proprietary. All rights reserved.**
+
+This repository and [portfolio.jelvan.pro](https://portfolio.jelvan.pro) belong to **Mr. Jelvan B. Ricolcol, CHRA, MHR, MBAI (Jelvan®)**. Copying, redistribution, or derivative works require written permission. See [LICENSE](./LICENSE).
 
 Open-source libraries and third-party dependencies retain their respective licenses.
 
 For security disclosures, see [SECURITY.md](./SECURITY.md).
+
+---
+
+*Documentation should be kept aligned with the checked-in source, Wrangler configuration, and actual deployment workflow. When infrastructure changes, update the relevant architecture, bindings, and deployment sections in the same change.*
