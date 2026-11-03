@@ -30,6 +30,7 @@ An interactive, desktop-inspired personal portfolio built with Next.js, React, T
 14. [Troubleshooting](#14-troubleshooting)
 15. [Maintenance checklist](#15-maintenance-checklist)
 16. [Ownership and licensing](#16-ownership-and-licensing)
+17. [Official technology and platform references](#17-official-technology-and-platform-references)
 
 ---
 
@@ -795,3 +796,70 @@ For security disclosures, see [SECURITY.md](./SECURITY.md).
 ---
 
 *Documentation should be kept aligned with the checked-in source, Wrangler configuration, and actual deployment workflow. When infrastructure changes, update the relevant architecture, bindings, and deployment sections in the same change.*
+
+
+## 17. Official technology and platform references
+
+Technology logos in the About / Skills cards link to the official documentation listed below. Select a logo or its revealed **Official docs** caption to learn how the platform works, configure it, and use its APIs. Links open in a new browser tab.
+
+### 17.1 Languages and web foundations
+
+| Logo / platform | Portfolio context | Official reference |
+| --- | --- | --- |
+| JavaScript | Browser behavior and application scripting | [MDN JavaScript Guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript) |
+| TypeScript | Typed application code | [TypeScript Handbook](https://www.typescriptlang.org/docs/) |
+| HTML | Semantic page structure and accessible content | [MDN HTML Guide](https://developer.mozilla.org/en-US/docs/Web/HTML) |
+| CSS | Layout, responsive presentation, and styling | [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS) |
+| Python | General-purpose scripting and backend development knowledge | [Python Documentation](https://docs.python.org/3/) |
+
+### 17.2 Frontend frameworks, libraries, and testing
+
+| Logo / platform | What it does | Official reference |
+| --- | --- | --- |
+| React | Component-based user interface rendering | [React Learn](https://react.dev/learn) |
+| Next.js | React framework, routing, build process, and static export | [Next.js Documentation](https://nextjs.org/docs) |
+| Jest | JavaScript testing framework | [Jest Getting Started](https://jestjs.io/docs/getting-started) |
+| Express | Node.js web application framework | [Express Getting Started](https://expressjs.com/en/starter/installing.html) |
+| GraphQL | Query language and runtime for APIs | [GraphQL Learn](https://graphql.org/learn/) |
+
+### 17.3 Backend and database technologies
+
+| Logo / platform | What it does | Official reference |
+| --- | --- | --- |
+| Node.js | JavaScript runtime for server-side tools and services | [Node.js Learn](https://nodejs.org/en/learn) |
+| MongoDB | Document-oriented database platform | [MongoDB Manual](https://www.mongodb.com/docs/) |
+| MySQL | Relational database management system | [MySQL Reference Manual](https://dev.mysql.com/doc/) |
+| PostgreSQL | Open-source relational database | [PostgreSQL Documentation](https://www.postgresql.org/docs/) |
+
+### 17.4 Cloud, delivery, and infrastructure platforms
+
+| Platform | How it is used in this repository | Official reference |
+| --- | --- | --- |
+| Cloudflare Pages | Publishes the Next.js static export from `out/` | [Static Next.js deployment guide](https://developers.cloudflare.com/pages/framework-guides/nextjs/deploy-a-static-nextjs-site/) |
+| Cloudflare Workers | Runs the contact API and private mailer service | [Workers documentation](https://developers.cloudflare.com/workers/) |
+| Cloudflare Service Bindings | Lets the contact Worker call the private mailer without a public mail endpoint | [Service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/) |
+| Cloudflare Secrets Store | Supplies protected SES SMTP settings to the mailer at runtime | [Secrets Store](https://developers.cloudflare.com/secrets-store/) |
+| Wrangler | Local development, configuration validation, and Worker / Pages deployment CLI | [Wrangler documentation](https://developers.cloudflare.com/workers/wrangler/) |
+| Amazon SES | SMTP delivery for inquiry and visitor confirmation messages | [Amazon SES SMTP interface](https://docs.aws.amazon.com/ses/latest/dg/send-email-smtp.html) |
+| GitHub Actions | Automated test, build, validation, artifact, and Pages deployment workflow | [GitHub Actions documentation](https://docs.github.com/en/actions) |
+| Playwright | Browser automation and UI checks in CI | [Playwright documentation](https://playwright.dev/docs/intro) |
+
+### 17.5 Portfolio libraries
+
+| Library | How it is used | Official reference |
+| --- | --- | --- |
+| Styled Components | Component-scoped styling and theme-based presentation | [Styled Components docs](https://styled-components.com/docs) |
+| Formik | Form state and submission handling where used | [Formik documentation](https://formik.org/docs/overview) |
+| Yup | Schema-based validation where used | [Yup documentation](https://github.com/jquense/yup) |
+| React Icons | Icon components from supported icon packs | [React Icons documentation](https://react-icons.github.io/react-icons/) |
+| react-scroll | Scroll navigation behavior | [react-scroll usage and source](https://github.com/fisshy/react-scroll) |
+
+### 17.6 How to use the references
+
+1. Select a technology logo in the About / Skills section, or select its **Official docs** caption.
+2. Start with the vendor's introduction or getting-started guide before moving to advanced API references.
+3. Check the dependency versions and configuration in this repository. Vendor documentation may describe newer versions or features that are not enabled here.
+4. Before changing infrastructure, review the matching Wrangler configuration and the architecture / binding sections of this README.
+5. For a third-party platform mentioned only in a separate project description, treat its documentation as background learning—not proof that this portfolio repository has a live integration with it.
+
+**Reference-link policy:** prefer official vendor documentation or the platform's own maintained documentation. Re-check references when dependencies or infrastructure are upgraded.
