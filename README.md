@@ -53,6 +53,71 @@ The design uses a restrained visual system with orange brand accents, light/crea
 
 ## 2. Featured projects
 
+
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <img src="./public/assets/portfolio/automation-cover.png" alt="AI automation artwork" width="100%" />
+      <h3>Master AI — Multi Agent Worker</h3>
+      <p>Specialized AI workers coordinate repeatable small-business tasks and department workflows. AI platform: Muse AI.</p>
+      <img alt="Multi agent AI" src="https://img.shields.io/badge/AI-Multi--Agent-7C3AED?style=flat-square" />
+      <img alt="Automation" src="https://img.shields.io/badge/Focus-Automation-F48120?style=flat-square" />
+    </td>
+    <td width="50%" valign="top">
+      <img src="./public/assets/portfolio/services/knowledge-base.svg" alt="Knowledge base illustration" width="100%" />
+      <h3>Knowledge Center System</h3>
+      <p>A digital library for organized documentation, learning resources, and reference materials.</p>
+      <a href="https://app-bible.jelvan.pro/">Open sample Knowledge Center ↗</a><br />
+      <img alt="Knowledge management" src="https://img.shields.io/badge/Focus-Knowledge%20Management-2563EB?style=flat-square" />
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <img src="./public/assets/portfolio/email-platform.png" alt="Email platform visual" width="100%" />
+      <h3>Internal Email System</h3>
+      <p>Internal communications and workflow automation, with Amazon SES as the email delivery platform.</p>
+      <img alt="AWS SES" src="https://img.shields.io/badge/AWS-SES-FF9900?style=flat-square&logo=amazonaws&logoColor=white" />
+    </td>
+    <td width="50%" valign="top">
+      <img src="./public/assets/portfolio/projects/mis-desktop.svg" alt="HR information system dashboard artwork" width="100%" />
+      <h3>HR Information System</h3>
+      <p>Recruitment, onboarding, employee records, access control, and workforce reporting.</p>
+      <img alt="HRIS" src="https://img.shields.io/badge/Focus-HRIS-DB2777?style=flat-square" />
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <img src="./public/assets/portfolio/landing-mobile.png" alt="Workspace interface preview" width="100%" />
+      <h3>Workspace Pad — BOLEKpad</h3>
+      <p>A productivity workspace for notes, documents, attachments, AI-assisted features, and reminders.</p>
+      <img alt="Productivity" src="https://img.shields.io/badge/Focus-Productivity-0891B2?style=flat-square" />
+    </td>
+    <td width="50%" valign="top">
+      <img src="./public/assets/portfolio/services/invoice.svg" alt="Online ordering and invoice illustration" width="100%" />
+      <h3>Online Printing Store</h3>
+      <p>An online storefront concept for print catalog browsing, order details, and print request intake.</p>
+      <img alt="E-commerce" src="https://img.shields.io/badge/Focus-E--commerce-16A34A?style=flat-square" />
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <img src="./public/assets/portfolio/projects/devai-desktop.svg" alt="Developer workspace preview" width="100%" />
+      <h3>Developers Playground — DevAI</h3>
+      <p>A developer environment for web development, coding workflows, project progress, and monitoring.</p>
+      <img alt="Developer tools" src="https://img.shields.io/badge/Focus-Developer%20Tools-7C3AED?style=flat-square" />
+    </td>
+    <td width="50%" valign="top">
+      <img src="./public/assets/portfolio/avatar-black-white.png" alt="Portfolio profile artwork" width="100%" />
+      <h3>Explore the portfolio</h3>
+      <p>Explore the professional profile, selected work, and contact options.</p>
+      <a href="https://portfolio.jelvan.pro/">Open live portfolio ↗</a>
+      <p><img alt="Portfolio live" src="https://img.shields.io/badge/Portfolio-Live-F48120?style=flat-square" /></p>
+    </td>
+  </tr>
+</table>
+
+
+
 The Projects page presents the following seven selected projects. These are portfolio descriptions of the products and their intended capabilities; the showcase does not mean that their separate application infrastructure is hosted inside this repository.
 
 ### 2.1 Multi Agent Worker — Master AI
@@ -117,7 +182,22 @@ A developer-focused environment for web development, coding workflows, and proje
 
 ## 3. Technology stack
 
-The stack below is based on the repository's package manifest and checked-in configuration.
+The stack below is based on the repository's package manifest and checked-in configuration. The colored logo badges link to official product documentation.
+
+
+### Technology logo directory
+
+<p>
+<a href="https://nextjs.org/docs"><img alt="Next.js 14" src="https://img.shields.io/badge/Next.js-14-111827?style=for-the-badge&logo=nextdotjs&logoColor=white" /></a>
+<a href="https://react.dev/learn"><img alt="React 18" src="https://img.shields.io/badge/React-18-149ECA?style=for-the-badge&logo=react&logoColor=white" /></a>
+<a href="https://www.typescriptlang.org/docs/"><img alt="TypeScript 5" src="https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript&logoColor=white" /></a>
+<a href="https://styled-components.com/docs"><img alt="Styled Components" src="https://img.shields.io/badge/Styled--Components-5-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white" /></a>
+<a href="https://developers.cloudflare.com/pages/"><img alt="Cloudflare Pages" src="https://img.shields.io/badge/Cloudflare-Pages-F38020?style=for-the-badge&logo=cloudflare&logoColor=white" /></a>
+<a href="https://developers.cloudflare.com/workers/"><img alt="Cloudflare Workers" src="https://img.shields.io/badge/Cloudflare-Workers-F38020?style=for-the-badge&logo=cloudflare&logoColor=white" /></a>
+<a href="https://docs.aws.amazon.com/ses/"><img alt="Amazon SES" src="https://img.shields.io/badge/Amazon-SES-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white" /></a>
+<a href="https://docs.github.com/en/actions"><img alt="GitHub Actions" src="https://img.shields.io/badge/GitHub-Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white" /></a>
+</p>
+
 
 | Area | Technology | Role |
 | --- | --- | --- |
@@ -149,6 +229,30 @@ The website and contact delivery infrastructure are separate deployment units:
 2. **Contact API Worker** — receives browser form submissions on the portfolio domain.
 3. **Private mailer Worker** — accepts only the internal service-binding request and sends messages through AWS SES SMTP.
 4. **Cloudflare Secrets Store** — supplies SMTP host, port, username, and password to the mailer Worker at runtime.
+
+
+### Architecture overview cards
+
+<table>
+  <tr>
+    <td align="center" width="25%">
+      <img src="./public/assets/portfolio/skills/nextjs-original.svg" alt="Next.js" width="48" /><br />
+      <strong>Website</strong><br /><sub>Next.js static export</sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="./public/assets/portfolio/services/cloudflare.svg" alt="Cloudflare" width="48" /><br />
+      <strong>Edge services</strong><br /><sub>Pages and Workers</sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="https://cdn.simpleicons.org/amazonsimpleemailservice/FF9900" alt="Amazon SES" width="48" /><br />
+      <strong>Email</strong><br /><sub>Amazon SES SMTP</sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="https://cdn.simpleicons.org/githubactions/2088FF" alt="GitHub Actions" width="48" /><br />
+      <strong>CI / CD</strong><br /><sub>Build and deployment</sub>
+    </td>
+  </tr>
+</table>
 
 ### 4.1 High-level system diagram
 
@@ -218,6 +322,8 @@ sequenceDiagram
 
 ## 5. Repository structure
 
+<p><img alt="REPOSITORY LAYOUT section" src="https://img.shields.io/badge/SECTION-REPOSITORY%20LAYOUT-475569?style=flat-square&logo=github&logoColor=white" /></p>
+
 The main source areas are organized by page, reusable component, shared type, utility, and Worker responsibility.
 
 ```text
@@ -264,6 +370,8 @@ The tree above highlights the main architecture. Some folders contain additional
 
 ## 6. Portfolio pages and routing
 
+<p><img alt="PAGES %26 ROUTING section" src="https://img.shields.io/badge/SECTION-PAGES%20%26%20ROUTING-2563EB?style=flat-square&logo=nextdotjs&logoColor=white" /></p>
+
 The project uses Next.js Pages Router conventions. Page components are located in `pages/` and reusable UI is located in `components/`.
 
 | Route | Purpose |
@@ -293,6 +401,8 @@ When adding a page, add its metadata to the shared SEO configuration and ensure 
 ---
 
 ## 7. Project showcase implementation
+
+<p><img alt="PROJECT SHOWCASE section" src="https://img.shields.io/badge/SECTION-PROJECT%20SHOWCASE-7C3AED?style=flat-square" /></p>
 
 The seven project entries are maintained in:
 
@@ -342,6 +452,8 @@ Do not publish private credentials, customer data, internal URLs, or confidentia
 ---
 
 ## 8. Contact form and email delivery
+
+<p><img alt="CONTACT %26 EMAIL section" src="https://img.shields.io/badge/SECTION-CONTACT%20%26%20EMAIL-0F766E?style=flat-square&logo=amazonaws&logoColor=white" /></p>
 
 The contact workflow is implemented as a separate server-side service rather than a browser-to-SMTP connection.
 
@@ -400,6 +512,8 @@ The configured sender is `hello@work.jelvan.pro`. The visitor's address is used 
 ---
 
 ## 9. Cloudflare bindings and configuration
+
+<p><img alt="CLOUDFLARE BINDINGS section" src="https://img.shields.io/badge/SECTION-CLOUDFLARE%20BINDINGS-F38020?style=flat-square&logo=cloudflare&logoColor=white" /></p>
 
 The binding names below are taken from the checked-in Wrangler configuration. They are runtime interfaces between the Worker and its Cloudflare resources.
 
@@ -472,6 +586,8 @@ Do not replace a Secrets Store binding with a plaintext password in Wrangler con
 
 ## 10. Build, test, and local development
 
+<p><img alt="BUILD %26 TEST section" src="https://img.shields.io/badge/SECTION-BUILD%20%26%20TEST-2088FF?style=flat-square&logo=githubactions&logoColor=white" /></p>
+
 ### 10.1 Requirements
 
 - Node.js **18.18 or later** (Node.js 20 is used by the CI workflow).
@@ -539,6 +655,8 @@ Cloudflare Pages publishes this directory. The Next.js image optimizer is disabl
 ---
 
 ## 11. Deployment architecture and procedure
+
+<p><img alt="DEPLOYMENT section" src="https://img.shields.io/badge/SECTION-DEPLOYMENT-0891B2?style=flat-square&logo=cloudflare&logoColor=white" /></p>
 
 The portfolio uses separate deployment targets for the website and the email backend.
 
@@ -634,6 +752,8 @@ After a rollback, test the affected route and inspect Worker logs before declari
 
 ## 12. GitHub Actions workflow
 
+<p><img alt="CI %2F CD section" src="https://img.shields.io/badge/SECTION-CI%20%2F%20CD-2088FF?style=flat-square&logo=githubactions&logoColor=white" /></p>
+
 The workflow is defined in `.github/workflows/deploy.yml`.
 
 ### 12.1 Trigger conditions
@@ -691,6 +811,8 @@ The checked-in workflow deploys the Pages site. The contact API and mailer Worke
 
 ## 13. Security and operational considerations
 
+<p><img alt="SECURITY section" src="https://img.shields.io/badge/SECTION-SECURITY-DC2626?style=flat-square&logo=owasp&logoColor=white" /></p>
+
 ### 13.1 Secrets and access
 
 - Keep Cloudflare API tokens in GitHub Actions secrets.
@@ -721,6 +843,8 @@ The portfolio may describe systems that have separate repositories or deployment
 
 ## 14. Troubleshooting
 
+<p><img alt="SUPPORT %26 TROUBLESHOOTING section" src="https://img.shields.io/badge/SECTION-SUPPORT%20%26%20TROUBLESHOOTING-64748B?style=flat-square" /></p>
+
 | Symptom | Likely area | Checks |
 | --- | --- | --- |
 | Website changes do not appear | Pages deployment | Confirm the latest `main` commit was deployed to the correct Pages project and production branch |
@@ -750,6 +874,8 @@ Do not use real customer or employee information for test submissions.
 ---
 
 ## 15. Maintenance checklist
+
+<p><img alt="MAINTENANCE section" src="https://img.shields.io/badge/SECTION-MAINTENANCE-16A34A?style=flat-square" /></p>
 
 ### Before merging
 
@@ -785,6 +911,8 @@ Do not use real customer or employee information for test submissions.
 
 ## 16. Ownership and licensing
 
+<p><img alt="OWNERSHIP %26 LICENSE section" src="https://img.shields.io/badge/SECTION-OWNERSHIP%20%26%20LICENSE-475569?style=flat-square" /></p>
+
 **Proprietary. All rights reserved.**
 
 This repository and [portfolio.jelvan.pro](https://portfolio.jelvan.pro) belong to **Mr. Jelvan B. Ricolcol, CHRA, MHR, MBAI (Jelvan®)**. Copying, redistribution, or derivative works require written permission. See [LICENSE](./LICENSE).
@@ -799,6 +927,8 @@ For security disclosures, see [SECURITY.md](./SECURITY.md).
 
 
 ## 17. Official technology and platform references
+
+<p><img alt="OFFICIAL REFERENCES section" src="https://img.shields.io/badge/SECTION-OFFICIAL%20REFERENCES-7C3AED?style=flat-square" /></p>
 
 Technology logos in the About / Skills cards link to the official documentation listed below. Select a logo or its revealed **Official docs** caption to learn how the platform works, configure it, and use its APIs. Links open in a new browser tab.
 
