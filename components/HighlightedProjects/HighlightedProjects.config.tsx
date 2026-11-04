@@ -8,7 +8,7 @@ const LAPTOP_IMG = '/assets/portfolio/laptop-lms.png';
 export const useHighlightedProjectsData = (): { highlightedProjects: IHighlightedProject[] } => {
   const highlightedProjects: IHighlightedProject[] = [
     {
-      slideNumberImg:'/assets/portfolio/1.svg', projectTitle:'Master AI | Multi-Agent Workspace',
+      slideNumberImg:'/assets/portfolio/1.svg', projectImg:'/assets/portfolio/automation-cover.png', projectTitle:'Master AI | Multi-Agent Workspace',
       projectLinks:[], projectLinkNote:'Product demonstration. Private operational configuration and organization-specific information are intentionally excluded.',
       projectDescription:'A coordinated AI workspace that brings specialist assistants together to help people organize requests, prepare useful drafts, summarize information and support repeatable team workflows. People remain responsible for reviewing decisions and approving consequential actions.',
       projectPurpose:'Make AI assistance easier to use across different work areas while keeping tasks understandable, reviewable and under human control.',
@@ -19,7 +19,7 @@ export const useHighlightedProjectsData = (): { highlightedProjects: IHighlighte
       slideBgColor:'#fff7f0', technologyIcons:[<SiCloudflare key="cf" className="tech-icon"/>,<SiTypescript key="ts" className="tech-icon"/>],
     },
     {
-      slideNumberImg:'/assets/portfolio/2.svg', projectTitle:'Knowledge Center System',
+      slideNumberImg:'/assets/portfolio/2.svg', projectImg:'/assets/portfolio/laptop-lms.png', projectTitle:'Knowledge Center System',
       projectLinks:[{label:'Open Knowledge Center',url:'https://app-bible.jelvan.pro/'},{label:'Public source repository',url:'https://github.com/DevJel/knowledge-center-system'}],
       projectDescription:'A chapter-based learning and technical reference library. It organizes complex subjects into standalone guides with practical explanations, examples, diagrams, implementation steps and links to authoritative documentation.',
       projectPurpose:'Help developers, technical teams and learners find clear, structured guidance for planning, building, securing, testing and operating digital systems.',
@@ -30,7 +30,7 @@ export const useHighlightedProjectsData = (): { highlightedProjects: IHighlighte
       slideBgColor:'#ffffff', technologyIcons:[<SiCloudflare key="cf" className="tech-icon"/>],
     },
     {
-      slideNumberImg:'/assets/portfolio/3.svg', projectTitle:'Internal Email System',
+      slideNumberImg:'/assets/portfolio/3.svg', projectImg:'/assets/portfolio/email-platform.png', projectTitle:'Internal Email System',
       projectLinks:[], projectLinkNote:'Private workspace. Internal account details, sending configuration and operational endpoints are not published.',
       projectDescription:'A streamlined email outreach and communications workspace for organizing contacts, preparing campaigns, managing templates and handling replies. Email delivery is designed around Amazon Simple Email Service (SES), with safeguards for responsible sending.',
       projectPurpose:'Bring contact organization and email workflow management into one focused interface while supporting consent-aware, accountable communication.',
@@ -41,7 +41,7 @@ export const useHighlightedProjectsData = (): { highlightedProjects: IHighlighte
       slideBgColor:'#fff7f0', technologyIcons:[<SiAmazonaws key="aws" className="tech-icon"/>,<SiCloudflare key="cf" className="tech-icon"/>],
     },
     {
-      slideNumberImg:'/assets/portfolio/4.svg', projectTitle:'HR Information System',
+      slideNumberImg:'/assets/portfolio/4.svg', projectImg:'/assets/portfolio/projects/mis-desktop.svg', projectTitle:'HR Information System',
       projectLinks:[{label:'Public source repository',url:'https://github.com/DevJel/jelhr-system'}],
       projectLinkNote:'Development prototype. Do not use for real employee or payroll records until production security and operational checks are complete.',
       projectDescription:'A modular human-resources workspace covering employee lifecycle processes, workforce records and administrative workflows. The current repository includes an interface, API functions and a database-backed foundation, with several modules still at prototype or demo maturity.',
@@ -53,7 +53,7 @@ export const useHighlightedProjectsData = (): { highlightedProjects: IHighlighte
       slideBgColor:'#ffffff', technologyIcons:[<SiCloudflare key="cf" className="tech-icon"/>,<SiTypescript key="ts" className="tech-icon"/>],
     },
     {
-      slideNumberImg:'/assets/portfolio/5.svg', projectTitle:'BOLEKpad | Personal Workspace',
+      slideNumberImg:'/assets/portfolio/5.svg', projectImg:'/assets/portfolio/automation-cover.png', projectTitle:'BOLEKpad | Personal Workspace',
       projectLinks:[], projectLinkNote:'Private application repository. Public description focuses on product capabilities; account-specific setup is not included.',
       projectDescription:'A personal digital workspace that brings notes, pages, documents, slides, a calendar, email utilities and AI-assisted tools into one application. The browser interface connects to a server-side API for protected data and service operations.',
       projectPurpose:'Give an individual a single place to capture ideas, organize knowledge, work on documents and manage lightweight productivity tasks.',
@@ -64,7 +64,7 @@ export const useHighlightedProjectsData = (): { highlightedProjects: IHighlighte
       slideBgColor:'#fff7f0', technologyIcons:[<SiCloudflare key="cf" className="tech-icon"/>,<SiReact key="react" className="tech-icon"/>,<SiTypescript key="ts" className="tech-icon"/>],
     },
     {
-      slideNumberImg:'/assets/portfolio/6.svg', projectTitle:'Online Printing Store',
+      slideNumberImg:'/assets/portfolio/6.svg', projectImg:'/assets/portfolio/laptop-lms.png', projectTitle:'Online Printing Store',
       projectLinks:[], projectLinkNote:'Concept showcase. A verified source repository and confirmed implementation stack have not yet been identified; technologies are intentionally not assumed.',
       projectDescription:'An online storefront concept for browsing print products, reviewing customization choices and submitting print orders. The intended experience connects product discovery with a clear order-request process.',
       projectPurpose:'Make it easier for customers to explore print options and submit complete, well-organized print requests online.',
@@ -75,7 +75,7 @@ export const useHighlightedProjectsData = (): { highlightedProjects: IHighlighte
       slideBgColor:'#ffffff', technologyIcons:[<SiReact key="react" className="tech-icon"/>],
     },
     {
-      slideNumberImg:'/assets/portfolio/7.svg', projectTitle:'Developers Playground | DevAI',
+      slideNumberImg:'/assets/portfolio/7.svg', projectImg:'/assets/portfolio/projects/devai-desktop.svg', projectTitle:'Developers Playground | DevAI',
       projectLinks:[{label:'Open xCoder',url:'https://app.xcoder.jelvan.pro/'}],
       projectLinkNote:'Development status varies by feature. Live payment, email, model and connector integrations require independent verification.',
       projectDescription:'An AI-assisted developer workspace designed to combine conversational coding support, project resources, connectors, media handling and development workflow tools in one browser-based environment.',
