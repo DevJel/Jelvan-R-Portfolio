@@ -10,7 +10,8 @@ type ContainerProps = Pick<IHighlightedProject, 'slideBgColor' | 'slideHeight'>;
 
 export const Container = styled.section<ContainerProps>`
   display: flex;
-  height: ${({ slideHeight }) => slideHeight || '100%'};
+  height: auto;
+  min-height: ${({ slideHeight }) => slideHeight || '100vh'};
   background-color: ${({ slideBgColor }) => slideBgColor};
   position: relative;
   scroll-snap-align: center;
@@ -208,4 +209,18 @@ export const ProjectLinkNote = styled.p`
   text-align: center;
   font-size: 0.9rem;
   margin: 0.75rem 0 0;
+`;
+
+export const DetailGrid = styled.div`
+  display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.75rem; margin:.5rem 0 1rem;
+  @media ${({theme})=>theme.media.phone}{grid-template-columns:1fr;}
+`;
+export const DetailPanel = styled.section`
+  min-width:0; padding:.85rem 1rem; border:1px solid rgba(244,129,32,.2); border-radius:14px;
+  background:rgba(255,255,255,.82); box-shadow:0 8px 24px rgba(24,24,32,.045);
+  h4{margin:0 0 .45rem;color:#b95e13;font-size:.95rem;font-weight:750;}
+  p,li{color:#35343a;font-size:.88rem;line-height:1.5;} p{margin:0;}
+  ul{margin:0;padding-left:1.1rem;} li+li{margin-top:.2rem;}
+  div{display:flex;flex-wrap:wrap;gap:.35rem;}
+  span{display:inline-flex;padding:.25rem .55rem;border-radius:999px;background:#fff0e3;color:#713b13;font-size:.78rem;font-weight:650;}
 `;
