@@ -10,7 +10,8 @@ type ContainerProps = Pick<IHighlightedProject, 'slideBgColor' | 'slideHeight'>;
 
 export const Container = styled.section<ContainerProps>`
   display: flex;
-  height: ${({ slideHeight }) => slideHeight || '100%'};
+  height: auto;
+  min-height: ${({ slideHeight }) => slideHeight || '100vh'};
   background-color: ${({ slideBgColor }) => slideBgColor};
   position: relative;
   scroll-snap-align: center;
