@@ -35,7 +35,7 @@ const ProjectDesktopSlide = ({
         </Styled.DetailGrid>
         {projectLinks && <Styled.ButtonsWrapper>{projectLinks.map(({label,url})=><Styled.SampleLink key={url} href={url} target="_blank" rel="noopener noreferrer" aria-label={`${label} for ${projectTitle} (opens in a new tab)`}>{label}</Styled.SampleLink>)}</Styled.ButtonsWrapper>}
         {projectLinkNote && <Styled.ProjectLinkNote>{projectLinkNote}</Styled.ProjectLinkNote>}
-        <Styled.ButtonsWrapper><Styled.SampleLink href={`/projects/${projectTitle.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}`}>Implementation guide & deployment steps</Styled.SampleLink></Styled.ButtonsWrapper>
+        {projectTitle !== 'Online Printing Store' && <Styled.ButtonsWrapper><Styled.SampleLink href={`/projects/${projectTitle.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}`}>Implementation guide & deployment steps</Styled.SampleLink></Styled.ButtonsWrapper>}
       </Styled.RightColumn>
     </>}
   </Styled.Container>;
