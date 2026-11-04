@@ -6,6 +6,7 @@ export const navMenuLinks: { id: number; linkText: string; href: string; externa
   { id: 1, href: '/portfolio/projects', linkText: 'My Projects' },
   { id: 8, href: 'https://app-bible.jelvan.pro/', linkText: 'Knowledge Center', external: true },
   { id: 2, href: '/tools', linkText: 'Dev Tools' },
+  { id: 9, href: '/ai-web-dev-cheat-sheet', linkText: 'AI Web Dev' },
   { id: 7, href: '/svg-library', linkText: 'SVG Library' },
   { id: 3, href: '/portfolio/about', linkText: 'About Me' },
   { id: 4, href: '/portfolio/contact', linkText: 'Contact Me' },
