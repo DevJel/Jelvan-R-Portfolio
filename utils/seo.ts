@@ -58,9 +58,14 @@ export interface PageSeo {
 }
 
 export const PAGES: Record<
-  'home' | 'about' | 'projects' | 'contact' | 'resume' | 'articles' | 'tools' | 'svgLibrary',
+  'home' | 'about' | 'projects' | 'contact' | 'resume' | 'articles' | 'tools' | 'svgLibrary' | 'aiWebDev',
   PageSeo
 > = {
+  aiWebDev: {
+    title: 'AI Web Development Cheat Sheet | Jelvan Ricolcol',
+    description: 'A practical guide to AI model families, coding languages, developer platforms, AI concepts, cloud infrastructure and modern web development workflows.',
+    path: '/ai-web-dev-cheat-sheet',
+  },
   svgLibrary: {
     title: 'SVG Library | Original Jelvan Elements by Jelvan Ricolcol',
     description: 'Browse 108 original SVG elements by Jelvan Ricolcol. Copy, recolor and download the editable vector designs with creator attribution.',
