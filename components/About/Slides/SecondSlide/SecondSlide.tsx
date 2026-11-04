@@ -41,12 +41,12 @@ const SecondSlide = (): JSX.Element => {
           <PortfolioParagraph
             margin={'0'}
             paragraphText={
-              'I also design practical systems for finance, procurement, customer service,
+              `I also design practical systems for finance, procurement, customer service,
               IT service management, knowledge, communications, document
               management, analytics and workflow automation. The objective is
               not technology for its own sake: it is simpler employee and
               customer experiences, stronger controls, reliable information
-              and better operational decisions.'
+              and better operational decisions.`
             }
             withDarkColor={false}
             variant={'large'}
