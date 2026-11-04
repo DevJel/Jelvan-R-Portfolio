@@ -406,11 +406,14 @@ The project uses Next.js Pages Router conventions. Page components are located i
 | --- | --- |
 | `/` | Landing experience |
 | `/portfolio/about` | About and professional profile |
-| `/portfolio/projects` | Selected projects |
+| `/portfolio/projects` | Selected projects and transformation capabilities |
+| `/projects/[slug]` | Static implementation guide for each selected project, including source-folder map, setup, deployment pathways and best practices |
 | `/portfolio/contact` | Contact page |
 | `/portfolio/resume` | Résumé |
 | `/tools` | Browser-based developer tools |
 | `/svg-library` | SVG resource library |
+
+Project guide routes are generated at build time with `getStaticPaths` and `getStaticProps`; the supported slugs are `master-ai-multi-agent-workspace`, `knowledge-center-system`, `internal-email-system`, `hr-information-system`, `bolekpad-personal-workspace`, `online-printing-store` and `developers-playground-devai`. Keep the project-card slug generation and the static route list in sync when adding or renaming a project.
 
 The static export is configured in `next.config.mjs`. Next.js generates HTML and assets into `out/`; Cloudflare Pages serves that output.
 
