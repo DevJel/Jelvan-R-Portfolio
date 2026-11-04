@@ -1,7 +1,6 @@
 import React from 'react';
-import { SiAmazonaws, SiCloudflare, SiMongodb, SiNextdotjs, SiReact, SiTypescript } from 'react-icons/si';
+import { SiAmazonaws, SiCloudflare, SiNextdotjs, SiReact, SiTypescript } from 'react-icons/si';
 import { IHighlightedProject } from '../../types/portfolio';
-import BrandCard from '../BrandCard/BrandCard';
 
 const PHONE_IMG = '/assets/portfolio/landing-mobile.png';
 const LAPTOP_IMG = '/assets/portfolio/laptop-lms.png';
@@ -28,7 +27,7 @@ export const useHighlightedProjectsData = (): { highlightedProjects: IHighlighte
       projectFeatures:['Standalone topic and chapter pages','Searchable and shareable learning content','Step-by-step implementation guidance','Architecture and process diagrams','Examples, checklists and official references','Reference update and page maintenance guides'],
       projectAdvantages:['Makes technical knowledge easier to discover','Supports self-paced learning','Connects related topics into learning paths','Encourages verification against official sources'],
       slideHeight:'100vh', projectImg:LAPTOP_IMG, projectMobileImg:PHONE_IMG,
-      projectArt:<BrandCard brands={['cloudflare']} subtitle="Knowledge Center · Learning Library"/>,
+      projectImg:'/assets/portfolio/laptop-lms.png',
       projectTechnologies:['HTML','CSS','JavaScript','Cloudflare Pages','Markdown documentation'],
       slideBgColor:'#ffffff', technologyIcons:[<SiCloudflare key="cf" className="tech-icon"/>],
     },
@@ -40,7 +39,7 @@ export const useHighlightedProjectsData = (): { highlightedProjects: IHighlighte
       projectFeatures:['Contact and lead organization','Reusable email templates and campaign drafts','Sending workflow with delivery status tracking','Reply and activity organization','Domain and sender configuration guidance','Opt-out and responsible-sending controls'],
       projectAdvantages:['Reduces scattered manual email work','Encourages consistent communication','Makes campaign activity easier to review','Separates demo activity from real sending'],
       slideHeight:'100vh', projectImg:'/assets/portfolio/email-platform.png', projectMobileImg:PHONE_IMG,
-      projectArt:<BrandCard brands={['cloudflare']} subtitle="Email Workspace · SES Delivery"/>,
+      projectImg:'/assets/portfolio/email-platform.png',
       projectTechnologies:['Cloudflare Workers','D1 Database','Amazon SES','JavaScript','HTML & CSS'],
       slideBgColor:'#fff7f0', technologyIcons:[<SiAmazonaws key="aws" className="tech-icon"/>,<SiCloudflare key="cf" className="tech-icon"/>],
     },
@@ -53,7 +52,7 @@ export const useHighlightedProjectsData = (): { highlightedProjects: IHighlighte
       projectFeatures:['Administrator, HR, employee and demo access concepts','Employee directory and profile views','Onboarding and offboarding checklists','Time and attendance interface','Security and session management flows','Cloudflare Pages Functions API and D1 schema'],
       projectAdvantages:['Connects related HR workflows in one interface','Makes task ownership and process stages clearer','Supports role-based access design','Can evolve module by module as integrations mature'],
       slideHeight:'100vh', projectImg:'/assets/portfolio/projects/mis-desktop.svg', projectMobileImg:PHONE_IMG,
-      projectArt:<BrandCard brands={['cloudflare']} subtitle="HR Information · Workforce Operations"/>,
+      projectImg:'/assets/portfolio/projects/mis-desktop.svg',
       projectTechnologies:['Cloudflare Pages','Pages Functions','D1 Database','JavaScript','HTML & CSS'],
       slideBgColor:'#ffffff', technologyIcons:[<SiCloudflare key="cf" className="tech-icon"/>,<SiTypescript key="ts" className="tech-icon"/>],
     },
@@ -65,7 +64,7 @@ export const useHighlightedProjectsData = (): { highlightedProjects: IHighlighte
       projectFeatures:['Sticky notes and nested pages','Rich documents, slide decks and canvas','Calendar and scheduled reminders','File attachments and private storage','AI writing and workspace assistance','Email utilities and browser-based tools'],
       projectAdvantages:['Reduces context switching between tools','Keeps related notes and work materials together','Supports persistent storage and file attachments','Offers modular tools in one responsive workspace'],
       slideHeight:'100vh', projectImg:'/assets/portfolio/projects/finance-desktop.svg', projectMobileImg:PHONE_IMG,
-      projectArt:<BrandCard brands={['cloudflare']} subtitle="BOLEKpad · Personal Workspace"/>,
+      projectImg:'/assets/portfolio/automation-cover.png',
       projectTechnologies:['React 19','TypeScript','Vite','Tailwind CSS','Cloudflare Workers','D1 · KV · R2','Workers AI'],
       slideBgColor:'#fff7f0', technologyIcons:[<SiCloudflare key="cf" className="tech-icon"/>,<SiReact key="react" className="tech-icon"/>,<SiTypescript key="ts" className="tech-icon"/>],
     },
@@ -77,7 +76,7 @@ export const useHighlightedProjectsData = (): { highlightedProjects: IHighlighte
       projectFeatures:['Print product catalogue concept','Product and finish selection flow','Artwork or design submission concept','Order details and quantity capture','Request confirmation and order-status concept'],
       projectAdvantages:['Makes product options easier to compare','Reduces incomplete order enquiries','Creates a clearer customer request journey','Can be extended with payment and order tracking integrations'],
       slideHeight:'100vh', projectImg:LAPTOP_IMG, projectMobileImg:PHONE_IMG,
-      projectArt:<BrandCard brands={['cloudflare']} subtitle="Online Printing · Storefront Concept"/>,
+      projectImg:'/assets/portfolio/laptop-lms.png',
       projectTechnologies:['E-commerce concept','Product catalogue','Order workflow','Stack verification pending'],
       slideBgColor:'#ffffff', technologyIcons:[<SiReact key="react" className="tech-icon"/>],
     },
@@ -90,7 +89,7 @@ export const useHighlightedProjectsData = (): { highlightedProjects: IHighlighte
       projectFeatures:['Guest question and authenticated workspace flows','AI chat and conversation history','Connector and plugin management concepts','Private media and resource handling','Model and usage controls','Review-before-send automation concepts'],
       projectAdvantages:['Brings common developer utilities together','Supports AI-assisted exploration and drafting','Provides a structured place for integrations','Designed with review and access boundaries in mind'],
       slideHeight:'100vh', projectImg:'/assets/portfolio/projects/devai-desktop.svg', projectMobileImg:PHONE_IMG,
-      projectArt:<BrandCard brands={['cloudflare']} subtitle="DevAI · Developers Playground"/>,
+      projectImg:'/assets/portfolio/projects/devai-desktop.svg',
       projectTechnologies:['Cloudflare Workers','Workers AI','D1 Database','R2 Storage','Durable Objects','Turnstile','Amazon SES'],
       slideBgColor:'#fff7f0', technologyIcons:[<SiCloudflare key="cf" className="tech-icon"/>,<SiTypescript key="ts" className="tech-icon"/>,<SiNextdotjs key="next" className="tech-icon"/>],
     },
