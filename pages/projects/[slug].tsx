@@ -1,12 +1,12 @@
 import React from 'react';
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Link from 'next/link';
-import PortfolioLayout from '../../../components/PortfolioLayout/PortfolioLayout';
-import { PAGES } from '../../../utils/seo';
+import PortfolioLayout from '../../components/PortfolioLayout/PortfolioLayout';
+import { PAGES } from '../../utils/seo';
 
 type Project = {
   slug: string; number: string; title: string; summary: string; maturity: string;
-  stack: string[]; folders: { name: string; purpose: string; access: string }[];
+  stack: string[]; systems?: string[]; folders: { name: string; purpose: string; access: string }[];
   setup: string[]; platforms: { name: string; steps: string[] }[];
   practices: string[]; links: { label: string; url: string }[];
 };
@@ -17,6 +17,7 @@ const projects: Project[] = [
     summary: 'A human-reviewed AI workspace pattern for coordinating specialist assistants, preparing drafts and organizing repeatable tasks.',
     maturity: 'Private product showcase. Operational code, prompts, credentials, model routing and internal integrations are not published.',
     stack: ['Cloudflare Workers', 'Workers AI', 'D1', 'TypeScript / JavaScript', 'AI orchestration'],
+    systems: ['HR service desk and employee help assistant','Finance and procurement request triage','Customer support knowledge assistant','IT incident classification and routing','Policy and SOP retrieval with source citations','Workflow orchestration with approval checkpoints','Management reporting and operational insights'],
     folders: [
       { name: 'src/ or app/', purpose: 'Application entry points, interface and user workflows.', access: 'Private source — not downloadable here' },
       { name: 'workers/ or functions/', purpose: 'Server-side request handling, model calls and policy enforcement.', access: 'Private source — sanitized example recommended' },
@@ -37,6 +38,7 @@ const projects: Project[] = [
     summary: 'A structured technical learning library with topic pages, implementation walkthroughs, diagrams, examples and references.',
     maturity: 'Public source repository and live demonstration are available. Verify current dependencies and deployment configuration before production use.',
     stack: ['HTML', 'CSS', 'JavaScript', 'Cloudflare Pages', 'Markdown'],
+    systems: ['Enterprise policy and SOP library','Employee onboarding and role-based learning paths','Training and compliance knowledge hub','IT runbooks and service catalogue','Product and customer support knowledge base','Versioned document and records repository'],
     folders: [
       { name: 'index.html / pages/', purpose: 'Landing page and topic or chapter content.', access: 'Public repository' },
       { name: 'assets/', purpose: 'Stylesheets, scripts, diagrams, icons and images.', access: 'Public repository' },
@@ -58,6 +60,7 @@ const projects: Project[] = [
     summary: 'An email operations workspace concept for contact organization, templates, campaign preparation, reply workflows and responsible sending.',
     maturity: 'Private application. Public page provides architecture guidance only; no private contact data, sender identity, domain settings or mail credentials are included.',
     stack: ['Cloudflare Workers', 'D1', 'Amazon SES', 'JavaScript', 'HTML / CSS'],
+    systems: ['Recruitment and candidate communications','Employee lifecycle notifications and announcements','Customer service and case correspondence','Vendor and procurement communications','Approved campaign and stakeholder updates','Bounce, complaint, unsubscribe and delivery event management'],
     folders: [
       { name: 'frontend/', purpose: 'Sanitized interface components, forms and campaign preview screens.', access: 'Private source — demo recreation only' },
       { name: 'worker/ or api/', purpose: 'Server-side validation, authorization and mail-provider integration.', access: 'Private source — never expose production handlers' },
@@ -78,6 +81,7 @@ const projects: Project[] = [
     summary: 'A modular HR application prototype for employee lifecycle workflows, directory views, onboarding, offboarding and administrative processes.',
     maturity: 'Public repository. Prototype or demo modules must not be treated as production HR, payroll or employee-record software without a full security and compliance review.',
     stack: ['Cloudflare Pages', 'Pages Functions', 'D1', 'JavaScript', 'HTML / CSS'],
+    systems: ['Workforce planning and position control','Applicant tracking and recruitment operations','Pre-employment screening and offer management','Onboarding and employee self-service','Employee records, org chart and document management','Time, attendance, shifts and leave management','Performance, learning and career development','Employee relations and case management','Compensation, benefits and payroll integrations','Offboarding, asset recovery and identity access revocation','HR analytics, audit and compliance reporting'],
     folders: [
       { name: 'public/ or assets/', purpose: 'Static interface assets, icons and styles.', access: 'Public repository' },
       { name: 'functions/ or api/', purpose: 'Server-side API routes and request validation.', access: 'Public repository' },
@@ -98,6 +102,7 @@ const projects: Project[] = [
     summary: 'A personal productivity workspace concept combining notes, documents, pages, calendar utilities, attachments and AI-assisted tools.',
     maturity: 'Private application. The public showcase does not expose private source, account data, service endpoints or production configuration.',
     stack: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Cloudflare Workers', 'D1 / KV / R2'],
+    systems: ['Team knowledge and work instructions','Meeting notes and action tracking','Project and task coordination','Document collaboration and version history','Operational handover and shift notes','Personal productivity and reminders'],
     folders: [
       { name: 'src/', purpose: 'React application, routes, reusable UI and client state.', access: 'Private source — sanitized demo only' },
       { name: 'worker/ or api/', purpose: 'Authenticated server-side operations and service integrations.', access: 'Private source — sanitized interface contracts only' },
@@ -114,10 +119,33 @@ const projects: Project[] = [
     links: []
   },
   {
+    slug: 'online-printing-store', number: '06', title: 'Online Printing Store',
+    summary: 'A digital commerce and order-management concept for print products and business services, connecting customers with quoting, customization, payment, production and delivery workflows.',
+    maturity: 'Concept showcase. The source repository and production stack have not been verified. This guide describes a recommended reference architecture, not a claim of an existing implementation.',
+    stack: ['E-commerce storefront','Product catalogue','Order management','Payment gateway integration','Inventory and production workflow'],
+    systems: ['Product catalogue and configurable print specifications','Customer accounts and organization purchasing profiles','Quotation and approval workflow','Artwork upload, proofing and revision management','Shopping cart, checkout and payment reconciliation','Inventory, materials and production scheduling','Order tracking, delivery and fulfilment','Customer support, returns and service recovery','Sales, finance and operational reporting'],
+    folders: [
+      { name: 'apps/storefront/', purpose: 'Customer catalogue, product configuration, cart and checkout experience.', access: 'Reference folder structure only; source repo not yet identified' },
+      { name: 'apps/admin/', purpose: 'Product, pricing, order, customer and production administration.', access: 'Recommended module; not verified as implemented' },
+      { name: 'services/orders/', purpose: 'Order lifecycle, status transitions, quotations and payment reconciliation.', access: 'Recommended module; not verified as implemented' },
+      { name: 'services/uploads/', purpose: 'Artwork validation, secure file storage, preview and proof workflow.', access: 'Recommended module; not verified as implemented' },
+      { name: 'database/migrations/', purpose: 'Product, variant, inventory, order and audit schemas with synthetic seed data.', access: 'Recommended module; not verified as implemented' },
+      { name: 'docs/ and tests/', purpose: 'Architecture, payment threat model, order-state tests and deployment runbooks.', access: 'Recommended documentation structure' }
+    ],
+    setup: ['Choose the commerce framework and database only after confirming catalogue complexity, tax, shipping and payment requirements.', 'Create a local demo with synthetic products, test artwork and sandbox payment credentials.', 'Define product variants, print dimensions, material, finish, quantity tiers and pricing rules.', 'Implement a server-side order state machine and payment webhook verification.', 'Test artwork upload limits, file scanning, proof approval, refunds and duplicate webhook handling.'],
+    platforms: [
+      { name: 'Vercel', steps: ['Deploy the storefront using the framework preset and verified build settings.', 'Host privileged order and payment routes server-side; never expose payment secrets to the browser.', 'Connect a managed relational database and private object storage.', 'Configure payment provider webhooks with signature verification and idempotency.', 'Test checkout, inventory reservation, order confirmation and refunds in sandbox mode before launch.'] },
+      { name: 'AWS', steps: ['Choose a deployment pattern such as App Runner, ECS or serverless based on workload and team capability.', 'Use a managed database and private object storage with lifecycle policies.', 'Store payment and email credentials in a managed secret service.', 'Place the storefront behind a CDN and web application firewall.', 'Configure payment webhooks, queue-based order processing, monitoring and backups.'] }
+    ],
+    practices: ['Never store raw payment-card details; use a compliant hosted payment provider.', 'Verify payment webhooks, signatures, idempotency and order-state transitions.', 'Scan and validate customer artwork; restrict file type, size and access.', 'Separate customer, staff and administrator permissions.', 'Keep price calculations server-side and record pricing snapshots on each order.', 'Track inventory changes, refunds and manual overrides with audit events.'],
+    links: []
+  },
+  {
     slug: 'developers-playground-devai', number: '07', title: 'Developers Playground — DevAI',
     summary: 'A developer-focused AI workspace concept for assisted coding, project resources, integrations and repeatable development workflows.',
     maturity: 'Private application. Live feature availability and provider integrations can change; no private code, API keys or internal connector configuration is published.',
     stack: ['Cloudflare Workers', 'Workers AI', 'D1', 'R2', 'Durable Objects', 'Turnstile'],
+    systems: ['Developer portal and project workspace','Software development lifecycle and release tracking','Code review and secure coding assistance','Integration and API catalogue','Engineering knowledge base and runbooks','Environment and deployment management','AI usage governance and cost monitoring'],
     folders: [
       { name: 'web/ or src/', purpose: 'User interface, editor and project workspace screens.', access: 'Private source — sanitized demo only' },
       { name: 'api/ or workers/', purpose: 'Model orchestration, connector calls and server-side policy checks.', access: 'Private source — sanitized examples only' },
@@ -155,10 +183,13 @@ const ProjectDetailPage: NextPage<{ project: Project }> = ({ project }) => (
         <div className="folder-grid">{project.folders.map(folder => <article className="panel" key={folder.name}><h3><code>{folder.name}</code></h3><p>{folder.purpose}</p><small>{folder.access}</small></article>)}</div>
         {project.links.length > 0 && <div className="actions">{project.links.map(link => <a key={link.url} href={link.url} target="_blank" rel="noreferrer">{link.label} ↗</a>)}</div>}
       </section>
+      {project.systems && <section><h2>Relevant organizational systems and modules</h2><p className="intro">These are capability recommendations and integration opportunities for organizations. They are not claims that every module is already implemented in this project.</p><div className="system-grid">{project.systems.map((item,index)=><article className="system-item" key={item}><span>{String(index+1).padStart(2,'0')}</span><strong>{item}</strong></article>)}</div></section>}
       <section><h2>Local installation and preparation</h2><ol className="steps">{project.setup.map(step => <li key={step}>{step}</li>)}</ol></section>
       <section><h2>Deployment options</h2><p className="intro">Choose the platform that matches the project architecture. Build commands, output folders, bindings and runtime compatibility must be taken from the actual repository configuration rather than copied blindly.</p>
         <div className="platform-grid">{[...project.platforms, ...commonPlatforms].map(platform => <article className="panel" key={platform.name}><h3>{platform.name}</h3><ol>{platform.steps.map(step => <li key={step}>{step}</li>)}</ol></article>)}</div>
       </section>
+      {project.slug === 'hr-information-system' && <section className="lifecycle"><h2>End-to-end employee lifecycle blueprint</h2><ol><li><strong>Plan:</strong> workforce plans, budgets, organization structure, job families and position approvals.</li><li><strong>Attract:</strong> career site, requisitions, job publishing, candidate CRM and referral management.</li><li><strong>Select:</strong> applicant tracking, screening consent, interview scheduling, scorecards and decision records.</li><li><strong>Pre-employment:</strong> conditional offers, background checks, references, medical or credential steps where lawful, and document collection.</li><li><strong>Onboard:</strong> e-signatures, policy acknowledgements, employee profile, equipment, identity provisioning, orientation and probation tasks.</li><li><strong>Employ:</strong> employee self-service, HR case management, time, attendance, leave, shifts, payroll and benefits interfaces.</li><li><strong>Develop:</strong> goals, performance reviews, learning, skills, certifications, succession and internal mobility.</li><li><strong>Offboard:</strong> approvals, exit interview, knowledge transfer, asset return, access revocation, final-pay coordination and statutory documents.</li><li><strong>Retain and learn:</strong> retention schedules, alumni options, audit evidence and workforce analytics.</li></ol><p>Connect these modules through a governed employee master record, workflow engine, identity provider, document repository and reporting layer. Integrations must use explicit ownership, least-privilege service accounts and reconciliation controls.</p></section>}
+      <section><h2>Official platform documentation</h2><p className="intro">Use current vendor documentation for exact CLI syntax, build settings, supported runtimes, binding configuration and platform limits.</p><div className="actions"><a href="https://developers.cloudflare.com/pages/" target="_blank" rel="noreferrer">Cloudflare Pages docs ↗</a><a href="https://developers.cloudflare.com/workers/" target="_blank" rel="noreferrer">Cloudflare Workers docs ↗</a><a href="https://vercel.com/docs" target="_blank" rel="noreferrer">Vercel docs ↗</a><a href="https://docs.aws.amazon.com/" target="_blank" rel="noreferrer">AWS documentation ↗</a><a href="https://docs.netlify.com/" target="_blank" rel="noreferrer">Netlify docs ↗</a><a href="https://docs.docker.com/" target="_blank" rel="noreferrer">Docker docs ↗</a></div></section>
       <section><h2>Engineering and security best practices</h2><ul className="practice-list">{project.practices.map(item => <li key={item}>{item}</li>)}</ul></section>
       <section className="release"><h2>Before production release</h2><p>Confirm ownership, licensing, environment separation, authentication, authorization, backups, monitoring, accessibility, performance and incident-response readiness. Run a clean install and a complete test/build on the exact commit intended for deployment. Publish only sanitized assets and synthetic data.</p></section>
       <footer><Link href="/projects">Explore another project →</Link></footer>
@@ -170,7 +201,7 @@ const ProjectDetailPage: NextPage<{ project: Project }> = ({ project }) => (
       .hero>p,.intro{font-size:1.08rem;line-height:1.7;max-width:850px;color:#5d5a57}.status{margin:1.5rem 0;padding:1rem 1.2rem;background:#fff4e9;border-left:3px solid #f48120;border-radius:8px;line-height:1.55}
       .tags{display:flex;flex-wrap:wrap;gap:.55rem}.tags span{background:#f3f1ef;border:1px solid #e7e1dc;border-radius:99px;padding:.45rem .75rem;font-size:.82rem}
       section{padding:2.4rem 0;border-bottom:1px solid #eee7e1}h2{font-size:clamp(1.5rem,3vw,2.1rem);margin:0 0 1rem}h3{margin:.1rem 0 .7rem}p{line-height:1.65}
-      .folder-grid,.platform-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:1rem}.panel{background:#fff;border:1px solid #e9e2dc;border-radius:14px;padding:1.2rem;box-shadow:0 8px 28px #3b24100a}
+      .folder-grid,.platform-grid,.system-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:1rem}.system-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:.65rem}.system-item{display:flex;gap:.75rem;align-items:flex-start;padding:.9rem 1rem;border:1px solid #eadfd5;border-radius:12px;background:#fff}.system-item span{color:#c9671c;font-weight:800;font-size:.8rem}.system-item strong{font-size:.92rem;line-height:1.45}.lifecycle{background:#fff8f2;border:1px solid #f1dfcf;border-radius:16px;padding:1.5rem}.lifecycle ol{padding-left:1.4rem}.lifecycle li{line-height:1.65;margin:.65rem 0}.panel{background:#fff;border:1px solid #e9e2dc;border-radius:14px;padding:1.2rem;box-shadow:0 8px 28px #3b24100a}
       .panel p{color:#5e5a56}.panel small{color:#a65313;font-weight:700}.panel ol{padding-left:1.2rem}.panel li,.steps li,.practice-list li{line-height:1.65;margin:.65rem 0}
       .steps{padding-left:1.5rem;max-width:900px}.practice-list{padding-left:1.4rem;columns:2;column-gap:3rem}.practice-list li{break-inside:avoid}
       .actions{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.2rem}.actions a{display:inline-block;background:#262626;color:white;padding:.8rem 1rem;border-radius:8px;text-decoration:none;font-weight:700}

@@ -28,20 +28,25 @@ const SecondSlide = (): JSX.Element => {
             variant={'large'}
             withAnimatedPresence={true}
           >
-            I am a{' '}
-            <WithSparkles color={'#f48120'}>
-              multifaceted professional
-            </WithSparkles>{' '}
-            who bridges people strategy and technology. HR generalist, web
-            developer and AI practitioner, I help organizations hire, manage and
-            grow their workforce with clear, compliant and modern systems.
+            I bridge people strategy, process design and technology to help
+            organizations modernize how work gets done. My focus is end-to-end
+            Human Resources transformation: workforce planning, recruitment,
+            selection, pre-employment, onboarding, employee records, time and
+            attendance, performance, learning, employee relations and
+            offboarding — connected through clear ownership, secure data and
+            measurable workflows.
           </PortfolioParagraph>
         </div>
         <div className="right-column">
           <PortfolioParagraph
             margin={'0'}
             paragraphText={
-              'With IBM Full Stack and AWS AI certifications, I design and build web systems, AI agents and automated workflows that make HR and business operations faster, smarter and easier to run.'
+              `I also design practical systems for finance, procurement, customer service,
+              IT service management, knowledge, communications, document
+              management, analytics and workflow automation. The objective is
+              not technology for its own sake: it is simpler employee and
+              customer experiences, stronger controls, reliable information
+              and better operational decisions.`
             }
             withDarkColor={false}
             variant={'large'}

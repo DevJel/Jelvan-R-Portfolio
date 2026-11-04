@@ -28,8 +28,10 @@ const FirstSlide = (): JSX.Element => {
           variant={'large'}
           withAnimatedPresence={true}
         >
-          Building people systems, AI agents and digital operations that help
-          organizations scale is my <WithSparkles color={'#f48120'}>calling.</WithSparkles>
+          My goal is to help organizations transform how they work by connecting
+          people, processes and technology — with end-to-end Human Resources
+          transformation, from recruitment through onboarding, employee
+          development and offboarding, at the center of the journey.
         </PortfolioParagraph>
 
         <ScrollHint />

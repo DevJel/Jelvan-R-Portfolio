@@ -80,13 +80,13 @@ export const PAGES: Record<
   about: {
     title: 'About Jelvan Ricolcol | HR, Software Development & AI',
     description:
-      'About Jelvan Ricolcol: strategic HR professional and full stack software developer bridging people strategy and technology, with expertise in HR operations, digital branding systems, AI and business automation.',
+      'About Jelvan Ricolcol: strategic HR and digital transformation practitioner connecting people strategy, end-to-end employee lifecycle systems, enterprise operations, AI and business automation.',
     path: '/portfolio/about',
   },
   projects: {
     title: 'Projects | Jelvan Ricolcol',
     description:
-      'Selected web development and digital transformation projects by Jelvan Ricolcol, full stack software developer and AI & digital transformation practitioner.',
+      'Organizational digital transformation projects by Jelvan Ricolcol, with end-to-end HR lifecycle systems, enterprise operations, AI automation, knowledge management and deployment guides.',
     path: '/portfolio/projects',
   },
   contact: {

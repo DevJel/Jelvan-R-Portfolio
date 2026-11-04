@@ -45,7 +45,7 @@ const HighlightedProjects = ({ withNavbar = true }: Props): JSX.Element => {
           <PortfolioParagraph
             margin={'1rem 0'}
             paragraphText={
-              'A selection of digital products and systems spanning AI automation, knowledge management, business operations, productivity, e-commerce, and developer tooling.'
+              'A portfolio of connected digital transformation capabilities for organizations — from end-to-end Human Resources and workforce operations to AI automation, knowledge management, finance, customer service, IT operations, communications and business systems.'
             }
             withDarkColor={false}
             variant={'large'}
@@ -54,7 +54,7 @@ const HighlightedProjects = ({ withNavbar = true }: Props): JSX.Element => {
           <PortfolioParagraph
             margin={'1rem 0'}
             paragraphText={
-              'Some project details and visuals are presented as demonstrations. Client-specific information and confidential implementation details are not displayed.'
+              'The goal is to connect people, processes, data and technology across the organization. Each project guide includes system opportunities, safe source-folder guidance, local setup, deployment pathways and engineering best practices. Private source code, credentials and organization-specific information remain protected.'
             }
             withDarkColor={false}
             variant={'medium'}

@@ -6,7 +6,7 @@
 **Primary branch:** `main`  
 **License:** Proprietary — all rights reserved
 
-An interactive, desktop-inspired personal portfolio built with Next.js, React, TypeScript, and Styled Components. It presents professional information and selected digital products through a responsive project showcase, alongside browser-based developer utilities and a server-side contact workflow.
+An interactive, desktop-inspired portfolio built with Next.js, React, TypeScript, and Styled Components. Its central professional goal is to help organizations achieve practical digital transformation by connecting people, processes, data and technology. The portfolio emphasizes end-to-end Human Resources transformation — from workforce planning and recruitment through onboarding, employee development and offboarding — alongside enterprise systems for finance, procurement, customer service, IT operations, knowledge, communications, analytics and automation.
 
 > **Documentation scope:** This README describes the portfolio application and the infrastructure declared in this repository. It does not imply that every showcased project is deployed as part of this portfolio, or that every external service has been independently health-checked.
 
@@ -36,7 +36,7 @@ An interactive, desktop-inspired personal portfolio built with Next.js, React, T
 
 ## 1. Purpose and experience
 
-The portfolio is a personal professional website and interactive presentation environment. Its desktop-inspired interface gives visitors a way to explore the owner's profile, work, projects, contact details, and selected browser tools.
+The portfolio presents a people-first digital transformation approach. It demonstrates how organizational systems can reduce fragmented work, improve employee and customer experience, strengthen governance and make operational information more useful. Human Resources is a flagship domain because the employee journey spans multiple teams, approvals, systems and sensitive records.
 
 Core experience:
 
@@ -136,10 +136,10 @@ An internal email and communications platform powered by **Amazon Simple Email S
 
 ### 2.4 HR Information System
 
-A centralized HR platform for managing employee information and workforce processes across the employee lifecycle.
+A connected HR platform concept for the full employee lifecycle — workforce planning, recruitment, selection, pre-employment, onboarding, employee records, time and attendance, performance, learning, employee relations, payroll and benefits integrations, offboarding and alumni records.
 
 - **Purpose:** bring HR administration and workforce information into a structured system.
-- **Core areas:** recruitment, onboarding, employee records, access control, and operational reporting.
+- **Core areas:** workforce planning; applicant tracking; candidate assessment; offers and pre-employment; onboarding; employee and manager self-service; time, attendance and leave; performance and learning; employee relations; payroll and benefits integrations; offboarding; access revocation; retention and analytics.
 - **Showcase category:** HR technology, employee lifecycle management, and workforce operations.
 
 ### 2.5 Workspace Pad — BOLEKpad
@@ -165,6 +165,46 @@ A developer-focused environment for web development, coding workflows, and proje
 - **Purpose:** bring development utilities and AI-assisted capabilities into one workspace.
 - **Core areas:** web development, coding assistance, project progress, and monitoring.
 - **Showcase category:** developer tooling and software delivery workflows.
+
+---
+
+
+### 2.8 Organizational digital transformation approach
+
+The portfolio's project collection is intended to demonstrate how organizations can modernize connected capabilities rather than purchase disconnected tools. A practical transformation program should begin with process discovery, service ownership, data governance and measurable outcomes.
+
+**Human Resources — end-to-end employee lifecycle**
+
+1. Workforce planning, organization design, headcount and position approvals.
+2. Recruitment marketing, careers site, requisitions, applicant tracking and candidate relationship management.
+3. Selection, interview scheduling, scorecards, assessments and documented decisions.
+4. Pre-employment checks, consent, offers, e-signature and document collection.
+5. Onboarding, policy acknowledgements, orientation, equipment, identity provisioning and probation tasks.
+6. Employee master data, employee self-service, manager self-service, HR help desk and case management.
+7. Time, attendance, shifts, leave, payroll and benefits integrations.
+8. Performance, goals, learning, skills, certifications, succession and internal mobility.
+9. Employee relations, grievances, accommodations and confidential case workflows.
+10. Offboarding, exit interviews, knowledge transfer, asset return, access revocation, final-pay coordination and statutory documents.
+11. Records retention, alumni pathways, audit evidence and workforce analytics.
+
+**Additional organization-wide systems**
+
+| Domain | Relevant systems and capabilities |
+| --- | --- |
+| Finance | General ledger, accounts payable/receivable, budgeting, expense claims, invoicing, procurement approvals and financial reporting |
+| Procurement | Vendor onboarding, supplier records, purchase requests, purchase orders, contract lifecycle, approvals and spend analytics |
+| Customer operations | CRM, contact center, case management, service desk, customer feedback, knowledge base and SLA monitoring |
+| IT operations | IT service management, asset management, identity and access management, endpoint inventory, change management, incident and problem management |
+| Operations | Workflow/BPM, document management, e-signature, inventory, scheduling, quality management and business continuity |
+| Learning and knowledge | LMS, skills taxonomy, policy/SOP library, onboarding learning paths, certification tracking and knowledge management |
+| Data and governance | Master data management, integration/API layer, business intelligence, dashboards, audit trails, retention and privacy controls |
+| Automation and AI | RPA, workflow orchestration, document extraction, AI assistants, search and summarization with human approval gates |
+
+**Implementation principle:** prioritize high-friction, high-volume workflows; map the current process; define the future process and accountable owner; standardize data; integrate systems through documented APIs; pilot with representative users; measure adoption, cycle time, error rate, service quality and compliance; then scale in controlled releases.
+
+### 2.9 Project implementation guides
+
+Every showcased project has a dedicated route under `/projects/[slug]`. Each guide provides a source-folder map, local setup sequence, suitable deployment pathways, project-specific system opportunities and engineering/security practices. Public repositories are linked where confirmed. Private application code is not republished; private projects are documented with safe reference folder structures and sanitized-demo guidance. The Online Printing Store remains a concept guide until its source repository and implementation stack are identified.
 
 ---
 
@@ -366,11 +406,14 @@ The project uses Next.js Pages Router conventions. Page components are located i
 | --- | --- |
 | `/` | Landing experience |
 | `/portfolio/about` | About and professional profile |
-| `/portfolio/projects` | Selected projects |
+| `/portfolio/projects` | Selected projects and transformation capabilities |
+| `/projects/[slug]` | Static implementation guide for each selected project, including source-folder map, setup, deployment pathways and best practices |
 | `/portfolio/contact` | Contact page |
 | `/portfolio/resume` | Résumé |
 | `/tools` | Browser-based developer tools |
 | `/svg-library` | SVG resource library |
+
+Project guide routes are generated at build time with `getStaticPaths` and `getStaticProps`; the supported slugs are `master-ai-multi-agent-workspace`, `knowledge-center-system`, `internal-email-system`, `hr-information-system`, `bolekpad-personal-workspace`, `online-printing-store` and `developers-playground-devai`. Keep the project-card slug generation and the static route list in sync when adding or renaming a project.
 
 The static export is configured in `next.config.mjs`. Next.js generates HTML and assets into `out/`; Cloudflare Pages serves that output.
 
