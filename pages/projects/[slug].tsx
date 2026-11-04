@@ -60,7 +60,6 @@ const projects: Project[] = [
     summary: 'An email operations workspace concept for contact organization, templates, campaign preparation, reply workflows and responsible sending.',
     maturity: 'Private application. Public page provides architecture guidance only; no private contact data, sender identity, domain settings or mail credentials are included.',
     stack: ['Cloudflare Workers', 'D1', 'Amazon SES', 'JavaScript', 'HTML / CSS'],
-    systems: ['Workforce planning and position control','Applicant tracking and recruitment operations','Pre-employment screening and offer management','Onboarding and employee self-service','Employee records, org chart and document management','Time, attendance, shifts and leave management','Performance, learning and career development','Employee relations and case management','Compensation, benefits and payroll integrations','Offboarding, asset recovery and identity access revocation','HR analytics, audit and compliance reporting'],
     systems: ['Recruitment and candidate communications','Employee lifecycle notifications and announcements','Customer service and case correspondence','Vendor and procurement communications','Approved campaign and stakeholder updates','Bounce, complaint, unsubscribe and delivery event management'],
     folders: [
       { name: 'frontend/', purpose: 'Sanitized interface components, forms and campaign preview screens.', access: 'Private source — demo recreation only' },
@@ -82,6 +81,7 @@ const projects: Project[] = [
     summary: 'A modular HR application prototype for employee lifecycle workflows, directory views, onboarding, offboarding and administrative processes.',
     maturity: 'Public repository. Prototype or demo modules must not be treated as production HR, payroll or employee-record software without a full security and compliance review.',
     stack: ['Cloudflare Pages', 'Pages Functions', 'D1', 'JavaScript', 'HTML / CSS'],
+    systems: ['Workforce planning and position control','Applicant tracking and recruitment operations','Pre-employment screening and offer management','Onboarding and employee self-service','Employee records, org chart and document management','Time, attendance, shifts and leave management','Performance, learning and career development','Employee relations and case management','Compensation, benefits and payroll integrations','Offboarding, asset recovery and identity access revocation','HR analytics, audit and compliance reporting'],
     folders: [
       { name: 'public/ or assets/', purpose: 'Static interface assets, icons and styles.', access: 'Public repository' },
       { name: 'functions/ or api/', purpose: 'Server-side API routes and request validation.', access: 'Public repository' },
