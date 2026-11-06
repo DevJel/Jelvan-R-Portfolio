@@ -60,11 +60,13 @@ const filterNodes = (nodes: FileNode[], query: string): FileNode[] => {
   }, []);
 };
 
-const findDefaultFile = (entries: RepositoryTreeEntry[]): string => {
-  const readme = entries.find((entry) => entry.type === 'blob' && entry.path.toLowerCase() === 'readme.md');
+const findDefaultFile = (repository: ProjectRepository): string => {
+  const files = repository.tree.filter((entry) => entry.type === 'blob');
+  const isPreviewable = (path: string) => repository.visibility !== 'public' || repository.previewPaths?.includes(path);
+  const readme = files.find((entry) => entry.path.toLowerCase() === 'readme.md' && isPreviewable(entry.path));
   if (readme) return readme.path;
-  const firstFile = entries.find((entry) => entry.type === 'blob');
-  return firstFile?.path ?? '';
+  const firstPreviewable = files.find((entry) => isPreviewable(entry.path));
+  return firstPreviewable?.path ?? files[0]?.path ?? '';
 };
 
 const isTextFile = (path: string): boolean => {
@@ -141,7 +143,7 @@ const ProjectRepositoryExplorer = ({
 
   useEffect(() => {
     if (!activeRepository) return;
-    setSelectedFilePath(findDefaultFile(activeRepository.tree));
+    setSelectedFilePath(findDefaultFile(activeRepository));
     setSearch('');
     setExpanded(
       Object.fromEntries(
