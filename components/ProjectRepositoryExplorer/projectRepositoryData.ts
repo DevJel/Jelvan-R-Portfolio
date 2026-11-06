@@ -37,9 +37,9 @@ const makeTree = (paths: string[]): RepositoryTreeEntry[] => {
 
 const masterFiles: Record<string, string> = {
   'README.md': [
-    '# MASTER AI — public showcase',
+    '# MASTER AI — Multi-Agent Workspace public showcase',
     '',
-    'This page is a sanitized portfolio sample for an organization-wide AI operations workspace.',
+    'This page is a sanitized portfolio sample for Jelvan xCoder, a conversational multi-agent AI workspace powered by Muse AI.',
     'The private application repository remains access-controlled. This example contains no',
     'production prompts, credentials, organization records, internal endpoints or live settings.',
     '',
@@ -226,53 +226,6 @@ const bolekpadFiles: Record<string, string> = {
   ].join('\n')
 };
 
-const xcoderFiles: Record<string, string> = {
-  'README.md': [
-    '# xCoder — public showcase',
-    '',
-    'A conversational AI workspace concept with knowledge, connectors, coding assistance, media',
-    'and review-before-action workflows. The source repository is private; this tree contains',
-    'sanitized examples rather than production code or deployment configuration.'
-  ].join('\n'),
-  'docs/architecture.md': [
-    '# Workspace architecture',
-    '',
-    'The interface sends user requests to a Worker API. Policy checks and orchestration select an',
-    'approved capability, retrieve authorized context and prepare a response. External changes are',
-    'represented as proposals and require an explicit review step.'
-  ].join('\n'),
-  'docs/diagrams/agent-flow.mmd': [
-    'flowchart TD',
-    '  A[Prompt] --> B[Session and policy check]',
-    '  B --> C[Assistant coordinator]',
-    '  C --> D[Knowledge and tools]',
-    '  D --> E[Proposed result]',
-    '  E --> F{Approval required?}',
-    '  F -->|Yes| G[Human review]',
-    '  F -->|No| H[Return response]',
-    '  G --> H'
-  ].join('\n'),
-  'src/workflow-example.js': [
-    'export function createProposal(action, input) {',
-    '  return {',
-    '    action: String(action),',
-    '    input: input ?? {},',
-    '    state: "pending-review",',
-    '    createdAt: new Date().toISOString()',
-    '  };',
-    '}'
-  ].join('\n'),
-  'migrations/example-schema.sql': [
-    '-- Synthetic example only; not a production migration.',
-    'CREATE TABLE IF NOT EXISTS demo_proposals (',
-    '  id TEXT PRIMARY KEY,',
-    '  action TEXT NOT NULL,',
-    '  state TEXT NOT NULL DEFAULT "pending-review",',
-    '  created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP',
-    ');'
-  ].join('\n')
-};
-
 const devaiFiles: Record<string, string> = {
   'README.md': [
     '# DevAI Controller — public showcase',
@@ -416,21 +369,26 @@ const repositoriesByProject: Record<string, ProjectRepository[]> = {
     createPrivateRepository(
       'master-ai',
       'MASTER AI',
-      'Dev-Jel-Works/master-CEO-ai-',
-      'This is a public-safe structure preview based on the private repository layout. File samples are sanitized examples; original prompts, internal documentation, operational configuration and production source are not published.',
+      'DevJel/xCoder-V2',
+      'This is a public-safe structure preview for the current private xCoder Multi-Agent repository. File samples are sanitized examples; original prompts, account records, internal documentation, operational configuration and production source are not published.',
       masterFiles,
       [
-        '.github/workflows/validation.yml',
-        'docs/screenshots/README.md',
-        'examples/sample-request.example.json',
-        'public/admin/index.html',
-        'public/user/index.html',
-        'public/demo/index.html',
-        'scripts/build-assets.example.mjs',
-        'src/coordinator.example.js',
-        'src/knowledge.example.js',
-        'src/workflow.example.js',
-        'tests/workflow-example.test.mjs',
+        'docs/FEATURE_TABS_GUIDE.md',
+        'docs/RELEASE_PLAN_PUBLIC_SHOWCASE.txt',
+        'docs/architecture/overview.md',
+        'docs/diagrams/agent-workflow.mmd',
+        'public/landing.html',
+        'public/login.html',
+        'public/index.html',
+        'public/feature-guide-page.example.js',
+        'scripts/repository-audit.example.mjs',
+        'scripts/capture-ui-screenshots.example.mjs',
+        'src/worker.example.js',
+        'src/otp.example.js',
+        'src/mcp-client.example.js',
+        'src/automation.example.js',
+        'workers/reviewer.example.js',
+        'tests/agent-workflow.example.test.mjs',
         'package.example.json',
         'wrangler.example.jsonc'
       ]
@@ -567,26 +525,6 @@ const repositoriesByProject: Record<string, ProjectRepository[]> = {
     }
   ],
   'developers-playground-devai': [
-    createPrivateRepository(
-      'xcoder-v2',
-      'xCoder V2',
-      'DevJel/xCoder-V2',
-      'Sanitized public showcase structure for the private xCoder workspace. The examples illustrate request orchestration and review boundaries without exposing private source, connector settings, account details or production configuration.',
-      xcoderFiles,
-      [
-        'docs/screenshots/README.md',
-        'monitor/README.md',
-        'pages-preview/index.html',
-        'public/index.html',
-        'public/app.example.js',
-        'releases/README.md',
-        'scripts/build.example.mjs',
-        'src/automation.example.js',
-        'src/mcp.example.js',
-        'tests/workspace-example.test.mjs',
-        'workers/README.md'
-      ]
-    ),
     createPrivateRepository(
       'devai-controller',
       'DevAI Controller',
