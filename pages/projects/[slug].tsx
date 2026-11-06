@@ -65,7 +65,7 @@ const projects: Project[] = [
     slug: 'internal-email-system', number: '03', title: 'Internal Email System',
     summary: 'An email operations workspace concept for contact organization, templates, campaign preparation, reply workflows and responsible sending.',
     maturity: 'Private application. Public page provides architecture guidance only; no private contact data, sender identity, domain settings or mail credentials are included.',
-    stack: ['Cloudflare Workers', 'D1', 'Amazon SES', 'Email Routing', 'JavaScript', 'Android companion'],
+    stack: ['Cloudflare Workers', 'D1 Database', 'Amazon SES', 'JavaScript', 'HTML & CSS'],
     systems: ['Recruitment and candidate communications','Employee lifecycle notifications and announcements','Customer service and case correspondence','Vendor and procurement communications','Approved campaign and stakeholder updates','Bounce, complaint, unsubscribe and delivery event management'],
     folders: [
       { name: 'frontend/', purpose: 'Sanitized interface components, forms and campaign preview screens.', access: 'Private source — demo recreation only' },
@@ -86,7 +86,7 @@ const projects: Project[] = [
     slug: 'hr-information-system', number: '04', title: 'HR Information System',
     summary: 'A modular HR application prototype for employee lifecycle workflows, directory views, onboarding, offboarding and administrative processes.',
     maturity: 'Public repository. Prototype or demo modules must not be treated as production HR, payroll or employee-record software without a full security and compliance review.',
-    stack: ['Cloudflare Pages', 'Pages Functions', 'D1', 'R2', 'Workers AI', 'Vectorize'],
+    stack: ['Cloudflare Pages', 'Pages Functions', 'D1 Database', 'JavaScript', 'HTML & CSS'],
     systems: ['Workforce planning and position control','Applicant tracking and recruitment operations','Pre-employment screening and offer management','Onboarding and employee self-service','Employee records, org chart and document management','Time, attendance, shifts and leave management','Performance, learning and career development','Employee relations and case management','Compensation, benefits and payroll integrations','Offboarding, asset recovery and identity access revocation','HR analytics, audit and compliance reporting'],
     folders: [
       { name: 'public/ or assets/', purpose: 'Static interface assets, icons and styles.', access: 'Public repository' },
@@ -107,7 +107,7 @@ const projects: Project[] = [
     slug: 'bolekpad-personal-workspace', number: '05', title: 'BOLEKpad — Personal Workspace',
     summary: 'A personal productivity workspace concept combining notes, documents, pages, calendar utilities, attachments and AI-assisted tools.',
     maturity: 'Private application. The public showcase does not expose private source, account data, service endpoints or production configuration.',
-    stack: ['React 19', 'TypeScript', 'Vite', 'Tailwind CSS', 'Cloudflare Workers', 'Hono', 'D1 / KV / R2', 'Flutter companion'],
+    stack: ['React 19', 'TypeScript', 'Vite', 'Tailwind CSS', 'Cloudflare Workers', 'D1 · KV · R2', 'Workers AI'],
     systems: ['Team knowledge and work instructions','Meeting notes and action tracking','Project and task coordination','Document collaboration and version history','Operational handover and shift notes','Personal productivity and reminders'],
     folders: [
       { name: 'src/', purpose: 'React application, routes, reusable UI and client state.', access: 'Private source — sanitized demo only' },
@@ -128,7 +128,7 @@ const projects: Project[] = [
     slug: 'online-printing-store', number: '06', title: 'Online Printing Store',
     summary: 'A digital commerce and order-management concept for print products and business services, connecting customers with quoting, customization, payment, production and delivery workflows.',
     maturity: 'Concept showcase. The source repository and production stack have not been verified. This guide describes a recommended reference architecture, not a claim of an existing implementation.',
-    stack: ['E-commerce storefront','Product catalogue','Order management','Payment gateway integration','Inventory and production workflow'],
+    stack: ['E-commerce concept', 'Product catalogue', 'Order workflow', 'Stack verification pending'],
     systems: ['Product catalogue and configurable print specifications','Customer accounts and organization purchasing profiles','Quotation and approval workflow','Artwork upload, proofing and revision management','Shopping cart, checkout and payment reconciliation','Inventory, materials and production scheduling','Order tracking, delivery and fulfilment','Customer support, returns and service recovery','Sales, finance and operational reporting'],
     folders: [
       { name: 'apps/storefront/', purpose: 'Customer catalogue, product configuration, cart and checkout experience.', access: 'Reference folder structure only; source repo not yet identified' },
@@ -150,7 +150,7 @@ const projects: Project[] = [
     slug: 'developers-playground-devai', number: '07', title: 'Developers Playground — DevAI',
     summary: 'A developer-focused AI workspace concept for assisted coding, project resources, integrations and repeatable development workflows.',
     maturity: 'Private application. Live feature availability and provider integrations can change; no private code, API keys or internal connector configuration is published.',
-    stack: ['Cloudflare Workers', 'Workers AI', 'D1', 'R2', 'Durable Objects', 'React', 'TypeScript', 'Vite', 'MCP connectors', 'Browser automation'],
+    stack: ['Cloudflare Workers', 'Workers AI', 'D1 Database', 'R2 Storage', 'Durable Objects', 'Turnstile', 'Amazon SES'],
     systems: ['Developer portal and project workspace','Software development lifecycle and release tracking','Code review and secure coding assistance','Integration and API catalogue','Engineering knowledge base and runbooks','Environment and deployment management','AI usage governance and cost monitoring'],
     folders: [
       { name: 'web/ or src/', purpose: 'User interface, editor and project workspace screens.', access: 'Private source — sanitized demo only' },
