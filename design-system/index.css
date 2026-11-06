@@ -604,3 +604,64 @@ img {
   .project-detail-hero, .project-detail-section, .repo-explorer { animation: none !important; }
   .project-detail-hero__media img, .project-detail-card, .project-detail-back { transition: none !important; }
 }
+
+
+/* Project detail pages reuse the portfolio's established motion language. */
+@keyframes portfolioProjectScaleIn {
+  0% { transform: scale(.7); opacity: .6; }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes portfolioProjectSlideTop {
+  0% { transform: translateY(50px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+@keyframes portfolioProjectTrackingIn {
+  0% { letter-spacing: -.5em; opacity: 0; }
+  40% { opacity: .6; }
+  100% { letter-spacing: -.045em; opacity: 1; }
+}
+.project-detail-shell {
+  min-height: 100vh;
+  background: #fff;
+}
+.project-detail-hero {
+  animation: portfolioProjectScaleIn .6s cubic-bezier(.25,.46,.45,.94) both;
+}
+.project-detail-title {
+  animation: portfolioProjectTrackingIn 1.2s cubic-bezier(.215,.61,.355,1) both;
+}
+.project-detail-hero__media {
+  transform: perspective(1500px) rotateY(20deg);
+  transition: transform 1s ease;
+}
+.project-detail-hero__media:hover {
+  transform: perspective(3000px) rotateY(5deg);
+}
+.project-detail-hero__media img {
+  transition: transform 1s ease;
+}
+.project-detail-section {
+  animation: portfolioProjectSlideTop .65s cubic-bezier(.25,.46,.45,.94) both;
+}
+.project-detail-section:nth-of-type(2) { animation-delay: 100ms; }
+.project-detail-section:nth-of-type(3) { animation-delay: 180ms; }
+.project-detail-section:nth-of-type(4) { animation-delay: 260ms; }
+.project-detail-section:nth-of-type(5) { animation-delay: 340ms; }
+@media (max-width: 850px) {
+  .project-detail-hero__media,
+  .project-detail-hero__media:hover {
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-detail-hero,
+  .project-detail-title,
+  .project-detail-section {
+    animation: none !important;
+  }
+  .project-detail-hero__media,
+  .project-detail-hero__media img {
+    transform: none !important;
+    transition: none !important;
+  }
+}

@@ -189,7 +189,7 @@ const ProjectDetailPage: NextPage<{
   return (
     <PortfolioLayout seo={seo}>
       <Navbar isLogoExpanded={true} />
-      <main className="project-detail-shell">
+      <main className="project-detail-shell" style={{ backgroundColor: showcase.backgroundColor }}>
         <Link href="/projects" className="project-detail-back">← Back to all projects</Link>
 
         <header className="project-detail-hero">
@@ -247,24 +247,45 @@ const ProjectDetailPage: NextPage<{
         <section className="project-detail-section">
           <span className="project-detail-eyebrow">OVERVIEW</span>
           <h2>Project overview</h2>
-          <p className="project-detail-intro">{project.summary}</p>
+          <p className="project-detail-intro">{showcase.description}</p>
+          <div className="project-detail-status">
+            <strong>Project status:</strong> {project.maturity}
+          </div>
+        </section>
+
+        <section className="project-detail-section">
+          <span className="project-detail-eyebrow">PURPOSE</span>
+          <h2>Why this project exists</h2>
           <div className="project-detail-card">
-            <p>{project.maturity}</p>
+            <p>{showcase.purpose}</p>
           </div>
         </section>
 
         <section className="project-detail-section">
           <span className="project-detail-eyebrow">CAPABILITIES</span>
-          <h2>Specific project features</h2>
+          <h2>Key features</h2>
           <p className="project-detail-intro">
-            This feature list is grounded in the project documentation and repository context.
-            The implementation status of individual modules may vary by release.
+            The feature summary follows the project showcase description. Implementation status
+            and production readiness should be checked against the linked release and repository.
           </p>
           <div className="project-detail-feature-grid">
             {showcase.features.map((feature, index) => (
               <article className="project-detail-card" key={feature}>
                 <span className="project-detail-number">{String(index + 1).padStart(2, '0')}</span>
                 <p>{feature}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="project-detail-section">
+          <span className="project-detail-eyebrow">VALUE</span>
+          <h2>Project advantages</h2>
+          <div className="project-detail-feature-grid">
+            {showcase.advantages.map((advantage, index) => (
+              <article className="project-detail-card" key={advantage}>
+                <span className="project-detail-number">{String(index + 1).padStart(2, '0')}</span>
+                <p>{advantage}</p>
               </article>
             ))}
           </div>
