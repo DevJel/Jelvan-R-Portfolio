@@ -628,12 +628,15 @@ export const getProjectRepositories = async (slug: string): Promise<ProjectRepos
       };
       const tree = (payload.tree ?? [])
         .filter((entry) => !ignoredPath(entry.path) && (entry.type === 'tree' || entry.type === 'blob'))
-        .map((entry) => ({
-          path: entry.path,
-          type: entry.type === 'tree' ? 'tree' as const : 'blob' as const,
-          size: entry.size,
-          sha: entry.sha
-        }));
+        .map((entry) => {
+          const mapped: RepositoryTreeEntry = {
+            path: entry.path,
+            type: entry.type === 'tree' ? 'tree' : 'blob'
+          };
+          if (typeof entry.size === 'number') mapped.size = entry.size;
+          if (typeof entry.sha === 'string') mapped.sha = entry.sha;
+          return mapped;
+        });
       return {
         ...repository,
         tree: tree.length > 0 ? tree : repository.tree,
