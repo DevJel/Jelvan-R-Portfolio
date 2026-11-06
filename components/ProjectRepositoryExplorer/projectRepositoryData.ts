@@ -438,11 +438,6 @@ const privateTreeSnapshots: Record<string, RepositoryTreeEntry[]> = {
       "size": 7326
     },
     {
-      "path": "docs/CLOUDFLARE_ACCOUNT_SETUP.md",
-      "type": "blob",
-      "size": 3538
-    },
-    {
       "path": "docs/DEPLOYMENT_AND_TESTING.md",
       "type": "blob",
       "size": 8566
@@ -493,16 +488,6 @@ const privateTreeSnapshots: Record<string, RepositoryTreeEntry[]> = {
       "size": 5735
     },
     {
-      "path": "docs/PLUGINS_SECRETS_AUTOMATION_PROFILE_PUBLISHER.md",
-      "type": "blob",
-      "size": 11061
-    },
-    {
-      "path": "docs/PRIVATE_ADMIN_LOGIN_2026-10-29.md",
-      "type": "blob",
-      "size": 4864
-    },
-    {
       "path": "docs/PROVIDER_ICONS.md",
       "type": "blob",
       "size": 1770
@@ -538,24 +523,9 @@ const privateTreeSnapshots: Record<string, RepositoryTreeEntry[]> = {
       "size": 5663
     },
     {
-      "path": "docs/XCODER_OTP_SMTP_CREDENTIAL_HANDOFF_2026-10-29.md",
-      "type": "blob",
-      "size": 3523
-    },
-    {
       "path": "docs/XCODER_REVIEW_ORCHESTRATION.md",
       "type": "blob",
       "size": 6571
-    },
-    {
-      "path": "docs/XCODER_SECRETS_REVIEW.md",
-      "type": "blob",
-      "size": 3811
-    },
-    {
-      "path": "docs/XCODER_SES_CLOUDFLARE_DNS_VERIFICATION_2026-10-29.md",
-      "type": "blob",
-      "size": 7520
     },
     {
       "path": "docs/diagrams",
@@ -1502,11 +1472,6 @@ const privateTreeSnapshots: Record<string, RepositoryTreeEntry[]> = {
       "size": 122
     },
     {
-      "path": "outreach/HANDOFF-PLAN.txt",
-      "type": "blob",
-      "size": 18472
-    },
-    {
       "path": "outreach/LEAD_FINDER.md",
       "type": "blob",
       "size": 3693
@@ -1524,11 +1489,6 @@ const privateTreeSnapshots: Record<string, RepositoryTreeEntry[]> = {
       "path": "outreach/docs/ASSETS.md",
       "type": "blob",
       "size": 2443
-    },
-    {
-      "path": "outreach/docs/BINDINGS.md",
-      "type": "blob",
-      "size": 10951
     },
     {
       "path": "outreach/docs/assets",
@@ -2643,11 +2603,6 @@ const privateTreeSnapshots: Record<string, RepositoryTreeEntry[]> = {
       "type": "tree"
     },
     {
-      "path": "backend/SECRETS_STORE.md",
-      "type": "blob",
-      "size": 2687
-    },
-    {
       "path": "backend/bolekpad-auth-enterprise-addon.js",
       "type": "blob",
       "size": 15162
@@ -3474,11 +3429,6 @@ const privateTreeSnapshots: Record<string, RepositoryTreeEntry[]> = {
       "size": 2054
     },
     {
-      "path": "migrations-assistant/0002_credentials.sql",
-      "type": "blob",
-      "size": 539
-    },
-    {
       "path": "migrations",
       "type": "tree"
     },
@@ -3511,11 +3461,6 @@ const privateTreeSnapshots: Record<string, RepositoryTreeEntry[]> = {
       "path": "migrations/0005_invited_users.sql",
       "type": "blob",
       "size": 1081
-    },
-    {
-      "path": "migrations/0006_assistant_credentials.sql",
-      "type": "blob",
-      "size": 348
     },
     {
       "path": "migrations/0007_knowledge_title_rename.sql",
@@ -3656,11 +3601,6 @@ const privateTreeSnapshots: Record<string, RepositoryTreeEntry[]> = {
       "size": 474
     },
     {
-      "path": "scripts/set-smtp-secrets.sh",
-      "type": "blob",
-      "size": 1167
-    },
-    {
       "path": "server",
       "type": "tree"
     },
@@ -3696,11 +3636,6 @@ const privateTreeSnapshots: Record<string, RepositoryTreeEntry[]> = {
       "path": "server/auth/routes.ts",
       "type": "blob",
       "size": 10696
-    },
-    {
-      "path": "server/auth/secrets.ts",
-      "type": "blob",
-      "size": 1557
     },
     {
       "path": "server/auth/session.ts",
@@ -3920,11 +3855,6 @@ const privateTreeSnapshots: Record<string, RepositoryTreeEntry[]> = {
       "path": "server/platform/codingRunner.ts",
       "type": "blob",
       "size": 6126
-    },
-    {
-      "path": "server/platform/credentials.ts",
-      "type": "blob",
-      "size": 9437
     },
     {
       "path": "server/platform/images.ts",
@@ -4438,11 +4368,6 @@ const privateTreeSnapshots: Record<string, RepositoryTreeEntry[]> = {
       "path": "tests/codingReview.test.ts",
       "type": "blob",
       "size": 5129
-    },
-    {
-      "path": "tests/credentials-secret.test.ts",
-      "type": "blob",
-      "size": 865
     },
     {
       "path": "tests/email-routes.test.ts",
