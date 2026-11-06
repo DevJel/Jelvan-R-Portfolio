@@ -246,10 +246,10 @@ const ProjectDetailPage: NextPage<{
 
         <section className="project-detail-section">
           <span className="project-detail-eyebrow">OVERVIEW</span>
-          <h2>Project purpose</h2>
-          <p className="project-detail-intro">{project.projectPurpose}</p>
+          <h2>Project overview</h2>
+          <p className="project-detail-intro">{project.summary}</p>
           <div className="project-detail-card">
-            <p>{project.projectDescription}</p>
+            <p>{project.maturity}</p>
           </div>
         </section>
 
@@ -269,21 +269,6 @@ const ProjectDetailPage: NextPage<{
             ))}
           </div>
         </section>
-
-        {project.projectAdvantages.length > 0 && (
-          <section className="project-detail-section">
-            <span className="project-detail-eyebrow">VALUE</span>
-            <h2>Project advantages</h2>
-            <div className="project-detail-feature-grid">
-              {project.projectAdvantages.map((advantage, index) => (
-                <article className="project-detail-card" key={advantage}>
-                  <span className="project-detail-number">{String(index + 1).padStart(2, '0')}</span>
-                  <p>{advantage}</p>
-                </article>
-              ))}
-            </div>
-          </section>
-        )}
 
         {project.systems && (
           <section className="project-detail-section">
