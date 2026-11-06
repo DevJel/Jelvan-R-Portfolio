@@ -87,23 +87,18 @@ export default function SvgPremiumGallery() {
   const copyIcon = async (asset: PremiumAsset) => {
     setActive(asset.slug);
     const path = assetPath(asset, playMotion);
-    const sourcePromise = fetchSource(path);
     try {
-      if (typeof ClipboardItem !== 'undefined' && navigator.clipboard?.write) {
-        // Start clipboard access inside the click event rather than after fetch resolves.
-        await navigator.clipboard.write([
-          new ClipboardItem({ 'text/plain': sourcePromise.then(value => new Blob([value], { type: 'text/plain' })) }),
-        ]);
-      } else {
-        await navigator.clipboard.writeText(await sourcePromise);
-      }
-      const markup = await sourcePromise;
+      const markup = await fetchSource(path);
       setSource(markup);
       setLoadedPath(path);
+      // SVG source is plain text, so use writeText to preserve the exact markup
+      // consistently across browser clipboard implementations.
+      await navigator.clipboard.writeText(markup);
       setMessage(asset.name + ' copied. Paste the complete vector markup into HTML or an SVG editor.');
     } catch {
       try {
-        setSource(await sourcePromise);
+        const markup = await fetchSource(path);
+        setSource(markup);
         setLoadedPath(path);
         setMessage('Clipboard unavailable. Select and copy the SVG source in the inspector.');
       } catch {
