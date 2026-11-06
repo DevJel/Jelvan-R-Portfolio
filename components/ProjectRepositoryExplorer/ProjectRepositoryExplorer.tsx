@@ -245,7 +245,7 @@ const ProjectRepositoryExplorer = ({
   const renderNodes = (nodes: FileNode[], depth = 0): React.ReactNode =>
     nodes.map((node) => {
       if (node.type === 'tree') {
-        const isExpanded = expanded[node.path] ?? false;
+        const isExpanded = search.trim() ? true : expanded[node.path] ?? false;
         return (
           <div className="repo-explorer__tree-node" key={node.path}>
             <button
