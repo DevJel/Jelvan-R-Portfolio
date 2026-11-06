@@ -610,7 +610,7 @@ const repositoriesByProject: Record<string, ProjectRepository[]> = {
 };
 
 const ignoredPath = (path: string): boolean =>
-  /(^|\\/)(node_modules|\\.git|dist|build|coverage|\\.next)(\\/|$)/i.test(path);
+  path.split('/').some((segment) => ['node_modules', '.git', 'dist', 'build', 'coverage', '.next'].includes(segment));
 
 export const getProjectRepositories = async (slug: string): Promise<ProjectRepository[]> => {
   const repositories = repositoriesByProject[slug] ?? [];
