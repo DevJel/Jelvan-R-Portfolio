@@ -3,20 +3,18 @@ import * as Styled from './SocialMediaContact.styles';
 
 export interface Props {
   icon: ReactNode;
+  href: string;
+  label: string;
 }
 
-/**
- *Renders social medial link with icon
- *@function SocialMediaContact
- *@param {ReactNode} icon - icon to be rendered in contact
- *@param {string} text - link text
- *@returns {JSX.Element} - Rendered SocialMediaContact component
- */
-const SocialMediaContact = ({ icon }: Props): JSX.Element => {
+/** Accessible external social-profile link. */
+const SocialMediaContact = ({ icon, href, label }: Props): JSX.Element => {
   return (
-    <Styled.Container as="span">
-      <div className="hovicon effect-1 sub-b">{icon}</div>
-    </Styled.Container>
+    <a href={href} target="_blank" rel="noopener noreferrer" aria-label={`Open ${label} profile`}>
+      <Styled.Container as="span">
+        <div className="hovicon effect-1 sub-b">{icon}</div>
+      </Styled.Container>
+    </a>
   );
 };
 
