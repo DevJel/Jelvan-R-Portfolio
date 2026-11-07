@@ -13,19 +13,29 @@ type PremiumAsset = {
 const assets: PremiumAsset[] = collection;
 const categories = Array.from(new Set(assets.map(asset => asset.category)));
 const PAGE_SIZE = 24;
+const sourceCache = new Map<string, string>();
+const sourcePromises = new Map<string, Promise<string>>();
 
 const assetPath = (asset: PremiumAsset, motion: boolean): string =>
   '/assets/svg-library/premium/' + asset.category.toLowerCase() + '/' +
   asset.slug + (asset.animated && !motion ? '-still' : '') + '.svg';
 
 async function fetchSource(path: string) {
-  const response = await fetch(path);
-  if (!response.ok) throw new Error('SVG unavailable');
-  const source = await response.text();
-  if (!source.trimStart().startsWith('<svg') || !source.includes('</svg>')) {
-    throw new Error('Invalid SVG source');
-  }
-  return source;
+  const cached = sourceCache.get(path);
+  if (cached) return cached;
+  const existing = sourcePromises.get(path);
+  if (existing) return existing;
+  const pending = fetch(path).then(async response => {
+    if (!response.ok) throw new Error('SVG unavailable');
+    const source = await response.text();
+    if (!source.trimStart().startsWith('<svg') || !source.includes('</svg>')) {
+      throw new Error('Invalid SVG source');
+    }
+    sourceCache.set(path, source);
+    return source;
+  }).finally(() => sourcePromises.delete(path));
+  sourcePromises.set(path, pending);
+  return pending;
 }
 
 function saveSingleSvg(source: string, name: string) {
@@ -78,6 +88,14 @@ export default function SvgPremiumGallery() {
     return () => { live = false; };
   }, [selectedPath]);
 
+  useEffect(() => {
+    // Warm visible SVG source files before a click so clipboard writes retain
+    // the browser's transient user activation on mobile and desktop.
+    visible.forEach(asset => {
+      void fetchSource(assetPath(asset, playMotion)).catch(() => undefined);
+    });
+  }, [category, motionFilter, search, shown, playMotion]);
+
   const changeCategory = (value: string) => {
     setCategory(value);
     setShown(PAGE_SIZE);
@@ -88,15 +106,14 @@ export default function SvgPremiumGallery() {
     setActive(asset.slug);
     const path = assetPath(asset, playMotion);
     try {
-      const markup = await fetchSource(path);
+      const markup = sourceCache.get(path) ?? await fetchSource(path);
       if (!navigator.clipboard?.writeText) {
         setSource(markup);
         setLoadedPath(path);
         setMessage('Clipboard unavailable. Select and copy the SVG source in the inspector.');
         return;
       }
-      // Write the resolved SVG string as plain text. ClipboardItem with a
-      // Promise-backed Blob can be serialized inconsistently by Chromium.
+      // Start the write synchronously when the visible card source is cached.
       await navigator.clipboard.writeText(markup);
       setSource(markup);
       setLoadedPath(path);
