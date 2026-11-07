@@ -36,8 +36,8 @@ export const HeroLeftColumn = styled.div`
 
   /* Compact introductory copy: approximately one-third of the previous size. */
   p {
-    font-size: 0.42rem !important;
-    line-height: 1.5;
+    font-size: clamp(0.78rem, 0.9vw, 0.9rem) !important;
+    line-height: 1.65;
   }
 
   @media ${({ theme }) => theme.media.tablet} {
