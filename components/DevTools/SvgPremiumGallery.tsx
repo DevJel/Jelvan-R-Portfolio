@@ -87,28 +87,22 @@ export default function SvgPremiumGallery() {
   const copyIcon = async (asset: PremiumAsset) => {
     setActive(asset.slug);
     const path = assetPath(asset, playMotion);
-    const sourcePromise = fetchSource(path);
     try {
-      if (typeof ClipboardItem !== 'undefined' && navigator.clipboard?.write) {
-        // Start clipboard access inside the click event rather than after fetch resolves.
-        await navigator.clipboard.write([
-          new ClipboardItem({ 'text/plain': sourcePromise.then(value => new Blob([value], { type: 'text/plain' })) }),
-        ]);
-      } else {
-        await navigator.clipboard.writeText(await sourcePromise);
+      const markup = await fetchSource(path);
+      if (!navigator.clipboard?.writeText) {
+        setSource(markup);
+        setLoadedPath(path);
+        setMessage('Clipboard unavailable. Select and copy the SVG source in the inspector.');
+        return;
       }
-      const markup = await sourcePromise;
+      // Write the resolved SVG string as plain text. ClipboardItem with a
+      // Promise-backed Blob can be serialized inconsistently by Chromium.
+      await navigator.clipboard.writeText(markup);
       setSource(markup);
       setLoadedPath(path);
       setMessage(asset.name + ' copied. Paste the complete vector markup into HTML or an SVG editor.');
     } catch {
-      try {
-        setSource(await sourcePromise);
-        setLoadedPath(path);
-        setMessage('Clipboard unavailable. Select and copy the SVG source in the inspector.');
-      } catch {
-        setMessage('Unable to load this icon. Please retry.');
-      }
+      setMessage('Unable to copy this icon. Check clipboard permission and retry.');
     }
   };
 
