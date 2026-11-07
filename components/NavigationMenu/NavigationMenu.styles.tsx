@@ -75,7 +75,8 @@ export const ToggleButton = styled.button`
     line-height: 1;
     font-weight: 750;
     letter-spacing: .035em;
-  `;
+  }
+`;
  
 interface MenuProps { isOpen: boolean; }
 
