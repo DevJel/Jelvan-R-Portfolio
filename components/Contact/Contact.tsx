@@ -69,7 +69,7 @@ const Contact = ({ withNavbar = true }: Props): JSX.Element => {
               <Styled.SocialContactsWrapper>
                 {myContacts.map((contact) => (
                   <li key={contact.id}>
-                    <SocialMediaContact icon={contact.icon} />
+                    <SocialMediaContact icon={contact.icon} href={contact.href} label={contact.text} />
                   </li>
                 ))}
               </Styled.SocialContactsWrapper>
