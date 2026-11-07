@@ -9,6 +9,7 @@ import ProjectRepositoryExplorer from '../../components/ProjectRepositoryExplore
 import { getProjectRepositories } from '../../components/ProjectRepositoryExplorer/projectRepositoryData';
 import type { ProjectRepository } from '../../components/ProjectRepositoryExplorer/projectRepositoryData';
 import { projectShowcaseBySlug } from '../../components/ProjectRepositoryExplorer/projectShowcase';
+import ProjectAgentCommand from '../../components/ProjectAgentCommand/ProjectAgentCommand';
 
 type Project = {
   slug: string; number: string; title: string; summary: string; maturity: string;
@@ -313,6 +314,14 @@ const ProjectDetailPage: NextPage<{
         <section className="project-detail-section">
           <span className="project-detail-eyebrow">SOURCE CODE & STRUCTURE</span>
           <ProjectRepositoryExplorer repositories={repositories} projectTitle={project.title} />
+        </section>
+
+        <section className="project-detail-section">
+          <ProjectAgentCommand
+            projectTitle={project.title}
+            repositoryUrl={repositories[0]?.repoUrl}
+            repositoryVisibility={repositories[0]?.visibility ?? 'concept / unverified source'}
+          />
         </section>
 
         <section className="project-detail-section">
