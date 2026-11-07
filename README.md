@@ -629,7 +629,7 @@ Do not replace a Secrets Store binding with a plaintext password in Wrangler con
 ### 10.2 Clone and install
 
 ```bash
-git clone https://github.com/Dev-Jel-Works/Jelvan-R-Portfolio.git
+git clone https://github.com/DevJel/Jelvan-R-Portfolio.git
 cd Jelvan-R-Portfolio
 npm install
 ```
