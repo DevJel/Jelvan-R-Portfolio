@@ -197,8 +197,8 @@ const ProjectDetailPage: NextPage<{
           <div className="project-detail-hero__media">
             <Image
               src={showcase.cover}
-              height={620}
-              width={700}
+              height={900}
+              width={1440}
               quality={92}
               objectFit="contain"
               alt={project.title + ' project preview'}
