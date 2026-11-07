@@ -18,18 +18,27 @@ const validationSchema = yup.object({
  * Plays a short, subtle two-note confirmation chime after a successful send.
  * Audio is generated locally; no sound file or external request is required.
  */
-const playSendConfirmation = (): void => {
-  if (typeof window === 'undefined') return;
+const createConfirmationAudioContext = (): AudioContext | null => {
+  if (typeof window === 'undefined') return null;
 
   const AudioContextClass =
     window.AudioContext ||
     (window as typeof window & { webkitAudioContext?: typeof AudioContext })
       .webkitAudioContext;
 
-  if (!AudioContextClass) return;
+  if (!AudioContextClass) return null;
 
   try {
-    const context = new AudioContextClass();
+    return new AudioContextClass();
+  } catch {
+    return null;
+  }
+};
+
+const playSendConfirmation = (context: AudioContext | null): void => {
+  if (!context) return;
+
+  try {
     const now = context.currentTime;
 
     [659.25, 880].forEach((frequency, index) => {
@@ -49,9 +58,6 @@ const playSendConfirmation = (): void => {
       oscillator.stop(startAt + 0.22);
     });
 
-    window.setTimeout(() => {
-      void context.close().catch(() => undefined);
-    }, 600);
   } catch {
     // Audio is an enhancement only; confirmation must still work if unavailable.
   }
@@ -66,11 +72,12 @@ const ContactForm = (): JSX.Element => {
     (state) => state.contact
   );
   const hasPlayedSuccessSound = useRef(false);
+  const confirmationAudioContext = useRef<AudioContext | null>(null);
 
   useEffect(() => {
     if (isEmailSent && !hasPlayedSuccessSound.current) {
       hasPlayedSuccessSound.current = true;
-      playSendConfirmation();
+      playSendConfirmation(confirmationAudioContext.current);
     }
 
     if (!isEmailSent) {
@@ -90,6 +97,11 @@ const ContactForm = (): JSX.Element => {
         initialValues={{ email: '', name: '', message: '', company: '' }}
         validationSchema={validationSchema}
         onSubmit={async (data) => {
+          // Unlock audio while the submit gesture is active; play only on confirmed success.
+          if (!confirmationAudioContext.current) {
+            confirmationAudioContext.current = createConfirmationAudioContext();
+            void confirmationAudioContext.current?.resume().catch(() => undefined);
+          }
           await sendContactMessage(data);
         }}
       >
