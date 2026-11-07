@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as Styled from './ContactForm.styles';
 import { Field, Form, Formik } from 'formik';
 import * as yup from 'yup';
@@ -15,15 +15,68 @@ const validationSchema = yup.object({
 });
 
 /**
- *Renders contact form for sending messages
- *@function ContactForm
- *@returns {JSX.Element} - Rendered ContactForm component
+ * Plays a short, subtle two-note confirmation chime after a successful send.
+ * Audio is generated locally; no sound file or external request is required.
+ */
+const playSendConfirmation = (): void => {
+  if (typeof window === 'undefined') return;
+
+  const AudioContextClass =
+    window.AudioContext ||
+    (window as typeof window & { webkitAudioContext?: typeof AudioContext })
+      .webkitAudioContext;
+
+  if (!AudioContextClass) return;
+
+  try {
+    const context = new AudioContextClass();
+    const now = context.currentTime;
+
+    [659.25, 880].forEach((frequency, index) => {
+      const oscillator = context.createOscillator();
+      const gain = context.createGain();
+      const startAt = now + index * 0.12;
+
+      oscillator.type = 'sine';
+      oscillator.frequency.setValueAtTime(frequency, startAt);
+      gain.gain.setValueAtTime(0.0001, startAt);
+      gain.gain.exponentialRampToValueAtTime(0.12, startAt + 0.018);
+      gain.gain.exponentialRampToValueAtTime(0.0001, startAt + 0.2);
+
+      oscillator.connect(gain);
+      gain.connect(context.destination);
+      oscillator.start(startAt);
+      oscillator.stop(startAt + 0.22);
+    });
+
+    window.setTimeout(() => {
+      void context.close().catch(() => undefined);
+    }, 600);
+  } catch {
+    // Audio is an enhancement only; confirmation must still work if unavailable.
+  }
+};
+
+/**
+ * Renders the contact form and confirms successful message delivery.
  */
 const ContactForm = (): JSX.Element => {
   const { sendContactMessage } = useActions();
   const { isEmailSending, isEmailSent, error } = useTypedSelector(
     (state) => state.contact
   );
+  const hasPlayedSuccessSound = useRef(false);
+
+  useEffect(() => {
+    if (isEmailSent && !hasPlayedSuccessSound.current) {
+      hasPlayedSuccessSound.current = true;
+      playSendConfirmation();
+    }
+
+    if (!isEmailSent) {
+      hasPlayedSuccessSound.current = false;
+    }
+  }, [isEmailSent]);
 
   const buttonText = isEmailSent
     ? 'Sent'
