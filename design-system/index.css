@@ -631,11 +631,12 @@ img {
   animation: portfolioProjectTrackingIn 1.2s cubic-bezier(.215,.61,.355,1) both;
 }
 .project-detail-hero__media {
-  transform: perspective(1500px) rotateY(20deg);
-  transition: transform 1s ease;
+  transform: none;
+  transition: box-shadow .25s ease;
 }
 .project-detail-hero__media:hover {
-  transform: perspective(3000px) rotateY(5deg);
+  transform: none;
+  box-shadow: 0 16px 36px rgba(32, 24, 18, .1);
 }
 .project-detail-hero__media img {
   transition: transform 1s ease;
