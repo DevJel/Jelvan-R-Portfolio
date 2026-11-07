@@ -1,143 +1,118 @@
-# Deployment Guide
+# Production deployment guide
 
-How to put this portfolio live on Cloudflare from GitHub.
+This repository is the source for the public portfolio at **https://portfolio.jelvan.pro**.
 
-**How it works:** `npm run build` exports the whole site as static files into `out/`. A Cloudflare Worker serves those files from Cloudflare's edge. Worker code only runs for `/api/*` (the contact form). Configuration lives in `wrangler.jsonc`.
+## Production target
 
-| | |
+| Setting | Value |
 |---|---|
-| Repository | `jelvan-operava/Jelvan-R-Portfolio`, branch `main` |
-| Worker name | `jelvan-r-portfolio` (set in `wrangler.jsonc`) |
+| GitHub repository | `DevJel/Jelvan-R-Portfolio` |
+| Production branch | `main` |
+| Hosting | Cloudflare Pages |
+| Cloudflare account | `Jelvan - Projects - Works` |
+| Pages project | `jelvan-r-portfolio` |
+| Pages output | `out/` |
 | Build command | `npm run build` |
-| Deploy command | `npx wrangler deploy` |
-| Output folder | `out/` |
-| Node.js | 18.18 or later (20 recommended) |
-| Default URL | `https://jelvan-r-portfolio.<your-subdomain>.workers.dev` |
+| Framework | Next.js 14 static export |
+| Custom domain | `portfolio.jelvan.pro` |
+| Pages fallback domain | `jelvan-r-portfolio.pages.dev` |
 
----
+The app uses Next.js static export (`output: 'export'` in `next.config.mjs`). A successful build writes the static site to `out/`. Cloudflare Pages serves those files. Do **not** use `wrangler deploy` to publish the website: that command deploys the separate contact API Worker described below.
 
-## Before the first deploy
+## Deployment flow
 
-- [ ] Replace content that is not yours. The résumé, phone number, location, career history, CV PDF (`public/assets/vushenko2026.pdf`), award PDF and Google Scholar link still come from the original template.
-- [ ] Update the social links in `components/Contact/Contact.config.tsx` and the GitHub/LinkedIn links in `components/Resume/Resume.tsx`.
-- [ ] Replace images, keeping the same file names and paths so no code changes are needed.
-- [ ] Decide which Cloudflare account the site belongs to.
+1. Commit and push changes to `main`.
+2. GitHub Actions runs the quality gate: brand check, dependency install, unit/tool tests, Next.js production build, browser checks, export assertions and Wrangler dry runs.
+3. Cloudflare Pages Git integration watches the same repository and deploys the `out/` directory from `main`.
+4. Verify the latest Pages production deployment references the pushed commit and reaches the `deploy: success` stage.
+5. Open the custom domain and test the key routes and contact flow.
 
----
+Cloudflare Pages project source must reference the current GitHub owner `DevJel`, repository `Jelvan-R-Portfolio`, and production branch `main`. If the repository is transferred or renamed, update the Pages Git source connection before relying on automatic deployments.
 
-## Option A: Connect GitHub in the Cloudflare dashboard (recommended)
+## Local validation
 
-No API tokens or GitHub secrets needed. Every push to `main` deploys automatically.
-
-1. Log in to the [Cloudflare dashboard](https://dash.cloudflare.com) and select the account to use.
-2. Go to **Workers & Pages → Create → Import a repository**.
-3. Connect GitHub if asked, and give Cloudflare access to `jelvan-operava/Jelvan-R-Portfolio`.
-4. Select the repository and set:
-   - **Project name:** `jelvan-r-portfolio` (must match `name` in `wrangler.jsonc`)
-   - **Production branch:** `main`
-   - **Build command:** `npm run build`
-   - **Deploy command:** `npx wrangler deploy`
-   - **Root directory:** leave empty
-5. Click **Create and deploy**. The first build takes about 2–3 minutes.
-6. Open the `*.workers.dev` URL shown when it finishes.
-
-Pushes to other branches create preview builds automatically. Turn this off in **Settings → Build → Branch control** if you don't want previews.
-
----
-
-## Option B: Deploy from your computer
-
-Useful for a one-off manual deploy.
+Requirements: Node.js 20 LTS (minimum supported by the project is Node.js 18.18).
 
 ```bash
-git clone https://github.com/jelvan-operava/Jelvan-R-Portfolio.git
-cd Jelvan-R-Portfolio
-npm install
-npx wrangler login      # opens the browser to authorize Cloudflare
-npm run deploy          # builds, then deploys
+npm ci
+npm run test:tools
+npm run build
+npm run test:tools:browser
 ```
 
-If you have several Cloudflare accounts, Wrangler asks which one to use. To skip the prompt, set `CLOUDFLARE_ACCOUNT_ID` first:
+The browser test requires Playwright Chromium:
 
 ```bash
-CLOUDFLARE_ACCOUNT_ID=<account-id> npm run deploy
+npx playwright install --with-deps chromium
+npm run test:tools:browser
 ```
 
-Test locally before deploying with `npm run preview` (site + Worker at http://localhost:8787).
+Confirm that `out/index.html`, `out/404.html`, the portfolio routes, SEO files, security.txt, headers, and expected assets exist before publishing.
 
----
+## Cloudflare Pages configuration
 
-## Option C: GitHub Actions
+- Project: `jelvan-r-portfolio`
+- Production branch: `main`
+- Build command: `npm run build`
+- Build output directory: `out`
+- Root directory: repository root
+- Framework preset: Next.js (static export)
+- Custom domain: `portfolio.jelvan.pro`
 
-The workflow in `.github/workflows/deploy.yml` already builds every push and pull request. It deploys from `main` once these secrets exist:
+Keep the Pages Git integration as the single production deploy trigger. Avoid enabling a second simultaneous deploy path from GitHub Actions unless the Pages Git integration is intentionally disabled; duplicate deploy pipelines can race and make the deployed commit ambiguous.
 
-1. Cloudflare dashboard → **My Profile → API Tokens → Create Token** → use the **Edit Cloudflare Workers** template → select your account → create, then copy the token.
-2. Copy your **Account ID** (Workers & Pages overview page, right sidebar).
-3. GitHub → repository **Settings → Secrets and variables → Actions → New repository secret**:
-   - `CLOUDFLARE_API_TOKEN` = the token
-   - `CLOUDFLARE_ACCOUNT_ID` = the account ID
-4. GitHub → **Actions → Build & Deploy → Run workflow** on `main` (or push any commit).
+## Contact form architecture
 
-Use **either** Option A **or** Option C, not both, or every push deploys twice.
+The contact form is a static page backed by a separate Cloudflare Worker and a private mail relay:
 
----
+```mermaid
+flowchart TD
+  A[Visitor submits contact form] --> B[Static portfolio]
+  B -->|POST /api/contact| C[Contact Worker]
+  C -->|MAILER service binding| D[Private mailer Worker]
+  D --> E[AWS SES SMTP]
+  E --> F[Recipient inbox]
+  E --> G[Visitor confirmation]
+```
 
-## Custom domain
+- Contact Worker configuration: `wrangler.jsonc`
+- Private mail relay configuration: `wrangler.mailer.jsonc`
+- Contact Worker route: `portfolio.jelvan.pro/api/contact*`
+- Worker service binding: `MAILER` → `jelvan-portfolio-mailer`
+- Recipient: `hello@work.jelvan.pro`
+- SES credentials must remain in Cloudflare secret bindings; never commit credential values.
+- The contact form is not an SMS or OTP service.
 
-The domain must be on Cloudflare DNS in the same account.
+Deploy the private mail relay before the contact Worker when changing its code or bindings:
 
-1. Worker `jelvan-r-portfolio` → **Settings → Domains & Routes → Add → Custom domain**.
-2. Enter the domain (e.g. `jelvan.com` or `www.jelvan.com`) and confirm. Cloudflare creates the DNS record and SSL certificate.
-3. Optional: turn off the `workers.dev` URL in the same screen once the custom domain works.
+```bash
+npm run deploy:mailer
+npm run deploy
+```
 
----
+These commands deploy only the mail relay and contact API Worker. They do not publish the static portfolio.
 
-## Contact form (Amazon SES via private Cloudflare service binding)
+## Post-deployment smoke test
 
-The static site runs on Pages. `jelvan-portfolio-contact` handles `/api/contact`;
-it calls `jelvan-portfolio-mailer` over a same-account Cloudflare **service binding**.
-The mailer submits through the existing Amazon SES SMTP credentials in the
-**Jelvan - Projects - Works** account Secrets Store. It has no public route.
-
-1. Deploy the relay first: `npm run deploy:mailer`
-   (uses `wrangler.mailer.jsonc` and existing Secrets Store bindings).
-2. Deploy the contact Worker: `npm run deploy`
-   (uses `wrangler.jsonc` and its `MAILER` service binding).
-3. In Cloudflare Worker Settings verify `MAILER` points to
-   `jelvan-portfolio-mailer` and is **not deleted**.
-4. Submit one test inquiry from `/portfolio/contact` and verify both
-   the inquiry email and visitor's email confirmation arrive.
-
-The portfolio contact form **does not send SMS or OTP codes**. Never commit
-SMTP credential values to the repository. The relevant Secrets Store
-bindings are `SES_SMTP_HOST`, `SES_SMTP_PORT`,
-`SES_SMTP_USERNAME`, and `SES_SMTP_PASSWORD`.
-
----
-
-## Check after each deploy
-
-- [ ] Home page loads with the landing animation and photo
-- [ ] `/portfolio/about`, `/portfolio/projects`, `/portfolio/contact`, `/portfolio/resume` and `/articles` open directly (not only via links)
-- [ ] An unknown URL shows the 404 page
-- [ ] Images and the Segoe UI font load (no broken images)
-- [ ] Hamburger menu opens and its links work
-- [ ] Contact form sends, if configured
-- [ ] "Download CV" downloads the right file
-
----
-
-## Troubleshooting
-
-| Problem | Fix |
-|---|---|
-| Build fails on `npm install` | Make sure the build uses Node 18.18+ (set `NODE_VERSION=20` under the Worker's **Settings → Build → Variables**). |
-| "A Worker with this name already exists" | Change `name` in `wrangler.jsonc`, or deploy into the existing Worker on purpose. |
-| Deploy asks which account to use | Set `CLOUDFLARE_ACCOUNT_ID` (Option B/C). |
-| Page works from links but 404s when opened directly | Confirm `out/` contains that page's `.html` file after `npm run build`. |
-| Contact form says "Not sent, retry" | Check that the contact Worker `MAILER` binding references the live `jelvan-portfolio-mailer` service and SES SMTP secret bindings exist. Check both Workers → **Observability**. |
-| Old version still showing | Hard refresh (Ctrl/Cmd + Shift + R); check the latest deployment under Worker → **Deployments**. |
+- [ ] Homepage loads at `https://portfolio.jelvan.pro/`.
+- [ ] About, Projects, Contact and Resume routes load directly.
+- [ ] All seven project detail routes load and their dashboard artwork is present.
+- [ ] Repository explorer links and file previews behave as documented.
+- [ ] Developer tools and SVG Library load; search, filters, copy and download actions work.
+- [ ] Mobile navigation and carousel controls work at phone widths.
+- [ ] Contact form validates input, shows a success state only after server confirmation, and plays its confirmation sound only after success.
+- [ ] Contact Worker responds at `/api/contact`; recipient and visitor confirmation emails are received.
+- [ ] Unknown routes show the exported 404 page.
+- [ ] Canonical URL, sitemap, robots.txt, security.txt, metadata and social previews are correct.
 
 ## Rollback
 
-Worker → **Deployments** → choose an earlier version → **Rollback**. Or revert the commit on GitHub and let it redeploy.
+Use Cloudflare Pages → `jelvan-r-portfolio` → Deployments to inspect production history and roll back to the last known-good deployment. Revert the offending Git commit as well so the source branch and deployed artifact return to the same known-good state.
+
+## Security and operational rules
+
+- Never place API tokens, SMTP credentials, private keys, or secret values in source files, documentation, screenshots, or client-side bundles.
+- Do not expose private repositories or internal source folders through the public repository explorer.
+- Treat repository previews as public content; redact secrets and organization-specific data before adding sample files.
+- Keep a clear distinction between illustrative dashboard artwork and real production screenshots or live data.
+- Verify the exact commit, deployment status, custom domain and contact service after every release.
