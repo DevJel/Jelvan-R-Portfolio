@@ -35,15 +35,25 @@ assets.push({
   path: '/assets/svg-library/pc-components/cpu/pc_component_100_cpu_premium-variant-2.svg',
 });
 const PAGE_SIZE = 24;
+const svgCache = new Map<string, string>();
+const svgPromises = new Map<string, Promise<string>>();
 
 async function getSvg(asset: HardwareAsset): Promise<string> {
-  const response = await fetch(asset.path);
-  if (!response.ok) throw new Error('This SVG could not be loaded.');
-  const markup = await response.text();
-  if (!markup.trimStart().startsWith('<svg') || !markup.includes('</svg>')) {
-    throw new Error('The downloaded file is not a complete SVG.');
-  }
-  return markup;
+  const cached = svgCache.get(asset.path);
+  if (cached) return cached;
+  const existing = svgPromises.get(asset.path);
+  if (existing) return existing;
+  const pending = fetch(asset.path).then(async response => {
+    if (!response.ok) throw new Error('This SVG could not be loaded.');
+    const markup = await response.text();
+    if (!markup.trimStart().startsWith('<svg') || !markup.includes('</svg>')) {
+      throw new Error('The downloaded file is not a complete SVG.');
+    }
+    svgCache.set(asset.path, markup);
+    return markup;
+  }).finally(() => svgPromises.delete(asset.path));
+  svgPromises.set(asset.path, pending);
+  return pending;
 }
 
 function saveSvg(markup: string, filename: string) {
@@ -89,6 +99,13 @@ export default function SvgHardwareGallery() {
     return () => { live = false; };
   }, [open, selected?.path]);
 
+  useEffect(() => {
+    if (!open) return;
+    // Preload visible source files so copy clicks can write synchronously
+    // within the browser's user-activation window.
+    visible.forEach(asset => { void getSvg(asset).catch(() => undefined); });
+  }, [open, category, query, shown]);
+
   const selectCategory = (value: string) => {
     setCategory(value);
     setShown(PAGE_SIZE);
@@ -99,7 +116,7 @@ export default function SvgHardwareGallery() {
     setActive(asset.id);
     setMessage('');
     try {
-      const svg = await getSvg(asset);
+      const svg = svgCache.get(asset.path) ?? await getSvg(asset);
       setSource(svg);
       setLoadedPath(asset.path);
       if (!navigator.clipboard?.writeText) {
