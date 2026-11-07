@@ -14,7 +14,9 @@
     "deploy": "npm run build && wrangler deploy",
     "deploy:mailer": "wrangler deploy --config wrangler.mailer.jsonc",
     "test:tools": "node --test tests/dev-tools.test.cjs tests/contact-confirmation.test.cjs tests/svg-library.test.cjs tests/premium-svg.test.cjs",
-    "test:tools:browser": "node tests/dev-tools.browser.cjs"
+    "test:tools:browser": "node tests/dev-tools.browser.cjs",
+    "postinstall": "node scripts/generate-project-webp.mjs",
+    "prebuild": "node scripts/generate-project-webp.mjs"
   },
   "dependencies": {
     "formik": "^2.4.6",
@@ -24,7 +26,8 @@
     "react-icons": "^4.12.0",
     "react-scroll": "^1.9.0",
     "styled-components": "^5.3.11",
-    "yup": "^0.32.11"
+    "yup": "^0.32.11",
+    "sharp": "^0.34.5"
   },
   "devDependencies": {
     "@types/node": "20.14.12",
