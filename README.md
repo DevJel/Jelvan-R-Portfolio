@@ -465,9 +465,33 @@ flowchart TD
     S --> V
 ```
 
-Each project entry provides the project title, description, slide number artwork, image or brand art, technology labels, optional sample URL, and background color. The renderer maps the data into a consistent slide component. The intersection observer delays the project slide's visual content until it approaches the viewport.
+Each project entry provides the project title, description, slide number artwork, dashboard preview, technology labels, optional sample URL, and background color. The renderer maps the data into a consistent slide component. The intersection observer delays the project slide's visual content until it approaches the viewport.
 
-### 7.2 Adding or editing a project
+The seven dashboard masters live in `public/assets/portfolio/projects/` as SVG source artwork. Each includes a generic macOS-style browser frame and a project-specific, brand-neutral application interface. The published showcase uses WebP files generated from those masters:
+
+- `01-master-ai-dashboard.webp`
+- `02-knowledge-center-dashboard.webp`
+- `03-internal-email-dashboard.webp`
+- `04-hris-dashboard.webp`
+- `05-bolekpad-dashboard.webp`
+- `06-printing-store-dashboard.webp`
+- `07-devai-dashboard.webp`
+
+The generated previews are referenced by both the highlighted-project carousel and the repository explorer/detail pages. They contain no product wordmarks or company branding; project names remain in the surrounding page content.
+
+### 7.2 WebP artwork generation
+
+The build uses `sharp` and `scripts/generate-project-webp.mjs` to rasterize the SVG masters into optimized WebP assets. The script runs during dependency installation and before `npm run build`, validates the generated file format and dimensions, and writes the WebP files beside the source masters. This also ensures Cloudflare Pages builds that invoke `npx next build` have the generated assets available after dependency installation.
+
+To regenerate manually:
+
+```bash
+node scripts/generate-project-webp.mjs
+```
+
+Do not rename an SVG file to `.webp` without converting its bytes. Keep the SVG as the editable source of truth and publish the generated WebP output.
+
+### 7.3 Adding or editing a project
 
 1. Open `components/HighlightedProjects/HighlightedProjects.config.tsx`.
 2. Add or update an item in the `highlightedProjects` array.
