@@ -37,7 +37,7 @@ const ProjectDesktopSlide = ({
       <Styled.LeftColumn><Styled.Figure>
         <Styled.SlideNumber>{slideNumberImg && <Image src={slideNumberImg} height={200} width={200} quality={90} objectFit="contain" alt="Project number" />}</Styled.SlideNumber>
         <Styled.Figcaption><h3>{projectTechnologies.join(' · ')}</h3></Styled.Figcaption>
-        <Styled.ImageWrapper>{projectArt ?? <Image src={projectImg} height={800} width={800} quality={92} objectFit="contain" alt={projectTitle} />}</Styled.ImageWrapper>
+        <Styled.ImageWrapper>{projectArt ?? <Image src={projectImg} height={900} width={1440} quality={95} objectFit="contain" layout="responsive" alt={`${projectTitle} application dashboard preview`} />}</Styled.ImageWrapper>
       </Styled.Figure></Styled.LeftColumn>
       <Styled.RightColumn>
         <SectionHeader variant="small" headerText={projectTitle} margin="0" color="#f48120" withGradient />
