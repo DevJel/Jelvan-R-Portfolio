@@ -10,7 +10,7 @@ export type ProjectShowcaseMeta = {
 
 export const projectShowcaseBySlug: Record<string, ProjectShowcaseMeta> = {
   'master-ai-multi-agent-workspace': {
-    cover:  /assets/portfolio/projects/01-master-ai-dashboard.svg,
+    cover: '/assets/portfolio/projects/01-master-ai-dashboard.svg',
     backgroundColor: '#fff7f0',
     description: 'An organizational AI enablement layer that can support HR, finance, procurement, customer service, IT and operations through specialist assistants, knowledge retrieval and governed workflow automation. People remain accountable for decisions and approve consequential actions.',
     purpose: 'Help organizations improve service delivery and productivity by connecting approved knowledge, departmental workflows and human-reviewed AI assistance.',
@@ -30,7 +30,7 @@ export const projectShowcaseBySlug: Record<string, ProjectShowcaseMeta> = {
     ]
   },
   'knowledge-center-system': {
-    cover:  /assets/portfolio/projects/02-knowledge-center-dashboard.svg,
+    cover: '/assets/portfolio/projects/02-knowledge-center-dashboard.svg',
     backgroundColor: '#ffffff',
     description: 'An organizational knowledge and learning platform for policies, SOPs, process maps, role-based learning paths, technical references, onboarding materials and operational playbooks.',
     purpose: 'Give employees and managers one trusted place to find current policies, procedures, training and operational knowledge, reducing repeated questions and inconsistent practices.',
@@ -51,7 +51,7 @@ export const projectShowcaseBySlug: Record<string, ProjectShowcaseMeta> = {
     ]
   },
   'internal-email-system': {
-    cover:  /assets/portfolio/projects/03-internal-email-dashboard.svg,
+    cover: '/assets/portfolio/projects/03-internal-email-dashboard.svg',
     backgroundColor: '#fff7f0',
     description: 'A communications operations system for internal announcements, employee lifecycle notifications, recruitment correspondence, service updates, customer communications and approved outreach. Delivery is designed around provider integrations such as Amazon SES, with consent, security and audit controls.',
     purpose: 'Centralize organization-wide communications while ensuring messages are authorized, traceable, accessible and appropriate to each recipient group.',
@@ -72,7 +72,7 @@ export const projectShowcaseBySlug: Record<string, ProjectShowcaseMeta> = {
     ]
   },
   'hr-information-system': {
-    cover:  /assets/portfolio/projects/04-hris-dashboard.svg,
+    cover: '/assets/portfolio/projects/04-hris-dashboard.svg',
     backgroundColor: '#ffffff',
     description: 'A modular Human Resources Information System designed around the complete employee lifecycle: workforce planning, requisition, recruitment, candidate assessment, pre-employment checks, offers, onboarding, employee records, time and attendance, leave, performance, learning, employee relations, compensation and benefits integrations, offboarding and alumni records. The current repository is a prototype foundation; production readiness must be assessed module by module.',
     purpose: 'Help HR teams and managers operate a connected, auditable employee journey from the first workforce request through the final day and controlled records retention, with clear ownership and employee self-service.',
@@ -100,7 +100,7 @@ export const projectShowcaseBySlug: Record<string, ProjectShowcaseMeta> = {
     ]
   },
   'bolekpad-personal-workspace': {
-    cover:  /assets/portfolio/projects/05-bolekpad-dashboard.svg,
+    cover: '/assets/portfolio/projects/05-bolekpad-dashboard.svg',
     backgroundColor: '#fff7f0',
     description: 'A configurable digital workplace concept for knowledge capture, team documentation, task coordination, calendars, document collaboration and AI-assisted productivity. It can support cross-functional teams when paired with organizational identity, retention and access policies.',
     purpose: 'Give teams a shared, governed workspace for work instructions, project notes, operational handovers, meeting outcomes and everyday collaboration.',
@@ -121,7 +121,7 @@ export const projectShowcaseBySlug: Record<string, ProjectShowcaseMeta> = {
     ]
   },
   'online-printing-store': {
-    cover:  /assets/portfolio/projects/06-printing-store-dashboard.svg,
+    cover: '/assets/portfolio/projects/06-printing-store-dashboard.svg',
     backgroundColor: '#ffffff',
     description: 'A digital commerce and service-ordering system that can support organizations offering physical products or print services, from catalogue discovery and configuration to quotation, payment, production, delivery and after-sales support.',
     purpose: 'Digitize customer-facing order journeys and connect sales, inventory, production, finance and delivery operations through traceable order records.',
@@ -141,7 +141,7 @@ export const projectShowcaseBySlug: Record<string, ProjectShowcaseMeta> = {
     ]
   },
   'developers-playground-devai': {
-    cover:  /assets/portfolio/projects/07-devai-dashboard.svg,
+    cover: '/assets/portfolio/projects/07-devai-dashboard.svg',
     backgroundColor: '#fff7f0',
     description: 'An AI-assisted developer workspace designed to combine conversational coding support, project resources, connectors, media handling and development workflow tools in one browser-based environment.',
     purpose: 'Help technology teams standardize development workflows, improve delivery visibility and safely adopt AI-assisted engineering with approval gates, access controls and usage monitoring.',
