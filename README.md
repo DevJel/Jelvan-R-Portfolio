@@ -479,6 +479,8 @@ The seven dashboard masters live in `public/assets/portfolio/projects/` as SVG s
 
 The generated previews are referenced by both the highlighted-project carousel and the repository explorer/detail pages. They contain no product wordmarks or company branding; project names remain in the surrounding page content.
 
+The main navigation is maintained in `components/NavigationMenu/NavigationMenu.config.ts`. Links are grouped into Explore, Resources & Tools, and Profile sections; the menu supports keyboard dismissal, outside-click dismissal, and a labelled toggle control.
+
 ### 7.2 WebP artwork generation
 
 The build uses `sharp` and `scripts/generate-project-webp.mjs` to rasterize the SVG masters into optimized WebP assets. The script runs during dependency installation and before `npm run build`, validates the generated file format and dimensions, and writes the WebP files beside the source masters. This also ensures Cloudflare Pages builds that invoke `npx next build` have the generated assets available after dependency installation.
