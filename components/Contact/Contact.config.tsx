@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { FiGithub, FiInstagram, FiLinkedin, FiTwitter } from 'react-icons/fi';
+import { FiGithub, FiLinkedin } from 'react-icons/fi';
 
 /**
  * Custom hook to get contact info data
@@ -10,23 +10,15 @@ export const useContactConfig = (): { myContacts: IMyContact[] } => {
   const myContacts: IMyContact[] = [
     {
       id: 1,
-      icon: <FiTwitter className={'contact-icon'} />,
-      text: 'Twitter',
+      icon: <FiGithub className={'contact-icon'} />,
+      text: 'GitHub',
+      href: 'https://github.com/DevJel',
     },
     {
       id: 2,
-      icon: <FiGithub className={'contact-icon'} />,
-      text: 'GitHub',
-    },
-    {
-      id: 3,
       icon: <FiLinkedin className={'contact-icon'} />,
       text: 'LinkedIn',
-    },
-    {
-      id: 4,
-      icon: <FiInstagram className={'contact-icon'} />,
-      text: 'Instagram',
+      href: 'https://my.linkedin.com/in/jelvanricolcol',
     },
   ];
 
@@ -37,4 +29,5 @@ export interface IMyContact {
   id: number;
   icon: ReactNode;
   text: string;
+  href: string;
 }
