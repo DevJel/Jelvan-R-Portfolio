@@ -34,12 +34,15 @@ export const HeroLeftColumn = styled.div`
     line-height: 1.1;
   }
 
+  /* Compact introductory copy: approximately one-third of the previous size. */
+  p {
+    font-size: 0.42rem !important;
+    line-height: 1.5;
+  }
+
   @media ${({ theme }) => theme.media.tablet} {
     flex: 1;
     padding: 1rem 2rem;
-    p: {
-      font-size: 1.25rem;
-    }
   }
 `;
 export const HeroRightColumn = styled.div`
