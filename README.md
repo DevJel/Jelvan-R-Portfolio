@@ -483,7 +483,7 @@ The main navigation is maintained in `components/NavigationMenu/NavigationMenu.c
 
 ### 7.2 WebP artwork generation
 
-The build uses `sharp` and `scripts/generate-project-webp.mjs` to rasterize the SVG masters into optimized WebP assets. The script runs during dependency installation and before `npm run build`, validates the generated file format and dimensions, and writes the WebP files beside the source masters. This also ensures Cloudflare Pages builds that invoke `npx next build` have the generated assets available after dependency installation.
+The build uses `sharp` and `scripts/generate-project-webp.mjs` to rasterize the SVG masters into optimized WebP assets. The script runs before `npm run dev` and `npm run build`, validates the generated file format and dimensions, and writes the WebP files beside the source masters. Cloudflare Pages is configured to use `npm run build`, so the previews are generated before the static export.
 
 To regenerate manually:
 
