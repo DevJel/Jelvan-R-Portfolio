@@ -6,9 +6,25 @@ import SectionHeader from '../Typography/SectionHeader/SectionHeader';
 import PortfolioParagraph from '../Typography/PortfolioParagraph/PortfolioParagraph';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 
+const projectRoutes: Array<{ match: string; slug: string }> = [
+  { match: 'master ai', slug: 'master-ai-multi-agent-workspace' },
+  { match: 'knowledge center', slug: 'knowledge-center-system' },
+  { match: 'internal email', slug: 'internal-email-system' },
+  { match: 'hr information', slug: 'hr-information-system' },
+  { match: 'bolekpad', slug: 'bolekpad-personal-workspace' },
+  { match: 'printing', slug: 'online-printing-store' },
+  { match: 'devai', slug: 'developers-playground-devai' },
+];
+
+const getProjectRoute = (title: string): string => {
+  const normalized = title.toLowerCase();
+  const project = projectRoutes.find(({ match }) => normalized.includes(match));
+  return '/projects/' + (project?.slug ?? normalized.replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''));
+};
+
 const ProjectDesktopSlide = ({
   slideNumberImg, projectDescription, projectPurpose, projectAdvantages, projectFeatures,
-  projectImg, projectArt, projectLinks, projectLinkNote, projectTechnologies, projectTitle,
+  projectImg, projectArt, projectTechnologies, projectTitle,
   slideBgColor, technologyIcons, slideHeight,
 }: IHighlightedProject): JSX.Element | null => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -33,9 +49,11 @@ const ProjectDesktopSlide = ({
           <Styled.DetailPanel><h4>Advantages</h4><ul>{projectAdvantages.map(x=><li key={x}>{x}</li>)}</ul></Styled.DetailPanel>
           <Styled.DetailPanel><h4>Technology stack</h4><div>{projectTechnologies.map(x=><span key={x}>{x}</span>)}</div></Styled.DetailPanel>
         </Styled.DetailGrid>
-        {projectLinks && <Styled.ButtonsWrapper>{projectLinks.map(({label,url})=><Styled.SampleLink key={url} href={url} target="_blank" rel="noopener noreferrer" aria-label={`${label} for ${projectTitle} (opens in a new tab)`}>{label}</Styled.SampleLink>)}</Styled.ButtonsWrapper>}
-        {projectLinkNote && <Styled.ProjectLinkNote>{projectLinkNote}</Styled.ProjectLinkNote>}
-        <Styled.ButtonsWrapper><Styled.SampleLink href={`/projects/${projectTitle.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}`}>Explore project details & files</Styled.SampleLink></Styled.ButtonsWrapper>
+        <Styled.ButtonsWrapper>
+          <Styled.SampleLink href={getProjectRoute(projectTitle)} aria-label={`Explore ${projectTitle} project dashboard, repository and deployment guide`}>
+            Explore Project &amp; Deployment
+          </Styled.SampleLink>
+        </Styled.ButtonsWrapper>
       </Styled.RightColumn>
     </>}
   </Styled.Container>;
