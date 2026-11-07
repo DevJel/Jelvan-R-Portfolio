@@ -27,8 +27,9 @@ export const Container = styled.section<ContainerProps>`
  * LEFT COLUMN
  */
 export const LeftColumn = styled.div`
-  width: 50%;
-  padding: 6rem 0 3rem 5rem;
+  width: 54%;
+  min-width: 0;
+  padding: 5.5rem 1.25rem 3rem 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -36,39 +37,46 @@ export const LeftColumn = styled.div`
 
   @media ${({ theme }) => theme.media.tablet} {
     width: 100%;
-    padding: 1rem;
-    height: auto;
-    min-height: 32vh;
-    align-items: flex-end;
+    padding: 1.25rem 1rem .5rem;
+    min-height: 0;
   }
   @media ${({ theme }) => theme.media.phone} {
-    min-height: 28vh;
-    align-items: flex-end;
-    justify-content: flex-end;
+    padding: .75rem .65rem .25rem;
   }
 `;
 export const ImageWrapper = styled.div`
-  transform: perspective(1500px) rotateY(20deg);
-  transition: transform 1s ease 0s;
+  width: 100%;
+  max-width: 820px;
+  aspect-ratio: 8 / 5;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: visible;
+  filter: drop-shadow(0 22px 34px rgba(20, 24, 32, .16));
+  transition: filter .25s ease, transform .25s ease;
 
-  :hover {
-    transform: perspective(3000px) rotateY(5deg);
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
   }
 
-  @media ${({ theme }) => theme.media.tablet} {
-    justify-content: flex-end;
-    align-items: flex-end;
+  :hover {
+    transform: translateY(-3px);
+    filter: drop-shadow(0 28px 38px rgba(20, 24, 32, .2));
   }
 `;
 
 export const Figure = styled.figure`
   position: relative;
   display: flex;
-  height: 100%;
-  gap: 1rem;
+  width: 100%;
+  max-width: 850px;
+  align-items: center;
+  gap: .5rem;
+  margin: 0;
 `;
 export const SlideNumber = styled.div`
   z-index: ${({ theme }) => theme.zIndex.lowPriority};
@@ -111,8 +119,9 @@ export const Figcaption = styled.figcaption`
  * RIGHT COLUMN
  */
 export const RightColumn = styled.div`
-  width: 50%;
-  padding: 1rem 3rem;
+  width: 46%;
+  min-width: 0;
+  padding: 1.5rem 2.5rem 1.5rem 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
