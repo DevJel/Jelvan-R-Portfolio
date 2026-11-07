@@ -81,14 +81,15 @@ export const Figure = styled.figure`
 export const SlideNumber = styled.div`
   z-index: ${({ theme }) => theme.zIndex.lowPriority};
   position: absolute;
-  top: 5%;
-  right: 0;
+  top: -2.4rem;
+  left: 0;
+  right: auto;
   animation: ${slideTop} 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   animation-delay: 250ms;
 
   @media ${({ theme }) => theme.media.phone} {
     img {
-      width: 150px;
+      width: 72px;
       height: auto;
     }
   }
