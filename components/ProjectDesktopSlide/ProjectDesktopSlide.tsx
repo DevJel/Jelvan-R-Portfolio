@@ -35,7 +35,7 @@ const ProjectDesktopSlide = ({
   return <Styled.Container slideHeight={slideHeight} slideBgColor={slideBgColor} ref={containerRef}>
     {isOnScreen && <>
       <Styled.LeftColumn><Styled.Figure>
-        <Styled.SlideNumber>{slideNumberImg && <Image src={slideNumberImg} height={200} width={200} quality={90} objectFit="contain" alt="Project number" />}</Styled.SlideNumber>
+        <Styled.SlideNumber>{slideNumberImg && <Image src={slideNumberImg} height={59} width={72} quality={90} objectFit="contain" alt={`Project ${projectTitle}`} />}</Styled.SlideNumber>
         <Styled.ImageWrapper>{projectArt ?? <Image src={projectImg} height={900} width={1440} quality={95} objectFit="contain" layout="responsive" alt={`${projectTitle} application dashboard preview`} />}</Styled.ImageWrapper>
       </Styled.Figure></Styled.LeftColumn>
       <Styled.RightColumn>
