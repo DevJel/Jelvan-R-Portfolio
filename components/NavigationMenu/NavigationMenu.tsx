@@ -47,7 +47,7 @@ const NavigationMenu = (): JSX.Element => {
           <Styled.SocialMediaContactsList>
             {myContacts.map((contact) => (
               <li key={contact.id}>
-                <SocialMediaContact icon={contact.icon} />
+                <SocialMediaContact icon={contact.icon} href={contact.href} label={contact.text} />
               </li>
             ))}
           </Styled.SocialMediaContactsList>
