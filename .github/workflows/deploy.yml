@@ -67,6 +67,13 @@ jobs:
           test -f out/portfolio/projects.html
           test -f out/portfolio/contact.html
           test -f out/portfolio/resume.html
+          test -f out/projects/knowledge-center-system.html
+          test -f out/projects/hr-information-system.html
+          test -f out/projects/master-ai-multi-agent-workspace.html
+          test -f out/projects/internal-email-system.html
+          test -f out/projects/bolekpad-personal-workspace.html
+          test -f out/projects/online-printing-store.html
+          test -f out/projects/developers-playground-devai.html
           test -f out/articles.html
           test -f out/tools.html
           grep -q 'HTML Viewer' out/tools.html
@@ -98,15 +105,18 @@ jobs:
           retention-days: 7
 
   deploy:
-    name: Deploy to Cloudflare
+    name: Optional direct Pages deploy (opt-in)
     needs: build
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && vars.CLOUDFLARE_PAGES_DEPLOY_VIA_ACTIONS == 'true'
     runs-on: ubuntu-24.04
     env:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
     steps:
       - name: Check Cloudflare secrets
+        # Cloudflare Pages Git integration is the default production deploy path.
+        # Set CLOUDFLARE_PAGES_DEPLOY_VIA_ACTIONS=true only when deliberately
+        # switching to the direct GitHub Actions deploy path.
         id: secrets
         run: |
           if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
