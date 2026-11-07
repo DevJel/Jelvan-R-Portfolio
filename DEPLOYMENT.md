@@ -12,7 +12,7 @@ This repository is the source for the public portfolio at **https://portfolio.je
 | Cloudflare account | `Jelvan - Projects - Works` |
 | Pages project | `jelvan-r-portfolio` |
 | Pages output | `out/` |
-| Build command | `npm run build` |
+| Build command | `npx next build` (equivalent to `npm run build`) |
 | Framework | Next.js 14 static export |
 | Custom domain | `portfolio.jelvan.pro` |
 | Pages fallback domain | `jelvan-r-portfolio.pages.dev` |
