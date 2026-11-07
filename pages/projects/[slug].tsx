@@ -199,7 +199,8 @@ const ProjectDetailPage: NextPage<{
               src={showcase.cover}
               height={900}
               width={1440}
-              quality={92}
+              layout="responsive"
+              quality={95}
               objectFit="contain"
               alt={project.title + ' project preview'}
               priority
