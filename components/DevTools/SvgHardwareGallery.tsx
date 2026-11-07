@@ -98,29 +98,19 @@ export default function SvgHardwareGallery() {
   const copyAsset = async (asset: HardwareAsset) => {
     setActive(asset.id);
     setMessage('');
-    const svgPromise = getSvg(asset);
     try {
-      if (typeof ClipboardItem !== 'undefined' && navigator.clipboard?.write) {
-        // Begin the clipboard write during the click's user activation, even for an uncached SVG.
-        await navigator.clipboard.write([
-          new ClipboardItem({ 'text/plain': svgPromise.then(svg => new Blob([svg], { type: 'text/plain' })) }),
-        ]);
-      } else {
-        await navigator.clipboard.writeText(await svgPromise);
-      }
-      const svg = await svgPromise;
+      const svg = await getSvg(asset);
       setSource(svg);
       setLoadedPath(asset.path);
-      setMessage(asset.name + ' copied as complete, editable SVG markup. Paste into an HTML file or SVG editor.');
-    } catch {
-      try {
-        setSource(await svgPromise);
-        setLoadedPath(asset.path);
-      } catch {
-        setMessage('This SVG could not be loaded. Please retry.');
+      if (!navigator.clipboard?.writeText) {
+        setMessage('Clipboard access unavailable. Select and copy the SVG source from the inspector.');
         return;
       }
-      setMessage('Clipboard access unavailable. Select and copy the SVG source from the inspector.');
+      // Plain-text writes avoid Chromium's inconsistent Promise-backed ClipboardItem serialization.
+      await navigator.clipboard.writeText(svg);
+      setMessage(asset.name + ' copied as complete, editable SVG markup. Paste into an HTML file or SVG editor.');
+    } catch {
+      setMessage('This SVG could not be copied. Check clipboard permission and retry.');
     }
   };
 
