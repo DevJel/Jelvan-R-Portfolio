@@ -16,7 +16,7 @@ const artwork = [
 
 await mkdir(directory, { recursive: true });
 
-for (const name of artwork) {
+await Promise.all(artwork.map(async (name) => {
   const source = path.join(directory, name + '.svg');
   const destination = path.join(directory, name + '.webp');
 
@@ -31,4 +31,4 @@ for (const name of artwork) {
   }
 
   console.log(`Generated ${path.relative(root, destination)} (${metadata.width}x${metadata.height})`);
-}
+}));
