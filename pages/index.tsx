@@ -37,19 +37,19 @@ const StandardView = styled.div`
   }
 `;
 
-const ViewControl = styled.div`
-  position: absolute;
+const ViewControl = styled.div<{ $inMenu?: boolean }>`
+  position: ${({ $inMenu }) => ($inMenu ? 'relative' : 'absolute')};
   z-index: 1200;
-  top: 17px;
-  right: max(20px, calc((100vw - 1180px) / 2));
+  top: ${({ $inMenu }) => ($inMenu ? 'auto' : '17px')};
+  right: ${({ $inMenu }) => ($inMenu ? 'auto' : 'max(20px, calc((100vw - 1180px) / 2)')};
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   pointer-events: none;
 
   @media (max-width: 700px) {
-    top: 12px;
-    right: 12px;
+    top: ${({ $inMenu }) => ($inMenu ? 'auto' : '12px')};
+    right: ${({ $inMenu }) => ($inMenu ? 'auto' : '12px')};
   }
 `;
 
@@ -164,12 +164,7 @@ const PortfolioLandingPage: NextPage = () => {
           />
         ) : (
           <StandardView>
-            <Navbar isLogoExpanded={true} />
-            <PortfolioLanding />
-          </StandardView>
-        )}
-
-        <ViewControl>
+            <Navbar isLogoExpanded={true} menuFooter={<ViewControl $inMenu={true}>
           <ViewTrigger
             type="button"
             aria-label={`Switch portfolio view; currently ${view === 'folders' ? 'Folder View' : 'Standard'}`}
@@ -199,7 +194,42 @@ const PortfolioLandingPage: NextPage = () => {
               Standard
             </ViewOption>
           </ViewPanel>
-        </ViewControl>
+        </View} />
+            <PortfolioLanding />
+          </StandardView>
+        )}
+
+        {view === 'folders' ? <ViewControl $inMenu={view === 'standard'}>
+          <ViewTrigger
+            type="button"
+            aria-label={`Switch portfolio view; currently ${view === 'folders' ? 'Folder View' : 'Standard'}`}
+            aria-expanded={panelOpen}
+            aria-controls="portfolio-view-options"
+            onClick={() => setPanelOpen((open) => !open)}
+          >
+            <span aria-hidden="true" />
+            <span>Switch view</span>
+            <span aria-hidden="true">{panelOpen ? '−' : '⌄'}</span>
+          </ViewTrigger>
+          <ViewPanel id="portfolio-view-options" $open={panelOpen} role="group" aria-label="Portfolio views">
+            <ViewOption
+              type="button"
+              $active={view === 'folders'}
+              aria-pressed={view === 'folders'}
+              onClick={() => changeView('folders')}
+            >
+              Folder View
+            </ViewOption>
+            <ViewOption
+              type="button"
+              $active={view === 'standard'}
+              aria-pressed={view === 'standard'}
+              onClick={() => changeView('standard')}
+            >
+              Standard
+            </ViewOption>
+          </ViewPanel>
+        </View : null}Control>
       </Viewport>
     </PortfolioLayout>
   );
