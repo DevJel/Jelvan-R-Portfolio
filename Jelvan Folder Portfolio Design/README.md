@@ -47,7 +47,7 @@ This folder remains a separate standalone HTML artifact, not a Next.js source di
 
 ```text
 Jelvan Folder Portfolio Design/
-├── index.html    # Standalone design artifact — preserve unchanged
+├── index.html    # Standalone Folder View interface; preserve visual design and interactions
 └── README.md     # Project, design, feature, and maintenance documentation
 ```
 
