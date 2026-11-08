@@ -8,6 +8,7 @@ export interface IHighlightedProject {
   projectFeatures: string[];
   projectImg: string;
   projectMobileImg: string;
+  projectMobilePreview?: boolean;
   projectArt?: ReactNode;
   projectLinks?: { label: string; url: string }[];
   projectLinkNote?: string;
