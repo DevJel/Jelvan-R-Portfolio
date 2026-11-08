@@ -389,7 +389,21 @@ This artifact can be hosted as static content. For a clean standalone deployment
 
 **Path warning:** the declared font URLs begin with `/fonts/`, which resolves from the host's domain root. If the folder is hosted at a nested URL such as `/Jelvan-Folder-Portfolio-Design/`, the font request still targets the domain-root `/fonts/` directory. Do not silently rewrite these paths during a documentation-only update.
 
-The main portfolio homepage embeds the standalone artifact from `https://jelvan-folder-portfolio-design.pages.dev/`. The HTML source is maintained at `Jelvan Folder Portfolio Design/index.html` in the main GitHub repository. The Pages project configuration is managed separately from the Next.js Pages project; verify its connected repository, root directory (`Jelvan Folder Portfolio Design`), and production branch before changing hosting settings. This repository file path alone does not prove that a deployment has completed.
+The standalone artifact is published at `https://jelvan-folder-portfolio-design.pages.dev/` and embedded by the main portfolio homepage. Its Cloudflare Pages configuration has been inspected:
+
+| Setting | Verified value |
+| --- | --- |
+| Cloudflare account | `Jelvan - Projects - Works` |
+| Pages project | `jelvan-folder-portfolio-design` |
+| Git repository | `DevJel/Jelvan-R-Portfolio` |
+| Production branch | `main` |
+| Path include filter | `Jelvan Folder Portfolio Design/*` |
+| Root directory | `Jelvan Folder Portfolio Design` |
+| Build command | None |
+| Output directory | `.` |
+| Entry point | `index.html` |
+
+The main Next.js Pages project is separate: `jelvan-r-portfolio`, repository root, `npm run build`, output `out`. A successful deployment of one project does not prove that the other project has deployed.
 
 ---
 
