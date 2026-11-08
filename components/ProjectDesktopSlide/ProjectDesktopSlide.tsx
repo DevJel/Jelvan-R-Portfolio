@@ -24,7 +24,7 @@ const getProjectRoute = (title: string): string => {
 
 const ProjectDesktopSlide = ({
   slideNumberImg, projectDescription, projectPurpose, projectAdvantages, projectFeatures,
-  projectImg, projectArt, projectTechnologies, projectTitle,
+  projectImg, projectArt, projectMobileImg, projectMobilePreview, projectTechnologies, projectTitle,
   slideBgColor, technologyIcons, slideHeight,
 }: IHighlightedProject): JSX.Element | null => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -36,7 +36,7 @@ const ProjectDesktopSlide = ({
     {isOnScreen && <>
       <Styled.LeftColumn><Styled.Figure>
         <Styled.SlideNumber>{slideNumberImg && <Image src={slideNumberImg} height={59} width={72} quality={90} objectFit="contain" alt={`Project ${projectTitle}`} />}</Styled.SlideNumber>
-        <Styled.ImageWrapper>{projectArt ?? <Image src={projectImg} height={900} width={1440} quality={95} objectFit="contain" layout="responsive" alt={`${projectTitle} application dashboard preview`} />}</Styled.ImageWrapper>
+        <Styled.ImageWrapper className={projectMobilePreview ? 'device-preview' : undefined}>{projectMobilePreview ? <div className="device-preview-stage"><div className="device-preview-laptop"><Image src={projectImg} height={900} width={1440} quality={95} objectFit="contain" layout="responsive" alt={`${projectTitle} desktop application preview`} /></div><div className="device-preview-phone"><Image src={projectMobileImg} height={900} width={520} quality={95} objectFit="contain" layout="responsive" alt={`${projectTitle} mobile application preview`} /></div></div> : projectArt ?? <Image src={projectImg} height={900} width={1440} quality={95} objectFit="contain" layout="responsive" alt={`${projectTitle} application dashboard preview`} />}</Styled.ImageWrapper>
       </Styled.Figure></Styled.LeftColumn>
       <Styled.RightColumn>
         <SectionHeader variant="small" headerText={projectTitle} margin="0" color="#f48120" withGradient />
