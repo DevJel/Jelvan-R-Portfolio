@@ -92,6 +92,24 @@ npm run deploy
 
 These commands deploy only the mail relay and contact API Worker. They do not publish the static portfolio.
 
+## Repository list (`/api/repos`)
+
+The Projects page has an **All repositories** section. It loads the live list from the same contact Worker at `portfolio.jelvan.pro/api/repos*`, and falls back to a built-in snapshot (`components/AllRepositories/allRepositoriesFallback.ts`) if the endpoint is unavailable.
+
+- Accounts included: `DevJel`, `Dev-Jel-Works`, `Operava-Global`. Archived repositories are left out.
+- Public repositories return name, description, GitHub link, language, stars and last update.
+- Private repositories return **name and description only**: no link, code, language or dates.
+- Responses are cached at the edge for one hour.
+
+To include private repositories in the live list, add a read-only GitHub token as a Worker secret:
+
+```bash
+npx wrangler secret put GITHUB_TOKEN
+npm run deploy
+```
+
+Use a fine-grained token with **Metadata: read-only** access to all repositories of the three accounts and nothing else. Without the secret, the Worker lists public repositories only and the page adds the private names from the built-in snapshot.
+
 ## Post-deployment smoke test
 
 - [ ] Homepage loads at `https://portfolio.jelvan.pro/`.
@@ -112,7 +130,7 @@ Use Cloudflare Pages → `jelvan-r-portfolio` → Deployments to inspect product
 ## Security and operational rules
 
 - Never place API tokens, SMTP credentials, private keys, or secret values in source files, documentation, screenshots, or client-side bundles.
-- Do not expose private repositories or internal source folders through the public repository explorer.
+- Do not expose private repositories or internal source folders through the public repository explorer. The All repositories section may list private repositories by name and description only.
 - Treat repository previews as public content; redact secrets and organization-specific data before adding sample files.
 - Keep a clear distinction between illustrative dashboard artwork and real production screenshots or live data.
 - Verify the exact commit, deployment status, custom domain and contact service after every release.

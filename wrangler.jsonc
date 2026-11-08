@@ -9,6 +9,10 @@
     {
       "pattern": "portfolio.jelvan.pro/api/contact*",
       "zone_name": "jelvan.pro"
+    },
+    {
+      "pattern": "portfolio.jelvan.pro/api/repos*",
+      "zone_name": "jelvan.pro"
     }
   ],
 
