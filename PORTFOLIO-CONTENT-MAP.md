@@ -46,7 +46,7 @@ All URLs below use the public portfolio origin, `https://portfolio.jelvan.pro`, 
 
 | Folder card | Standard View destination | Content alignment |
 | --- | --- | --- |
-| Professional Résumé | `/portfolio/resume` | Professional summary, key highlights, experience, education and certifications. |
+| Professional Profile | `/portfolio/about` | Strategic HR professional, full-stack software developer and AI/digital transformation practitioner. |\n| Professional Résumé | `/portfolio/resume` | Professional summary, key highlights, experience, education and certifications. |
 | Professional Experience | `/portfolio/resume` | Web development and consulting, global advertising support, shared-services HR and customer experience roles. |
 | Education & Development | `/portfolio/resume` | Dual-specialization master's studies in AI for Business and HR/Talent Management, plus BS Business Administration. |
 | Certifications | `/portfolio/resume` | Software development, AI, HR, recruiting, Lean Six Sigma, leadership and customer service credentials. |
@@ -76,7 +76,7 @@ All URLs below use the public portfolio origin, `https://portfolio.jelvan.pro`, 
 | Folder card | Destination | Content alignment |
 | --- | --- | --- |
 | Contact Form | `/portfolio/contact` | Main portfolio inquiry form. |
-| Email | `mailto:hello@work.jelvan.pro` | Professional email contact. |
+| Email | `mailto:hello@work.jelvan.pro` | Professional email contact. |\n| Phone | `tel:+639605193602` | Telephone contact listed in the public résumé. |
 | LinkedIn | `https://my.linkedin.com/in/jelvanricolcol` | Professional profile. |
 | GitHub | `https://github.com/DevJel` | Public development profile. |
 | Download CV | `/assets/jelvan-ricolcol-resume.pdf` | Current résumé PDF. |
