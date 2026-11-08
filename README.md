@@ -935,3 +935,44 @@ Technology logos in the About / Skills cards link to the official documentation 
 5. For a third-party platform mentioned only in a separate project description, treat its documentation as background learning—not proof that this portfolio repository has a live integration with it.
 
 **Reference-link policy:** prefer official vendor documentation or the platform's own maintained documentation. Re-check references when dependencies or infrastructure are upgraded.
+
+## 18. Portfolio view modes
+
+The home route supports two presentations of the same professional portfolio. The view selector is intentionally a small translucent control rather than a persistent full-width banner.
+
+| View | Purpose | Implementation |
+| --- | --- | --- |
+| **Folder View** | Desktop-inspired, interactive folder workspace for browsing profile information, skills, selected projects, developer resources and contact links. | Standalone HTML artifact embedded from the separately hosted Folder Portfolio Design. |
+| **Standard View** | The original portfolio experience, retaining the existing navigation, landing-page layout, typography, imagery and component styling. | Next.js / React portfolio components in this repository. |
+
+### View selection and persistence
+
+- New visitors default to **Folder View**.
+- A visitor can switch between Folder View and Standard View using the **Switch view** control.
+- The selected view is stored in browser `localStorage` under `jelvan-portfolio-view`; a saved selection is restored on a later visit.
+- In Folder View, the selector floats over the workspace.
+- In Standard View, the selector is placed at the bottom of the expanded navigation menu. It is not a separate top banner.
+- The selector's options panel remains hidden until the control is activated.
+- If browser storage is unavailable, the selector continues to work for the current page session.
+
+### Content alignment
+
+Folder View is a visual alternative, not a separate or unrelated portfolio. Its folder categories map to the Standard View's professional content:
+
+| Folder | Standard portfolio content |
+| --- | --- |
+| Projects | Seven featured project guides: Master AI, Knowledge Center System, Internal Email System, HR Information System, BOLEKpad, Online Printing Store and Developers Playground / DevAI. |
+| Profile | Résumé, professional experience, education and professional development. |
+| Skills & Expertise | Strategic HR, digital strategy and branding, AI and automation, cloud and engineering, and process operations. |
+| Developer Lab | Developer Toolkit, SVG Library, technical articles, repository explorer and project guides. |
+| Contact & Links | Contact form, professional email, LinkedIn, GitHub and résumé download. |
+
+Folder file previews use descriptions aligned with the Standard View. Where a destination URL is provided, **Open** opens that destination; **Download** opens the configured résumé PDF; and **Share** uses the browser share sheet when available, with a copy-link fallback. Actions without a configured destination remain illustrative prototype actions. The folder interface does not become a real cloud file manager or backend document store.
+
+### Preservation and change control
+
+- Keep the Standard View's existing page components and design system intact when updating Folder View.
+- Keep the Folder View's existing folder artwork, desk composition, animations, typography, responsive behavior and interaction language intact when updating its content.
+- Update the two presentations from the same verified portfolio information; do not invent project maturity, public availability, client names or credentials.
+- Check all seven project destinations, profile and contact links, résumé download, responsive behavior and both view-switch placements after content changes.
+- The standalone artifact's own documentation is maintained in [Jelvan Folder Portfolio Design/README.md](./Jelvan%20Folder%20Portfolio%20Design/README.md).
