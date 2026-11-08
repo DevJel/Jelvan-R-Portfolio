@@ -497,7 +497,7 @@ This artifact is also used as the Folder View presentation for the main portfoli
 
 | Folder | Contents represented | Main portfolio destination |
 | --- | --- | --- |
-| Projects | Master AI, Knowledge Center System, Internal Email System, HR Information System, BOLEKpad, Online Printing Store and Developers Playground / DevAI. | [Selected project guides](https://portfolio.jelvan.pro/projects) |
+| Projects | Master AI, LEARNING MANAGEMENT SYSTEM — PROCTORAVA, Knowledge Center System, Internal Email System, HR Information System, BOLEKpad, Online Printing Store and Developers Playground / DevAI. | [Selected project guides](https://portfolio.jelvan.pro/projects) |
 | Profile | Professional résumé, experience, education and professional development. | [Résumé](https://portfolio.jelvan.pro/portfolio/resume) |
 | Skills & Expertise | Strategic HR, digital strategy and branding, AI and automation, cloud and engineering, process and operations. | [About](https://portfolio.jelvan.pro/portfolio/about) |
 | Developer Lab | Developer Toolkit, SVG Library, technical articles, GitHub repositories and project guides. | [Developer tools](https://portfolio.jelvan.pro/tools) |
@@ -558,3 +558,6 @@ Every folder uses the same three-dot menu and the same three actions:
 There is no add-item action, add-file control, trash action or report/share action in the folder menu. Folder contents are curated in the portfolio source.
 
 External destinations such as GitHub and LinkedIn open in a separate browser tab. Résumé items retain their configured PDF download action. The Contact Form item opens the existing Standard View contact page inside the expanded item, preserving its name, email and message fields, hidden honeypot, validation, sending state and visitor confirmation. Its submission continues through the existing `POST /api/contact` Worker and private mailer service binding to Amazon SES SMTP; the SMTP credentials remain in Cloudflare Secrets Store and are never placed in the Folder View browser code. The portfolio inbox is `hello@work.jelvan.pro`, with the visitor address used as Reply-To and the existing visitor acknowledgment/BCC workflow retained.
+
+
+The Projects folder includes **LEARNING MANAGEMENT SYSTEM — PROCTORAVA** as the second item, linked to `/projects/proctorava-learning-management-system` in the Standard View. Its portfolio description and desktop/mobile artwork are maintained in the main repository so the two presentations stay aligned.
