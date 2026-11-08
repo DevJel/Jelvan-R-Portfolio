@@ -8,6 +8,7 @@ import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 
 const projectRoutes: Array<{ match: string; slug: string }> = [
   { match: 'master ai', slug: 'master-ai-multi-agent-workspace' },
+  { match: 'proctorava', slug: 'proctorava-learning-management-system' },
   { match: 'knowledge center', slug: 'knowledge-center-system' },
   { match: 'internal email', slug: 'internal-email-system' },
   { match: 'hr information', slug: 'hr-information-system' },
