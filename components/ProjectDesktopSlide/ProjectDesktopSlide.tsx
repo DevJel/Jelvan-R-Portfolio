@@ -25,7 +25,7 @@ const getProjectRoute = (title: string): string => {
 
 const ProjectDesktopSlide = ({
   slideNumberImg, projectDescription, projectPurpose, projectAdvantages, projectFeatures,
-  projectImg, projectArt, projectMobileImg, projectMobilePreview, projectTechnologies, projectTitle,
+  projectImg, projectArt, projectMobileImg, projectMobilePreview, projectTechnologies, projectTitle, projectDeveloper,
   slideBgColor, technologyIcons, slideHeight,
 }: IHighlightedProject): JSX.Element | null => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -40,7 +40,7 @@ const ProjectDesktopSlide = ({
         <Styled.ImageWrapper className={projectMobilePreview ? 'device-preview' : undefined}>{projectMobilePreview ? <div className="device-preview-stage"><div className="device-preview-laptop"><Image src={projectImg} height={900} width={1440} quality={95} objectFit="contain" layout="responsive" alt={`${projectTitle} desktop application preview`} /></div><div className="device-preview-phone"><Image src={projectMobileImg} height={900} width={520} quality={95} objectFit="contain" layout="responsive" alt={`${projectTitle} mobile application preview`} /></div></div> : projectArt ?? <Image src={projectImg} height={900} width={1440} quality={95} objectFit="contain" layout="responsive" alt={`${projectTitle} application dashboard preview`} />}</Styled.ImageWrapper>
       </Styled.Figure></Styled.LeftColumn>
       <Styled.RightColumn>
-        <SectionHeader variant="small" headerText={projectTitle} margin="0" color="#f48120" withGradient />
+        <SectionHeader variant="small" headerText={projectTitle} margin="0" color="#f48120" withGradient />\n        {projectDeveloper && <Styled.ProjectDeveloper>Developed by {projectDeveloper}</Styled.ProjectDeveloper> }
         <Styled.IconWrapper>{technologyIcons.map((icon,id)=><Styled.Icon key={id}>{icon}</Styled.Icon>)}</Styled.IconWrapper>
         <PortfolioParagraph margin="1.25rem 0" paragraphText={projectDescription} withDarkColor={false} variant="large" withAnimatedPresence />
         <Styled.DetailGrid>
