@@ -63,7 +63,7 @@ const projects: Project[] = [
     links: []
   },
   {
-    slug: 'knowledge-center-system', number: '09', title: 'Knowledge Center System',
+    slug: 'knowledge-center-system', number: '03', title: 'Knowledge Center System',
     summary: 'A structured technical learning library with topic pages, implementation walkthroughs, diagrams, examples and references.',
     maturity: 'Public source repository and live demonstration are available. Verify current dependencies and deployment configuration before production use.',
     stack: ['HTML', 'CSS', 'JavaScript', 'Cloudflare Pages', 'Markdown'],
@@ -85,7 +85,7 @@ const projects: Project[] = [
     links: [{ label: 'Public source repository', url: 'https://github.com/DevJel/knowledge-center-system' }, { label: 'Open live demonstration', url: 'https://app-bible.jelvan.pro/' }]
   },
   {
-    slug: 'internal-email-system', number: '03', title: 'Internal Email System',
+    slug: 'internal-email-system', number: '04', title: 'Internal Email System',
     summary: 'An email operations workspace concept for contact organization, templates, campaign preparation, reply workflows and responsible sending.',
     maturity: 'Private application. Public page provides architecture guidance only; no private contact data, sender identity, domain settings or mail credentials are included.',
     stack: ['Cloudflare Workers', 'D1 Database', 'Amazon SES', 'JavaScript', 'HTML & CSS'],
@@ -106,7 +106,7 @@ const projects: Project[] = [
     links: []
   },
   {
-    slug: 'hr-information-system', number: '04', title: 'HR Information System',
+    slug: 'hr-information-system', number: '05', title: 'HR Information System',
     summary: 'A modular HR application prototype for employee lifecycle workflows, directory views, onboarding, offboarding and administrative processes.',
     maturity: 'Public repository. Prototype or demo modules must not be treated as production HR, payroll or employee-record software without a full security and compliance review.',
     stack: ['Cloudflare Pages', 'Pages Functions', 'D1 Database', 'JavaScript', 'HTML & CSS'],
@@ -127,7 +127,7 @@ const projects: Project[] = [
     links: [{ label: 'Public source repository', url: 'https://github.com/DevJel/jelhr-system' }]
   },
   {
-    slug: 'bolekpad-personal-workspace', number: '05', title: 'BOLEKpad — Personal Workspace',
+    slug: 'bolekpad-personal-workspace', number: '06', title: 'BOLEKpad — Personal Workspace',
     summary: 'A personal productivity workspace concept combining notes, documents, pages, calendar utilities, attachments and AI-assisted tools.',
     maturity: 'Private application. The public showcase does not expose private source, account data, service endpoints or production configuration.',
     stack: ['React 19', 'TypeScript', 'Vite', 'Tailwind CSS', 'Cloudflare Workers', 'D1 · KV · R2', 'Workers AI'],
@@ -148,7 +148,7 @@ const projects: Project[] = [
     links: []
   },
   {
-    slug: 'online-printing-store', number: '06', title: 'Online Printing Store',
+    slug: 'online-printing-store', number: '07', title: 'Online Printing Store',
     summary: 'A digital commerce and order-management concept for print products and business services, connecting customers with quoting, customization, payment, production and delivery workflows.',
     maturity: 'Concept showcase. The source repository and production stack have not been verified. This guide describes a recommended reference architecture, not a claim of an existing implementation.',
     stack: ['E-commerce concept', 'Product catalogue', 'Order workflow', 'Stack verification pending'],
@@ -170,7 +170,7 @@ const projects: Project[] = [
     links: []
   },
   {
-    slug: 'developers-playground-devai', number: '07', title: 'Developers Playground — DevAI',
+    slug: 'developers-playground-devai', number: '08', title: 'Developers Playground — DevAI',
     summary: 'A developer-focused AI workspace concept for assisted coding, project resources, integrations and repeatable development workflows.',
     maturity: 'Private application. Live feature availability and provider integrations can change; no private code, API keys or internal connector configuration is published.',
     stack: ['Cloudflare Workers', 'Workers AI', 'D1 Database', 'R2 Storage', 'Durable Objects', 'Turnstile', 'Amazon SES'],
