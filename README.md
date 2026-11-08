@@ -1,4 +1,4 @@
-# Jelvan® — Personal Portfolio
+# Jelvan® — Dual-View Personal Portfolio
 
 **Live website:** [https://portfolio.jelvan.pro](https://portfolio.jelvan.pro)  
 **Repository:** [DevJel/Jelvan-R-Portfolio](https://github.com/DevJel/Jelvan-R-Portfolio)<br />
@@ -49,162 +49,47 @@ Core experience:
 
 The design uses a restrained visual system with orange brand accents, light/cream surfaces, dark text, responsive imagery, and reusable components.
 
+### Portfolio viewing modes
+
+The homepage offers two presentations of the same professional portfolio. The view selector remembers the visitor's choice in browser storage; new visitors default to Folder View.
+
+| View | Entry experience | Content |
+| --- | --- | --- |
+| **Folder View** | Standalone desktop-inspired desk with five interactive folders. | Projects; Profile; Skills & Expertise; Developer Lab; Contact & Links. Folder cards link to the corresponding portfolio routes and resources. |
+| **Standard View** | Original Next.js portfolio experience with its existing navigation and page layouts. | Professional landing page, About, Projects, Contact, Résumé, developer tools, SVG library, repository explorer and articles. |
+
+The two views intentionally retain different visual designs. Folder View is a content-oriented alternative, not a replacement or redesign of the Standard View. The source content map is maintained in [PORTFOLIO-CONTENT-MAP.md](./PORTFOLIO-CONTENT-MAP.md). The standalone folder artifact and its design notes are in [Jelvan Folder Portfolio Design](./Jelvan%20Folder%20Portfolio%20Design/README.md).
+
+
 ---
 
 ## 2. Featured projects
 
+The seven projects below are the same seven entries used by the Standard View project showcase and the Folder View **Projects** folder. Descriptions communicate intended scope and maturity; a portfolio guide or link is not proof that a separate product is production-ready.
 
-<table>
-  <tr>
-    <td width="50%" valign="top">
-      <h3>Master AI — Multi Agent Worker</h3>
-      <p>Specialized AI workers coordinate repeatable small-business tasks and department workflows. AI platform: Muse AI.</p>
-      <p>Website: not confirmed · <a href="https://github.com/Dev-Jel-Works/master-CEO-ai-">GitHub (private)</a></p>
-    </td>
-    <td width="50%" valign="top">
-      <h3>Knowledge Center System</h3>
-      <p>A digital library for organized documentation, learning resources, and reference materials.</p>
-      <a href="https://app-bible.jelvan.pro/">Website</a> · <a href="https://github.com/DevJel/knowledge-center-system">GitHub (public)</a>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" valign="top">
-      <h3>Internal Email System</h3>
-      <p>Internal communications and workflow automation, with Amazon SES as the email delivery platform.</p>
-      <p>Website: not confirmed · <a href="https://github.com/Dev-Jel-Works/Email-LEADer-">GitHub (private)</a></p>
-    </td>
-    <td width="50%" valign="top">
-      <h3>HR Information System</h3>
-      <p>Recruitment, onboarding, employee records, access control, and workforce reporting. In development; not ready for real employee data.</p>
-      <p><a href="https://jelhr-system.pages.dev/">Website (availability unverified)</a> · <a href="https://github.com/DevJel/jelhr-system">GitHub (public)</a></p>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" valign="top">
-      <h3>Workspace Pad — BOLEKpad</h3>
-      <p>A productivity workspace for notes, documents, attachments, AI-assisted features, and reminders.</p>
-      <p><a href="https://bolekpad.jelvan.pro/">Website (availability unverified)</a> · <a href="https://github.com/Dev-Jel-Works/Bolekpad">GitHub (private)</a></p>
-    </td>
-    <td width="50%" valign="top">
-      <h3>Online Printing Store</h3>
-      <p>An online storefront concept for print catalog browsing, order details, and print request intake.</p>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" valign="top">
-      <h3>Developers Playground — DevAI</h3>
-      <p>A developer environment for web development, coding workflows, project progress, and monitoring.</p>
-      <p><a href="https://app.xcoder.jelvan.pro/">xCoder website</a> · <a href="https://github.com/DevJel/xCoder-V2">xCoder GitHub (private)</a> · <a href="https://github.com/Dev-Jel-Works/Dev-ai-Controller">Controller GitHub (private)</a></p>
-    </td>
-    <td width="50%" valign="top">
-      <h3>Explore the portfolio</h3>
-      <p>Explore the professional profile, selected work, and contact options.</p>
-      <a href="https://portfolio.jelvan.pro/">Open live portfolio ↗</a>
-    </td>
-  </tr>
-</table>
+| Project | Focus | Status / public reference |
+| --- | --- | --- |
+| **Master AI — Multi-Agent Workspace** | Specialist assistants, knowledge retrieval and human-reviewed workflow automation for HR, finance, procurement, customer service, IT and operations. | Private product showcase; operational code and organization-specific configuration are not published. [Project guide](https://portfolio.jelvan.pro/projects/master-ai-multi-agent-workspace) |
+| **Knowledge Center System** | Policies, SOPs, process maps, learning paths, technical references, onboarding materials and operational playbooks. | Public repository and live sample: [Knowledge Center](https://app-bible.jelvan.pro/) · [GitHub](https://github.com/DevJel/knowledge-center-system) |
+| **Internal Email System** | Internal announcements, recruitment correspondence, employee lifecycle notifications, customer communications and controlled outreach. | Private application showcase; provider configuration and sending credentials are not published. [Project guide](https://portfolio.jelvan.pro/projects/internal-email-system) |
+| **HR Information System** | End-to-end employee lifecycle: workforce planning, recruitment, assessment, pre-employment, onboarding, records, time, leave, performance, learning, employee relations and offboarding. | Public prototype repository; not approved for real employee or payroll records without production security and compliance review. [GitHub](https://github.com/DevJel/jelhr-system) · [Project guide](https://portfolio.jelvan.pro/projects/hr-information-system) |
+| **BOLEKpad — Personal Workspace** | Notes, documents, attachments, team knowledge, task coordination, calendars and AI-assisted productivity. | Private application showcase; private source and account data are not published. [Project guide](https://portfolio.jelvan.pro/projects/bolekpad-personal-workspace) |
+| **Online Printing Store** | Digital commerce concept for print catalogues, product configuration, quotations, artwork proofing, checkout, production and delivery. | Concept guide; source repository and production stack have not been verified. [Project guide](https://portfolio.jelvan.pro/projects/online-printing-store) |
+| **Developers Playground — DevAI** | AI-assisted coding support, project resources, connectors, media handling and development workflow tools. | Development showcase; live integrations and feature availability require independent verification. [Project guide](https://portfolio.jelvan.pro/projects/developers-playground-devai) |
 
+### 2.1 Organizational digital transformation approach
 
+The project collection demonstrates connected organizational capabilities rather than isolated tools. Human Resources is a central example because the employee journey spans teams, approvals, systems and sensitive records.
 
-The Projects page presents the following seven selected projects. These are portfolio descriptions of the products and their intended capabilities; the showcase does not mean that their separate application infrastructure is hosted inside this repository.
+**End-to-end HR lifecycle:** workforce planning and position control; recruitment and applicant tracking; candidate assessment; pre-employment checks and offers; onboarding and provisioning; employee records and self-service; time, attendance and leave; performance and learning; employee relations; payroll and benefits integrations; offboarding, access revocation, records retention and workforce analytics.
 
-### 2.1 Multi Agent Worker — Master AI
+**Additional organization-wide domains:** finance and procurement; customer operations and service management; IT operations and identity; workflow and document management; learning and knowledge; data governance and analytics; AI assistants and automation with human approval checkpoints.
 
-An AI-powered workforce concept for small businesses. Master AI coordinates multiple specialized automated workers across business departments, helping teams handle repeatable tasks, organize operations, and support day-to-day workflows.
+**Implementation principle:** discover and map the current process, assign service ownership, standardize data, define the target workflow, integrate through documented APIs, pilot with representative users, measure adoption and service outcomes, and scale through controlled releases.
 
-- **Purpose:** make department-level automation accessible to small businesses.
-- **Core concept:** multiple specialized AI workers, coordinated workflows, and automated task execution.
-- **AI platform:** powered by **Muse AI**.
-- **Showcase category:** multi-agent systems and business process automation.
+### 2.2 Project implementation guides
 
-### 2.2 Knowledge Center System
-
-A structured digital knowledge platform for organizing, maintaining, and accessing reference materials.
-
-- **Purpose:** centralize learning resources, documentation, and reference content.
-- **Core concept:** organized knowledge collections and an easy-to-navigate digital library.
-- **Sample:** [Open Knowledge Center](https://app-bible.jelvan.pro/).
-
-### 2.3 Internal Email System
-
-An internal email and communications platform powered by **Amazon Simple Email Service (AWS SES)**.
-
-- **Purpose:** support reliable internal and operational email communications.
-- **Core concept:** email delivery combined with workflow automation and AI-assisted capabilities.
-- **Integration:** AWS SES for email delivery, with application-side automation and AI features.
-- **Showcase category:** communications infrastructure and business workflow automation.
-
-### 2.4 HR Information System
-
-A connected HR platform concept for the full employee lifecycle — workforce planning, recruitment, selection, pre-employment, onboarding, employee records, time and attendance, performance, learning, employee relations, payroll and benefits integrations, offboarding and alumni records.
-
-- **Purpose:** bring HR administration and workforce information into a structured system.
-- **Core areas:** workforce planning; applicant tracking; candidate assessment; offers and pre-employment; onboarding; employee and manager self-service; time, attendance and leave; performance and learning; employee relations; payroll and benefits integrations; offboarding; access revocation; retention and analytics.
-- **Showcase category:** HR technology, employee lifecycle management, and workforce operations.
-
-### 2.5 Workspace Pad — BOLEKpad
-
-A personal productivity workspace that brings notes, documents, attachments, and communication tools together.
-
-- **Purpose:** provide a focused digital workspace for everyday work.
-- **Core areas:** notes, documents, attachments, AI-assisted features, and workflow reminders.
-- **Showcase category:** personal productivity and workspace tooling.
-
-### 2.6 Online Printing Store
-
-An online storefront concept for ordering print products through a digital shopping experience.
-
-- **Purpose:** make print-product discovery and ordering more convenient.
-- **Core areas:** product presentation, catalog browsing, order details, and print request intake.
-- **Showcase category:** e-commerce and online service ordering.
-
-### 2.7 Developers Playground — DevAI
-
-A developer-focused environment for web development, coding workflows, and project monitoring.
-
-- **Purpose:** bring development utilities and AI-assisted capabilities into one workspace.
-- **Core areas:** web development, coding assistance, project progress, and monitoring.
-- **Showcase category:** developer tooling and software delivery workflows.
-
----
-
-
-### 2.8 Organizational digital transformation approach
-
-The portfolio's project collection is intended to demonstrate how organizations can modernize connected capabilities rather than purchase disconnected tools. A practical transformation program should begin with process discovery, service ownership, data governance and measurable outcomes.
-
-**Human Resources — end-to-end employee lifecycle**
-
-1. Workforce planning, organization design, headcount and position approvals.
-2. Recruitment marketing, careers site, requisitions, applicant tracking and candidate relationship management.
-3. Selection, interview scheduling, scorecards, assessments and documented decisions.
-4. Pre-employment checks, consent, offers, e-signature and document collection.
-5. Onboarding, policy acknowledgements, orientation, equipment, identity provisioning and probation tasks.
-6. Employee master data, employee self-service, manager self-service, HR help desk and case management.
-7. Time, attendance, shifts, leave, payroll and benefits integrations.
-8. Performance, goals, learning, skills, certifications, succession and internal mobility.
-9. Employee relations, grievances, accommodations and confidential case workflows.
-10. Offboarding, exit interviews, knowledge transfer, asset return, access revocation, final-pay coordination and statutory documents.
-11. Records retention, alumni pathways, audit evidence and workforce analytics.
-
-**Additional organization-wide systems**
-
-| Domain | Relevant systems and capabilities |
-| --- | --- |
-| Finance | General ledger, accounts payable/receivable, budgeting, expense claims, invoicing, procurement approvals and financial reporting |
-| Procurement | Vendor onboarding, supplier records, purchase requests, purchase orders, contract lifecycle, approvals and spend analytics |
-| Customer operations | CRM, contact center, case management, service desk, customer feedback, knowledge base and SLA monitoring |
-| IT operations | IT service management, asset management, identity and access management, endpoint inventory, change management, incident and problem management |
-| Operations | Workflow/BPM, document management, e-signature, inventory, scheduling, quality management and business continuity |
-| Learning and knowledge | LMS, skills taxonomy, policy/SOP library, onboarding learning paths, certification tracking and knowledge management |
-| Data and governance | Master data management, integration/API layer, business intelligence, dashboards, audit trails, retention and privacy controls |
-| Automation and AI | RPA, workflow orchestration, document extraction, AI assistants, search and summarization with human approval gates |
-
-**Implementation principle:** prioritize high-friction, high-volume workflows; map the current process; define the future process and accountable owner; standardize data; integrate systems through documented APIs; pilot with representative users; measure adoption, cycle time, error rate, service quality and compliance; then scale in controlled releases.
-
-### 2.9 Project implementation guides
-
-Every showcased project has a dedicated route under `/projects/[slug]`. Each guide provides a source-folder map, local setup sequence, suitable deployment pathways, project-specific system opportunities and engineering/security practices. Public repositories are linked where confirmed. Private application code is not republished; private projects are documented with safe reference folder structures and sanitized-demo guidance. The Online Printing Store remains a concept guide until its source repository and implementation stack are identified.
+Every featured project has a static guide under `/projects/[slug]`. Each guide describes project scope, maturity, architecture opportunities, a safe source-folder map, local setup, deployment pathways and engineering/security practices. Private application code is not republished; private projects use sanitized reference structures. The Online Printing Store is explicitly marked as a concept until its source and stack are verified.
 
 ---
 
@@ -404,9 +289,9 @@ The project uses Next.js Pages Router conventions. Page components are located i
 
 | Route | Purpose |
 | --- | --- |
-| `/` | Landing experience |
+| `/` | Homepage with remembered Folder View / Standard View selector; Folder View is the first-visit default |
 | `/portfolio/about` | About and professional profile |
-| `/portfolio/projects` | Selected projects and transformation capabilities |
+| `/portfolio/projects` | Selected projects and transformation capabilities |\n| `/portfolio/articles` | Articles and technical writing |
 | `/projects/[slug]` | Static implementation guide for each selected project, including source-folder map, setup, deployment pathways and best practices |
 | `/portfolio/contact` | Contact page |
 | `/portfolio/resume` | Résumé |
@@ -479,7 +364,7 @@ The seven dashboard masters live in `public/assets/portfolio/projects/` as SVG s
 
 The generated previews are referenced by both the highlighted-project carousel and the repository explorer/detail pages. They contain no product wordmarks or company branding; project names remain in the surrounding page content.
 
-The main navigation is maintained in `components/NavigationMenu/NavigationMenu.config.ts`. Links are grouped into Explore, Resources & Tools, and Profile sections; the menu supports keyboard dismissal, outside-click dismissal, and a labelled toggle control.
+The main navigation is maintained in `components/NavigationMenu/NavigationMenu.config.ts`. In Standard View, the view selector is placed at the bottom of the expanded navigation menu. In Folder View, the same selector remains a compact floating control. The menu supports keyboard dismissal, outside-click dismissal, and a labelled toggle control.
 
 ### 7.2 WebP artwork generation
 
