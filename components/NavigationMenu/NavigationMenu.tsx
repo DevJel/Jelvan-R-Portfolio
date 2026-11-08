@@ -10,7 +10,9 @@ import { navMenuLinks } from './NavigationMenu.config';
  *@function NavigationMenu
  *@returns {JSX.Element} - Rendered CardContent component
  */
-const NavigationMenu = (): JSX.Element => {
+interface Props { footer?: React.ReactNode; }
+
+const NavigationMenu = ({ footer }: Props): JSX.Element => {
   const { myContacts } = useContactConfig();
   const [isActive, setIsActive] = useState(false);
   const toggleNavMenu = () => setIsActive((prev) => !prev);
@@ -19,8 +21,8 @@ const NavigationMenu = (): JSX.Element => {
   const reRenderKeyTwo = `social-media-${isActive}`;
 
   return (
-    <Styled.Container onClick={toggleNavMenu}>
-      <div className={`icon-one ${isActive && 'active-one'}`}>
+    <Styled.Container>
+      <div className={`icon-one ${isActive && 'active-one'}`} onClick={toggleNavMenu} aria-label="Toggle navigation menu" role="button" tabIndex={0}>
         <div className="hamburger hamburger-one" />
       </div>
 
@@ -52,6 +54,7 @@ const NavigationMenu = (): JSX.Element => {
             ))}
           </Styled.SocialMediaContactsList>
         </Styled.SocialMediaWrapper>
+        {footer ? <Styled.MenuFooter onClick={(event) => event.stopPropagation()}>{footer}</Styled.MenuFooter> : null}
       </Styled.Menu>
     </Styled.Container>
   );
