@@ -152,84 +152,49 @@ const PortfolioLandingPage: NextPage = () => {
     }
   };
 
+  const viewSwitcher = (inMenu: boolean) => (
+    <ViewControl $inMenu={inMenu}>
+      <ViewTrigger
+        type="button"
+        aria-label={`Switch portfolio view; currently ${view === 'folders' ? 'Folder View' : 'Standard'}`}
+        aria-expanded={panelOpen}
+        aria-controls="portfolio-view-options"
+        onClick={() => setPanelOpen((open) => !open)}
+      >
+        <span aria-hidden="true" />
+        <span>Switch view</span>
+        <span aria-hidden="true">{panelOpen ? '−' : '⌄'}</span>
+      </ViewTrigger>
+      <ViewPanel id="portfolio-view-options" $open={panelOpen} role="group" aria-label="Portfolio views">
+        <ViewOption type="button" $active={view === 'folders'} aria-pressed={view === 'folders'} onClick={() => changeView('folders')}>
+          Folder View
+        </ViewOption>
+        <ViewOption type="button" $active={view === 'standard'} aria-pressed={view === 'standard'} onClick={() => changeView('standard')}>
+          Standard
+        </ViewOption>
+      </ViewPanel>
+    </ViewControl>
+  );
+
   return (
     <PortfolioLayout seo={PAGES.home}>
       <Viewport>
         {view === 'folders' ? (
-          <FolderFrame
-            title="Jelvan folder portfolio"
-            src={FOLDER_PORTFOLIO_URL}
-            loading="eager"
-            allow="clipboard-write"
-          />
+          <>
+            <FolderFrame
+              title="Jelvan folder portfolio"
+              src={FOLDER_PORTFOLIO_URL}
+              loading="eager"
+              allow="clipboard-write"
+            />
+            {viewSwitcher(false)}
+          </>
         ) : (
           <StandardView>
-            <Navbar isLogoExpanded={true} menuFooter={<ViewControl $inMenu={true}>
-          <ViewTrigger
-            type="button"
-            aria-label={`Switch portfolio view; currently ${view === 'folders' ? 'Folder View' : 'Standard'}`}
-            aria-expanded={panelOpen}
-            aria-controls="portfolio-view-options"
-            onClick={() => setPanelOpen((open) => !open)}
-          >
-            <span aria-hidden="true" />
-            <span>Switch view</span>
-            <span aria-hidden="true">{panelOpen ? '−' : '⌄'}</span>
-          </ViewTrigger>
-          <ViewPanel id="portfolio-view-options" $open={panelOpen} role="group" aria-label="Portfolio views">
-            <ViewOption
-              type="button"
-              $active={view === 'folders'}
-              aria-pressed={view === 'folders'}
-              onClick={() => changeView('folders')}
-            >
-              Folder View
-            </ViewOption>
-            <ViewOption
-              type="button"
-              $active={view === 'standard'}
-              aria-pressed={view === 'standard'}
-              onClick={() => changeView('standard')}
-            >
-              Standard
-            </ViewOption>
-          </ViewPanel>
-        </View} />
+            <Navbar isLogoExpanded={true} menuFooter={viewSwitcher(true)} />
             <PortfolioLanding />
           </StandardView>
         )}
-
-        {view === 'folders' ? <ViewControl $inMenu={view === 'standard'}>
-          <ViewTrigger
-            type="button"
-            aria-label={`Switch portfolio view; currently ${view === 'folders' ? 'Folder View' : 'Standard'}`}
-            aria-expanded={panelOpen}
-            aria-controls="portfolio-view-options"
-            onClick={() => setPanelOpen((open) => !open)}
-          >
-            <span aria-hidden="true" />
-            <span>Switch view</span>
-            <span aria-hidden="true">{panelOpen ? '−' : '⌄'}</span>
-          </ViewTrigger>
-          <ViewPanel id="portfolio-view-options" $open={panelOpen} role="group" aria-label="Portfolio views">
-            <ViewOption
-              type="button"
-              $active={view === 'folders'}
-              aria-pressed={view === 'folders'}
-              onClick={() => changeView('folders')}
-            >
-              Folder View
-            </ViewOption>
-            <ViewOption
-              type="button"
-              $active={view === 'standard'}
-              aria-pressed={view === 'standard'}
-              onClick={() => changeView('standard')}
-            >
-              Standard
-            </ViewOption>
-          </ViewPanel>
-        </View : null}Control>
       </Viewport>
     </PortfolioLayout>
   );
