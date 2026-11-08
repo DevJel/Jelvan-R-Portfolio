@@ -172,13 +172,13 @@ const PortfolioLandingPage: NextPage = () => {
         <ViewControl>
           <ViewTrigger
             type="button"
-            aria-label="Open portfolio view selector"
+            aria-label={`Switch portfolio view; currently ${view === 'folders' ? 'Folder View' : 'Standard'}`}
             aria-expanded={panelOpen}
             aria-controls="portfolio-view-options"
             onClick={() => setPanelOpen((open) => !open)}
           >
             <span aria-hidden="true" />
-            <span>{view === 'folders' ? 'Folder view' : 'Standard view'}</span>
+            <span>Switch view</span>
             <span aria-hidden="true">{panelOpen ? '−' : '⌄'}</span>
           </ViewTrigger>
           <ViewPanel id="portfolio-view-options" $open={panelOpen} role="group" aria-label="Portfolio views">
