@@ -150,13 +150,13 @@ The layout also uses responsive padding, text sizing, and grid/flex behavior to 
 
 The following entries are portfolio navigation cards embedded in the design. Their names and descriptions are synchronized with the Standard View; they are not files loaded from a local or cloud filesystem.
 
-| Folder | Sample entries |
+| Folder | Portfolio entries |
 | --- | --- |
-| Projects | Résumé — Jelvan; Launch — final; Moodboard; Brief.pdf |
-| Photos | Lisbon — RAW; Lookbook 2024; Stills |
-| Finance | Invoices; Contract.pdf; Q3 Report |
-| Travel | Kyoto — Itinerary; Boarding passes; Hotel — Kyoto |
-| Music | Demo v3; Edit notes; Grade v3 |
+| Projects | Master AI — Multi-Agent Workspace; Knowledge Center System; Internal Email System; HR Information System; BOLEKpad — Personal Workspace; Online Printing Store; Developers Playground — DevAI |
+| Profile | Professional Résumé; Professional Experience; Education & Development; Certifications |
+| Skills & Expertise | Strategic HR; Digital Strategy & Branding; AI & Automation; Cloud & Engineering; Process & Operations |
+| Developer Lab | Developer Toolkit; SVG Library; Technical Articles; GitHub Repositories; Project Guides |
+| Contact & Links | Contact Form; Email; LinkedIn; GitHub; Download CV |
 
 Folder card metadata is descriptive UI text (for example, `Private product guide`, `Career history`, or `Browser-based utilities`), not filesystem metadata.
 
