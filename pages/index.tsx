@@ -41,7 +41,7 @@ const ViewControl = styled.div<{ $inMenu?: boolean }>`
   position: ${({ $inMenu }) => ($inMenu ? 'relative' : 'absolute')};
   z-index: 1200;
   top: ${({ $inMenu }) => ($inMenu ? 'auto' : '17px')};
-  right: ${({ $inMenu }) => ($inMenu ? 'auto' : 'max(20px, calc((100vw - 1180px) / 2)')};
+  right: ${({ $inMenu }) => ($inMenu ? 'auto' : 'max(20px, calc((100vw - 1180px) / 2))')};
   display: flex;
   flex-direction: column;
   align-items: flex-end;
