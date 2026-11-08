@@ -38,7 +38,7 @@ A standalone, interactive desktop-inspired Folder View for the Jelvan personal p
 | Styling | Embedded CSS, Tailwind CSS utility output, and custom CSS |
 | Typography | Optimistic and Optimistic Mono, with system fallbacks |
 | Dependencies at runtime | No separate package installation is required to open the HTML file |
-| Data model | Demonstration content embedded in the page |
+| Data model | Portfolio navigation cards, descriptions and destination links embedded in the page |
 | Status | Standalone Folder View artifact linked to the main portfolio |
 
 This folder remains a separate standalone HTML artifact, not a Next.js source directory. It is embedded by the main homepage at `https://portfolio.jelvan.pro/` and is also published at `https://jelvan-folder-portfolio-design.pages.dev/`. Its cards link to the main portfolio's routes and resources; the artifact does not host the main site's contact form, Workers, email relay, or other backend services.
@@ -443,7 +443,7 @@ For future updates, record:
 
 ## Known demo limitations
 
-- The folder contents are embedded sample data, not files loaded from a real computer.
+- Folder cards are embedded portfolio navigation data, not files loaded from a local computer or cloud drive.
 - Add-file behavior is temporary browser state and is not saved after refresh.
 - Open navigates only when a card has a configured destination. Download is configured for the résumé PDF. Share uses native share or clipboard where supported. The Skills & Expertise context-menu actions remain demonstration actions.
 - The artifact has no authentication, user accounts, database, cloud drive, or server-side API.
@@ -451,7 +451,7 @@ For future updates, record:
 - Font rendering depends on the declared WOFF2 files being available at the expected root paths.
 - The HTML document is a standalone artifact; its page metadata and font asset availability should be checked separately from the main Next.js site's metadata.
 
-These limitations are intentional to the current prototype scope and should not be described as production file-management capabilities.
+These limitations are intentional to the current prototype scope. The artifact is a visual portfolio navigator, not a production file-management or cloud-drive application.
 
 ---
 
