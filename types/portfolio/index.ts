@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 export interface IHighlightedProject {
   slideNumberImg?: string;
   projectTitle: string;
+  projectDeveloper?: string;
   projectDescription: string;
   projectPurpose: string;
   projectAdvantages: string[];
