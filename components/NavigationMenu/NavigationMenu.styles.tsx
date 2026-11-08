@@ -185,8 +185,8 @@ export const MenuFooter = styled.div`
   position: relative;
   z-index: 2;
   width: 100%;
-  align-items: flex-start;
-  justify-content: flex-start;
+  align-items: flex-end;
+  justify-content: flex-end;
   margin-top: 2rem;
   padding-top: 1.25rem;
   border-top: 1px solid rgba(244, 129, 32, 0.2);
