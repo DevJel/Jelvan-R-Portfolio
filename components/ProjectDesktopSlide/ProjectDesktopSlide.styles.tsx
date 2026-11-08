@@ -62,6 +62,66 @@ export const ImageWrapper = styled.div`
     max-width: 100%;
     object-fit: contain;
   }
+  &.device-preview {
+    aspect-ratio: 8 / 5;
+    overflow: visible;
+    filter: none;
+    perspective: 1200px;
+  }
+
+  .device-preview-stage {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    isolation: isolate;
+  }
+
+  .device-preview-laptop {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    transform: translate3d(0, 0, 0) rotateY(-5deg) rotateX(1deg);
+    transform-origin: center;
+    filter: drop-shadow(0 20px 24px rgba(16, 24, 40, .18));
+    transition: transform .55s cubic-bezier(.2,.8,.2,1), filter .55s ease;
+  }
+
+  .device-preview-phone {
+    position: absolute;
+    z-index: 2;
+    right: 1%;
+    bottom: -7%;
+    width: clamp(90px, 17%, 175px);
+    transform: translate3d(0, 0, 0) rotate(5deg);
+    transform-origin: bottom center;
+    filter: drop-shadow(0 18px 22px rgba(16, 24, 40, .24));
+    transition: transform .55s cubic-bezier(.2,.8,.2,1), filter .55s ease;
+  }
+
+  &.device-preview:hover .device-preview-laptop {
+    transform: translate3d(-1%, -2%, 0) rotateY(0deg) rotateX(0deg) scale(1.025);
+    filter: drop-shadow(0 28px 30px rgba(16, 24, 40, .22));
+  }
+
+  &.device-preview:hover .device-preview-phone {
+    transform: translate3d(-12%, -8%, 0) rotate(-2deg) scale(1.08);
+    filter: drop-shadow(0 24px 26px rgba(16, 24, 40, .3));
+  }
+
+  @media (max-width: 700px) {
+    &.device-preview { aspect-ratio: 4 / 3; }
+    .device-preview-stage { min-height: 220px; }
+    .device-preview-phone { width: clamp(78px, 23%, 125px); right: 0; bottom: -4%; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .device-preview-laptop, .device-preview-phone { transition: none; }
+  }
+
 
   :hover {
     transform: translateY(-3px);
