@@ -241,6 +241,10 @@ The main source areas are organized by page, reusable component, shared type, ut
 
 ```text
 Jelvan-R-Portfolio/
+├── Jelvan Folder Portfolio Design/
+│   ├── index.html                    # Standalone Folder View interface
+│   └── README.md                     # Folder View design and maintenance notes
+├── PORTFOLIO-CONTENT-MAP.md          # Standard / Folder View content parity
 ├── .github/
 │   └── workflows/
 │       └── deploy.yml                 # CI validation and Pages deployment
