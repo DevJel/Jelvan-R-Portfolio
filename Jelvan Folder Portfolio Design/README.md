@@ -533,3 +533,15 @@ Do not copy private client information, private source code, credentials, person
 - [ ] Open, Download and Share behavior is checked in a supported browser.
 - [ ] Existing folder artwork, animation, preview, close and responsive behavior remain intact.
 - [ ] The main portfolio's view selector remains available in Folder View and at the bottom of the Standard View navigation menu.
+
+## Full-screen portfolio item details
+
+Selecting a file or portfolio item opens a full-viewport detail workspace rather than a small floating preview. The workspace:
+
+- Expands edge-to-edge on desktop, tablet and mobile, with safe scrolling inside the detail view.
+- Keeps the item title, folder context, metadata, description and close control visible as part of the reading experience.
+- Embeds the matching Standard View destination when an item has a configured `url`, so the full existing portfolio page can be read without leaving Folder View. The **Open in new tab** and **Open** actions remain available if the destination blocks embedding or the visitor prefers a separate tab.
+- Preserves configured résumé download and share actions.
+- Supports closing with the close control or Escape to return to the folder workspace.
+
+The embedded page is the source for the complete long-form information; the folder's own title, description and metadata remain the contextual summary. Each destination should be checked for iframe embedding restrictions when its URL changes.
