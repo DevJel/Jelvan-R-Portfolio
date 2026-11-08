@@ -65,31 +65,9 @@ The two views intentionally retain different visual designs. Folder View is a co
 
 ## 2. Featured projects
 
-The seven projects below are the same seven entries used by the Standard View project showcase and the Folder View **Projects** folder. Descriptions communicate intended scope and maturity; a portfolio guide or link is not proof that a separate product is production-ready.
+The selected project sequence is Master AI, **LEARNING MANAGEMENT SYSTEM — PROCTORAVA** (project 02), Knowledge Center System, Internal Email System, HR Information System, BOLEKpad, Online Printing Store and Developers Playground / DevAI. PROCTORAVA is presented as a private learning and assessment management product showcase; its guide describes registration, email OTP, phone-based identity verification, assessment delivery, proctoring signals, administrator review, deployment and privacy practices. This is a product showcase, not a claim that every integration or production control is currently live.
 
-| Project | Focus | Status / public reference |
-| --- | --- | --- |
-| **Master AI — Multi-Agent Workspace** | Specialist assistants, knowledge retrieval and human-reviewed workflow automation for HR, finance, procurement, customer service, IT and operations. | Private product showcase; operational code and organization-specific configuration are not published. [Project guide](https://portfolio.jelvan.pro/projects/master-ai-multi-agent-workspace) |
-| **Knowledge Center System** | Policies, SOPs, process maps, learning paths, technical references, onboarding materials and operational playbooks. | Public repository and live sample: [Knowledge Center](https://app-bible.jelvan.pro/) · [GitHub](https://github.com/DevJel/knowledge-center-system) |
-| **Internal Email System** | Internal announcements, recruitment correspondence, employee lifecycle notifications, customer communications and controlled outreach. | Private application showcase; provider configuration and sending credentials are not published. [Project guide](https://portfolio.jelvan.pro/projects/internal-email-system) |
-| **HR Information System** | End-to-end employee lifecycle: workforce planning, recruitment, assessment, pre-employment, onboarding, records, time, leave, performance, learning, employee relations and offboarding. | Public prototype repository; not approved for real employee or payroll records without production security and compliance review. [GitHub](https://github.com/DevJel/jelhr-system) · [Project guide](https://portfolio.jelvan.pro/projects/hr-information-system) |
-| **BOLEKpad — Personal Workspace** | Notes, documents, attachments, team knowledge, task coordination, calendars and AI-assisted productivity. | Private application showcase; private source and account data are not published. [Project guide](https://portfolio.jelvan.pro/projects/bolekpad-personal-workspace) |
-| **Online Printing Store** | Digital commerce concept for print catalogues, product configuration, quotations, artwork proofing, checkout, production and delivery. | Concept guide; source repository and production stack have not been verified. [Project guide](https://portfolio.jelvan.pro/projects/online-printing-store) |
-| **Developers Playground — DevAI** | AI-assisted coding support, project resources, connectors, media handling and development workflow tools. | Development showcase; live integrations and feature availability require independent verification. [Project guide](https://portfolio.jelvan.pro/projects/developers-playground-devai) |
-
-### 2.1 Organizational digital transformation approach
-
-The project collection demonstrates connected organizational capabilities rather than isolated tools. Human Resources is a central example because the employee journey spans teams, approvals, systems and sensitive records.
-
-**End-to-end HR lifecycle:** workforce planning and position control; recruitment and applicant tracking; candidate assessment; pre-employment checks and offers; onboarding and provisioning; employee records and self-service; time, attendance and leave; performance and learning; employee relations; payroll and benefits integrations; offboarding, access revocation, records retention and workforce analytics.
-
-**Additional organization-wide domains:** finance and procurement; customer operations and service management; IT operations and identity; workflow and document management; learning and knowledge; data governance and analytics; AI assistants and automation with human approval checkpoints.
-
-**Implementation principle:** discover and map the current process, assign service ownership, standardize data, define the target workflow, integrate through documented APIs, pilot with representative users, measure adoption and service outcomes, and scale through controlled releases.
-
-### 2.2 Project implementation guides
-
-Every featured project has a static guide under `/projects/[slug]`. Each guide describes project scope, maturity, architecture opportunities, a safe source-folder map, local setup, deployment pathways and engineering/security practices. Private application code is not republished; private projects use sanitized reference structures. The Online Printing Store is explicitly marked as a concept until its source and stack are verified.
+PROCTORAVA artwork uses the existing repository assets `public/assets/portfolio/projects/desktopview-proctorava.png` and `mobileview-proctorava.png`. The Standard View project slide layers the laptop and mobile previews and animates them independently on hover.
 
 ---
 
