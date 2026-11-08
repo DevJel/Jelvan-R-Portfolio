@@ -107,7 +107,7 @@ The expanded preview is presented as a dialog-like card with:
 - Open, Download, Share, and Back to folders controls.
 - Close control and a blurred backdrop.
 
-**Link behavior:** Open follows the item's configured destination in a new tab. Download opens the configured résumé PDF when the selected item provides a download destination. Share uses the browser's native share sheet when available, or copies the item's URL to the clipboard. Items without a destination retain a demo-only action.
+**Link behavior:** Open follows the item's configured destination in a new tab. Download triggers a browser download of the configured résumé PDF when the selected item provides a download destination. Share uses the browser's native share sheet when available, or copies the item's URL to the clipboard. Items without a destination retain a demo-only action.
 
 ### 6. Add-file demonstration
 
@@ -153,10 +153,10 @@ The following entries are portfolio navigation cards embedded in the design. The
 | Folder | Portfolio entries |
 | --- | --- |
 | Projects | Master AI — Multi-Agent Workspace; Knowledge Center System; Internal Email System; HR Information System; BOLEKpad — Personal Workspace; Online Printing Store; Developers Playground — DevAI |
-| Profile | Professional Résumé; Professional Experience; Education & Development; Certifications |
+| Profile | Professional Profile; Professional Résumé; Professional Experience; Education & Development; Certifications |
 | Skills & Expertise | Strategic HR; Digital Strategy & Branding; AI & Automation; Cloud & Engineering; Process & Operations |
 | Developer Lab | Developer Toolkit; SVG Library; Technical Articles; GitHub Repositories; Project Guides |
-| Contact & Links | Contact Form; Email; LinkedIn; GitHub; Download CV |
+| Contact & Links | Contact Form; Email; Phone; LinkedIn; GitHub; Download CV |
 
 Folder card metadata is descriptive UI text (for example, `Private product guide`, `Career history`, or `Browser-based utilities`), not filesystem metadata.
 
