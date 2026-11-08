@@ -77,7 +77,8 @@ All URLs below use the public portfolio origin, `https://portfolio.jelvan.pro`, 
 | Folder card | Destination | Content alignment |
 | --- | --- | --- |
 | Contact Form | `/portfolio/contact` | Main portfolio inquiry form. |
-| Email | `mailto:hello@work.jelvan.pro` | Professional email contact. |\n| Phone | `tel:+639605193602` | Telephone contact listed in the public résumé. |
+| Email | `mailto:hello@work.jelvan.pro` | Professional email contact. |
+| Phone | `tel:+639605193602` | Telephone contact listed in the public résumé. |
 | LinkedIn | `https://my.linkedin.com/in/jelvanricolcol` | Professional profile. |
 | GitHub | `https://github.com/DevJel` | Public development profile. |
 | Download CV | `/assets/jelvan-ricolcol-resume.pdf` | Current résumé PDF. |
