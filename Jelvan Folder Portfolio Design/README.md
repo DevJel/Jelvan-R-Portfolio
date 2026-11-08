@@ -107,7 +107,7 @@ The expanded preview is presented as a dialog-like card with:
 - Open, Download, Share, and Back to folders controls.
 - Close control and a blurred backdrop.
 
-**Link behavior:** Open follows the item's configured destination in a new tab. Download triggers a browser download of the configured résumé PDF when the selected item provides a download destination. Share uses the browser's native share sheet when available, or copies the item's URL to the clipboard. Items without a destination retain a demo-only action.
+**Link behavior:** Open follows the item's configured destination in a new tab. Download requests a browser download of the configured résumé PDF; if cross-origin download restrictions apply, the PDF opens in a new tab for saving when the selected item provides a download destination. Share uses the browser's native share sheet when available, or copies the item's URL to the clipboard. Items without a destination retain a demo-only action.
 
 ### 6. Add-file demonstration
 
