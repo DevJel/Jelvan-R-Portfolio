@@ -22,11 +22,11 @@ const NavigationMenu = ({ footer }: Props): JSX.Element => {
 
   return (
     <Styled.Container>
-      <div className={`icon-one ${isActive && 'active-one'}`} onClick={toggleNavMenu} aria-label="Toggle navigation menu" role="button" tabIndex={0}>
+      <div className={`icon-one ${isActive && 'active-one'}`} onClick={toggleNavMenu} onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); toggleNavMenu(); } }} aria-label="Toggle navigation menu" aria-expanded={isActive} aria-controls="navigation-menu-panel" role="button" tabIndex={0}>
         <div className="hamburger hamburger-one" />
       </div>
 
-      <Styled.Menu isOpen={isActive}>
+      <Styled.Menu id="navigation-menu-panel" isOpen={isActive}>
         <Styled.RouterLinksList className={'router-list'} key={reRenderKey}>
           {navMenuLinks.map((link) => (
             <li key={link.id}>
