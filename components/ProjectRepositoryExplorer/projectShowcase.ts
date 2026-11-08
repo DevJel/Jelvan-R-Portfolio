@@ -29,6 +29,31 @@ export const projectShowcaseBySlug: Record<string, ProjectShowcaseMeta> = {
       'Can be adapted to different team workflows'
     ]
   },
+  'proctorava-learning-management-system': {
+    cover: '/assets/portfolio/projects/desktopview-proctorava.png',
+    backgroundColor: '#ffffff',
+    description: 'PROCTORAVA is a learning and assessment management platform focused on secure candidate and learner assessment journeys, combining registration, profile completion, identity verification, assessment delivery and proctoring workflows.',
+    purpose: 'Provide a consistent, auditable assessment journey from registration and identity checks through assessment completion and authorized review, while protecting candidate privacy and restricting sensitive verification data.',
+    languages: ['TypeScript', 'JavaScript', 'HTML', 'CSS', 'SQL', 'JSON'],
+    features: [
+      'Applicant and learner registration with structured profiles',
+      'Email one-time-password verification',
+      'Phone-based identity capture and liveness workflow',
+      'Assessment instructions, readiness checks and session delivery',
+      'Microphone and screen permission checks before monitored sessions',
+      'Browser focus-change signals and configurable review handling',
+      'Separate applicant and recruitment administrator experiences',
+      'Assessment status, reviewer workflow and outcome organization',
+      'Server-side email notifications and candidate communications'
+    ],
+    advantages: [
+      'Connects registration, verification and assessment in one guided journey',
+      'Improves consistency of candidate readiness checks',
+      'Helps reviewers organize sessions and assessment evidence',
+      'Supports remote assessment with transparent candidate instructions',
+      'Keeps sensitive identity and assessment records behind restricted access'
+    ]
+  },
   'knowledge-center-system': {
     cover: '/assets/portfolio/projects/02-knowledge-center-dashboard.webp',
     backgroundColor: '#ffffff',
