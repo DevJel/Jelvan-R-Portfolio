@@ -124,3 +124,8 @@ When Standard View content changes:
 - [ ] Folder View design and interaction behavior remain unchanged.
 - [ ] Standard View retains its original design and navigation.
 - [ ] Both deployments reference the intended commit and pass production smoke tests.
+
+
+## PROCTORAVA — Standard View project 02
+
+The second selected project is **LEARNING MANAGEMENT SYSTEM — PROCTORAVA**. Its cover artwork is sourced from `public/assets/portfolio/projects/desktopview-proctorava.png` and `mobileview-proctorava.png`; the desktop and mobile device images use separate hover transforms. The project guide route is `/projects/proctorava-learning-management-system`. The guide describes registration, email OTP, phone-based identity verification, assessment delivery, proctoring signals, recruitment administration, deployment and privacy/security considerations. Treat these as the product showcase scope; verify current production integrations and readiness independently.
