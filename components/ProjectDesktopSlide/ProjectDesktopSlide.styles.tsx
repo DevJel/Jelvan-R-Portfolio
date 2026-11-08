@@ -294,3 +294,12 @@ export const DetailPanel = styled.section`
   div{display:flex;flex-wrap:wrap;gap:.35rem;}
   span{display:inline-flex;padding:.25rem .55rem;border-radius:999px;background:#fff0e3;color:#713b13;font-size:.78rem;font-weight:650;}
 `;
+
+export const ProjectDeveloper = styled.p`
+  margin: .35rem 0 .6rem;
+  color: #7a4a2a;
+  font-size: .82rem;
+  font-weight: 650;
+  letter-spacing: .025em;
+  text-align: center;
+`;
