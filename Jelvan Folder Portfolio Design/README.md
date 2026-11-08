@@ -470,3 +470,52 @@ These limitations are intentional to the current prototype scope and should not 
 This design artifact is maintained as part of the Jelvan portfolio repository. The repository's top-level license and ownership terms apply unless a separate license is explicitly provided for this folder.
 
 Do not assume that bundled third-party libraries, fonts, or artwork are relicensed by this README. Their original license and usage terms remain applicable.
+
+---
+
+## Portfolio integration and synchronized content
+
+**Content alignment update — 9 November 2026**
+
+This artifact is also used as the Folder View presentation for the main portfolio at [portfolio.jelvan.pro](https://portfolio.jelvan.pro/). The folder layout remains an independent visual design; the portfolio integration updates the sample labels, descriptions and selected destinations without replacing the established desk, folder artwork, motion, typography or responsive treatment.
+
+### Folder categories
+
+| Folder | Contents represented | Main portfolio destination |
+| --- | --- | --- |
+| Projects | Master AI, Knowledge Center System, Internal Email System, HR Information System, BOLEKpad, Online Printing Store and Developers Playground / DevAI. | [Selected project guides](https://portfolio.jelvan.pro/projects) |
+| Profile | Professional résumé, experience, education and professional development. | [Résumé](https://portfolio.jelvan.pro/portfolio/resume) |
+| Skills & Expertise | Strategic HR, digital strategy and branding, AI and automation, cloud and engineering, process and operations. | [About](https://portfolio.jelvan.pro/portfolio/about) |
+| Developer Lab | Developer Toolkit, SVG Library, technical articles, GitHub repositories and project guides. | [Developer tools](https://portfolio.jelvan.pro/tools) |
+| Contact & Links | Contact form, professional email, LinkedIn, GitHub and résumé download. | [Contact](https://portfolio.jelvan.pro/portfolio/contact) |
+
+### Linked preview behavior
+
+The folder preview uses the selected item's description when one is provided.
+
+- **Open** opens the item's configured destination in a new browser tab.
+- **Download** opens the configured downloadable resource, currently the résumé PDF.
+- **Share** invokes the Web Share API when supported; otherwise it copies the configured URL when clipboard access is available.
+- Items without a configured destination continue to use the artifact's demonstration feedback. This is not a real local file system, cloud drive or persistent file-management service.
+
+### Content maintenance
+
+When the Standard View changes, review the corresponding folder content and links in `index.html`. Keep these aligned:
+
+1. Project names, descriptions, order and guide destinations.
+2. Profile, résumé, education and experience summaries.
+3. Skill categories and technical capability descriptions.
+4. Developer tools and resource destinations.
+5. Contact form, email, LinkedIn, GitHub and résumé download links.
+
+Do not copy private client information, private source code, credentials, personal records or unsupported claims into this public-facing artifact. Treat the Standard View's verified portfolio content as the source of truth, while retaining the Folder View's independent visual design.
+
+### Verification checklist
+
+- [ ] All five folder categories and labels are correct.
+- [ ] All seven project entries and guide destinations are present.
+- [ ] Résumé, About, Tools, SVG Library, Projects and Contact destinations resolve.
+- [ ] Email, LinkedIn and GitHub links are correct.
+- [ ] Open, Download and Share behavior is checked in a supported browser.
+- [ ] Existing folder artwork, animation, preview, close and responsive behavior remain intact.
+- [ ] The main portfolio's view selector remains available in Folder View and at the bottom of the Standard View navigation menu.
