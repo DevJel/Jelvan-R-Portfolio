@@ -19,7 +19,7 @@ export const useHighlightedProjectsData = (): { highlightedProjects: IHighlighte
       slideBgColor:'#fff7f0', technologyIcons:[<SiCloudflare key="cf" className="tech-icon"/>,<SiTypescript key="ts" className="tech-icon"/>],
     },
     {
-      slideNumberImg:'/assets/portfolio/8.svg', projectImg:'/assets/portfolio/projects/desktopview-proctorava.png', projectTitle:'LEARNING MANAGEMENT SYSTEM | PROCTORAVA',
+      slideNumberImg:'/assets/portfolio/2.svg', projectImg:'/assets/portfolio/projects/desktopview-proctorava.png', projectTitle:'LEARNING MANAGEMENT SYSTEM | PROCTORAVA',
       projectLinks:[], projectLinkNote:'Private product showcase. Applicant records, identity documents, verification results, assessment content and proctoring data are not public.',
       projectDescription:'PROCTORAVA is a learning and assessment management platform focused on secure candidate and learner assessment journeys. It brings applicant registration, profile completion, identity verification, assessment delivery and proctoring controls into one guided experience for recruitment, education and workforce development.',
       projectPurpose:'Provide a consistent, auditable assessment journey from registration and identity checks through assessment completion and authorized review, while protecting candidate privacy and restricting sensitive verification data.',
@@ -30,7 +30,7 @@ export const useHighlightedProjectsData = (): { highlightedProjects: IHighlighte
       slideBgColor:'#ffffff', technologyIcons:[<SiCloudflare key="cf" className="tech-icon"/>,<SiTypescript key="ts" className="tech-icon"/>,<SiAmazonaws key="aws" className="tech-icon"/>],
     },
     {
-      slideNumberImg:'/assets/portfolio/2.svg', projectImg:'/assets/portfolio/projects/02-knowledge-center-dashboard.webp', projectTitle:'Knowledge Center System',
+      slideNumberImg:'/assets/portfolio/3.svg', projectImg:'/assets/portfolio/projects/02-knowledge-center-dashboard.webp', projectTitle:'Knowledge Center System',
       projectLinks:[{label:'Open Knowledge Center',url:'https://app-bible.jelvan.pro/'},{label:'Public source repository',url:'https://github.com/DevJel/knowledge-center-system'}],
       projectDescription:'An organizational knowledge and learning platform for policies, SOPs, process maps, role-based learning paths, technical references, onboarding materials and operational playbooks.',
       projectPurpose:'Give employees and managers one trusted place to find current policies, procedures, training and operational knowledge, reducing repeated questions and inconsistent practices.',
@@ -41,7 +41,7 @@ export const useHighlightedProjectsData = (): { highlightedProjects: IHighlighte
       slideBgColor:'#ffffff', technologyIcons:[<SiCloudflare key="cf" className="tech-icon"/>],
     },
     {
-      slideNumberImg:'/assets/portfolio/3.svg', projectImg:'/assets/portfolio/projects/03-internal-email-dashboard.webp', projectTitle:'Internal Email System',
+      slideNumberImg:'/assets/portfolio/4.svg', projectImg:'/assets/portfolio/projects/03-internal-email-dashboard.webp', projectTitle:'Internal Email System',
       projectLinks:[], projectLinkNote:'Private workspace. Internal account details, sending configuration and operational endpoints are not published.',
       projectDescription:'A communications operations system for internal announcements, employee lifecycle notifications, recruitment correspondence, service updates, customer communications and approved outreach. Delivery is designed around provider integrations such as Amazon SES, with consent, security and audit controls.',
       projectPurpose:'Centralize organization-wide communications while ensuring messages are authorized, traceable, accessible and appropriate to each recipient group.',
@@ -52,7 +52,7 @@ export const useHighlightedProjectsData = (): { highlightedProjects: IHighlighte
       slideBgColor:'#fff7f0', technologyIcons:[<SiAmazonaws key="aws" className="tech-icon"/>,<SiCloudflare key="cf" className="tech-icon"/>],
     },
     {
-      slideNumberImg:'/assets/portfolio/4.svg', projectImg:'/assets/portfolio/projects/04-hris-dashboard.webp', projectTitle:'HR Information System',
+      slideNumberImg:'/assets/portfolio/5.svg', projectImg:'/assets/portfolio/projects/04-hris-dashboard.webp', projectTitle:'HR Information System',
       projectLinks:[{label:'Public source repository',url:'https://github.com/DevJel/jelhr-system'}],
       projectLinkNote:'Development prototype. Do not use for real employee or payroll records until production security and operational checks are complete.',
       projectDescription:'A modular Human Resources Information System designed around the complete employee lifecycle: workforce planning, requisition, recruitment, candidate assessment, pre-employment checks, offers, onboarding, employee records, time and attendance, leave, performance, learning, employee relations, compensation and benefits integrations, offboarding and alumni records. The current repository is a prototype foundation; production readiness must be assessed module by module.',
@@ -64,7 +64,7 @@ export const useHighlightedProjectsData = (): { highlightedProjects: IHighlighte
       slideBgColor:'#ffffff', technologyIcons:[<SiCloudflare key="cf" className="tech-icon"/>,<SiTypescript key="ts" className="tech-icon"/>],
     },
     {
-      slideNumberImg:'/assets/portfolio/5.svg', projectImg:'/assets/portfolio/projects/05-bolekpad-dashboard.webp', projectTitle:'BOLEKpad | Personal Workspace',
+      slideNumberImg:'/assets/portfolio/6.svg', projectImg:'/assets/portfolio/projects/05-bolekpad-dashboard.webp', projectTitle:'BOLEKpad | Personal Workspace',
       projectLinks:[], projectLinkNote:'Private application repository. Public description focuses on product capabilities; account-specific setup is not included.',
       projectDescription:'A configurable digital workplace concept for knowledge capture, team documentation, task coordination, calendars, document collaboration and AI-assisted productivity. It can support cross-functional teams when paired with organizational identity, retention and access policies.',
       projectPurpose:'Give teams a shared, governed workspace for work instructions, project notes, operational handovers, meeting outcomes and everyday collaboration.',
@@ -75,7 +75,7 @@ export const useHighlightedProjectsData = (): { highlightedProjects: IHighlighte
       slideBgColor:'#fff7f0', technologyIcons:[<SiCloudflare key="cf" className="tech-icon"/>,<SiReact key="react" className="tech-icon"/>,<SiTypescript key="ts" className="tech-icon"/>],
     },
     {
-      slideNumberImg:'/assets/portfolio/6.svg', projectImg:'/assets/portfolio/projects/06-printing-store-dashboard.webp', projectTitle:'Online Printing Store',
+      slideNumberImg:'/assets/portfolio/7.svg', projectImg:'/assets/portfolio/projects/06-printing-store-dashboard.webp', projectTitle:'Online Printing Store',
       projectLinks:[], projectLinkNote:'Concept showcase. A verified source repository and confirmed implementation stack have not yet been identified; technologies are intentionally not assumed.',
       projectDescription:'A digital commerce and service-ordering system that can support organizations offering physical products or print services, from catalogue discovery and configuration to quotation, payment, production, delivery and after-sales support.',
       projectPurpose:'Digitize customer-facing order journeys and connect sales, inventory, production, finance and delivery operations through traceable order records.',
@@ -86,7 +86,7 @@ export const useHighlightedProjectsData = (): { highlightedProjects: IHighlighte
       slideBgColor:'#ffffff', technologyIcons:[<SiReact key="react" className="tech-icon"/>],
     },
     {
-      slideNumberImg:'/assets/portfolio/7.svg', projectImg:'/assets/portfolio/projects/07-devai-dashboard.webp', projectTitle:'Developers Playground | DevAI',
+      slideNumberImg:'/assets/portfolio/8.svg', projectImg:'/assets/portfolio/projects/07-devai-dashboard.webp', projectTitle:'Developers Playground | DevAI',
       projectLinks:[{label:'Open xCoder',url:'https://app.xcoder.jelvan.pro/'}],
       projectLinkNote:'Development status varies by feature. Live payment, email, model and connector integrations require independent verification.',
       projectDescription:'An AI-assisted developer workspace designed to combine conversational coding support, project resources, connectors, media handling and development workflow tools in one browser-based environment.',
