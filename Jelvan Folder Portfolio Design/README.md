@@ -86,7 +86,9 @@ Folder artwork, tone, label placement, sample files, and entrance timing are con
 
 ### 4. Folder opening and file selection
 
-- Open a folder to reveal its sample file entries.
+- Every folder now uses the same options control and menu.
+- Open or close an individual folder, show all entries in that folder (rather than the compact four-item stack), close all folders, and lock or unlock the selected folder.
+- A locked folder prevents opening and selecting its entries; its options control remains available so it can be unlocked.
 - Select a file to show its selected state and update the live status text.
 - The selected item is reflected in the footer/status area.
 - The folder interaction uses a transition from the selected folder into a larger preview surface.
@@ -265,6 +267,10 @@ Do not rename or replace the font files as part of a documentation-only change.
 
 ## Layout and responsive behavior
 
+- On desktop widths (900px and above), the desk is constrained to the viewport height and the page itself does not scroll.
+- On mobile and smaller tablet widths, the layout remains naturally scrollable so folders and controls are reachable on shorter screens.
+- Expanded previews fit within the viewport; their content area can scroll independently if the content is taller than the available space.
+- Full-screen preview mode occupies the full browser viewport.
 - The main desk composition uses a full-viewport minimum height based on `100svh`.
 - The central content is constrained to approximately 1,280px.
 - Folder cards are arranged in a centered, wrapping flex layout.
