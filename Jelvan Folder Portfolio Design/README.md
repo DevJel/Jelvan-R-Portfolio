@@ -25,7 +25,7 @@ A standalone, interactive desktop-inspired folder interface created as a portfol
 
 ## Project overview
 
-**Latest interaction update — 8 November 2026:** desktop viewport fitting, expanded preview fullscreen, and consistent folder menu controls are implemented in `index.html`.
+**Latest interaction update — 8 November 2026:** the complete desktop workspace is viewport-fitted as one application surface, with all five folders arranged in a single responsive row on desktop, independent preview scrolling/fullscreen, and consistent folder menu controls.
 
 | Item | Details |
 | --- | --- |
