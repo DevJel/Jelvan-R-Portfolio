@@ -545,3 +545,16 @@ Selecting a file or portfolio item opens a full-viewport detail workspace rather
 - Supports closing with the close control or Escape to return to the folder workspace.
 
 The embedded page is the source for the complete long-form information; the folder's own title, description and metadata remain the contextual summary. Each destination should be checked for iframe embedding restrictions when its URL changes.
+
+
+## Folder controls and View All
+
+Every folder uses the same three-dot menu and the same three actions:
+
+1. **Open** — opens the folder stack so its individual items can be selected.
+2. **View All** — transitions the folder workspace out to the left and reveals every item in that folder in a dedicated, responsive, scrollable collection. Selecting an item opens its full-screen detail view.
+3. **Close** — closes the folder stack and returns to the desktop.
+
+There is no add-item action, add-file control, trash action or report/share action in the folder menu. Folder contents are curated in the portfolio source.
+
+External destinations such as GitHub and LinkedIn open in a separate browser tab. Résumé items retain their configured PDF download action. The Contact Form item opens the existing Standard View contact page inside the expanded item, preserving its name, email and message fields, hidden honeypot, validation, sending state and visitor confirmation. Its submission continues through the existing `POST /api/contact` Worker and private mailer service binding to Amazon SES SMTP; the SMTP credentials remain in Cloudflare Secrets Store and are never placed in the Folder View browser code. The portfolio inbox is `hello@work.jelvan.pro`, with the visitor address used as Reply-To and the existing visitor acknowledgment/BCC workflow retained.
