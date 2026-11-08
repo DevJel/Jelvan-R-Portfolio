@@ -110,7 +110,7 @@ When Standard View content changes:
 - Standard View and the homepage selector are part of the Next.js static export under `out/`, deployed to `portfolio.jelvan.pro`.
 - Folder View is a standalone HTML artifact at `Jelvan Folder Portfolio Design/index.html` and is embedded from `https://jelvan-folder-portfolio-design.pages.dev/`.
 - The two views use separate hosting outputs. A successful Next.js build does not prove that the standalone Folder View has been deployed.
-- Cloudflare Pages project settings for the standalone artifact must be verified in Cloudflare; this document does not claim that deployment settings or the latest production deployment have been independently checked.
+- The standalone Cloudflare Pages project was verified as `jelvan-folder-portfolio-design`, connected to this repository's `main` branch with root directory `Jelvan Folder Portfolio Design`, no build command and output directory `.`. The main Pages project remains `jelvan-r-portfolio`, repository root, `npm run build`, output `out`.
 
 ## Review checklist
 
