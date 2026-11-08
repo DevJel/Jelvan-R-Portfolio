@@ -25,6 +25,8 @@ A standalone, interactive desktop-inspired folder interface created as a portfol
 
 ## Project overview
 
+**Latest interaction update — 8 November 2026:** desktop viewport fitting, expanded preview fullscreen, and consistent folder menu controls are implemented in `index.html`.
+
 | Item | Details |
 | --- | --- |
 | Project name | Jelvan Folder Portfolio Design |
