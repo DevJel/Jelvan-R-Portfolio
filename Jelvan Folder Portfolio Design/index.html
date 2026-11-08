@@ -1172,6 +1172,48 @@ body {
 @keyframes folderItemEnter{from{opacity:0;transform:translateY(18px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
 @media(max-width:640px){.folder-all-view{padding:calc(env(safe-area-inset-top) + 18px) 16px calc(env(safe-area-inset-bottom) + 28px)}.folder-all-header{align-items:flex-start;margin-bottom:24px}.folder-all-title{font-size:34px}.folder-all-grid{grid-template-columns:1fr;gap:12px}.folder-all-sheet{max-width:100%;border-radius:16px}}
 @media(prefers-reduced-motion:reduce){.focus-grid,.folder-all-view,.folder-all-sheet{animation:none!important;transition:none!important}}
+
+/* View All inherits the exact dark desk canvas and lets every file artwork skin its whole tile. */
+.folder-all-view{
+  background:radial-gradient(circle at 50% 20%,#1a1a24 0%,#09090b 70%) !important;
+  color:#f7f7fb !important;
+  isolation:isolate;
+}
+.folder-all-view:before{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(ellipse 520px 300px at 50% 12%,rgba(76,141,255,.16),transparent 72%),
+    radial-gradient(ellipse 440px 380px at 0% 100%,rgba(34,211,238,.16),transparent 72%),
+    radial-gradient(ellipse 420px 360px at 100% 100%,rgba(147,51,234,.16),transparent 72%),
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:auto,auto,auto,44px 44px,44px 44px;
+  animation:folderDeskGlow 12s ease-in-out infinite alternate;
+}
+@keyframes folderDeskGlow{from{filter:hue-rotate(-8deg);opacity:.78}to{filter:hue-rotate(8deg);opacity:1}}
+.folder-all-kicker{color:#70a5ff}
+.folder-all-title{color:#f7f7fb}
+.folder-all-count{color:rgba(245,246,252,.58)}
+.folder-all-close{color:#f7f7fb;border-color:rgba(255,255,255,.2);background:rgba(255,255,255,.09);box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 8px 24px rgba(0,0,0,.22);backdrop-filter:blur(16px)}
+.folder-all-close:hover{background:rgba(255,255,255,.16)}
+.folder-all-sheet{
+  background:
+    radial-gradient(ellipse at 85% 0%,rgba(76,141,255,.17),transparent 58%),
+    linear-gradient(145deg,#20212b 0%,#111217 68%,#09090c 100%);
+  border:1px solid rgba(255,255,255,.13);
+  border-radius:12px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.13),0 0 0 .5px rgba(255,255,255,.07),0 22px 40px -18px rgba(0,0,0,.8);
+}
+.folder-all-sheet:before{content:"";position:absolute;inset:0;z-index:1;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);pointer-events:none}
+.folder-all-sheet--art:after{background:linear-gradient(180deg,rgba(5,6,12,.48),rgba(5,6,12,0) 42%,rgba(5,6,12,.62)) !important}
+.folder-all-sheet-shine{z-index:1;background:linear-gradient(180deg,rgba(255,255,255,.16),transparent 34%),radial-gradient(120% 80% at 80% 0%,rgba(255,255,255,.12),transparent 60%)}
+.folder-all-sheet-head,.folder-all-sheet-description{z-index:2}
+.folder-all-sheet-name,.folder-all-sheet-meta,.folder-all-sheet-description{color:#f7f7fb !important;text-shadow:0 1px 10px rgba(0,0,0,.45)}
+.folder-all-sheet-meta{color:rgba(247,247,251,.72) !important}
+.folder-all-sheet-lines{background:linear-gradient(145deg,rgba(42,45,59,.98),rgba(12,13,18,.98))}
+.folder-all-sheet-lines i{background:linear-gradient(90deg,rgba(255,255,255,.24),rgba(255,255,255,.055))}
+.folder-all-sheet:hover,.folder-all-sheet:focus-visible{box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 28px 52px -16px rgba(0,0,0,.9),0 0 0 1px rgba(112,165,255,.25)}
+@media(prefers-reduced-motion:reduce){.folder-all-view:before{animation:none}}
 </style>
 </head>
 <body>
