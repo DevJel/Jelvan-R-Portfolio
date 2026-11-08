@@ -67,7 +67,7 @@ const ViewTrigger = styled.button`
   border: 1px solid rgba(244,129,32,.28);
   border-radius: 999px;
   color: ${({ theme }) => theme.portfolio.text.dark};
-  background: ${({ theme }) => theme.portfolio.background?.light ?? 'rgba(255,255,255,.82)'};
+  background: rgba(255,255,255,.82);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   box-shadow: 0 5px 22px rgba(0,0,0,.12);
