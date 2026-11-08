@@ -19,7 +19,7 @@ export const useHighlightedProjectsData = (): { highlightedProjects: IHighlighte
       slideBgColor:'#fff7f0', technologyIcons:[<SiCloudflare key="cf" className="tech-icon"/>,<SiTypescript key="ts" className="tech-icon"/>],
     },
     {
-      slideNumberImg:'/assets/portfolio/2.svg', projectImg:'/assets/portfolio/projects/desktopview-proctorava.png', projectTitle:'LEARNING MANAGEMENT SYSTEM | PROCTORAVA',
+      slideNumberImg:'/assets/portfolio/2.svg', projectImg:'/assets/portfolio/projects/desktopview-proctorava.png', projectTitle:'LEARNING MANAGEMENT SYSTEM - PROCTORAVA', projectDeveloper:'Jelvan R · Developer',
       projectLinks:[], projectLinkNote:'Private product showcase. Applicant records, identity documents, verification results, assessment content and proctoring data are not public.',
       projectDescription:'PROCTORAVA is a learning and assessment management platform focused on secure candidate and learner assessment journeys. It brings applicant registration, profile completion, identity verification, assessment delivery and proctoring controls into one guided experience for recruitment, education and workforce development.',
       projectPurpose:'Provide a consistent, auditable assessment journey from registration and identity checks through assessment completion and authorized review, while protecting candidate privacy and restricting sensitive verification data.',
