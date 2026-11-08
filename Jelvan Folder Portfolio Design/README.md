@@ -1,15 +1,15 @@
 # Jelvan Folder Portfolio Design
 
-A standalone, interactive desktop-inspired folder interface created as a portfolio design artifact. The experience presents five tactile folders — **Projects, Photos, Finance, Travel, and Music** — arranged on a softly illuminated desk. Visitors can hover over folders, open a folder, inspect a file preview, and explore the interface's visual interactions.
+A standalone, interactive desktop-inspired Folder View for the Jelvan personal portfolio. It presents five tactile folders — **Projects, Profile, Skills & Expertise, Developer Lab, and Contact & Links** — arranged on a softly illuminated desk. Visitors can hover over folders, open a folder, inspect a portfolio item, and follow links into the corresponding Standard View pages and public resources.
 
-> **Source-preservation rule:** `index.html` is the supplied design artifact. Keep its markup, styles, scripts, assets, interactions, and content unchanged unless a separate change is explicitly requested. This documentation describes the existing implementation; it is not a redesign specification.
+> **Design-preservation rule:** keep the existing desk, folder artwork, typography, animations, responsive layout, and interaction language intact when synchronizing portfolio content. Content and destination links may be updated to match the Standard View; do not redesign the Folder View unless explicitly requested.
 
 ## Contents
 
 - [Project overview](#project-overview)
 - [Current files](#current-files)
 - [Experience and features](#experience-and-features)
-- [Folder and demo content](#folder-and-demo-content)
+- [Folder and portfolio content](#folder-and-portfolio-content)
 - [Visual design system](#visual-design-system)
 - [Typography](#typography)
 - [Layout and responsive behavior](#layout-and-responsive-behavior)
@@ -25,7 +25,7 @@ A standalone, interactive desktop-inspired folder interface created as a portfol
 
 ## Project overview
 
-**Latest interaction update — 8 November 2026:** the complete desktop workspace is viewport-fitted as one application surface, with all five folders arranged in a single responsive row on desktop, independent preview scrolling/fullscreen, and consistent folder menu controls.
+**Latest content and interaction update — 9 November 2026:** the complete desktop workspace is viewport-fitted as one application surface, with all five folders arranged in a single responsive row on desktop, independent preview scrolling/fullscreen, and consistent folder menu controls.
 
 | Item | Details |
 | --- | --- |
@@ -33,15 +33,15 @@ A standalone, interactive desktop-inspired folder interface created as a portfol
 | Entry point | `index.html` |
 | Format | Standalone HTML document |
 | Interface concept | Interactive desktop / file-folder workspace |
-| Primary experience | Five folders on an animated, atmospheric desk |
+| Primary experience | Five portfolio folders on an animated, atmospheric desk |
 | Framework/runtime | React UI bundled into the HTML artifact |
 | Styling | Embedded CSS, Tailwind CSS utility output, and custom CSS |
 | Typography | Optimistic and Optimistic Mono, with system fallbacks |
 | Dependencies at runtime | No separate package installation is required to open the HTML file |
 | Data model | Demonstration content embedded in the page |
-| Status | Standalone visual / interaction prototype |
+| Status | Standalone Folder View artifact linked to the main portfolio |
 
-This folder is an independent design artifact. It is not the source directory for the main Next.js portfolio application and does not deploy or operate the portfolio's contact form, Workers, email relay, or other backend services.
+This folder remains a separate standalone HTML artifact, not a Next.js source directory. It is embedded by the main homepage at `https://portfolio.jelvan.pro/` and is also published at `https://jelvan-folder-portfolio-design.pages.dev/`. Its cards link to the main portfolio's routes and resources; the artifact does not host the main site's contact form, Workers, email relay, or other backend services.
 
 ## Current files
 
@@ -69,15 +69,15 @@ Open `index.html` in a modern browser. The document includes its bundled interfa
 
 ### 2. Five interactive folders
 
-The main view displays five folders:
+The main view displays five folders. Their visual treatment and artwork remain individually configured in the bundled interface:
 
-1. **Projects** — light folder treatment with aurora artwork.
-2. **Photos** — light folder treatment with verdant artwork.
-3. **Finance** — dark folder treatment with glacier artwork and a contextual options menu.
-4. **Travel** — light folder treatment with ember artwork.
-5. **Music** — dark folder treatment with dusk artwork.
+1. **Projects** — seven featured systems and project guides; light aurora treatment.
+2. **Profile** — résumé, professional experience, education and certifications; light verdant treatment.
+3. **Skills & Expertise** — strategic HR, digital strategy, AI, automation, cloud and engineering capabilities; dark glacier treatment with the existing contextual menu.
+4. **Developer Lab** — browser-based developer tools, SVG Library, technical articles, repository explorer and project guides; light ember treatment.
+5. **Contact & Links** — contact form, email, LinkedIn, GitHub and résumé download; dark dusk treatment.
 
-Folder artwork, tone, label placement, sample files, and entrance timing are configured individually in the bundled interface.
+Folder labels and card data mirror the main portfolio's current content. The two views intentionally keep separate visual systems: the Folder View does not copy the Standard View's page layout or styling.
 
 ### 3. Hover and focus behavior
 
@@ -107,7 +107,7 @@ The expanded preview is presented as a dialog-like card with:
 - Open, Download, Share, and Back to folders controls.
 - Close control and a blurred backdrop.
 
-**Important:** these controls are demonstration interactions. The current artifact does not connect them to an actual filesystem, cloud drive, download service, or sharing backend.
+**Link behavior:** Open follows the item's configured destination in a new tab. Download opens the configured résumé PDF when the selected item provides a download destination. Share uses the browser's native share sheet when available, or copies the item's URL to the clipboard. Items without a destination retain a demo-only action.
 
 ### 6. Add-file demonstration
 
@@ -117,7 +117,7 @@ This is not persistent storage. A browser refresh resets the demonstration state
 
 ### 7. Context menu demonstration
 
-The Finance folder exposes a contextual options menu with sample actions:
+The Skills & Expertise folder retains its contextual options menu with sample actions:
 
 - Download report
 - Share…
@@ -146,9 +146,9 @@ The layout also uses responsive padding, text sizing, and grid/flex behavior to 
 
 ---
 
-## Folder and demo content
+## Folder and portfolio content
 
-The following entries are illustrative sample data embedded in the design. They are not real uploaded files.
+The following entries are portfolio navigation cards embedded in the design. Their names and descriptions are synchronized with the Standard View; they are not files loaded from a local or cloud filesystem.
 
 | Folder | Sample entries |
 | --- | --- |
@@ -158,7 +158,7 @@ The following entries are illustrative sample data embedded in the design. They 
 | Travel | Kyoto — Itinerary; Boarding passes; Hotel — Kyoto |
 | Music | Demo v3; Edit notes; Grade v3 |
 
-The preview labels include sample file types and sizes such as PDF, PNG, RAW, WAV, TXT, and other illustrative metadata. Treat all such metadata as presentation content, not verified file-system information.
+Folder card metadata is descriptive UI text (for example, `Private product guide`, `Career history`, or `Browser-based utilities`), not filesystem metadata.
 
 ---
 
@@ -389,7 +389,7 @@ This artifact can be hosted as static content. For a clean standalone deployment
 
 **Path warning:** the declared font URLs begin with `/fonts/`, which resolves from the host's domain root. If the folder is hosted at a nested URL such as `/Jelvan-Folder-Portfolio-Design/`, the font request still targets the domain-root `/fonts/` directory. Do not silently rewrite these paths during a documentation-only update.
 
-This folder is not independently configured as a Cloudflare Pages project. Hosting it from the main portfolio repository would require a hosting/routing decision outside this folder's current documentation scope.
+The main portfolio homepage embeds the standalone artifact from `https://jelvan-folder-portfolio-design.pages.dev/`. The HTML source is maintained at `Jelvan Folder Portfolio Design/index.html` in the main GitHub repository. The Pages project configuration is managed separately from the Next.js Pages project; verify its connected repository, root directory (`Jelvan Folder Portfolio Design`), and production branch before changing hosting settings. This repository file path alone does not prove that a deployment has completed.
 
 ---
 
@@ -431,11 +431,11 @@ For future updates, record:
 
 - The folder contents are embedded sample data, not files loaded from a real computer.
 - Add-file behavior is temporary browser state and is not saved after refresh.
-- Open, Download, Share, and Move to Trash are demonstration actions, not real file operations.
+- Open navigates only when a card has a configured destination. Download is configured for the résumé PDF. Share uses native share or clipboard where supported. The Skills & Expertise context-menu actions remain demonstration actions.
 - The artifact has no authentication, user accounts, database, cloud drive, or server-side API.
 - File sizes, modified dates, and file-type details are illustrative.
 - Font rendering depends on the declared WOFF2 files being available at the expected root paths.
-- The HTML document's current browser title is a generic artifact title; this documentation-only task intentionally does not alter it.
+- The HTML document is a standalone artifact; its page metadata and font asset availability should be checked separately from the main Next.js site's metadata.
 
 These limitations are intentional to the current prototype scope and should not be described as production file-management capabilities.
 
