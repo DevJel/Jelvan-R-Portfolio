@@ -5,6 +5,7 @@ import NavigationMenu from '../NavigationMenu/NavigationMenu';
 
 export interface Props {
   isLogoExpanded: boolean;
+  menuFooter?: React.ReactNode;
 }
 
 /**
@@ -12,11 +13,11 @@ export interface Props {
  *@param {number} prop -
  *@returns {JSX.Element} - Rendered Navbar component
  */
-const Navbar = ({ isLogoExpanded }: Props): JSX.Element => {
+const Navbar = ({ isLogoExpanded, menuFooter }: Props): JSX.Element => {
   return (
     <Styled.Container>
       <Logo isExpanded={isLogoExpanded} />
-      <NavigationMenu />
+      <NavigationMenu footer={menuFooter} />
     </Styled.Container>
   );
 };
