@@ -17,6 +17,12 @@ interface ServiceBinding {
 export interface Env {
   MAILER?: ServiceBinding;
   CONTACT_TO?: string;
+  /**
+   * Optional read-only GitHub token (Cloudflare secret). With it, /api/repos
+   * also lists private repositories by name and description only. Without
+   * it, only public repositories are returned.
+   */
+  GITHUB_TOKEN?: string;
 }
 
 const MAX_NAME = 120;
@@ -271,7 +277,188 @@ async function handleContact(request: Request, env: Env): Promise<Response> {
 }
 
 export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
+  async fetch(request: Request, env: Env, ctx: ExecutionContextLike): Promise<Response> {
+    const url = new URL(request.url);
+    if (url.pathname === '/api/repos') {
+      return handleRepos(request, env, ctx);
+    }
     return handleContact(request, env);
   },
 };
+
+/* ------------------------------------------------------------------------ */
+/* /api/repos — public list of GitHub repositories for the portfolio         */
+/* ------------------------------------------------------------------------ */
+
+interface ExecutionContextLike {
+  waitUntil(promise: Promise<unknown>): void;
+}
+
+// Only repositories under these owners are ever returned.
+const REPO_OWNERS = ['DevJel', 'Dev-Jel-Works', 'Operava-Global'];
+const REPOS_CACHE_SECONDS = 3600;
+const REPOS_CACHE_KEY = 'https://portfolio.jelvan.pro/__cache/api/repos/v1';
+const MAX_DESCRIPTION = 180;
+
+type GitHubRepo = {
+  name: string;
+  full_name: string;
+  private: boolean;
+  fork: boolean;
+  archived?: boolean;
+  description: string | null;
+  html_url: string;
+  homepage: string | null;
+  language: string | null;
+  stargazers_count: number;
+  pushed_at: string | null;
+  owner: { login: string };
+};
+
+/**
+ * The shape sent to browsers. Private repositories carry only their name,
+ * owner and a short description: no URL, language, dates or other metadata.
+ */
+type PortfolioRepo =
+  | {
+      name: string;
+      owner: string;
+      visibility: 'public';
+      description: string;
+      url: string;
+      homepage?: string;
+      language?: string;
+      stars: number;
+      fork: boolean;
+      updatedAt?: string;
+    }
+  | {
+      name: string;
+      owner: string;
+      visibility: 'private';
+      description: string;
+    };
+
+const reposJson = (body: unknown, status = 200, maxAge = 600): Response =>
+  new Response(JSON.stringify(body), {
+    status,
+    headers: {
+      'content-type': 'application/json; charset=utf-8',
+      'cache-control': status === 200 ? `public, max-age=${maxAge}` : 'no-store',
+      'x-content-type-options': 'nosniff',
+    },
+  });
+
+const safeHttpsUrl = (value: string | null | undefined): string | undefined => {
+  if (!value) return undefined;
+  try {
+    const parsed = new URL(value);
+    return parsed.protocol === 'https:' ? parsed.toString() : undefined;
+  } catch {
+    return undefined;
+  }
+};
+
+function toPortfolioRepo(repo: GitHubRepo): PortfolioRepo {
+  const description = clean(repo.description ?? '', MAX_DESCRIPTION);
+  if (repo.private) {
+    return { name: repo.name, owner: repo.owner.login, visibility: 'private', description };
+  }
+  return {
+    name: repo.name,
+    owner: repo.owner.login,
+    visibility: 'public',
+    description,
+    url: repo.html_url,
+    homepage: safeHttpsUrl(repo.homepage),
+    language: repo.language ?? undefined,
+    stars: repo.stargazers_count,
+    fork: repo.fork,
+    updatedAt: repo.pushed_at ?? undefined,
+  };
+}
+
+async function githubPages(path: string, token?: string): Promise<GitHubRepo[]> {
+  const results: GitHubRepo[] = [];
+  for (let page = 1; page <= 5; page += 1) {
+    const separator = path.includes('?') ? '&' : '?';
+    const response = await fetch(`https://api.github.com${path}${separator}per_page=100&page=${page}`, {
+      headers: {
+        accept: 'application/vnd.github+json',
+        'user-agent': 'jelvan-portfolio-repos',
+        'x-github-api-version': '2022-11-28',
+        ...(token ? { authorization: `Bearer ${token}` } : {}),
+      },
+    });
+    if (!response.ok) {
+      throw new Error(`GitHub ${path} responded ${response.status}`);
+    }
+    const batch = (await response.json()) as GitHubRepo[];
+    results.push(...batch);
+    if (batch.length < 100) break;
+  }
+  return results;
+}
+
+async function loadRepos(env: Env): Promise<{ repos: PortfolioRepo[]; includesPrivate: boolean }> {
+  const allowed = new Set(REPO_OWNERS.map((owner) => owner.toLowerCase()));
+  let raw: GitHubRepo[];
+  let includesPrivate = false;
+
+  if (env.GITHUB_TOKEN) {
+    raw = await githubPages('/user/repos?visibility=all&affiliation=owner,organization_member&sort=pushed', env.GITHUB_TOKEN);
+    includesPrivate = true;
+  } else {
+    const lists = await Promise.all([
+      githubPages('/users/DevJel/repos?type=owner&sort=pushed'),
+      githubPages('/orgs/Dev-Jel-Works/repos?type=public&sort=pushed'),
+      githubPages('/orgs/Operava-Global/repos?type=public&sort=pushed'),
+    ]);
+    raw = lists.flat().filter((repo) => !repo.private);
+  }
+
+  const seen = new Set<string>();
+  const repos = raw
+    .filter((repo) => allowed.has(repo.owner.login.toLowerCase()) && !repo.archived)
+    .filter((repo) => {
+      const key = repo.full_name.toLowerCase();
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    })
+    .sort((a, b) => (b.pushed_at ?? '').localeCompare(a.pushed_at ?? ''))
+    .map(toPortfolioRepo);
+
+  return { repos, includesPrivate };
+}
+
+async function handleRepos(request: Request, env: Env, ctx: ExecutionContextLike): Promise<Response> {
+  const url = new URL(request.url);
+  const isLocal = LOCAL_HOSTS.has(url.hostname);
+  if (!isLocal && url.hostname !== EXPECTED_HOST) {
+    return reposJson({ ok: false, error: 'Not found' }, 404);
+  }
+  if (request.method !== 'GET' && request.method !== 'HEAD') {
+    return reposJson({ ok: false, error: 'Method not allowed' }, 405);
+  }
+
+  const cache = (globalThis as unknown as { caches?: { default?: Cache } }).caches?.default;
+  const cacheKey = new Request(REPOS_CACHE_KEY);
+  if (cache) {
+    const cached = await cache.match(cacheKey);
+    if (cached) return cached;
+  }
+
+  try {
+    const { repos, includesPrivate } = await loadRepos(env);
+    const body = { ok: true, generatedAt: new Date().toISOString(), includesPrivate, repos };
+    const response = reposJson(body);
+    if (cache) {
+      ctx.waitUntil(cache.put(cacheKey, reposJson(body, 200, REPOS_CACHE_SECONDS)));
+    }
+    return response;
+  } catch (error) {
+    console.error('Repository list failed', error instanceof Error ? error.message.slice(0, 200) : 'Unknown error');
+    return reposJson({ ok: false, error: 'Repository list is unavailable' }, 502);
+  }
+}
