@@ -45,7 +45,9 @@ const ViewControl = styled.div<{ $inMenu?: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  pointer-events: none;
+  pointer-events: ${({ $inMenu }) => ($inMenu ? 'auto' : 'none')};
+  width: ${({ $inMenu }) => ($inMenu ? '100%' : 'auto')};
+  align-items: ${({ $inMenu }) => ($inMenu ? 'flex-start' : 'flex-end')};
 
   @media (max-width: 700px) {
     top: ${({ $inMenu }) => ($inMenu ? 'auto' : '12px')};
@@ -62,10 +64,10 @@ const ViewTrigger = styled.button`
   gap: 8px;
   min-height: 38px;
   padding: 0 13px;
-  border: 1px solid rgba(255,255,255,.2);
+  border: 1px solid rgba(244,129,32,.28);
   border-radius: 999px;
-  color: rgba(255,255,255,.94);
-  background: rgba(23,25,30,.38);
+  color: ${({ theme }) => theme.portfolio.text.dark};
+  background: ${({ theme }) => theme.portfolio.background?.light ?? 'rgba(255,255,255,.82)'};
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   box-shadow: 0 5px 22px rgba(0,0,0,.12);
@@ -76,7 +78,7 @@ const ViewTrigger = styled.button`
   cursor: pointer;
   transition: background .18s ease, border-color .18s ease;
 
-  &:hover { background: rgba(35,38,45,.72); border-color: rgba(255,255,255,.34); }
+  &:hover { background: rgba(244,129,32,.10); border-color: rgba(244,129,32,.55); }
   &:focus-visible { outline: 2px solid #f59e0b; outline-offset: 3px; }
 
   span:first-child {
@@ -102,7 +104,7 @@ const ViewPanel = styled.div<{ $open: boolean }>`
   padding: 5px;
   border: 1px solid rgba(255,255,255,.14);
   border-radius: 13px;
-  background: rgba(19,21,26,.62);
+  background: rgba(255,255,255,.96);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   box-shadow: 0 12px 34px rgba(0,0,0,.2);
@@ -117,15 +119,15 @@ const ViewOption = styled.button<{ $active: boolean }>`
   border: 0;
   border-radius: 9px;
   padding: 9px 12px;
-  color: ${({ $active }) => ($active ? '#17181c' : 'rgba(255,255,255,.78)')};
-  background: ${({ $active }) => ($active ? '#f3f4f6' : 'transparent')};
+  color: ${({ $active, theme }) => ($active ? '#17181c' : theme.portfolio.text.dark)};
+  background: ${({ $active }) => ($active ? 'rgba(244,129,32,.18)' : 'transparent')};
   font: inherit;
   font-size: 11px;
   font-weight: 650;
   white-space: nowrap;
   cursor: pointer;
 
-  &:hover { background: ${({ $active }) => ($active ? '#f3f4f6' : 'rgba(255,255,255,.1)')}; }
+  &:hover { background: rgba(244,129,32,.12); }
   &:focus-visible { outline: 2px solid #f59e0b; outline-offset: 2px; }
 `;
 
