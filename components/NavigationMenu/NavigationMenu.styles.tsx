@@ -178,3 +178,12 @@ export const SocialMediaContactsList = styled.ul`
   flex-direction: column;
   gap: 0.5rem;
 `;
+
+
+export const MenuFooter = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(244, 129, 32, 0.2);
+`;
