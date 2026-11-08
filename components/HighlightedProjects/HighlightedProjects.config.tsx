@@ -19,6 +19,17 @@ export const useHighlightedProjectsData = (): { highlightedProjects: IHighlighte
       slideBgColor:'#fff7f0', technologyIcons:[<SiCloudflare key="cf" className="tech-icon"/>,<SiTypescript key="ts" className="tech-icon"/>],
     },
     {
+      slideNumberImg:'/assets/portfolio/8.svg', projectImg:'/assets/portfolio/projects/desktopview-proctorava.png', projectTitle:'LEARNING MANAGEMENT SYSTEM | PROCTORAVA',
+      projectLinks:[], projectLinkNote:'Private product showcase. Applicant records, identity documents, verification results, assessment content and proctoring data are not public.',
+      projectDescription:'PROCTORAVA is a learning and assessment management platform focused on secure candidate and learner assessment journeys. It brings applicant registration, profile completion, identity verification, assessment delivery and proctoring controls into one guided experience for recruitment, education and workforce development.',
+      projectPurpose:'Provide a consistent, auditable assessment journey from registration and identity checks through assessment completion and authorized review, while protecting candidate privacy and restricting sensitive verification data.',
+      projectFeatures:['Applicant registration and structured profile capture','Email one-time-password verification for account access','Guided identity verification using a live phone-based identity capture flow','Assessment portal with clear instructions and readiness checks','Browser-based assessment experience with proctoring signals and session controls','Microphone and screen-permission checks before a monitored session','Window or tab focus-change handling with configurable pause and review rules','Recruitment administrator access separated from applicant access','Assessment status, review workflow and outcome record organization','Email notifications through a server-side mail delivery integration'],
+      projectAdvantages:['Creates one guided journey instead of disconnected registration and assessment steps','Improves consistency of identity and readiness checks','Helps reviewers organize assessment sessions and evidence','Supports remote assessment with transparent candidate instructions','Separates applicant-facing workflows from restricted recruitment administration'],
+      slideHeight:'100vh', projectMobileImg:'/assets/portfolio/projects/mobileview-proctorava.png', projectMobilePreview:true,
+      projectTechnologies:['Cloudflare Pages','Cloudflare Workers','D1 Database','Amazon SES','Cloudflare Turnstile','Identity verification integration','Browser media and screen APIs'],
+      slideBgColor:'#ffffff', technologyIcons:[<SiCloudflare key="cf" className="tech-icon"/>,<SiTypescript key="ts" className="tech-icon"/>,<SiAmazonaws key="aws" className="tech-icon"/>],
+    },
+    {
       slideNumberImg:'/assets/portfolio/2.svg', projectImg:'/assets/portfolio/projects/02-knowledge-center-dashboard.webp', projectTitle:'Knowledge Center System',
       projectLinks:[{label:'Open Knowledge Center',url:'https://app-bible.jelvan.pro/'},{label:'Public source repository',url:'https://github.com/DevJel/knowledge-center-system'}],
       projectDescription:'An organizational knowledge and learning platform for policies, SOPs, process maps, role-based learning paths, technical references, onboarding materials and operational playbooks.',
