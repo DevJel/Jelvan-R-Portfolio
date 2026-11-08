@@ -12,7 +12,7 @@ import { projectShowcaseBySlug } from '../../components/ProjectRepositoryExplore
 import ProjectAgentCommand from '../../components/ProjectAgentCommand/ProjectAgentCommand';
 
 type Project = {
-  slug: string; number: string; title: string; summary: string; maturity: string;
+  slug: string; number: string; title: string; summary: string; maturity: string; developer?: string;
   stack: string[]; systems?: string[]; folders: { name: string; purpose: string; access: string }[];
   setup: string[]; platforms: { name: string; steps: string[] }[];
   practices: string[]; links: { label: string; url: string }[];
@@ -41,7 +41,7 @@ const projects: Project[] = [
     links: []
   },
   {
-    slug: 'proctorava-learning-management-system', number: '02', title: 'LEARNING MANAGEMENT SYSTEM — PROCTORAVA',
+    slug: 'proctorava-learning-management-system', number: '02', title: 'LEARNING MANAGEMENT SYSTEM - PROCTORAVA', developer: 'Jelvan R · Developer',
     summary: 'A secure learning, applicant assessment and remote proctoring experience designed to guide candidates from registration and identity checks through assessment and authorized review.',
     maturity: 'Private product showcase. This portfolio guide describes the intended product workflow and architecture; production availability, identity-provider coverage and proctoring controls must be verified against the current deployment before operational use.',
     stack: ['Cloudflare Pages', 'Cloudflare Workers / Pages Functions', 'D1 Database', 'Amazon SES SMTP', 'Cloudflare Turnstile', 'Identity verification integration', 'Browser MediaDevices and Screen Capture APIs'],
@@ -232,7 +232,7 @@ const ProjectDetailPage: NextPage<{
             <span className="project-detail-eyebrow">
               PROJECT {project.number} / DETAIL & ENGINEERING GUIDE
             </span>
-            <h1 className="project-detail-title">{project.title}</h1>
+            <h1 className="project-detail-title">{project.title}</h1>\n            {project.developer && <p className="project-detail-developer">Developed by {project.developer}</p>}
             <p className="project-detail-summary">{project.summary}</p>
             <div className="project-detail-status">{project.maturity}</div>
 
