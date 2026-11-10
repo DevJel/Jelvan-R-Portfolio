@@ -4,11 +4,13 @@ This document defines the content-parity contract for the two homepage presentat
 
 ## Experience boundaries
 
+**Default entry:** Standard View is now the first-visit experience. Folder View remains available through the view selector.
+
 | Presentation | Source | Design rule |
 | --- | --- | --- |
 | Standard View | Next.js pages and React components under `pages/` and `components/` | Preserve the original navigation, landing composition, page layouts, typography, color system and interactions. |
 | Folder View | `Jelvan Folder Portfolio Design/index.html` | Preserve the existing desk, folder artwork, glass surfaces, typography, motion, responsive sizing, sound control and preview behavior while updating portfolio content and destinations. |
-| Homepage selector | `pages/index.tsx` | New visitors default to Folder View. The selected view is remembered in browser storage. The same selector is available as a floating control in Folder View and at the bottom of the expanded navigation menu in Standard View. |
+| Homepage selector | `pages/index.tsx` | New visitors default to Standard View. The selected view is remembered under the versioned `jelvan-portfolio-view-v2` browser-storage key so older Folder View defaults do not override the new default. The same selector remains available in both presentations. |
 
 The two presentations are intentionally not visually identical. Content parity means that names, facts, descriptions, destinations and project maturity are consistent; it does not mean copying one design into the other.
 
@@ -122,7 +124,7 @@ When Standard View content changes:
 - [ ] Developer Lab links point to the correct tools, SVG, articles and project routes.
 - [ ] Contact and social links are current.
 - [ ] Folder View design and interaction behavior remain unchanged.
-- [ ] Standard View retains its original design and navigation.
+- [ ] Standard View retains its original navigation and uses one project cover image plus its title for each featured project; long descriptions and detail panels remain on each dedicated project guide.
 - [ ] Both deployments reference the intended commit and pass production smoke tests.
 
 
