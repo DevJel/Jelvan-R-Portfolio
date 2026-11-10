@@ -232,9 +232,7 @@ const ProjectDetailPage: NextPage<{
             <span className="project-detail-eyebrow">
               PROJECT {project.number} / DETAIL & ENGINEERING GUIDE
             </span>
-            <h1 className="project-detail-title">{project.title}</h1>\n            {project.developer && <p className="project-detail-developer">Developed by {project.developer}</p>}
-            <p className="project-detail-summary">{project.summary}</p>
-            <div className="project-detail-status">{project.maturity}</div>
+            <h1 className="project-detail-title">{project.title}</h1>
 
             <p className="project-detail-eyebrow">PLATFORM & INFRASTRUCTURE</p>
             <div className="project-detail-tags">
