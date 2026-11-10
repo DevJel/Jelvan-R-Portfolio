@@ -51,7 +51,7 @@ The design uses a restrained visual system with orange brand accents, light/crea
 
 ### Portfolio viewing modes
 
-The homepage offers two presentations of the same professional portfolio. The view selector remembers the visitor's choice in browser storage; new visitors default to Folder View.
+The homepage offers two presentations of the same professional portfolio. The view selector remembers the visitor's choice in browser storage; new visitors default to Standard View.
 
 | View | Entry experience | Content |
 | --- | --- | --- |
@@ -65,7 +65,7 @@ The two views intentionally retain different visual designs. Folder View is a co
 
 ## 2. Featured projects
 
-The eight projects below are the same entries used by the Standard View project showcase. Descriptions communicate intended scope and maturity; a portfolio guide or link is not proof that a separate product is production-ready.
+The eight projects below are the same entries used by the Standard View project showcase. The homepage project sequence is cover-first (project image and title); each dedicated guide retains its description, scope and maturity notes. A portfolio guide or link is not proof that a separate product is production-ready.
 
 | Project | Focus | Status / public reference |
 | --- | --- | --- |
@@ -294,7 +294,7 @@ The project uses Next.js Pages Router conventions. Page components are located i
 
 | Route | Purpose |
 | --- | --- |
-| `/` | Homepage with remembered Folder View / Standard View selector; Folder View is the first-visit default |
+| `/` | Homepage with remembered Standard View / Folder View selector; Standard View is the first-visit default |
 | `/portfolio/about` | About and professional profile |
 | `/portfolio/projects` | Selected projects and transformation capabilities |\n| `/portfolio/articles` | Articles and technical writing |
 | `/projects/[slug]` | Static implementation guide for each selected project, including source-folder map, setup, deployment pathways and best practices |
@@ -325,7 +325,7 @@ When adding a page, add its metadata to the shared SEO configuration and ensure 
 
 <p><img alt="PROJECT SHOWCASE section" src="https://img.shields.io/badge/SECTION-PROJECT%20SHOWCASE-7C3AED?style=flat-square" /></p>
 
-The seven project entries are maintained in:
+The eight project entries are maintained in:
 
 `components/HighlightedProjects/HighlightedProjects.config.tsx`
 
@@ -333,7 +333,7 @@ The page renderer is:
 
 `components/HighlightedProjects/HighlightedProjects.tsx`
 
-The individual full-screen project presentation is:
+The individual project-cover presentation is:
 
 `components/ProjectDesktopSlide/ProjectDesktopSlide.tsx`
 
@@ -355,11 +355,11 @@ flowchart TD
     S --> V
 ```
 
-Each project entry provides the project title, description, slide number artwork, dashboard preview, technology labels, optional sample URL, and background color. The renderer maps the data into a consistent slide component. The intersection observer delays the project slide's visual content until it approaches the viewport.
+Each project entry provides its own cover artwork, title, route and background color. The Standard View presents a large responsive 16:9 cover image with the project title and a single View Project action. Long descriptions, feature lists and technology details are intentionally kept on the dedicated project guide rather than repeated beneath each cover. The intersection observer delays cover rendering until it approaches the viewport.
 
-The seven dashboard masters live in `public/assets/portfolio/projects/` as SVG source artwork. Each includes a generic macOS-style browser frame and a project-specific, brand-neutral application interface. The published showcase uses WebP files generated from those masters:
+The seven dashboard masters live in `public/assets/portfolio/projects/` as SVG source artwork; PROCTORAVA uses its dedicated desktop and mobile preview artwork. Each includes a generic macOS-style browser frame and a project-specific, brand-neutral application interface. The published showcase uses WebP files generated from those masters, plus dedicated PROCTORAVA desktop/mobile artwork:
 
-- `01-master-ai-dashboard.webp`
+- `desktopview-proctorava.png` and `mobileview-proctorava.png` (PROCTORAVA cover artwork)\n- `01-master-ai-dashboard.webp`
 - `02-knowledge-center-dashboard.webp`
 - `03-internal-email-dashboard.webp`
 - `04-hris-dashboard.webp`
@@ -952,9 +952,9 @@ The home route supports two presentations of the same professional portfolio. Th
 
 ### View selection and persistence
 
-- New visitors default to **Folder View**.
+- New visitors default to **Standard View**.
 - A visitor can switch between Folder View and Standard View using the **Switch view** control.
-- The selected view is stored in browser `localStorage` under `jelvan-portfolio-view`; a saved selection is restored on a later visit.
+- The selected view is stored in browser `localStorage` under `jelvan-portfolio-view-v2`; a saved selection is restored on a later visit. The versioned key prevents an older saved Folder View preference from overriding the new Standard View default.
 - In Folder View, the selector floats over the workspace.
 - In Standard View, the selector is placed at the bottom of the expanded navigation menu. It is not a separate top banner.
 - The selector's options panel remains hidden until the control is activated.
