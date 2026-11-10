@@ -131,12 +131,12 @@ const ViewOption = styled.button<{ $active: boolean }>`
 `;
 
 const PortfolioLandingPage: NextPage = () => {
-  const [view, setView] = useState<'standard' | 'folders'>('folders');
+  const [view, setView] = useState<'standard' | 'folders'>('standard');
   const [panelOpen, setPanelOpen] = useState(false);
 
   useEffect(() => {
     try {
-      const saved = window.localStorage.getItem('jelvan-portfolio-view');
+      const saved = window.localStorage.getItem('jelvan-portfolio-view-v2');
       if (saved === 'folders' || saved === 'standard') setView(saved);
     } catch {
       // The selector remains usable when browser storage is unavailable.
@@ -147,7 +147,7 @@ const PortfolioLandingPage: NextPage = () => {
     setView(next);
     setPanelOpen(false);
     try {
-      window.localStorage.setItem('jelvan-portfolio-view', next);
+      window.localStorage.setItem('jelvan-portfolio-view-v2', next);
     } catch {
       // The selected view still changes for this session.
     }
