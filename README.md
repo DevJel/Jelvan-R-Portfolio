@@ -303,7 +303,7 @@ The project uses Next.js Pages Router conventions. Page components are located i
 | `/tools` | Browser-based developer tools |
 | `/svg-library` | SVG resource library |
 
-Project guide routes are generated at build time with `getStaticPaths` and `getStaticProps`; the supported slugs are `master-ai-multi-agent-workspace`, `knowledge-center-system`, `internal-email-system`, `hr-information-system`, `bolekpad-personal-workspace`, `online-printing-store` and `developers-playground-devai`. Keep the project-card slug generation and the static route list in sync when adding or renaming a project.
+Project guide routes are generated at build time with `getStaticPaths` and `getStaticProps`; the supported slugs are `master-ai-multi-agent-workspace`, `proctorava-learning-management-system`, `knowledge-center-system`, `internal-email-system`, `hr-information-system`, `bolekpad-personal-workspace`, `online-printing-store` and `developers-playground-devai`. Keep the project-card slug generation and the static route list in sync when adding or renaming a project.
 
 The static export is configured in `next.config.mjs`. Next.js generates HTML and assets into `out/`; Cloudflare Pages serves that output.
 
@@ -979,5 +979,5 @@ Folder file previews use descriptions aligned with the Standard View. Where a de
 - Keep the Standard View's existing page components and design system intact when updating Folder View.
 - Keep the Folder View's existing folder artwork, desk composition, animations, typography, responsive behavior and interaction language intact when updating its content.
 - Update the two presentations from the same verified portfolio information; do not invent project maturity, public availability, client names or credentials.
-- Check all seven project destinations, profile and contact links, résumé download, responsive behavior and both view-switch placements after content changes.
+- Check all eight project destinations, cover artwork, profile and contact links, résumé download, responsive behavior and both view-switch placements after content changes.
 - The standalone artifact's own documentation is maintained in [Jelvan Folder Portfolio Design/README.md](./Jelvan%20Folder%20Portfolio%20Design/README.md).
