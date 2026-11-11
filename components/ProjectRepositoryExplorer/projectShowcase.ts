@@ -9,6 +9,29 @@ export type ProjectShowcaseMeta = {
 };
 
 export const projectShowcaseBySlug: Record<string, ProjectShowcaseMeta> = {
+  'leadmaster-email-campaign-platform': {
+    cover: '/assets/portfolio/projects/leadmaster-desktop.png',
+    backgroundColor: '#ffffff',
+    description: 'An email operations workspace for contact preparation, campaign composition, paced AWS SES SMTP delivery and recipient-level delivery tracking.',
+    purpose: 'Help teams manage intentional, traceable email communication from contact preparation and message review through queue processing and delivery-event monitoring.',
+    languages: ['JavaScript (ES modules)', 'SQL', 'HTML', 'CSS', 'JSON', 'Markdown'],
+    features: [
+      'Contact and lead organization',
+      'Bulk recipient parsing and validation',
+      'HTML email composition and preview',
+      'Campaign review and queue management',
+      'AWS SES SMTP-only outbound delivery',
+      'Rate-limited dispatch with retry and dead-letter handling',
+      'Delivery, bounce, complaint and delay event tracking'
+    ],
+    advantages: [
+      'Centralizes email campaign preparation and execution',
+      'Validates recipient lists before queue submission',
+      'Controls sending pace to protect sender reputation',
+      'Connects accepted messages with downstream delivery events'
+    ]
+  },
+
   'master-ai-multi-agent-workspace': {
     cover: '/assets/portfolio/projects/01-master-ai-dashboard.webp',
     backgroundColor: '#fff7f0',
