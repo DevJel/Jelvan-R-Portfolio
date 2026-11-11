@@ -10,7 +10,7 @@ export type ProjectShowcaseMeta = {
 
 export const projectShowcaseBySlug: Record<string, ProjectShowcaseMeta> = {
   'leadmaster-email-campaign-platform': {
-    cover: '/assets/portfolio/projects/internal-email-system-leadmaster-desktop.webp',
+    cover: '/assets/portfolio/projects/internal-email-system-leadmaster-desktop.svg',
     backgroundColor: '#ffffff',
     description: 'An integrated internal email and campaign operations system for announcements, recruitment and service correspondence, contact management, HTML email composition, validated bulk recipients, paced AWS SES SMTP delivery and recipient-level delivery tracking.',
     purpose: 'Bring internal communications and controlled email campaigns into one workspace, with validated recipients, reviewed content, paced SMTP dispatch and traceable delivery outcomes.',
