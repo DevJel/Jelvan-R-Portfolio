@@ -47,7 +47,9 @@ jobs:
         run: npm run build
 
       - name: Install browser for developer tools checks
-        run: npx playwright install --with-deps chromium
+        # Use runner-provided browser libraries; --with-deps calls apt-get,
+        # which failed because the Ubuntu mirror DNS was unavailable.
+        run: npx playwright install chromium
 
       - name: Test developer tools in the browser
         run: npm run test:tools:browser
