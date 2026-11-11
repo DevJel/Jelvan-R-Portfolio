@@ -4564,24 +4564,50 @@ const repositoriesByProject: Record<string, ProjectRepository[]> = {
       ]
     }
   ],
-  'internal-email-system': [
-    createPrivateRepository(
-      'email-leader',
-      'Email-LEADer',
-      'DevJel/Email-LEADer',
-      'Folder and file names are captured from the private GitHub main branch during the portfolio build. File previews are sanitized examples only; original private source contents, credentials, internal records and sensitive configuration are not embedded in this public site. The linked repository remains access-controlled.',
-      emailFiles,
-      [
-        '.github/workflows/validation.yml',
-        'outreach/public/index.html',
-        'outreach/src/template.example.js',
-        'outreach/scripts/build-template.example.mjs',
-        'outreach/test/email-flow.example.mjs',
-        'outreach/docs/screenshots/README.md',
-        'outreach/email/README.md'
-      ],
-      privateTreeSnapshots['DevJel/Email-LEADer']
-    )
+  'leadmaster-email-campaign-platform': [
+    {
+      id: 'leadmaster',
+      label: 'LeadMASTER',
+      fullName: 'DevJel/LeadMASTER',
+      branch: 'main',
+      visibility: 'public',
+      repoUrl: 'https://github.com/DevJel/LeadMASTER',
+      note: 'Public LeadMASTER source repository. Review the README, SMTP transport, queue workflow and migrations. Production credentials, recipient records and account-specific bindings are not included in the portfolio.',
+      treeLabel: 'Public GitHub repository · main',
+      treeSource: 'github',
+      tree: makeTree([
+        'README.md',
+        'SES_TRANSPORT.md',
+        'docs/QUEUE_DESIGN.md',
+        'docs/QUEUE_RATE_REVIEW.md',
+        'docs/HTML_PREVIEW.md',
+        'src/Mandatory LeadMASTER Dashboard.html',
+        'src/ses-smtp.mjs',
+        'src/ses-event-correlation.mjs',
+        'src/email-queue-core.mjs',
+        'src/email-queue-worker.mjs',
+        'src/mail-consumer-core.mjs',
+        'src/email-coordinator.mjs',
+        'src/queue-submission.mjs',
+        'migrations/0006_mail_processing_and_activity.sql',
+        'test/ses-smtp.test.mjs',
+        'test/ses-event-correlation.test.mjs',
+        'test/email-queue-core.test.mjs'
+      ]),
+      previewPaths: [
+        'README.md',
+        'SES_TRANSPORT.md',
+        'docs/QUEUE_DESIGN.md',
+        'docs/QUEUE_RATE_REVIEW.md',
+        'docs/HTML_PREVIEW.md',
+        'src/ses-smtp.mjs',
+        'src/ses-event-correlation.mjs',
+        'src/email-queue-core.mjs',
+        'src/email-queue-worker.mjs',
+        'src/mail-consumer-core.mjs',
+        'test/ses-event-correlation.test.mjs'
+      ]
+    }
   ],
   'hr-information-system': [
     {
