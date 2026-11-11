@@ -8,13 +8,13 @@ const LAPTOP_IMG = '/assets/portfolio/laptop-lms.png';
 export const useHighlightedProjectsData = (): { highlightedProjects: IHighlightedProject[] } => {
   const highlightedProjects: IHighlightedProject[] = [
     {
-      slideNumberImg:'/assets/portfolio/1.svg', projectImg:'/assets/portfolio/projects/internal-email-system-leadmaster-desktop.webp', projectTitle:'Internal Email System - LeadMASTER',
+      slideNumberImg:'/assets/portfolio/1.svg', projectImg:'/assets/portfolio/projects/internal-email-system-leadmaster-desktop.svg', projectTitle:'Internal Email System - LeadMASTER',
       projectLinks:[{label:'Open LeadMASTER',url:'https://leadmaster.jelvan.pro/'},{label:'Public source repository',url:'https://github.com/DevJel/LeadMASTER'}],
       projectDescription:'An integrated internal email and campaign operations system for managing contacts, preparing individual messages and bulk campaigns, validating recipients, composing HTML email, and tracking delivery from queue submission through recipient outcomes. Outbound delivery uses AWS SES SMTP.',
       projectPurpose:'Bring internal communications and controlled email campaigns into one workspace, with validated recipients, reviewed content, paced SMTP dispatch and traceable delivery outcomes.',
       projectFeatures:['Internal announcements and employee lifecycle communications','Recruitment, service and customer correspondence','Contact and lead organization','Bulk recipient parsing and validation','Reusable templates and HTML email composition with exact preview','Campaign review and queue management','AWS SES SMTP-only outbound delivery','Rate-limited sending with retry and dead-letter handling','Delivery, bounce, complaint and delay event tracking','Campaign activity and recipient-level status visibility','Responsible-sending, suppression and audit controls'],
       projectAdvantages:['Combines internal email workflows and campaign operations','Validates recipients before queue submission','Controls sending pace to protect sender reputation','Connects accepted messages with downstream delivery events','Makes communication activity and campaign outcomes easier to monitor'],
-      slideHeight:'100vh', projectMobileImg:'/assets/portfolio/projects/internal-email-system-leadmaster-mobile.webp', projectMobilePreview:true,
+      slideHeight:'100vh', projectMobileImg:'/assets/portfolio/projects/internal-email-system-leadmaster-mobile.svg', projectMobilePreview:true,
       projectTechnologies:['Cloudflare Workers','Cloudflare Queues','Durable Objects','D1 Database','AWS SES SMTP','JavaScript'],
       slideBgColor:'#ffffff', technologyIcons:[<SiCloudflare key="cf" className="tech-icon"/>,<SiAmazonaws key="aws" className="tech-icon"/>],
     },
