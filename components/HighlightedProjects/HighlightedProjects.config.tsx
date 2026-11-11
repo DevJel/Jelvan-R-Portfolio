@@ -8,13 +8,13 @@ const LAPTOP_IMG = '/assets/portfolio/laptop-lms.png';
 export const useHighlightedProjectsData = (): { highlightedProjects: IHighlightedProject[] } => {
   const highlightedProjects: IHighlightedProject[] = [
     {
-      slideNumberImg:'/assets/portfolio/1.svg', projectImg:'/assets/portfolio/projects/leadmaster-desktop.png', projectTitle:'LeadMASTER | Email Campaign Platform',
+      slideNumberImg:'/assets/portfolio/1.svg', projectImg:'/assets/portfolio/projects/internal-email-system-leadmaster-desktop.webp', projectTitle:'Internal Email System - LeadMASTER',
       projectLinks:[{label:'Open LeadMASTER',url:'https://leadmaster.jelvan.pro/'},{label:'Public source repository',url:'https://github.com/DevJel/LeadMASTER'}],
-      projectDescription:'A focused email operations platform for managing contacts, preparing campaigns, organizing recipient lists, sending through AWS SES SMTP and tracking delivery outcomes. It brings individual email workflows and bulk campaigns into one controlled workspace.',
-      projectPurpose:'Help teams manage intentional, traceable email communication from contact preparation and message review through paced queue processing and delivery-event monitoring.',
-      projectFeatures:['Contact and lead organization','Bulk recipient parsing and validation','HTML email composition and preview','Campaign review and queue management','AWS SES SMTP-only outbound delivery','Rate-limited sending with retry and dead-letter handling','Delivery, bounce, complaint and delay event tracking','Campaign activity and recipient-level status visibility'],
-      projectAdvantages:['Centralizes email campaign preparation and execution','Validates recipient lists before queue submission','Controls sending pace to protect sender reputation','Connects accepted messages with downstream delivery events','Makes campaign outcomes easier to monitor'],
-      slideHeight:'100vh', projectMobileImg:'/assets/portfolio/projects/leadmaster-mobile.webp', projectMobilePreview:true,
+      projectDescription:'An integrated internal email and campaign operations system for managing contacts, preparing individual messages and bulk campaigns, validating recipients, composing HTML email, and tracking delivery from queue submission through recipient outcomes. Outbound delivery uses AWS SES SMTP.',
+      projectPurpose:'Bring internal communications and controlled email campaigns into one workspace, with validated recipients, reviewed content, paced SMTP dispatch and traceable delivery outcomes.',
+      projectFeatures:['Internal announcements and employee lifecycle communications','Recruitment, service and customer correspondence','Contact and lead organization','Bulk recipient parsing and validation','Reusable templates and HTML email composition with exact preview','Campaign review and queue management','AWS SES SMTP-only outbound delivery','Rate-limited sending with retry and dead-letter handling','Delivery, bounce, complaint and delay event tracking','Campaign activity and recipient-level status visibility','Responsible-sending, suppression and audit controls'],
+      projectAdvantages:['Combines internal email workflows and campaign operations','Validates recipients before queue submission','Controls sending pace to protect sender reputation','Connects accepted messages with downstream delivery events','Makes communication activity and campaign outcomes easier to monitor'],
+      slideHeight:'100vh', projectMobileImg:'/assets/portfolio/projects/internal-email-system-leadmaster-mobile.webp', projectMobilePreview:true,
       projectTechnologies:['Cloudflare Workers','Cloudflare Queues','Durable Objects','D1 Database','AWS SES SMTP','JavaScript'],
       slideBgColor:'#ffffff', technologyIcons:[<SiCloudflare key="cf" className="tech-icon"/>,<SiAmazonaws key="aws" className="tech-icon"/>],
     },
@@ -51,19 +51,9 @@ export const useHighlightedProjectsData = (): { highlightedProjects: IHighlighte
       projectTechnologies:['HTML','CSS','JavaScript','Cloudflare Pages','Markdown documentation'],
       slideBgColor:'#ffffff', technologyIcons:[<SiCloudflare key="cf" className="tech-icon"/>],
     },
+
     {
-      slideNumberImg:'/assets/portfolio/5.svg', projectImg:'/assets/portfolio/projects/03-internal-email-dashboard.webp', projectTitle:'Internal Email System',
-      projectLinks:[], projectLinkNote:'Private workspace. Internal account details, sending configuration and operational endpoints are not published.',
-      projectDescription:'A communications operations system for internal announcements, employee lifecycle notifications, recruitment correspondence, service updates, customer communications and approved outreach. Delivery is designed around provider integrations such as Amazon SES, with consent, security and audit controls.',
-      projectPurpose:'Centralize organization-wide communications while ensuring messages are authorized, traceable, accessible and appropriate to each recipient group.',
-      projectFeatures:['Contact and lead organization','Reusable email templates and campaign drafts','Sending workflow with delivery status tracking','Reply and activity organization','Domain and sender configuration guidance','Opt-out and responsible-sending controls'],
-      projectAdvantages:['Reduces scattered manual email work','Encourages consistent communication','Makes campaign activity easier to review','Separates demo activity from real sending'],
-      slideHeight:'100vh', projectMobileImg:PHONE_IMG,
-      projectTechnologies:['Cloudflare Workers','D1 Database','Amazon SES','JavaScript','HTML & CSS'],
-      slideBgColor:'#fff7f0', technologyIcons:[<SiAmazonaws key="aws" className="tech-icon"/>,<SiCloudflare key="cf" className="tech-icon"/>],
-    },
-    {
-      slideNumberImg:'/assets/portfolio/6.svg', projectImg:'/assets/portfolio/projects/04-hris-dashboard.webp', projectTitle:'HR Information System',
+      slideNumberImg:'/assets/portfolio/5.svg', projectImg:'/assets/portfolio/projects/04-hris-dashboard.webp', projectTitle:'HR Information System',
       projectLinks:[{label:'Public source repository',url:'https://github.com/DevJel/jelhr-system'}],
       projectLinkNote:'Development prototype. Do not use for real employee or payroll records until production security and operational checks are complete.',
       projectDescription:'A modular Human Resources Information System designed around the complete employee lifecycle: workforce planning, requisition, recruitment, candidate assessment, pre-employment checks, offers, onboarding, employee records, time and attendance, leave, performance, learning, employee relations, compensation and benefits integrations, offboarding and alumni records. The current repository is a prototype foundation; production readiness must be assessed module by module.',
@@ -75,7 +65,7 @@ export const useHighlightedProjectsData = (): { highlightedProjects: IHighlighte
       slideBgColor:'#ffffff', technologyIcons:[<SiCloudflare key="cf" className="tech-icon"/>,<SiTypescript key="ts" className="tech-icon"/>],
     },
     {
-      slideNumberImg:'/assets/portfolio/7.svg', projectImg:'/assets/portfolio/projects/05-bolekpad-dashboard.webp', projectTitle:'BOLEKpad | Personal Workspace',
+      slideNumberImg:'/assets/portfolio/6.svg', projectImg:'/assets/portfolio/projects/05-bolekpad-dashboard.webp', projectTitle:'BOLEKpad | Personal Workspace',
       projectLinks:[], projectLinkNote:'Private application repository. Public description focuses on product capabilities; account-specific setup is not included.',
       projectDescription:'A configurable digital workplace concept for knowledge capture, team documentation, task coordination, calendars, document collaboration and AI-assisted productivity. It can support cross-functional teams when paired with organizational identity, retention and access policies.',
       projectPurpose:'Give teams a shared, governed workspace for work instructions, project notes, operational handovers, meeting outcomes and everyday collaboration.',
@@ -86,7 +76,7 @@ export const useHighlightedProjectsData = (): { highlightedProjects: IHighlighte
       slideBgColor:'#fff7f0', technologyIcons:[<SiCloudflare key="cf" className="tech-icon"/>,<SiReact key="react" className="tech-icon"/>,<SiTypescript key="ts" className="tech-icon"/>],
     },
     {
-      slideNumberImg:'/assets/portfolio/8.svg', projectImg:'/assets/portfolio/projects/06-printing-store-dashboard.webp', projectTitle:'Online Printing Store',
+      slideNumberImg:'/assets/portfolio/7.svg', projectImg:'/assets/portfolio/projects/06-printing-store-dashboard.webp', projectTitle:'Online Printing Store',
       projectLinks:[], projectLinkNote:'Concept showcase. A verified source repository and confirmed implementation stack have not yet been identified; technologies are intentionally not assumed.',
       projectDescription:'A digital commerce and service-ordering system that can support organizations offering physical products or print services, from catalogue discovery and configuration to quotation, payment, production, delivery and after-sales support.',
       projectPurpose:'Digitize customer-facing order journeys and connect sales, inventory, production, finance and delivery operations through traceable order records.',
@@ -97,7 +87,7 @@ export const useHighlightedProjectsData = (): { highlightedProjects: IHighlighte
       slideBgColor:'#ffffff', technologyIcons:[<SiReact key="react" className="tech-icon"/>],
     },
     {
-      slideNumberImg:'/assets/portfolio/9.svg', projectImg:'/assets/portfolio/projects/07-devai-dashboard.webp', projectTitle:'Developers Playground | DevAI',
+      slideNumberImg:'/assets/portfolio/8.svg', projectImg:'/assets/portfolio/projects/07-devai-dashboard.webp', projectTitle:'Developers Playground | DevAI',
       projectLinks:[{label:'Open xCoder',url:'https://app.xcoder.jelvan.pro/'}],
       projectLinkNote:'Development status varies by feature. Live payment, email, model and connector integrations require independent verification.',
       projectDescription:'An AI-assisted developer workspace designed to combine conversational coding support, project resources, connectors, media handling and development workflow tools in one browser-based environment.',
