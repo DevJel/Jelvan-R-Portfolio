@@ -10,7 +10,7 @@ This document defines the content-parity contract for the two homepage presentat
 | --- | --- | --- |
 | Standard View | Next.js pages and React components under `pages/` and `components/` | Preserve the original navigation, landing composition, page layouts, typography, color system and interactions. |
 | Folder View | `Jelvan Folder Portfolio Design/index.html` | Preserve the existing desk, folder artwork, glass surfaces, typography, motion, responsive sizing, sound control and preview behavior while updating portfolio content and destinations. |
-| Homepage selector | `pages/index.tsx` | New visitors default to Standard View. The selected view is remembered under the versioned `jelvan-portfolio-view-v2` browser-storage key so older Folder View defaults do not override the new default. The same selector remains available in both presentations. |
+| Homepage selector | `pages/index.tsx` | New visitors default to Standard View. The selected view is remembered under the versioned `jelvan-portfolio-view-v3` browser-storage key so older Folder View defaults do not override the new default. The same selector remains available in both presentations. |
 
 The two presentations are intentionally not visually identical. Content parity means that names, facts, descriptions, destinations and project maturity are consistent; it does not mean copying one design into the other.
 
