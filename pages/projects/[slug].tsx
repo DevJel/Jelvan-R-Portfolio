@@ -20,6 +20,28 @@ type Project = {
 
 const projects: Project[] = [
   {
+    slug: 'leadmaster-email-campaign-platform', number: '02', title: 'LeadMASTER — Email Campaign Platform',
+    summary: 'An email operations workspace for contact preparation, campaign composition, paced AWS SES SMTP delivery and recipient-level delivery tracking.',
+    maturity: 'Live product showcase. Public portfolio content describes product capabilities; private contacts, campaign data, sender credentials and operational configuration are excluded.',
+    stack: ['Cloudflare Workers', 'Cloudflare Queues', 'Durable Objects', 'D1 Database', 'AWS SES SMTP', 'JavaScript'],
+    systems: ['Contact and lead organization','Bulk recipient parsing and validation','HTML email composition and preview','Campaign review and queue submission','SMTP-only outbound email through AWS SES','Recipient-weighted sending limits and paced dispatch','Retry and dead-letter queue handling','SES delivery, bounce, complaint and delay event tracking','Campaign activity and recipient-level status reporting'],
+    folders: [
+      { name: 'src/', purpose: 'Campaign preparation, recipient validation, queue coordination and SMTP transport modules.', access: 'Public repository — inspect source and deployment configuration before reuse' },
+      { name: 'workers/', purpose: 'Queue consumer and background processing entry points.', access: 'Public repository — environment bindings are account-specific' },
+      { name: 'migrations/', purpose: 'Versioned D1 schema for campaigns, message state and delivery events.', access: 'Public repository — never publish real recipient records' },
+      { name: 'docs/', purpose: 'Architecture, operational guidance, sending limits and deployment notes.', access: 'Public repository' },
+      { name: 'wrangler configuration', purpose: 'Worker bindings, queue configuration and non-secret environment settings.', access: 'Public repository — SMTP credentials remain protected secrets' }
+    ],
+    setup: ['Clone the public repository and inspect its README and package scripts.', 'Create isolated Cloudflare development resources and apply the documented D1 migrations.', 'Configure AWS SES SMTP credentials as protected Worker secrets; do not use SES API or alternate mail transports.', 'Verify the sender identity and event notification configuration in the intended SES region.', 'Test recipient validation, campaign review, idempotency, pacing, retries and delivery-event correlation with controlled test recipients.', 'Run the repository checks and verify queue backlog, bounce handling and suppression behavior before production use.'],
+    platforms: [
+      { name: 'Cloudflare Workers', steps: ['Connect the repository to the intended Cloudflare account.', 'Create separate development and production D1 databases and queues.', 'Configure the queue consumer, Durable Object bindings and deployment variables.', 'Store SES SMTP username and password only as Worker secrets.', 'Deploy a preview and test campaign validation, paced dispatch, retries and event correlation before promotion.'] },
+      { name: 'Amazon SES SMTP', steps: ['Verify the sender identity in the intended AWS region.', 'Create and store SES SMTP credentials securely.', 'Configure the application to use the regional SES SMTP endpoint only.', 'Configure SES event publishing for delivery, bounce, complaint and delay notifications.', 'Monitor sending quotas, reputation, suppression events and delivery outcomes.'] }
+    ],
+    practices: ['Use SMTP as the only outbound email transport for this application.', 'Validate and normalize recipients before queue submission.', 'Apply recipient-weighted rate limits and honor the configured SES sending quota.', 'Use idempotency keys and avoid automatically resending accepted or uncertain messages.', 'Honor unsubscribe and suppression records before sending.', 'Keep SMTP credentials and recipient data out of source control and public logs.', 'Monitor bounce and complaint rates and pause campaigns when reputation thresholds are exceeded.'],
+    links: [{ label: 'Open LeadMASTER', url: 'https://leadmaster.jelvan.pro/' }, { label: 'Public source repository', url: 'https://github.com/DevJel/LeadMASTER' }]
+  },
+
+  {
     slug: 'master-ai-multi-agent-workspace', number: '01', title: 'Master AI — Multi-Agent Workspace',
     summary: 'A human-reviewed AI workspace pattern for coordinating specialist assistants, preparing drafts and organizing repeatable tasks.',
     maturity: 'Private product showcase. Operational code, prompts, credentials, model routing and internal integrations are not published.',
@@ -41,7 +63,7 @@ const projects: Project[] = [
     links: []
   },
   {
-    slug: 'proctorava-learning-management-system', number: '02', title: 'LEARNING MANAGEMENT SYSTEM - PROCTORAVA', developer: 'Jelvan R · Developer',
+    slug: 'proctorava-learning-management-system', number: '03', title: 'LEARNING MANAGEMENT SYSTEM - PROCTORAVA', developer: 'Jelvan R · Developer',
     summary: 'A secure learning, applicant assessment and remote proctoring experience designed to guide candidates from registration and identity checks through assessment and authorized review.',
     maturity: 'Private product showcase. This portfolio guide describes the intended product workflow and architecture; production availability, identity-provider coverage and proctoring controls must be verified against the current deployment before operational use.',
     stack: ['Cloudflare Pages', 'Cloudflare Workers / Pages Functions', 'D1 Database', 'Amazon SES SMTP', 'Cloudflare Turnstile', 'Identity verification integration', 'Browser MediaDevices and Screen Capture APIs'],
@@ -63,7 +85,7 @@ const projects: Project[] = [
     links: []
   },
   {
-    slug: 'knowledge-center-system', number: '03', title: 'Knowledge Center System',
+    slug: 'knowledge-center-system', number: '04', title: 'Knowledge Center System',
     summary: 'A structured technical learning library with topic pages, implementation walkthroughs, diagrams, examples and references.',
     maturity: 'Public source repository and live demonstration are available. Verify current dependencies and deployment configuration before production use.',
     stack: ['HTML', 'CSS', 'JavaScript', 'Cloudflare Pages', 'Markdown'],
@@ -85,7 +107,7 @@ const projects: Project[] = [
     links: [{ label: 'Public source repository', url: 'https://github.com/DevJel/knowledge-center-system' }, { label: 'Open live demonstration', url: 'https://app-bible.jelvan.pro/' }]
   },
   {
-    slug: 'internal-email-system', number: '04', title: 'Internal Email System',
+    slug: 'internal-email-system', number: '05', title: 'Internal Email System',
     summary: 'An email operations workspace concept for contact organization, templates, campaign preparation, reply workflows and responsible sending.',
     maturity: 'Private application. Public page provides architecture guidance only; no private contact data, sender identity, domain settings or mail credentials are included.',
     stack: ['Cloudflare Workers', 'D1 Database', 'Amazon SES', 'JavaScript', 'HTML & CSS'],
@@ -106,7 +128,7 @@ const projects: Project[] = [
     links: []
   },
   {
-    slug: 'hr-information-system', number: '05', title: 'HR Information System',
+    slug: 'hr-information-system', number: '06', title: 'HR Information System',
     summary: 'A modular HR application prototype for employee lifecycle workflows, directory views, onboarding, offboarding and administrative processes.',
     maturity: 'Public repository. Prototype or demo modules must not be treated as production HR, payroll or employee-record software without a full security and compliance review.',
     stack: ['Cloudflare Pages', 'Pages Functions', 'D1 Database', 'JavaScript', 'HTML & CSS'],
@@ -127,7 +149,7 @@ const projects: Project[] = [
     links: [{ label: 'Public source repository', url: 'https://github.com/DevJel/jelhr-system' }]
   },
   {
-    slug: 'bolekpad-personal-workspace', number: '06', title: 'BOLEKpad — Personal Workspace',
+    slug: 'bolekpad-personal-workspace', number: '07', title: 'BOLEKpad — Personal Workspace',
     summary: 'A personal productivity workspace concept combining notes, documents, pages, calendar utilities, attachments and AI-assisted tools.',
     maturity: 'Private application. The public showcase does not expose private source, account data, service endpoints or production configuration.',
     stack: ['React 19', 'TypeScript', 'Vite', 'Tailwind CSS', 'Cloudflare Workers', 'D1 · KV · R2', 'Workers AI'],
@@ -148,7 +170,7 @@ const projects: Project[] = [
     links: []
   },
   {
-    slug: 'online-printing-store', number: '07', title: 'Online Printing Store',
+    slug: 'online-printing-store', number: '08', title: 'Online Printing Store',
     summary: 'A digital commerce and order-management concept for print products and business services, connecting customers with quoting, customization, payment, production and delivery workflows.',
     maturity: 'Concept showcase. The source repository and production stack have not been verified. This guide describes a recommended reference architecture, not a claim of an existing implementation.',
     stack: ['E-commerce concept', 'Product catalogue', 'Order workflow', 'Stack verification pending'],
@@ -170,7 +192,7 @@ const projects: Project[] = [
     links: []
   },
   {
-    slug: 'developers-playground-devai', number: '08', title: 'Developers Playground — DevAI',
+    slug: 'developers-playground-devai', number: '09', title: 'Developers Playground — DevAI',
     summary: 'A developer-focused AI workspace concept for assisted coding, project resources, integrations and repeatable development workflows.',
     maturity: 'Private application. Live feature availability and provider integrations can change; no private code, API keys or internal connector configuration is published.',
     stack: ['Cloudflare Workers', 'Workers AI', 'D1 Database', 'R2 Storage', 'Durable Objects', 'Turnstile', 'Amazon SES'],
