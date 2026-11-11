@@ -20,11 +20,11 @@ type Project = {
 
 const projects: Project[] = [
   {
-    slug: 'leadmaster-email-campaign-platform', number: '01', title: 'LeadMASTER — Email Campaign Platform',
-    summary: 'An email operations workspace for contact preparation, campaign composition, paced AWS SES SMTP delivery and recipient-level delivery tracking.',
-    maturity: 'Live product showcase. Public portfolio content describes product capabilities; private contacts, campaign data, sender credentials and operational configuration are excluded.',
+    slug: 'leadmaster-email-campaign-platform', number: '01', title: 'Internal Email System - LeadMASTER',
+    summary: 'An integrated internal email and campaign operations system for announcements, recruitment and service correspondence, contact management, HTML email composition, validated bulk recipients, paced AWS SES SMTP delivery and recipient-level delivery tracking.',
+    maturity: 'Live product showcase. Public portfolio content describes the internal email and campaign capabilities; private contacts, message content, sender credentials and operational configuration are excluded.',
     stack: ['Cloudflare Workers', 'Cloudflare Queues', 'Durable Objects', 'D1 Database', 'AWS SES SMTP', 'JavaScript'],
-    systems: ['Contact and lead organization','Bulk recipient parsing and validation','HTML email composition and preview','Campaign review and queue submission','SMTP-only outbound email through AWS SES','Recipient-weighted sending limits and paced dispatch','Retry and dead-letter queue handling','SES delivery, bounce, complaint and delay event tracking','Campaign activity and recipient-level status reporting'],
+    systems: ['Internal announcements and employee lifecycle notifications','Recruitment, service and customer correspondence','Contact and lead organization','Reusable templates and HTML email composition and preview','Bulk recipient parsing and validation','Campaign review and queue submission','SMTP-only outbound email through AWS SES','Recipient-weighted sending limits and paced dispatch','Retry and dead-letter queue handling','SES delivery, bounce, complaint and delay event tracking','Campaign activity and recipient-level status reporting','Suppression, consent and responsible-sending controls'],
     folders: [
       { name: 'src/', purpose: 'Campaign preparation, recipient validation, queue coordination and SMTP transport modules.', access: 'Public repository — inspect source and deployment configuration before reuse' },
       { name: 'workers/', purpose: 'Queue consumer and background processing entry points.', access: 'Public repository — environment bindings are account-specific' },
@@ -38,7 +38,7 @@ const projects: Project[] = [
       { name: 'Amazon SES SMTP', steps: ['Verify the sender identity in the intended AWS region.', 'Create and store SES SMTP credentials securely.', 'Configure the application to use the regional SES SMTP endpoint only.', 'Configure SES event publishing for delivery, bounce, complaint and delay notifications.', 'Monitor sending quotas, reputation, suppression events and delivery outcomes.'] }
     ],
     practices: ['Use SMTP as the only outbound email transport for this application.', 'Validate and normalize recipients before queue submission.', 'Apply recipient-weighted rate limits and honor the configured SES sending quota.', 'Use idempotency keys and avoid automatically resending accepted or uncertain messages.', 'Honor unsubscribe and suppression records before sending.', 'Keep SMTP credentials and recipient data out of source control and public logs.', 'Monitor bounce and complaint rates and pause campaigns when reputation thresholds are exceeded.'],
-    links: [{ label: 'Open LeadMASTER', url: 'https://leadmaster.jelvan.pro/' }, { label: 'Public source repository', url: 'https://github.com/DevJel/LeadMASTER' }]
+    links: [{ label: 'Open Internal Email System - LeadMASTER', url: 'https://leadmaster.jelvan.pro/' }, { label: 'Public source repository', url: 'https://github.com/DevJel/LeadMASTER' }]
   },
 
   {
@@ -106,29 +106,9 @@ const projects: Project[] = [
     practices: ['Use semantic headings and accessible navigation.', 'Keep chapters focused, dated and independently linkable.', 'Cite official vendor documentation and mark version-sensitive guidance.', 'Validate code samples and links during content review.', 'Optimize images and avoid embedding credentials or private environment details.'],
     links: [{ label: 'Public source repository', url: 'https://github.com/DevJel/knowledge-center-system' }, { label: 'Open live demonstration', url: 'https://app-bible.jelvan.pro/' }]
   },
+
   {
-    slug: 'internal-email-system', number: '05', title: 'Internal Email System',
-    summary: 'An email operations workspace concept for contact organization, templates, campaign preparation, reply workflows and responsible sending.',
-    maturity: 'Private application. Public page provides architecture guidance only; no private contact data, sender identity, domain settings or mail credentials are included.',
-    stack: ['Cloudflare Workers', 'D1 Database', 'Amazon SES', 'JavaScript', 'HTML & CSS'],
-    systems: ['Recruitment and candidate communications','Employee lifecycle notifications and announcements','Customer service and case correspondence','Vendor and procurement communications','Approved campaign and stakeholder updates','Bounce, complaint, unsubscribe and delivery event management'],
-    folders: [
-      { name: 'frontend/', purpose: 'Sanitized interface components, forms and campaign preview screens.', access: 'Private source — demo recreation only' },
-      { name: 'worker/ or api/', purpose: 'Server-side validation, authorization and mail-provider integration.', access: 'Private source — never expose production handlers' },
-      { name: 'database/migrations/', purpose: 'Contact, campaign, suppression and event schema examples.', access: 'Private source — use synthetic records' },
-      { name: 'templates/', purpose: 'Reusable HTML and text email templates with placeholder data.', access: 'Share only generic templates' },
-      { name: 'docs/', purpose: 'SES setup, domain authentication, bounce handling and operations guides.', access: 'Public-safe guide; omit real domains and account identifiers' }
-    ],
-    setup: ['Create a local demo using synthetic contacts and a mock email adapter.', 'Configure provider credentials only in server-side secret storage.', 'Implement authorization and verify the caller can access the requested audience.', 'Add suppression checks, unsubscribe handling and sending limits before enabling delivery.', 'Test rendering, links, bounce and complaint events in a sandbox or test environment.'],
-    platforms: [
-      { name: 'Cloudflare Workers + D1', steps: ['Deploy the API Worker from your own repository.', 'Create a D1 database and apply reviewed migrations.', 'Bind the database in the Worker configuration.', 'Store SES credentials or use an approved short-lived role strategy in server-side secrets.', 'Configure verified sending identities, region, SPF, DKIM and DMARC; test in the provider sandbox before production.'] },
-      { name: 'AWS', steps: ['Create an isolated application environment and least-privilege IAM identity.', 'Verify the sending domain or address in SES in the intended region.', 'Publish and validate SPF, DKIM and DMARC DNS records.', 'Configure event destinations for bounces, complaints and delivery events.', 'Request production access, establish quotas and monitor reputation before ramping volume.'] }
-    ],
-    practices: ['Send only to contacts with a valid lawful basis and honor opt-outs promptly.', 'Use suppression lists and idempotency keys to prevent duplicate sends.', 'Validate sender identity and recipient input on the server.', 'Apply tenant isolation, role checks, audit logs and per-tenant quotas.', 'Protect templates against injection and escape all user-controlled content.', 'Monitor bounce and complaint rates; pause sending when thresholds are exceeded.'],
-    links: []
-  },
-  {
-    slug: 'hr-information-system', number: '06', title: 'HR Information System',
+    slug: 'hr-information-system', number: '05', title: 'HR Information System',
     summary: 'A modular HR application prototype for employee lifecycle workflows, directory views, onboarding, offboarding and administrative processes.',
     maturity: 'Public repository. Prototype or demo modules must not be treated as production HR, payroll or employee-record software without a full security and compliance review.',
     stack: ['Cloudflare Pages', 'Pages Functions', 'D1 Database', 'JavaScript', 'HTML & CSS'],
@@ -149,7 +129,7 @@ const projects: Project[] = [
     links: [{ label: 'Public source repository', url: 'https://github.com/DevJel/jelhr-system' }]
   },
   {
-    slug: 'bolekpad-personal-workspace', number: '07', title: 'BOLEKpad — Personal Workspace',
+    slug: 'bolekpad-personal-workspace', number: '06', title: 'BOLEKpad — Personal Workspace',
     summary: 'A personal productivity workspace concept combining notes, documents, pages, calendar utilities, attachments and AI-assisted tools.',
     maturity: 'Private application. The public showcase does not expose private source, account data, service endpoints or production configuration.',
     stack: ['React 19', 'TypeScript', 'Vite', 'Tailwind CSS', 'Cloudflare Workers', 'D1 · KV · R2', 'Workers AI'],
@@ -170,7 +150,7 @@ const projects: Project[] = [
     links: []
   },
   {
-    slug: 'online-printing-store', number: '08', title: 'Online Printing Store',
+    slug: 'online-printing-store', number: '07', title: 'Online Printing Store',
     summary: 'A digital commerce and order-management concept for print products and business services, connecting customers with quoting, customization, payment, production and delivery workflows.',
     maturity: 'Concept showcase. The source repository and production stack have not been verified. This guide describes a recommended reference architecture, not a claim of an existing implementation.',
     stack: ['E-commerce concept', 'Product catalogue', 'Order workflow', 'Stack verification pending'],
@@ -192,7 +172,7 @@ const projects: Project[] = [
     links: []
   },
   {
-    slug: 'developers-playground-devai', number: '09', title: 'Developers Playground — DevAI',
+    slug: 'developers-playground-devai', number: '08', title: 'Developers Playground — DevAI',
     summary: 'A developer-focused AI workspace concept for assisted coding, project resources, integrations and repeatable development workflows.',
     maturity: 'Private application. Live feature availability and provider integrations can change; no private code, API keys or internal connector configuration is published.',
     stack: ['Cloudflare Workers', 'Workers AI', 'D1 Database', 'R2 Storage', 'Durable Objects', 'Turnstile', 'Amazon SES'],
