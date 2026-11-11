@@ -954,7 +954,7 @@ The home route supports two presentations of the same professional portfolio. Th
 
 - New visitors default to **Standard View**.
 - A visitor can switch between Folder View and Standard View using the **Switch view** control.
-- The selected view is stored in browser `localStorage` under `jelvan-portfolio-view-v2`; a saved selection is restored on a later visit. The versioned key prevents an older saved Folder View preference from overriding the new Standard View default.
+- The selected view is stored in browser `localStorage` under `jelvan-portfolio-view-v3`; a saved selection is restored on a later visit. The versioned key prevents an older saved Folder View preference from overriding the new Standard View default.
 - In Folder View, the selector floats over the workspace.
 - In Standard View, the selector is placed at the bottom of the expanded navigation menu. It is not a separate top banner.
 - The selector's options panel remains hidden until the control is activated.
