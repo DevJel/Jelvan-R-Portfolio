@@ -71,9 +71,10 @@ jobs:
           test -f out/portfolio/resume.html
           test -f out/projects/knowledge-center-system.html
           test -f out/projects/leadmaster-email-campaign-platform.html
+          test -f out/assets/portfolio/projects/internal-email-system-leadmaster-desktop.svg
+          test -f out/assets/portfolio/projects/internal-email-system-leadmaster-mobile.svg
           test -f out/projects/hr-information-system.html
           test -f out/projects/master-ai-multi-agent-workspace.html
-          test -f out/projects/internal-email-system.html
           test -f out/projects/bolekpad-personal-workspace.html
           test -f out/projects/online-printing-store.html
           test -f out/projects/developers-playground-devai.html
