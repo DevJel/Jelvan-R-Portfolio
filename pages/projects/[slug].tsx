@@ -20,7 +20,7 @@ type Project = {
 
 const projects: Project[] = [
   {
-    slug: 'leadmaster-email-campaign-platform', number: '02', title: 'LeadMASTER — Email Campaign Platform',
+    slug: 'leadmaster-email-campaign-platform', number: '01', title: 'LeadMASTER — Email Campaign Platform',
     summary: 'An email operations workspace for contact preparation, campaign composition, paced AWS SES SMTP delivery and recipient-level delivery tracking.',
     maturity: 'Live product showcase. Public portfolio content describes product capabilities; private contacts, campaign data, sender credentials and operational configuration are excluded.',
     stack: ['Cloudflare Workers', 'Cloudflare Queues', 'Durable Objects', 'D1 Database', 'AWS SES SMTP', 'JavaScript'],
@@ -42,7 +42,7 @@ const projects: Project[] = [
   },
 
   {
-    slug: 'master-ai-multi-agent-workspace', number: '01', title: 'Master AI — Multi-Agent Workspace',
+    slug: 'master-ai-multi-agent-workspace', number: '02', title: 'Master AI — Multi-Agent Workspace',
     summary: 'A human-reviewed AI workspace pattern for coordinating specialist assistants, preparing drafts and organizing repeatable tasks.',
     maturity: 'Private product showcase. Operational code, prompts, credentials, model routing and internal integrations are not published.',
     stack: ['Cloudflare Workers', 'Workers AI', 'D1', 'Amazon SES SMTP', 'Turnstile', 'AI orchestration'],
