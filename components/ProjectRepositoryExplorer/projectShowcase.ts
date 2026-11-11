@@ -10,12 +10,14 @@ export type ProjectShowcaseMeta = {
 
 export const projectShowcaseBySlug: Record<string, ProjectShowcaseMeta> = {
   'leadmaster-email-campaign-platform': {
-    cover: '/assets/portfolio/projects/leadmaster-desktop.png',
+    cover: '/assets/portfolio/projects/internal-email-system-leadmaster-desktop.webp',
     backgroundColor: '#ffffff',
-    description: 'An email operations workspace for contact preparation, campaign composition, paced AWS SES SMTP delivery and recipient-level delivery tracking.',
-    purpose: 'Help teams manage intentional, traceable email communication from contact preparation and message review through queue processing and delivery-event monitoring.',
+    description: 'An integrated internal email and campaign operations system for announcements, recruitment and service correspondence, contact management, HTML email composition, validated bulk recipients, paced AWS SES SMTP delivery and recipient-level delivery tracking.',
+    purpose: 'Bring internal communications and controlled email campaigns into one workspace, with validated recipients, reviewed content, paced SMTP dispatch and traceable delivery outcomes.',
     languages: ['JavaScript (ES modules)', 'SQL', 'HTML', 'CSS', 'JSON', 'Markdown'],
     features: [
+      'Internal announcements and employee lifecycle communications',
+      'Recruitment, service and customer correspondence',
       'Contact and lead organization',
       'Bulk recipient parsing and validation',
       'HTML email composition and preview',
@@ -28,7 +30,8 @@ export const projectShowcaseBySlug: Record<string, ProjectShowcaseMeta> = {
       'Centralizes email campaign preparation and execution',
       'Validates recipient lists before queue submission',
       'Controls sending pace to protect sender reputation',
-      'Connects accepted messages with downstream delivery events'
+      'Connects accepted messages with downstream delivery events',
+      'Combines internal email workflows and campaign operations'
     ]
   },
 
@@ -98,27 +101,7 @@ export const projectShowcaseBySlug: Record<string, ProjectShowcaseMeta> = {
       'Encourages verification against official sources'
     ]
   },
-  'internal-email-system': {
-    cover: '/assets/portfolio/projects/03-internal-email-dashboard.webp',
-    backgroundColor: '#fff7f0',
-    description: 'A communications operations system for internal announcements, employee lifecycle notifications, recruitment correspondence, service updates, customer communications and approved outreach. Delivery is designed around provider integrations such as Amazon SES, with consent, security and audit controls.',
-    purpose: 'Centralize organization-wide communications while ensuring messages are authorized, traceable, accessible and appropriate to each recipient group.',
-    languages: ['JavaScript', 'SQL', 'HTML', 'CSS', 'Python', 'XML', 'Gradle', 'Markdown'],
-    features: [
-      'Contact and lead organization',
-      'Reusable email templates and campaign drafts',
-      'Sending workflow with delivery status tracking',
-      'Reply and activity organization',
-      'Domain and sender configuration guidance',
-      'Opt-out and responsible-sending controls'
-    ],
-    advantages: [
-      'Reduces scattered manual email work',
-      'Encourages consistent communication',
-      'Makes campaign activity easier to review',
-      'Separates demo activity from real sending'
-    ]
-  },
+
   'hr-information-system': {
     cover: '/assets/portfolio/projects/04-hris-dashboard.webp',
     backgroundColor: '#ffffff',
