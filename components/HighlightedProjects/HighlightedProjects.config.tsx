@@ -8,7 +8,7 @@ const LAPTOP_IMG = '/assets/portfolio/laptop-lms.png';
 export const useHighlightedProjectsData = (): { highlightedProjects: IHighlightedProject[] } => {
   const highlightedProjects: IHighlightedProject[] = [
     {
-      slideNumberImg:'/assets/portfolio/2.svg', projectImg:'/assets/portfolio/projects/leadmaster-desktop.png', projectTitle:'LeadMASTER | Email Campaign Platform',
+      slideNumberImg:'/assets/portfolio/1.svg', projectImg:'/assets/portfolio/projects/leadmaster-desktop.png', projectTitle:'LeadMASTER | Email Campaign Platform',
       projectLinks:[{label:'Open LeadMASTER',url:'https://leadmaster.jelvan.pro/'},{label:'Public source repository',url:'https://github.com/DevJel/LeadMASTER'}],
       projectDescription:'A focused email operations platform for managing contacts, preparing campaigns, organizing recipient lists, sending through AWS SES SMTP and tracking delivery outcomes. It brings individual email workflows and bulk campaigns into one controlled workspace.',
       projectPurpose:'Help teams manage intentional, traceable email communication from contact preparation and message review through paced queue processing and delivery-event monitoring.',
