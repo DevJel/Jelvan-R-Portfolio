@@ -136,7 +136,7 @@ const PortfolioLandingPage: NextPage = () => {
 
   useEffect(() => {
     try {
-      const saved = window.localStorage.getItem('jelvan-portfolio-view-v2');
+      const saved = window.localStorage.getItem('jelvan-portfolio-view-v3');
       if (saved === 'folders' || saved === 'standard') setView(saved);
     } catch {
       // The selector remains usable when browser storage is unavailable.
@@ -147,7 +147,7 @@ const PortfolioLandingPage: NextPage = () => {
     setView(next);
     setPanelOpen(false);
     try {
-      window.localStorage.setItem('jelvan-portfolio-view-v2', next);
+      window.localStorage.setItem('jelvan-portfolio-view-v3', next);
     } catch {
       // The selected view still changes for this session.
     }
